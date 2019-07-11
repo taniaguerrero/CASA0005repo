@@ -1,0 +1,10 @@
+book_filename: "CASA0005"
+language:
+  ui:
+    chapter_name: "Chapter "
+delete_merged_file: true
+output_dir: "docs"
+clean: [packages.bib, bookdown.bbl]
+new_session: yes
+
+
