@@ -10,7 +10,7 @@ The question we want to answer is: **"For any given London Borough, are the Blue
 
 To answer this question, we will make use of some of the Point Pattern Analysis functions found in the `spatstat` package.
 
-```{r Library Initial Packages, message=FALSE, warning=FALSE}
+```{r Library Initial Packages, message=FALSE, warning=FALSE, cache=TRUE}
 #first library a few packages that we will use during the practical
 #note you may need to install them first...
 library(spatstat)
@@ -27,14 +27,14 @@ library(tmaptools)
 
 Now, assuming that you've got a copy of your London Boroughs shapefile (from week 1) in your new week 6 folder, along with a shapefile of your Blue Plaques; read in the data...
 
-```{r}
+```{r, cache=TRUE}
 ##First, get the London Borough Boundaries
 EW <- geojson_read("http://geoportal.statistics.gov.uk/datasets/8edafbe3276d4b56aec60991cbddda50_2.geojson", what = "sp")
 ```
 
 Pull out london using grep and the regex wildcard for'start of the string' (^) to to look for the bit of the district code that relates to London (E09) from the 'lad15cd' column in the data slot of our spatial polygons dataframe
 
-```{r}
+```{r, cache=TRUE}
 BoroughMap <- EW[grep("^E09",EW@data$lad15cd),]
 #plot it using the base plot function
 qtm(BoroughMap)
@@ -64,14 +64,14 @@ tm_shape(BluePlaquesBNG) +
 
 Now, you might have noticed that there is at least one Blue Plaque that falls outside of the Borough boundaries. Errant plaques will cause problems with our analysis, so we need to clip the plaques to the boundaries...First we'll remove any Plaques with the same grid reference as this will cause problems later on in the analysis..
 
-```{r}
+```{r, cache=TRUE}
 #remove duplicates
 BluePlaquesBNG <- remove.duplicates(BluePlaquesBNG)
 ```
 
 Now just select the points inside London - thanks to Robin Lovelace for posting how to do this one, very useful!
 
-```{r}
+```{r, cache=TRUE}
 BluePlaquesSub <- BluePlaquesBNG[BoroughMapBNG,]
 #check to see that they've been removed
 tmap_mode("view")
@@ -83,7 +83,7 @@ tm_shape(BluePlaquesSub) +
 
 From this point, we could try and carry out our analysis on the whole of London, but you might be waiting until next week for Ripley's K to be calculated for this many points. Therefore to speed things up and to enable us to compare areas within London, we will select some individual boroughs. First we need to subset our SpatialPolygonsDataFrame to pull out a borough we are interested in. I'm going to choose Harrow as I know there are few enough points for the analysis to definitely work. If you wish, feel free to choose another borough in London and run the same analysis, but beware that if it happens that there are a lot of blue plaques in your borough, the analysis could fall over!!
 
-```{r}
+```{r, cache=TRUE}
 #extract the borough
 Borough <- BoroughMapBNG[BoroughMapBNG@data$lad15nm=="Harrow",]
 
@@ -97,7 +97,7 @@ tm_shape(Borough) +
 ```
 
 Next we need to clip our Blue Plaques so that we have a subset of just those that fall within the borough or interest
-```{r}
+```{r, cache=TRUE}
 #clip the data to our single borough
 BluePlaquesSub <- BluePlaquesBNG[Borough,]
 #check that it's worked
@@ -109,36 +109,36 @@ tm_shape(BluePlaquesSub) +
 ```
 
 We now have all of our data set up so that we can start the analysis using `spatstat`. The first thing we need to do is create an observation window for `spatstat` to carry out its analysis within --- we'll set this to the extent of the Harrow boundary
-```{r}
+```{r, cache=TRUE}
 ##now set a window as the borough boundary
 window <- as.owin(Borough)
 plot(window)
 ```
 
 `spatstat` has its own set of spatial objects that it works with (one of the delights of R is that different packages are written by different people and many have developed their own data types) - it does not work directly with the SpatialPolygonsDataFrames, SpatialPointsDataFrames or `sf` objects that we are used to. For point pattern analysis, we need to create a point pattern (ppp) object.
-```{r}
+```{r, cache=TRUE}
 #create a ppp object
 BluePlaquesSub.ppp <- ppp(x=BluePlaquesSub@coords[,1],y=BluePlaquesSub@coords[,2],window=window)
 ```
 Try to understand what the different elements in command above is doing. If you are unsure, you can run elements of the code, for example:
-```{r}
+```{r, cache=TRUE}
 BluePlaquesSub@coords[,1]
 ```
 Have a look at the new ppp object
-```{r}
+```{r, cache=TRUE}
 plot(BluePlaquesSub.ppp,pch=16,cex=0.5, main="Blue Plaques Harrow")
 ```
 
 #### Summarising your point data - a little aside on Kernel Density Estimation
 
 We will explore what Kernel Density Estimation (KDE) is in a couple of week's, but here we are going to jump the gun a little bit. One way to summarise your point data is to plot the density of your points under a window called a 'Kernel'. The size and shape of the Kernel affects the density pattern produced (more of this next week), but it is very easy to produce a KDE map from a ppp object using the `density` function.
-```{r}
+```{r, cache=TRUE}
 plot(density(BluePlaquesSub.ppp, sigma = 500))
 ```
 
 The sigma value sets the diameter of the Kernel (in the units your map is in - in this case, as we are in British National Grid the units are in metres). Try experimenting with different values of sigma to see how that affects the density estimate.
 
-```{r}
+```{r, cache=TRUE}
 plot(density(BluePlaquesSub.ppp, sigma = 1000))
 ```
 
@@ -148,7 +148,7 @@ So as you saw in the lecture, we are interesting in knowing whether the distribu
 
 The most basic test of CSR is a quadrat analysis. We can carry out a simple quadrat analysis on our data using the `quadrat count` function in `spatstat`. *Note, I wouldn't recommend doing a quadrat analysis in any real piece of analysis you conduct, but it is useful for starting to understand the Poisson distribution...*
 
-```{r}
+```{r, cache=TRUE}
 #First plot the points
 plot(BluePlaquesSub.ppp,pch=16,cex=0.5, main="Blue Plaques in Harrow")
 #now count the points in that fall in a 6 x 6 grid overlaid across the window
@@ -158,7 +158,7 @@ plot(quadratcount(BluePlaquesSub.ppp, nx = 6, ny = 6),add=T,col="red")
 In our case here, want to know whether or not there is any kind of spatial patterning associated with the Blue Plaques in areas of London. If you recall from the lecture, this means comparing our observed distribution of points with a statistically likely (Complete Spatial Random) distibution, based on the Poisson distribution. 
 
 Using the same `quadratcount` function again (for the same sized grid) we can save the results into a table:
-```{r}
+```{r, cache=TRUE}
 #run the quadrat count
 Qcount<-data.frame(quadratcount(BluePlaquesSub.ppp, nx = 6, ny = 6))
 #put the results into a data frame
@@ -171,7 +171,7 @@ QCountTable <- QCountTable[-nrow(QCountTable),]
 
 Check the data type in the first column - if it is factor, we will need to convert it to numeric
 
-```{r}
+```{r, cache=TRUE}
 class(QCountTable[,1])
 #oops, looks like it's a factor, so we need to convert it to numeric
 vect<- as.numeric(levels(QCountTable[,1]))
@@ -185,7 +185,7 @@ OK, so we now have a frequency table - next we need to calculate our expected va
 Pr\left(X=k\right)=\frac{\lambda^{k}e^{-\lambda}}{k!}
 \]
 
-```{r}
+```{r, cache=TRUE}
 #calculate the total blue plaques (Var * Freq)
 QCountTable$total <- QCountTable[,1]*QCountTable[,2]
 #calculate mean
@@ -197,7 +197,7 @@ lambda <- sums[2]/sums[1]
 
 Calculate expected using the Poisson formula from above --- k is the number of blue plaques counted in a square and is found in the first column of our table...
 
-```{r}
+```{r, cache=TRUE}
 QCountTable$Pr <- ((lambda^QCountTable[,1])*exp(-lambda))/factorial(QCountTable[,1])
 #now calculate the expected counts and save them to the table
 QCountTable$Expected <- round(QCountTable$Pr * sums[1],0)
@@ -214,7 +214,7 @@ Comparing the observed and expected frequencies for our quadrat counts, we can o
 
 To check for sure, we can use the `quadrat.test` function, built into `spatstat`. This uses a Chi Squared test to compare the observed and expected frequencies for each quadrat (rather than for quadrat bins, as we have just computed above). If the p-value of our Chi-Squared test is > 0.05, then we can reject a null hyphothesis that says "there is *no* complete spatial randomness in our data" (we will learn more about what a null-hypothesis is in a couple of weeks, but for the time being, just think about it as the opposite of a hypothesis that says our data exhibit complete spatial randomness). What we need to look for is a value for p > 0.05. If our p-value is > 0.05 then this indicates that we have CSR and there is no pattern in our points. If it is < 0.05, this indicates that we do have clustering in our points. 
 
-```{r message=FALSE, warning=FALSE}
+```{r message=FALSE, warning=FALSE, cache=TRUE}
 teststats <- quadrat.test(BluePlaquesSub.ppp, nx = 6, ny = 6)
 teststats
 plot(BluePlaquesSub.ppp,pch=16,cex=0.5, main="Blue Plaques in Harrow")
@@ -235,7 +235,7 @@ One way of getting around the limitations of quadrat analysis is to compare the 
 
 We can conduct a Ripley's K test on our data very simply with the `spatstat` package using the `kest` function. 
 
-```{r}
+```{r, cache=TRUE}
 K <- Kest(BluePlaquesSub.ppp, correction="border")
 plot(K)
 ```
@@ -260,7 +260,7 @@ https://research.csiro.au/software/wp-content/uploads/sites/6/2015/02/Rspatialco
 Quadrat and Ripley's K analysis are useful exploratory techniques for telling us if we have spatial clusters present in our point data, but they are not able to tell us WHERE in our area of interest the clusters are occurring. To discover this we need to use alternative techniques. One popular technique for discovering clusters in space (be this physical space or variable space) is DBSCAN. For the complete overview of the DBSCAN algorithm, read the original paper by Ester et al. (1996) - http://www.aaai.org/Papers/KDD/1996/KDD96-037.pdf 
 or consult the wikipedia page - https://en.wikipedia.org/wiki/DBSCAN 
 
-```{r, message=FALSE, warning=FALSE}
+```{r, message=FALSE, warning=FALSE, cache=TRUE}
 library(raster)
 library(fpc)
 library(plyr)
@@ -269,7 +269,7 @@ library(OpenStreetMap)
 
 We will now carry out a DBSCAN analysis of blue plaques in my borough to see if there are any clusters present.
 
-```{r}
+```{r, cache=TRUE}
 #first check the coordinate reference system of the Harrow spatial polygon:
 crs(Borough)
 ```
@@ -279,7 +279,7 @@ DBSCAN requires you to input two parameters:
 
 Based on the results of the Ripley's K analysis earlier, we can see that we are getting clustering up to a radius of around 1200m, with the largest bulge in the graph at around 700m. Therefore, 700m is probably a good place to start and we will begin by searching for clusters of at least 4 points...
 
-```{r}
+```{r, cache=TRUE}
 #first extract the points from the spatial points data frame
 BluePlaquesSubPoints <- data.frame(BluePlaquesSub@coords[,1:2])
 #now run the dbscan analysis
@@ -298,41 +298,41 @@ No of course the plot above is a little basic and doesn't look very aestheticall
 #our new db object contains lots of info including the cluster each set of point
 #coordinates belongs to, whether the point is a seed point or a border point etc. 
 #We can get a summary by just calling the object
-```{r}
+```{r, cache=TRUE}
 library(ggplot2)
 ```
 Our new db object contains lots of info including the cluster each set of point coordinates belongs to, whether the point is a seed point or a border point etc. We can get a summary by just calling the object
-```{r}
+```{r, cache=TRUE}
 db
 ```
 
 If you open up the object in the environment window in RStudio, you will also see the various slots in the object, including cluster
-```{r}
+```{r, cache=TRUE}
 db$cluster
 ```
 
 We can now add this cluster membership info back into our dataframe
 
-```{r}
+```{r, cache=TRUE}
 BluePlaquesSubPoints$cluster <- db$cluster
 ```
 
 Next we are going to create some convex hull polygons to wrap around the points in our clusters. Use the ddply function in the plyr package to get the convex hull coordinates from the cluster groups in our dataframe
 
-```{r}
+```{r, cache=TRUE}
 chulls <- ddply(BluePlaquesSubPoints, .(cluster), 
                 function(df) df[chull(df$coords.x1, df$coords.x2), ])
 ```
 
 As 0 isn't actually a cluster (it's all points that aren't in a cluster) drop it from the dataframe
 
-```{r}
+```{r, cache=TRUE}
 chulls <- subset(chulls, cluster>=1)
 ```
 
 Now create a ggplot2 object from our data
 
-```{r}
+```{r, cache=TRUE}
 dbplot <- ggplot(data=BluePlaquesSubPoints, 
                  aes(coords.x1,coords.x2, colour=cluster, fill=cluster)) 
 #add the points in
@@ -348,7 +348,7 @@ dbplot + theme_bw() + coord_equal()
 
 Now we are getting there, but wouldn't it be better to add a basemap?!
 
-```{r}
+```{r, cache=TRUE}
 ###add a basemap
 ##First get the bbox in lat long for Harrow
 latlong <- "+init=epsg:4326" 
@@ -358,14 +358,14 @@ BoroughWGS@bbox
 
 Now convert the basemap to British National Grid
 
-```{r}
+```{r, cache=TRUE}
 basemap<-openmap(c(51.5530613,-0.4040719),c(51.6405318,-0.2671556), zoom=NULL,"stamen-toner")
 #convert the basemap to British National Grid - remember we created the BNG object right at the beginning of the practical - it's an epsg string...
 basemap_bng<-openproj(basemap, projection=BNG)
 ```
 Now we can plot our fancy map with the clusters on...
 
-```{r}
+```{r, cache=TRUE}
 autoplot(basemap_bng) + geom_point(data=BluePlaquesSubPoints, 
                                    aes(coords.x1,coords.x2, 
                                        colour=cluster, fill=cluster)) + 
@@ -392,7 +392,7 @@ In this section we are going to explore patterns of spatially referenced continu
 Before we get any further, let's get some ward boundaries read in to R - download LondonWardData from Moodle, unzip it and then read it in.
 #it's probably projected correctly, but in case it isn't give it a projection 
 #using the CRS() function in the raster package
-```{r}
+```{r, cache=TRUE}
 library(rgdal)
 #read the ward data in
 LondonWards <- readOGR("prac6_data/LondonWards.shp")
@@ -400,7 +400,7 @@ LondonWards <- readOGR("prac6_data/LondonWards.shp")
 
 Tt's probably projected correctly, but in case it isn't give it a projection using the ```CRS()``` function in the ```raster``` package
 
-```{r}
+```{r, cache=TRUE}
 proj4string(LondonWards) <- CRS("+init=epsg:27700")
 #have a look to check that everything looks OK..
 
@@ -413,7 +413,7 @@ tm_shape(BluePlaques) +
 
 Ah yes, we might need to lose the blue plaques that fall outside of London
 
-```{r}
+```{r, cache=TRUE}
 summary(BluePlaquesBNG)
 BluePlaquesSub <- BluePlaquesBNG[LondonWards,]
 tm_shape(LondonWards) +
@@ -426,7 +426,7 @@ The measures of spatial autocorrelation that we will be using require continuous
 
 To create a continuous observation from the blue plaques data we need to count all of the blue plaques that fall within each Ward in the City. Luckily, we can do this using the poly.counts function in Chris Brunsdon's excellent `gistools` package... (we could also use the over() function in the `sp` package if we wanted)
 
-```{r echo=TRUE, results='hide'}
+```{r echo=TRUE, results='hide', cache=TRUE}
 res <- poly.counts(BluePlaquesSub, LondonWards)
 #and add this as a column in our spatialPolygonsDataframe
 LondonWards@data$BluePlaqueCount<-res
@@ -438,7 +438,7 @@ LondonWards@data
 
 How about a quick choropleth map to see how we are getting on...
 
-```{r}
+```{r, cache=TRUE}
 tm_shape(LondonWards) +
     tm_polygons("BlueDensity",
         style="jenks",
@@ -451,20 +451,20 @@ So, from the map, it looks as though we might have some clustering of blue plaqu
 
 Before being able to calculate Moran's I and any similar statistics, we need to first define a \(W_{ij}\) spatial weights matrix
 
-```{r, message=FALSE, warning=FALSE}
+```{r, message=FALSE, warning=FALSE, cache=TRUE}
 library(spdep)
 ```
 
 First calculate the centroids of all Wards in London
 
-```{r message=FALSE, warning=FALSE}
+```{r message=FALSE, warning=FALSE, cache=TRUE}
 #First calculate the centroids of all Wards in London
 coordsW <- coordinates(LondonWards)
 plot(coordsW)
 ```
 
 Now we need to generate a spatial weights matrix (remember from the lecture). We'll start with a simple binary matrix of queen's case neighbours
-```{r message=FALSE, warning=FALSE}
+```{r message=FALSE, warning=FALSE, cache=TRUE}
 #create a neighbours list
 LWard_nb <- poly2nb(LondonWards, queen=T)
 #plot them
@@ -479,21 +479,21 @@ head(Lward.lw$neighbours)
 Now we have defined our \(W_{ij}\) matrix, we can calculate the Moran's I and other associated statistics
 
 Moran's I test tells us whether we have clustered values (close to 1) or dispersed values (close to -1), we will calculate for the densities rather than raw values
-```{r}
+```{r, cache=TRUE}
 I_LWard_Global_Density <- moran.test(LondonWards@data$BlueDensity, Lward.lw)
 I_LWard_Global_Density
 ```
 
 Geary's C as well..? This tells us whether similar values or dissimilar values are clusering
 
-```{r}
+```{r, cache=TRUE}
 C_LWard_Global_Density <- geary.test(LondonWards@data$BlueDensity, Lward.lw)
 C_LWard_Global_Density
 ```
 
 Getis Ord General G...? This tells us whether high or low values are clustering. If G > Expected = High values clustering; if G < expected = low values clustering
 
-```{r}
+```{r, cache=TRUE}
 G_LWard_Global_Density <- globalG.test(LondonWards@data$BlueDensity, Lward.lw)
 G_LWard_Global_Density
 ```
@@ -508,7 +508,7 @@ The General G statistic = G > expected, so high values are tending to cluster.
 
 We can now also calculate local versions of the Moran's I statistic (for each Ward) and a Getis Ord \(G_{i}^{*}\) statistic to see *where* we have hot-spots...
 
-```{r}
+```{r, cache=TRUE}
 #use the localmoran function to generate I for each ward in the city
 I_LWard_Local <- localmoran(LondonWards@data$BluePlaqueCount, Lward.lw)
 I_LWard_Local_Density <- localmoran(LondonWards@data$BlueDensity, Lward.lw)
@@ -517,7 +517,7 @@ head(I_LWard_Local_Density)
 ```
 There are 5 columns of data. We want to copy some of the columns (the I score (column 1) and the z-score standard deviation (column 4)) back into the LondonWards spatialPolygonsDataframe
 
-```{r}
+```{r, cache=TRUE}
 LondonWards@data$BLocI <- I_LWard_Local[,1]
 LondonWards@data$BLocIz <- I_LWard_Local[,4]
 LondonWards@data$BLocIR <- I_LWard_Local_Density[,1]
@@ -529,19 +529,19 @@ No we can plot a map of the local Moran's I outputs...
 We'll set the breaks manually based on the rule that data points >2.58 or <-2.58 standard deviations away from the mean are significant at the 99% level (<1% chance that autocorrelation not present); >1.96 - <2.58 or <-1.96 to >-2.58 standard deviations are significant at the 95% level (<5% change that autocorrelation not present). >1.65 = 90% etc.
 
 #create a new diverging colour brewer palette and reverse the order using rev so higher values correspond to red
-```{r}
+```{r, cache=TRUE}
 breaks1<-c(-1000,-2.58,-1.96,-1.65,1.65,1.96,2.58,1000)
 ```
 
 Now create a new diverging colour brewer palette and reverse the order using rev so higher values correspond to red
 
-```{r}
+```{r, cache=TRUE}
 MoranColours<- rev(brewer.pal(8, "RdGy"))
 ```
 
 Plot on an interactive map
 
-```{r}
+```{r, cache=TRUE}
 tm_shape(LondonWards) +
     tm_polygons("BLocIRz",
         style="fixed",
@@ -555,13 +555,13 @@ This map shows some areas in the centre of London that have relatively high scor
 
 What about the Getis Ord \(G_{i}^{*}\) statisic for hot and cold spots?
 
-```{r}
+```{r, cache=TRUE}
 Gi_LWard_Local_Density <- localG(LondonWards@data$BlueDensity, Lward.lw)
 ```
 
 Check the help file  (?localG) to see what a localG object looks like - it is a bit different from a localMoran object as it only contains just a single value - the z-score (standardised value relating to whether high values or low values are clustering together)
 And map the outputs...
-```{r}
+```{r, cache=TRUE}
 head(Gi_LWard_Local_Density)
  
 LondonWards@data$BLocGiRz <- Gi_LWard_Local_Density
@@ -569,7 +569,7 @@ LondonWards@data$BLocGiRz <- Gi_LWard_Local_Density
 
 And map the outputs...
 
-```{r}
+```{r, cache=TRUE}
 GIColours<- rev(brewer.pal(8, "RdBu"))
 
 #now plot on an interactive map
@@ -585,13 +585,13 @@ tm_shape(LondonWards) +
 
 The local Moran's I and \(G_{i}^{*}\) statistics for wards clearly show that the density of blue plaques in the centre of the city exhibits strong (and postitive) spatial autocorrelation, but neither of these maps are very interesting. The ArcGIS crew will have been calculating Local Moran's I and \(G_{i}^{*}\) statistics for some of the other variables for the wards of London. Why not try some alternative variables and see what patterns emerge... here I'm going to have a look at Average GSCE scores...
 
-```{r}
+```{r, cache=TRUE}
 #use head to see what other variables are in the data file
 head(LondonWards@data)
 ```
 
 
-```{r, echo=TRUE, eval=FALSE}
+```{r, echo=TRUE, eval=FALSE, cache=TRUE}
 I_LWard_Local_GCSE <- localmoran(LondonWards@data$AvgGCSE201, Lward.lw)
 LondonWards@data$GCSE_LocIz <- I_LWard_Local_GCSE[,4]
 
@@ -606,7 +606,7 @@ tm_shape(LondonWards) +
 
 Now the Gi* statistic to look at clusters of high and low scores...
 
-```{r}
+```{r, cache=TRUE}
 Gi_LWard_Local_GCSE <- localG(LondonWards@data$AvgGCSE201, Lward.lw)
 LondonWards@data$GCSE_LocGiz <- Gi_LWard_Local_GCSE
 

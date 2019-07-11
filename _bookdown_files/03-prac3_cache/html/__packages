@@ -1,0 +1,10 @@
+base
+sp
+raster
+sf
+ggplot2
+reshape2
+plyr
+plotly
+dplyr
+gstat

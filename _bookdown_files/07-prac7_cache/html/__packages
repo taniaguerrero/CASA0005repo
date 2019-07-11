@@ -1,0 +1,10 @@
+base
+sp
+raster
+rgeos
+rgdal
+lattice
+RColorBrewer
+latticeExtra
+rasterVis
+ggplot2
