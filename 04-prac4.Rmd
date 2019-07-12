@@ -276,14 +276,14 @@ knitr::include_graphics('prac4_images/code_chunk.png')
 
 37. A box will appear and in this box, you will be able to enter and run your R code. Try pasting in:
 
-```{r warning=TRUE, cache=TRUE}
+```{r warning=FALSE, cache=TRUE}
 library(plotly)
 library(reshape2)
 library(raster)
 library(weathermetrics)
 
-GB_auto <- getData('GADM', country="GBR", level=0)
-GBclim <- getData("worldclim", res=5, var="tmean")
+GB_auto <- raster::getData('GADM', country="GBR", level=0)
+GBclim <- raster::getData("worldclim", res=5, var="tmean")
 
 month <- c("Jan", "Feb", "Mar", "Apr", "May", "Jun", 
            "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
