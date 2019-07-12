@@ -1,18 +1,17 @@
 bookdown::gitbook:
-  highlight: tango
   css: style.css
-  split_by: chapter
   config:
     toc:
-      collapse: subsection
-      scroll_highlight: yes
-      before: 
-        <li><a href="./">CASA0005</a></li>
+      before: |
+        <li><a href="./">A Minimal Book Example</a></li>
       after: |
         <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
     edit: https://github.com/rstudio/bookdown-demo/edit/master/%s
-    download: ["epub"]
-bookdown::epub_book:
-  chapter_level: 1
-  epub_version: c("epub3", 
-    "epub")
+    download: ["pdf", "epub"]
+bookdown::pdf_book:
+  includes:
+    in_header: preamble.tex
+  latex_engine: xelatex
+  citation_package: natbib
+  keep_tex: yes
+bookdown::epub_book: default
