@@ -1,4 +1,5 @@
-book_filename: "bookdown-demo"
+book_filename: "CASA0005"
+output_dir: "docs"
 language:
   ui:
     chapter_name: "Chapter "
