@@ -47,6 +47,22 @@
 
 
 
+<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.9.0/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-1.46.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-1.46.1/plotly-latest.min.js"></script>
+<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+<script src="libs/Proj4Leaflet-1.0.1/proj4-compressed.js"></script>
+<script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-binding-2.0.2/leaflet.js"></script>
+<script src="libs/leaflet-providers-1.1.17/leaflet-providers.js"></script>
+<script src="libs/leaflet-providers-plugin-2.0.2/leaflet-providers-plugin.js"></script>
 
 
 <style type="text/css">
@@ -179,8 +195,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2.3" data-path="introduction-to-r.html"><a href="introduction-to-r.html#reading-data-into-r"><i class="fa fa-check"></i><b>2.3</b> Reading data into R</a><ul>
 <li class="chapter" data-level="2.3.1" data-path="introduction-to-r.html"><a href="introduction-to-r.html#old-skool-cleaning"><i class="fa fa-check"></i><b>2.3.1</b> Old skool cleaning</a></li>
-<li class="chapter" data-level="2.3.2" data-path="introduction-to-r.html"><a href="introduction-to-r.html#maps-with-extra-features"><i class="fa fa-check"></i><b>2.3.2</b> Maps with extra features</a></li>
-<li class="chapter" data-level="2.3.3" data-path="introduction-to-r.html"><a href="introduction-to-r.html#extension"><i class="fa fa-check"></i><b>2.3.3</b> Extension</a></li>
+<li class="chapter" data-level="2.3.2" data-path="introduction-to-r.html"><a href="introduction-to-r.html#new-skool-cleaning"><i class="fa fa-check"></i><b>2.3.2</b> New skool cleaning</a></li>
+<li class="chapter" data-level="2.3.3" data-path="introduction-to-r.html"><a href="introduction-to-r.html#examining-your-new-data"><i class="fa fa-check"></i><b>2.3.3</b> Examining your new data</a></li>
+<li class="chapter" data-level="2.3.4" data-path="introduction-to-r.html"><a href="introduction-to-r.html#data-manipulation-in-r"><i class="fa fa-check"></i><b>2.3.4</b> Data manipulation in R</a></li>
+<li class="chapter" data-level="2.3.5" data-path="introduction-to-r.html"><a href="introduction-to-r.html#plotting"><i class="fa fa-check"></i><b>2.3.5</b> Plotting</a></li>
+<li class="chapter" data-level="2.3.6" data-path="introduction-to-r.html"><a href="introduction-to-r.html#pimp-my-graph"><i class="fa fa-check"></i><b>2.3.6</b> Pimp my graph!</a></li>
+<li class="chapter" data-level="2.3.7" data-path="introduction-to-r.html"><a href="introduction-to-r.html#spatial-data-in-r"><i class="fa fa-check"></i><b>2.3.7</b> Spatial Data in R</a></li>
+</ul></li>
+<li class="chapter" data-level="2.4" data-path="introduction-to-r.html"><a href="introduction-to-r.html#making-maps-using-ggplot2"><i class="fa fa-check"></i><b>2.4</b> Making maps using ggplot2</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="introduction-to-r.html"><a href="introduction-to-r.html#changing-projections"><i class="fa fa-check"></i><b>2.4.1</b> Changing projections</a></li>
+<li class="chapter" data-level="2.4.2" data-path="introduction-to-r.html"><a href="introduction-to-r.html#maps-with-extra-features"><i class="fa fa-check"></i><b>2.4.2</b> Maps with extra features</a></li>
+<li class="chapter" data-level="2.4.3" data-path="introduction-to-r.html"><a href="introduction-to-r.html#extension"><i class="fa fa-check"></i><b>2.4.3</b> Extension</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="rasters-descriptive-statistics-and-interpolation.html"><a href="rasters-descriptive-statistics-and-interpolation.html"><i class="fa fa-check"></i><b>3</b> Rasters, descriptive statistics and interpolation</a><ul>
@@ -214,7 +239,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="4.9" data-path="git-github-and-rmarkdown.html"><a href="git-github-and-rmarkdown.html#fork-a-repository"><i class="fa fa-check"></i><b>4.9</b> Fork a repository</a></li>
 <li class="chapter" data-level="4.10" data-path="git-github-and-rmarkdown.html"><a href="git-github-and-rmarkdown.html#branches"><i class="fa fa-check"></i><b>4.10</b> Branches</a><ul>
-<li class="chapter" data-level="4.10.1" data-path="git-github-and-rmarkdown.html"><a href="git-github-and-rmarkdown.html#health-warning"><i class="fa fa-check"></i><b>4.10.1</b> Health warning</a></li>
+<li class="chapter" data-level="4.10.1" data-path="introduction-to-r.html"><a href="introduction-to-r.html#health-warning"><i class="fa fa-check"></i><b>4.10.1</b> Health warning</a></li>
 </ul></li>
 <li class="chapter" data-level="4.11" data-path="git-github-and-rmarkdown.html"><a href="git-github-and-rmarkdown.html#rmarkdown"><i class="fa fa-check"></i><b>4.11</b> RMarkdown</a></li>
 <li class="chapter" data-level="4.12" data-path="git-github-and-rmarkdown.html"><a href="git-github-and-rmarkdown.html#adding-references"><i class="fa fa-check"></i><b>4.12</b> Adding references</a><ul>
@@ -709,7 +734,7 @@ shape &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class=
 ## </code></pre>
 <p>To have a quick look what the shapefile looks like enter the following:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(shape)</code></pre>
-<p><img src="CASA0005_files/figure-html/unnamed-chunk-27-1.png" width="672" /></p>
+<p><img src="CASA0005_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
 <p>From what we did in QGIS and ArcMap this should look familiar.</p>
 <p>We now need to load our <code>.csv</code> file:</p>
 <pre class="sourceCode r"><code class="sourceCode r">mycsv &lt;-<span class="st">  </span><span class="kw">read.csv</span>(<span class="st">&quot;Prac1_data/fly_tipping_borough_edit.csv&quot;</span>)  </code></pre>
@@ -844,7 +869,7 @@ shape &lt;-<span class="st"> </span><span class="kw">append_data</span>(shape, m
 <span class="kw">tmap_mode</span>(<span class="st">&quot;plot&quot;</span>)</code></pre>
 <pre><code>## tmap mode set to plotting</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qtm</span>(shape, <span class="dt">fill =</span> <span class="st">&quot;X2011_12&quot;</span>)</code></pre>
-<p><img src="CASA0005_files/figure-html/unnamed-chunk-32-1.png" width="672" /></p>
+<p><img src="CASA0005_files/figure-html/unnamed-chunk-33-1.png" width="672" /></p>
 </div>
 </div>
 <div id="export-data-2" class="section level3">
@@ -1004,6 +1029,19 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>
