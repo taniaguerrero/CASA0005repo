@@ -2,9 +2,11 @@
 
 ## Learning objectives
 
+By the end of this practical you should be able to:
+
 1. Explain and execute appropraite pre-proessing steps of raster data
-3. Replicate published methodologies using raster data
-4. Design new R code to undertake further analysis 
+2. Replicate published methodologies using raster data
+3. Design new R code to undertake further analysis 
 
 ## Introduction
 
@@ -34,7 +36,7 @@ The shapefile of Manchester is available on my GitHub account:
 To access the Landsat data we will use in this practical you can either:
 
 (a) Sign up for a free account at: https://earthexplorer.usgs.gov/. 
-(b) Use the Landsat data provided on Moodle --- this will be available only if the earth explorer website is down
+(b) Use the Landsat data provided on Moodle --- this will be available only if the earth explorer website is down (e.g. in the case of US government shutdowns)
 
 To download the data:
 
@@ -459,7 +461,12 @@ NDBI=((lsatmask$LC08_L1TP_203023_20190513_20190521_01_T1_B6mask-
         lsatmask$LC08_L1TP_203023_20190513_20190521_01_T1_B5mask))
 ```
 
-But do you remember our function? 
+But do you remember our function? ...Well this is the same calculation we used there just with different raster layers (or bands) so we could reuse it...
+
+```{r}
+NDBIfunexample <- NDVIfun(lsatmask$LC08_L1TP_203023_20190513_20190521_01_T1_B6mask,
+                          lsatmask$LC08_L1TP_203023_20190513_20190521_01_T1_B5mask)
+```
 
 ## Urban area and temperature relationship
 
@@ -545,7 +552,7 @@ stat.sig
 
 As p<0.05 is shows that are variables are have a statistically significant correlation... so as urban area (assuming the index in representative) per pixel increases so does temperature... but remember that doesn't imply causation. 
 
-## Conisderations
+## Considerations
 
 If you wanted to explore this type of analysis further then you would need to consider the following:
 

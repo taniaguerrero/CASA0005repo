@@ -263,6 +263,7 @@ knitr::include_graphics('prac1_images/arcmap.png')
 ##### Load data
 
 5. Using the **Plus** icon (add data layer) navigate to the extracted folder you saved earlier. 
+
 6. Open London_Borough_Excluding_MHW.shp, but feel free to explore the other data layers. In the left hand Table Of Contents you can unselect layers to turn them off or drag layers above or below to change the display order. In the example below the wards layer is showing above the borough layer.
 
 ```{r echo=FALSE, out.width = "800pt", fig.align='center', cache=TRUE}

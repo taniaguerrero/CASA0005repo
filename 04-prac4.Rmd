@@ -400,7 +400,7 @@ For a selection of nice themes, see here: http://www.datadreaming.org/post/r-mar
 
 For things like adding Tables of Contents, tabbed sections (in HTML), figure and table parameters: https://bookdown.org/yihui/rmarkdown/html-document.html
 
-If you have selected an R Markdown Notebook, in the menu bar at the top of the page, you should see a ‘Preview’ button. If you click this, your .Rmd file will be knitted automatically into an interactive html document - try it!
+If you have selected an R Markdown Notebook, in the menu bar at the top of the page, you should see a ‘Preview’ button. If you click this, your .Rmd file will be knitted automatically into an interactive html document --- try it!
 
 If you click the small arrow next to the preview button, a menu will appear giving you the option to knit into a selection of other formats, including PDF and Word. Try those too…
 
@@ -408,6 +408,12 @@ If you click the small arrow next to the preview button, a menu will appear givi
 
 Since starting this little guide, I have come across this amazing book on using R and GitHub, by Jenny Bryan and Jim Hester. It’s brilliant - taught me things like how to avoid entering user credentials every time I push to my GitHub repo (Ch 11) - get involved! http://happygitwithr.com/
 
+## Extension
+
+Aleady a whizz with Git, GitHub and Markdown? Well try out these extension task...
+
+1. Bookdown
+2. R markdown website 
 
 
 

@@ -1,4 +1,4 @@
-# Geocomputation and making cool maps
+# Map making
 
 ## Learning outcomes
 
@@ -8,6 +8,318 @@ By the end of this practical you should be able to:
 * d
 * 
 * 
+
+## Introduction 
+
+In this practical we're going to focus on creating mapped outputs using QGIS, ArcMap and R. For fun we're going to use spatial boundaries from xxx and OpenStreetMap (OSM) data.
+
+## Data
+
+It’s possible to download OSM data straight from the website, although the interface can be a little unreliable (it works better for small areas). There are, however, a number of websites that allow OSM data to be downloaded more easily and are directly linked to from the ‘Export’ option in OSM. Geofabrik (one of these websites) allows you to download frequently updated shapefiles for various global subdivisions.
+
+### OSM
+
+1. Go to the Geofabrik download server website: http://download.geofabrik.de/
+
+2. Navigate to: Europe > GreatBritain > England > Greater London
+
+3. Download greater-london-latest-free.shp.zip
+
+4. Unzip the data and save it to your current folder
+
+
+### London boroughs
+
+We'll use our London boroughs layer again, either load it from week 1 or download it:
+
+5. To get the data go to: https://data.london.gov.uk/
+
+6. Search for Statistical GIS Boundary Files for London
+
+7. Download the statistical-gis-boundaries-london.zip
+
+8. Unzip the data and save it to your current folder
+
+## Mapping in ArcMap
+
+9. Open a new ArcMap document
+
+```{r echo=FALSE, out.width = "1000pt", fig.align='center', cache=TRUE}
+knitr::include_graphics('prac5_images/arcmap.png') 
+```
+
+10. Accept the defaults and click OK
+
+11 On the right hand side of the ArcMap document there should be two tabs: Catalog and Search. If they aren't visible click Windows > Catalog, next to the little x for Catalog there will be a pin symbol that will pin it to the right hand side of the screen. Do the same for Search. Search will let you find any tool in ArcMap without knowing exactly what Toolbox it is stored in.   
+
+```{r echo=FALSE, out.width = "500pt", fig.align='center', cache=TRUE}
+knitr::include_graphics('prac5_images/catpin.png') 
+```
+
+As we did in practical 1, let's make a GeoDatabase to store out outputs.
+
+12. Under the Catalog tab, click on the connect to folder icon (small folder with plus sign), navigate to your current folder and select it
+
+13. Now in the Catalog tab you should see you folder that you connect it listed
+
+14. Make a new FIle GeoDatebase by right clicking on the folder connection...
+
+```{r echo=FALSE, out.width = "500pt", fig.align='center', cache=TRUE}
+knitr::include_graphics('prac5_images/geodb.png') 
+```
+
+15. Name it what you like, but make sure it retains the ```.gdb``` extension
+
+16. Right click on it and make it the default GeoDatabase for the current map
+
+```{r echo=FALSE, out.width = "500pt", fig.align='center', cache=TRUE}
+knitr::include_graphics('prac5_images/geodbdefault.png') 
+```
+
+17. As we did in practical 1, store relative pathnames...File > Map Document Properties >  Store relative pathnames to data sources
+
+18. Load the London boroughs shapefile using the add data button...if you are using the data from practical 1 and it's stored in a different place you might need to make a new folder connection
+
+```{r echo=FALSE, out.width = "800pt", fig.align='center', cache=TRUE}
+knitr::include_graphics('prac5_images/adddata.png') 
+```
+
+19. Load the OSM shapefiles using the add data button (pick anyone you want)...if you are using the data from practical 1 and it's stored in a different place you might need to make a new folder connection
+
+20. When you load the data to ArcMap you will probably be greeted with a warning...
+
+```{r echo=FALSE, out.width = "600pt", fig.align='center', cache=TRUE}
+knitr::include_graphics('prac5_images/projwarning.png') 
+```
+
+This means that the data layer we are loading (OSM) has a different CRS to the dataframe (our current map document). If you recall from practical 1, ArcMap sets the map document CRS to that of the first layer loaded. Our London boroughs layer is in British National Grid where as are OSM layers are in WGS 1984. 
+
+21. Close the warning
+
+The OSM data will load and ArcMap is pretty clever here as it will project 'on the fly' which means it can display the data stored in one projection as if it were in another, but the actual data is not altered. This is both good and bad. Good as it let's us visualise our data quickly, but bad because if we have data with different projections you will run into problems during processing. My advice is to load the data and pick a projection to do all processing in.
+
+22. Here load the gis_osm_pois_a_free_1 polygon layer.
+
+23. In the search tool find the tool ```reproject```
+
+```{r echo=FALSE, out.width = "500pt", fig.align='center', cache=TRUE}
+knitr::include_graphics('prac5_images/reproj.png') 
+```
+
+24. Select the osm layer as the input, give your output a name (it should be within your GeoDatabase) and select the coordiate system. When you click on the coordiate system selection box you will see a drop down called layers, expand the drop down and you'll see what cooridate reference systems are in use for each layer open within the map. If you expand British_National_Grid you'll see the London boroughs layer...
+
+```{r echo=FALSE, out.width = "800pt", fig.align='center', cache=TRUE}
+knitr::include_graphics('prac5_images/reproj2.png') 
+```
+
+25. Click on British_National_Grid and select OK, under the Geographic Transformation a method will be automatically selected, click OK. 
+
+26. The new layer will be added to the Map document so remove the old one. Right click on the old layer > Remove.
+
+27. You'll notice that some of the polygons from our OSM data fall outside the London boroughs layer, let's sort this out. We could go right ahead and clip (like a cookie cutter) our OSM based on the outline of the London boroughs but this might cut in half some of the OSM polygons...for example:
+
+```{r echo=FALSE, out.width = "500pt", fig.align='center', cache=TRUE}
+knitr::include_graphics('prac5_images/clipexample.png') 
+```
+
+However, it's good to think about what we are actually interested in...in this example we will explore the distribution of hotels within the London boroughs, so let's reduce our OSM data by picking out all of the hotels.
+
+28. Right click on your OSM layer > Open Atrtibute Table
+
+29. Within the attribute table click on Select by Attributes. This lets you filter based on specifc values stored within the table...
+
+30. Double click on fclass and it will populate the bottom box
+
+31. Click unqiue values to see all of the values stored within fclass
+
+32. Click the = sign, then click 'hotel' from the unique values box...
+
+```{r echo=FALSE, out.width = "800pt", fig.align='center', cache=TRUE}
+knitr::include_graphics('prac5_images/select_attribute.png') 
+```
+
+33. Click apply...
+
+In the attribute table you will see 715 records are selected (as the OSM download updates your value might be slighly different to mine). You toggle between all records and selected records.
+
+```{r echo=FALSE, out.width = "700pt", fig.align='center', cache=TRUE}
+knitr::include_graphics('prac5_images/att_select.png') 
+```
+
+No we need to export our select data...
+
+34. Close the attrbiute tabe > right click on your OSM layer > Data > Export Data. Make sure you are exporting only the selected features into your GeoDatabase (output feature class). Click on the folder icon to give your layer an appropriate name then save and OK
+
+```{r echo=FALSE, out.width = "800pt", fig.align='center', cache=TRUE}
+knitr::include_graphics('prac5_images/hotels_export.png') 
+```
+
+35. Add the layer the map and either turn off or remove the OSM layer we dervied only hotels from..
+
+Some of the hotels are still outside of the London boroughs, so let's get rid of these through select by location
+
+36. Go: Selection (top tool bar) > Select By Location 
+
+37. Select featues from your OSM hotel only layer, with the source layer as London boroughs. Use the spatial selection method of: are completely within the source layer. So here we are saying only select the hotels that are within the London borough vector layer. Click apply > OK
+
+38. Now repeat the export process and remove or turn off the original layer.
+
+As part of this analysis it woild also be useful to know how much area the hotels occupy. So lets calcualte this.
+
+39. Open the attribute table of your OSM hotels within London boroughs vector file. You will see a shape area field, but as we are using a local CRS now the values might be slightly different so let's recompute it. Under Table Options select Add Field, call the new field Area2 and select the type as Float.
+
+```{r echo=FALSE, out.width = "700pt", fig.align='center', cache=TRUE}
+knitr::include_graphics('prac5_images/addfield.png') 
+```
+
+40. Right click the new field > Calcualte Geometry select OK and yes to any warnings.
+
+Now let's calcualte how many hotels are within each London borough and their total area...
+
+41. Before we can use the Spatial Join tool we need to enable some extensions in ArcMap. Click Ccustomize > Extensions... and select Spatial Analyst. Save your document then close and reload it.   
+
+42. Using the search tool bar find the tool Spatial Join. Select the target features as the London borough vector layer and the Join Features as the OSM hotels within the London boroughs. Specify an output name (within your GeoDatabase) and leave the Join Operation as one to one.
+
+43. Now, in the Field Map of Join Features delete everthing except: NAME, GSS_CODE, osm_id and Area2
+
+44. Right click on the osm_id and select count --- this will count the number of hotel shape ids within each borough, we could have used hotel name, but i noticed that some were missing. Every feature should have an ID number, so we can capture all hotels.
+
+```{r echo=FALSE, out.width = "800pt", fig.align='center', cache=TRUE}
+knitr::include_graphics('prac5_images/count.png') 
+```
+
+45. Now do the same for Area2 but select Sum --- to total the area of hotels within each borough
+
+46. Select the match option as contains, click show help for more information, click OK
+
+The output has counted the number of osm_ids within each borough and summed their areas...let's now work out the percent of each London borough covered by hotels
+
+47. Add a new field as we did before called percent ensuring you select Float as the type
+
+48. Right click the new field > Field Calculator and accept the warning message
+
+49. Percent will equal our (Area2/Shape_Area)*100...ArcMap computed a new area field for us
+
+```{r echo=FALSE, out.width = "800pt", fig.align='center', cache=TRUE}
+knitr::include_graphics('prac5_images/field_calc.png') 
+```
+
+As expected the values are pretty small, but not to worry we can scale our map accordingly, but it's also imporant to consider what is the best method to display data (e.g. counts, percentages)
+
+Ok, let's make some maps
+
+## Maps
+
+50. There are two 'views' in ArcMap data view (which is what we are on) and Layout view, to switch to layout view click View (top tool bar) > Layout view 
+
+Layout view is where we make maps to export. You should see any layers you have open (ticked) within the Layout view. 
+
+51. Layers are stored in a dataframe, to see this in action click Insert > Data Frame
+
+You should see a new dataframe appear, if you click it you can drag in around the layout view
+
+52. Switch back to data view...everthing has gone? That's because you have the new data frame activated which has no data. Right click on your original data frame (mine is called layers) and select activate 
+
+```{r echo=FALSE, out.width = "700pt", fig.align='center', cache=TRUE}
+knitr::include_graphics('prac5_images/activate.png') 
+```
+
+Head back to layout view and let's make a thematic map of our data
+
+53. Right click on your current layer (hotels within London boroughs) select the Symbology tab then Quantities (in the left hand coloumn) use Join_Count (where we summed the hotels per borough) as the value and pick a colour ramp. Also experiment with the classify button under classificaiton. Once you are happy click OK.
+
+You should have something like this:
+
+```{r echo=FALSE, out.width = "700pt", fig.align='center', cache=TRUE}
+knitr::include_graphics('prac5_images/map1.png') 
+```
+
+How about we spice things up a bit with some more data...
+
+Let's have a look at Air b n b data and make a map with the same scale to compare to hotels...
+
+
+54. Go to: http://insideairbnb.com/get-the-data.html and dowlonad the listings.csv data for London. Have a lookg at the data in excel if you wish...listings.csv.gz also has much more data.
+
+55. Unzip the data and add it to your current working folder
+
+56. In ArcMap switch back to the data view and add in your original London boroughs ```.shp``` from practical 1.
+
+57. Now go File > Add Data > Add XY Data
+
+```{r echo=FALSE, out.width = "700pt", fig.align='center', cache=TRUE}
+knitr::include_graphics('prac5_images/addXY.png') 
+```
+
+58. Navigate your listings.csv, select longitude as the X Field and latitude as the Y Field. You now need to change the Coordiate System of the Input...click edit, scroll up and select Geographic Coordiante Systems > World > WGS 1984 then click OK and click OK abou the ID warning.
+
+59. When you load data through add XY you need to export it to a new layer as at the moment we are still reading off the ```.csv```. Right click on it > Export Data, select an appropraite name, add it too the Map, then remove the ```.csv``` from ArcMap.
+
+60. As before you need to select only those points within the London boroughs then compute the number of air b n bs per borough....have a go at this yourself, if you get stuck go back and revisit the previous instructions...To try and make the comparsion a bit more even (scientific!) we shall filter the air b n b data (using select by attrbiutes) for only rentals that are classed as Entire home/apt and are available 365 days of the year...the select by attriubte code would be: room_type = 'Entire home/apt' AND availability_365 = 365
+
+Under layout view you should now have two maps
+
+61. Let's now set the symbology range of each map to match. Here i'm going to take the hotel symbology range and apply it to the air b n b data. Open the Symbology of Air b n b layer and click Import then select the Import symbology from another layer...pick the hotel layer > OK > OK
+
+Now rearrange the data franes in the layout view. Hint: you can click and drag, resize using the corners or right click (on the data frame itself) > Properties > Size and Position. If you check out the Frame tab you can alter that too. You can also add ruler guides by clicking in the measurement window at the top and left of the page...
+
+To add a legend/title/North Arrow/sacle bar go Insert then select one...
+
+If you select the defaults for the legend you can then right click it and alter all the Properties. I don't show the Title and Items (tab) > Style select only Layer Name and Label
+
+```{r echo=FALSE, out.width = "700pt", fig.align='center', cache=TRUE}
+knitr::include_graphics('prac5_images/Legend_info.png') 
+```
+
+You can change the layer names by single left clicking them in the Table of Contents...
+
+```{r echo=FALSE, out.width = "700pt", fig.align='center', cache=TRUE}
+knitr::include_graphics('prac5_images/change_name.png') 
+```
+
+Similarly if you select the defaults for a scale bar then right click > Properties and change the division units to KM and reduce the number of dvisions and subdivisions to 2
+
+Finally we can add an inset map...
+
+
+
+
+Advanced
+
+Compare the diffrence, are they related to any other variable? 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## R 
+
+
+```{r}
+##First, get the London Borough Boundaries
+EW <- geojson_read("http://geoportal.statistics.gov.uk/datasets/8edafbe3276d4b56aec60991cbddda50_2.geojson", what = "sp")
+```
+
 
 ## Geocomputation 
 

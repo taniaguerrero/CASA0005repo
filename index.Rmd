@@ -65,4 +65,4 @@ Adam: https://amaclachlan.youcanbook.me/
 
 ## Noticed a mistake? {-}
 
-No one is perfect, if you notice a mistake let us know through the GitHub issues tab...Don't worry if you are unsure about what GitHub is we, cover it in the course.
+No one is perfect, if you notice a mistake let us know through the GitHub issues tab...Don't worry if you are unsure about what GitHub is we cover it in the course.
