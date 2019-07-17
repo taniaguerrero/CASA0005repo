@@ -416,9 +416,39 @@ You need to:
 knitr::include_graphics('prac5_images/QGISxy.png') 
 ```
 
+84. Now save the style so we can use it on our other layer....Style > Save Style > select in Database and provide a name
 
+85. Go to the symbology of the other layer > select Graduated, select the correct count coloumn, then Style > Load Style, from database and your saved style should be listed. 
 
+### Mapping
 
+86. To create a new map document in QGIS go: Project > New Print Layout. THe layout works by adding a new map which is a snapshop of the main QGIS document....
+
+87. In the main QGIS document only select your airbnb layer, right click and zoom to it. GO back to the Print Layout > Add Item > Add Map..draw a sqaure...the layer should appear...In the window at the bottom right under Item Properties select to Lock layers...so now if you were to unselect that layer it would still remain on in the Print Layout
+
+88. Go back to your main QGIS document, now only select the hotels layer...repeat the Add Map steps and lock the layers
+
+89. Make sure give the same size to both Maps...to do so click on a Map > Item Properties (bottom right) scroll down, expand Position and Size, give the same width and height values
+
+```{r echo=FALSE, out.width = "800", fig.align='center', cache=TRUE}
+knitr::include_graphics('prac5_images/positionsize.png') 
+```
+
+90. Add some guides to line everything up go: View > Manage Guides. The guides panel will appear in the bottom right hand corner, click the + to add a guide at a distance you specify. You can then drag your maps to snap to the guides.
+
+91. Add a scale bar: Add Item > Add Scale Bar. TO adjust it, right click > Item Properties...alter some of the properties to make it look appropraite.
+
+92. Add a legend: Add Item > Add Legend and draw a sqaure. Same process to adjust it. Untick Auto update then you can use the + and - icons to remove items along with the edit icon to change the text...this is what mine looks like...
+
+```{r echo=FALSE, out.width = "800", fig.align='center', cache=TRUE}
+knitr::include_graphics('prac5_images/QGIS_legend.png') 
+```
+
+93. Add an arrow: Add Item > Add Arrow, left click to start (twice) and right click to finish.
+
+94. Add text: In the left hand tool bar click add text box and draw a square
+
+95. Let's add our extent map, load the UK ```.shp```, reproject it and save it into your  ```.gpkg  ```. Do the same for your city points. 
 
 
 
