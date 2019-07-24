@@ -100,7 +100,7 @@ This means that the data layer we are loading (OSM) has a different CRS to the d
 
 The OSM data will load and ArcMap is pretty clever here as it will project 'on the fly' which means it can display the data stored in one projection as if it were in another, but the actual data is not altered. This is both good and bad. Good as it let's us visualise our data quickly, but bad because if we have data with different projections you will run into problems during processing. My advice is to load the data and pick a projection to do all processing in.
 
-22. Here load the gis_osm_pois_a_free_1 polygon layer.
+22. Here load the gis_osm_pois_a_free_1 polygon.shp layer.
 
 23. In the search tool find the tool ```reproject```
 
@@ -325,7 +325,7 @@ knitr::include_graphics('prac5_images/layout.png')
 And here is what my map looked like...
 
 ```{r echo=FALSE, out.width = "800", fig.align='center', cache=TRUE}
-knitr::include_graphics('prac5_data/examplemap.tif') 
+knitr::include_graphics('prac5_data/examplemap.png') 
 ```
 
 Note there are some issues with mine...look at the inset map and how in Scotland there are more points than place names --- this is beacuse my font is too large and they overlap.
@@ -448,12 +448,96 @@ knitr::include_graphics('prac5_images/QGIS_legend.png')
 
 94. Add text: In the left hand tool bar click add text box and draw a square
 
-95. Let's add our extent map, load the UK ```.shp```, reproject it and save it into your  ```.gpkg  ```. Do the same for your city points. 
+95. Let's add our extent map, load the UK ```.shp```, reproject it and save it into your  ```.gpkg  ```. Do the same for your city points but be sure to load them into your ```.gpkg  ``` before you run any tool (just drag and drop them). When reprojecting you might see a lot of errors for certain points in the processing box...don't worry British National Grid only covers the UK --- these errors will be for points outside of the UK which we will remove
+
+96. Now replicate our ArcMap inset map by opening the Layer Properties of the new cities layer > Labels > Single Labels with city name, alter any of the text styles as you wish. Also play around with the symbology..
+
+97. Add the new map into your map layout and move the items to appropraite locations...
+
+This is what i came up with in my map layout
+
+```{r echo=FALSE, out.width = "800", fig.align='center', cache=TRUE}
+knitr::include_graphics('prac5_images/QGIS_maplayout.png') 
+```
+
+To export your map to a file go: Layout > Export as Image and select crop to content...and here is my map...
+
+```{r echo=FALSE, fig.align='center', cache=TRUE}
+knitr::include_graphics('prac5_data/QGIS_hotel.png') 
+```
+
+**Note** there are a few problems with my map that could be improved:
+(a) If you look closely at the vector layer for London you will see that one of the boroughs is missing from map (b) --- this is most likely because it has no data but could easily be fixed
+(b) Whilst this time i've displayed all the city names the colour scheme needs work...for ideas on this check out colour
+
+### Graphical modeler
+
+As in ArcMap we can automate the methodological process in QGIS using the graphical modeler..again i'll provide a short example here
+
+98. Go: Processing > Graphical Modeler
+
+Graphical modeler is a bit different to model builder in ArcMap, here you drag inputs and algorthims from the inputs box (bottom left) into the model, you don't need to specify the inputs here. When you click the run buttom (play on the top toolbar) you'll be asked to provide the layers for the inputs. The options will be limited to those you currently have open in your map...check out the model i made to automate reprojecting cities and the UK outline, then extracting the cities within the UK outline...
+
+```{r echo=FALSE, fig.align='center', cache=TRUE}
+knitr::include_graphics('prac5_data/QGIS_model.png') 
+```
+
+Make sure you save your model from the top tool bar either as a standalone model or within your project
+
+## R
+
+Your R and geogprahical are certainly improving by now, so i'm just going to provide you with the R code i used to do this analysis..we'll then have a quick look at making a Shiny app using the data --- which i'll explain fully.
+
+```{r eval=FALSE}
+##Load all our data
+library(tmap)
+
+OSM <- read_shape("prac5_data/greater-london-latest-free.shp/gis_osm_pois_a_free_1.shp", as.sf = TRUE)
+
+Londonborough <- read_shape("Prac1_data/statistical-gis-boundaries-london/ESRI/London_Borough_Excluding_MHW.shp", as.sf = TRUE)
+
+Airbnb <- read_csv("prac5_data/listings.csv")
+  
+Worldcities <- read_shape("prac5_data/World_Cities/World_Cities.shp", as.sf = TRUE)
+
+# load as sp to use with spatialpointsdataframe  
+UK_outline <- read_shape("prac5_data/gadm36_GBR_shp/gadm36_GBR_0.shp", as.sf = TRUE)
+
+# plot xy data
+
+Airbnb <- st_as_sf(Airbnb, coords = c("longitude", "latitude"), crs = 4326)
+
+# reproject
+OSM <- st_transform(OSM, 27700)
+Worldcities <- st_transform(Worldcities, 27700)
+UK_outline <- st_transform(UK_outline, 27700)
+Airbnb <- st_transform(Airbnb, 27700)
+
+                           
+OSM <- OSM[OSM$fclass == 'hotel',]
+
+#set CRS
+
+st_crs(Londonborough) <- 27700
+st_crs(OSM) <- 27700
 
 
+t=st_within(OSM, Londonborough)
+
+pointinpoly <- st_join(OSM, Londonborough, join = st_within)
+
+t=as.data.frame(pointinpoly)
 
 
+tree_tract_count <- count(pointinpoly$osm_id, pointinpoly$GSS_CODE) %>%
+  print()
 
+res <- over(OSM, Londonborough)
+
+
+t=aggregate(OSM["osm_id"], Londonborough, count)
+
+```
 
 
 

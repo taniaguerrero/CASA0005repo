@@ -24,7 +24,7 @@
 <meta name="author" content="Andy MacLachlan and Adam Dennett" />
 
 
-<meta name="date" content="2019-07-16" />
+<meta name="date" content="2019-07-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -267,13 +267,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5.5" data-path="map-making.html"><a href="map-making.html#qgis-1"><i class="fa fa-check"></i><b>5.5</b> QGIS</a><ul>
 <li class="chapter" data-level="5.5.1" data-path="map-making.html"><a href="map-making.html#mapping"><i class="fa fa-check"></i><b>5.5.1</b> Mapping</a></li>
+<li class="chapter" data-level="5.5.2" data-path="map-making.html"><a href="map-making.html#graphical-modeler"><i class="fa fa-check"></i><b>5.5.2</b> Graphical modeler</a></li>
 </ul></li>
 <li class="chapter" data-level="5.6" data-path="map-making.html"><a href="map-making.html#r-1"><i class="fa fa-check"></i><b>5.6</b> R</a></li>
-<li class="chapter" data-level="5.7" data-path="map-making.html"><a href="map-making.html#geocomputation"><i class="fa fa-check"></i><b>5.7</b> Geocomputation</a><ul>
-<li class="chapter" data-level="5.7.1" data-path="map-making.html"><a href="map-making.html#general-ggplot2-maps"><i class="fa fa-check"></i><b>5.7.1</b> General ggplot2 maps</a></li>
-<li class="chapter" data-level="5.7.2" data-path="map-making.html"><a href="map-making.html#bivaraite-chloropleth-maps"><i class="fa fa-check"></i><b>5.7.2</b> Bivaraite chloropleth maps</a></li>
-<li class="chapter" data-level="5.7.3" data-path="map-making.html"><a href="map-making.html#rayshader"><i class="fa fa-check"></i><b>5.7.3</b> Rayshader</a></li>
-<li class="chapter" data-level="5.7.4" data-path="map-making.html"><a href="map-making.html#shiny"><i class="fa fa-check"></i><b>5.7.4</b> Shiny</a></li>
+<li class="chapter" data-level="5.7" data-path="map-making.html"><a href="map-making.html#r-2"><i class="fa fa-check"></i><b>5.7</b> R</a></li>
+<li class="chapter" data-level="5.8" data-path="map-making.html"><a href="map-making.html#geocomputation"><i class="fa fa-check"></i><b>5.8</b> Geocomputation</a><ul>
+<li class="chapter" data-level="5.8.1" data-path="map-making.html"><a href="map-making.html#general-ggplot2-maps"><i class="fa fa-check"></i><b>5.8.1</b> General ggplot2 maps</a></li>
+<li class="chapter" data-level="5.8.2" data-path="map-making.html"><a href="map-making.html#bivaraite-chloropleth-maps"><i class="fa fa-check"></i><b>5.8.2</b> Bivaraite chloropleth maps</a></li>
+<li class="chapter" data-level="5.8.3" data-path="map-making.html"><a href="map-making.html#rayshader"><i class="fa fa-check"></i><b>5.8.3</b> Rayshader</a></li>
+<li class="chapter" data-level="5.8.4" data-path="map-making.html"><a href="map-making.html#shiny"><i class="fa fa-check"></i><b>5.8.4</b> Shiny</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="an-introduction-to-analysing-spatial-patterns.html"><a href="an-introduction-to-analysing-spatial-patterns.html"><i class="fa fa-check"></i><b>6</b> An Introduction to Analysing Spatial Patterns</a><ul>
@@ -436,7 +438,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ol>
 <p>The OSM data will load and ArcMap is pretty clever here as it will project ‘on the fly’ which means it can display the data stored in one projection as if it were in another, but the actual data is not altered. This is both good and bad. Good as it let’s us visualise our data quickly, but bad because if we have data with different projections you will run into problems during processing. My advice is to load the data and pick a projection to do all processing in.</p>
 <ol start="22" style="list-style-type: decimal">
-<li><p>Here load the gis_osm_pois_a_free_1 polygon layer.</p></li>
+<li><p>Here load the gis_osm_pois_a_free_1 polygon.shp layer.</p></li>
 <li><p>In the search tool find the tool <code>reproject</code></p></li>
 </ol>
 <p><img src="prac5_images/reproj.png" width="500pt" style="display: block; margin: auto;" /></p>
@@ -584,7 +586,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Here is what my Layout view looked like</p>
 <p><img src="prac5_images/layout.png" width="800" style="display: block; margin: auto;" /></p>
 <p>And here is what my map looked like…</p>
-<p><img src="prac5_data/examplemap.tif" width="800" style="display: block; margin: auto;" /></p>
+<p><img src="prac5_data/examplemap.png" width="800" style="display: block; margin: auto;" /></p>
 <p>Note there are some issues with mine…look at the inset map and how in Scotland there are more points than place names — this is beacuse my font is too large and they overlap.</p>
 </div>
 <div id="model-builder" class="section level3">
@@ -661,30 +663,100 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ol start="93" style="list-style-type: decimal">
 <li><p>Add an arrow: Add Item &gt; Add Arrow, left click to start (twice) and right click to finish.</p></li>
 <li><p>Add text: In the left hand tool bar click add text box and draw a square</p></li>
-<li><p>Let’s add our extent map, load the UK <code>.shp</code>, reproject it and save it into your <code>.gpkg</code>. Do the same for your city points.</p></li>
+<li><p>Let’s add our extent map, load the UK <code>.shp</code>, reproject it and save it into your <code>.gpkg</code>. Do the same for your city points but be sure to load them into your <code>.gpkg</code> before you run any tool (just drag and drop them). When reprojecting you might see a lot of errors for certain points in the processing box…don’t worry British National Grid only covers the UK — these errors will be for points outside of the UK which we will remove</p></li>
+<li><p>Now replicate our ArcMap inset map by opening the Layer Properties of the new cities layer &gt; Labels &gt; Single Labels with city name, alter any of the text styles as you wish. Also play around with the symbology..</p></li>
+<li><p>Add the new map into your map layout and move the items to appropraite locations…</p></li>
 </ol>
-<p>Advanced</p>
-<p>Compare the diffrence, are they related to any other variable?</p>
+<p>This is what i came up with in my map layout</p>
+<p><img src="prac5_images/QGIS_maplayout.png" width="800" style="display: block; margin: auto;" /></p>
+<p>To export your map to a file go: Layout &gt; Export as Image and select crop to content…and here is my map…</p>
+<p><img src="prac5_data/QGIS_hotel.png" width="920" style="display: block; margin: auto;" /></p>
+<p><strong>Note</strong> there are a few problems with my map that could be improved:
+(a) If you look closely at the vector layer for London you will see that one of the boroughs is missing from map (b) — this is most likely because it has no data but could easily be fixed
+(b) Whilst this time i’ve displayed all the city names the colour scheme needs work…for ideas on this check out colour</p>
+</div>
+<div id="graphical-modeler" class="section level3">
+<h3><span class="header-section-number">5.5.2</span> Graphical modeler</h3>
+<p>As in ArcMap we can automate the methodological process in QGIS using the graphical modeler..again i’ll provide a short example here</p>
+<ol start="98" style="list-style-type: decimal">
+<li>Go: Processing &gt; Graphical Modeler</li>
+</ol>
+<p>Graphical modeler is a bit different to model builder in ArcMap, here you drag inputs and algorthims from the inputs box (bottom left) into the model, you don’t need to specify the inputs here. When you click the run buttom (play on the top toolbar) you’ll be asked to provide the layers for the inputs. The options will be limited to those you currently have open in your map…check out the model i made to automate reprojecting cities and the UK outline, then extracting the cities within the UK outline…</p>
+<p><img src="prac5_data/QGIS_model.png" style="display: block; margin: auto;" /></p>
+<p>Make sure you save your model from the top tool bar either as a standalone model or within your project</p>
 </div>
 </div>
 <div id="r-1" class="section level2">
 <h2><span class="header-section-number">5.6</span> R</h2>
+<p>Your R and geogprahical are certainly improving by now, so i’m just going to provide you with the R code i used to do this analysis..we’ll then have a quick look at making a Shiny app using the data — which i’ll explain fully.</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">##Load all our data</span>
+<span class="kw">library</span>(tmap)
+
+OSM &lt;-<span class="st"> </span><span class="kw">read_shape</span>(<span class="st">&quot;prac5_data/greater-london-latest-free.shp/gis_osm_pois_a_free_1.shp&quot;</span>, <span class="dt">as.sf =</span> <span class="ot">TRUE</span>)
+
+Londonborough &lt;-<span class="st"> </span><span class="kw">read_shape</span>(<span class="st">&quot;Prac1_data/statistical-gis-boundaries-london/ESRI/London_Borough_Excluding_MHW.shp&quot;</span>, <span class="dt">as.sf =</span> <span class="ot">TRUE</span>)
+
+Airbnb &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;prac5_data/listings.csv&quot;</span>)
+  
+Worldcities &lt;-<span class="st"> </span><span class="kw">read_shape</span>(<span class="st">&quot;prac5_data/World_Cities/World_Cities.shp&quot;</span>, <span class="dt">as.sf =</span> <span class="ot">TRUE</span>)
+
+<span class="co"># load as sp to use with spatialpointsdataframe  </span>
+UK_outline &lt;-<span class="st"> </span><span class="kw">read_shape</span>(<span class="st">&quot;prac5_data/gadm36_GBR_shp/gadm36_GBR_0.shp&quot;</span>, <span class="dt">as.sf =</span> <span class="ot">TRUE</span>)
+
+<span class="co"># plot xy data</span>
+
+Airbnb &lt;-<span class="st"> </span><span class="kw">st_as_sf</span>(Airbnb, <span class="dt">coords =</span> <span class="kw">c</span>(<span class="st">&quot;longitude&quot;</span>, <span class="st">&quot;latitude&quot;</span>), <span class="dt">crs =</span> <span class="dv">4326</span>)
+
+<span class="co"># reproject</span>
+OSM &lt;-<span class="st"> </span><span class="kw">st_transform</span>(OSM, <span class="dv">27700</span>)
+Worldcities &lt;-<span class="st"> </span><span class="kw">st_transform</span>(Worldcities, <span class="dv">27700</span>)
+UK_outline &lt;-<span class="st"> </span><span class="kw">st_transform</span>(UK_outline, <span class="dv">27700</span>)
+Airbnb &lt;-<span class="st"> </span><span class="kw">st_transform</span>(Airbnb, <span class="dv">27700</span>)
+
+                           
+OSM &lt;-<span class="st"> </span>OSM[OSM<span class="op">$</span>fclass <span class="op">==</span><span class="st"> &#39;hotel&#39;</span>,]
+
+<span class="co">#set CRS</span>
+
+<span class="kw">st_crs</span>(Londonborough) &lt;-<span class="st"> </span><span class="dv">27700</span>
+<span class="kw">st_crs</span>(OSM) &lt;-<span class="st"> </span><span class="dv">27700</span>
+
+
+t=<span class="kw">st_within</span>(OSM, Londonborough)
+
+pointinpoly &lt;-<span class="st"> </span><span class="kw">st_join</span>(OSM, Londonborough, <span class="dt">join =</span> st_within)
+
+t=<span class="kw">as.data.frame</span>(pointinpoly)
+
+
+tree_tract_count &lt;-<span class="st"> </span><span class="kw">count</span>(pointinpoly<span class="op">$</span>osm_id, pointinpoly<span class="op">$</span>GSS_CODE) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">print</span>()
+
+res &lt;-<span class="st"> </span><span class="kw">over</span>(OSM, Londonborough)
+
+
+t=<span class="kw">aggregate</span>(OSM[<span class="st">&quot;osm_id&quot;</span>], Londonborough, count)</code></pre>
+<p>Advanced</p>
+<p>Compare the diffrence, are they related to any other variable?</p>
+</div>
+<div id="r-2" class="section level2">
+<h2><span class="header-section-number">5.7</span> R</h2>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co">##First, get the London Borough Boundaries</span>
 EW &lt;-<span class="st"> </span><span class="kw">geojson_read</span>(<span class="st">&quot;http://geoportal.statistics.gov.uk/datasets/8edafbe3276d4b56aec60991cbddda50_2.geojson&quot;</span>, <span class="dt">what =</span> <span class="st">&quot;sp&quot;</span>)</code></pre>
 </div>
 <div id="geocomputation" class="section level2">
-<h2><span class="header-section-number">5.7</span> Geocomputation</h2>
+<h2><span class="header-section-number">5.8</span> Geocomputation</h2>
 <div id="general-ggplot2-maps" class="section level3">
-<h3><span class="header-section-number">5.7.1</span> General ggplot2 maps</h3>
+<h3><span class="header-section-number">5.8.1</span> General ggplot2 maps</h3>
 </div>
 <div id="bivaraite-chloropleth-maps" class="section level3">
-<h3><span class="header-section-number">5.7.2</span> Bivaraite chloropleth maps</h3>
+<h3><span class="header-section-number">5.8.2</span> Bivaraite chloropleth maps</h3>
 </div>
 <div id="rayshader" class="section level3">
-<h3><span class="header-section-number">5.7.3</span> Rayshader</h3>
+<h3><span class="header-section-number">5.8.3</span> Rayshader</h3>
 </div>
 <div id="shiny" class="section level3">
-<h3><span class="header-section-number">5.7.4</span> Shiny</h3>
+<h3><span class="header-section-number">5.8.4</span> Shiny</h3>
 
 </div>
 </div>
