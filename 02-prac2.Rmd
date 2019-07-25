@@ -935,16 +935,16 @@ So we created an interactive map with ```tmap``` earlier and that was pretty coo
 
 Leaflet is a Java Script library for producing interactive web maps, and some enterprising coders over at RStudio have produced a package for allowing you to create your own Leaflet maps. All of the documentation for the R Leaflet package can be found here: https://rstudio.github.io/leaflet/
 
-```{r, cache=TRUE}
+```{r, cache=TRUE, warning=FALSE, message=FALSE}
 library(leaflet)
 ```
 
-```{r, cache=TRUE}
+```{r, cache=TRUE, warning=FALSE, message=FALSE}
 library(sf)
 library(sp)
 library(magrittr)
 ```
-```{r, cache=TRUE}
+```{r, cache=TRUE,warning=FALSE, message=FALSE}
 library(classInt)
 ```
 
@@ -952,7 +952,7 @@ library(classInt)
 
 Before we create a leaflet map, we need to specify what the breaks in our data are going to be…
 
-```{r, cache=TRUE}
+```{r, cache=TRUE,  warning=FALSE, message=FALSE}
 colours<- brewer.pal(5, "Blues")
 breaks<-classIntervals(BoroughDataMap$Claimant.Rate.of.Housing.Benefit..2015., n=5, style="jenks")
 graphics::plot(breaks, pal=colours)
@@ -960,11 +960,11 @@ graphics::plot(breaks, pal=colours)
 
 So we have now created a breaks object which uses the jenks natural breaks algorithm to divide up our variable into 5 classes. You will notice that breaks is a list of 2 objects. We want only the ```brks``` bit which contains the values for the breaks
 
-```{r, cache=TRUE}
+```{r, cache=TRUE,warning=FALSE, message=FALSE}
 summary(breaks)
 ```
 
-```{r, cache=TRUE}
+```{r, cache=TRUE,warning=FALSE, message=FALSE}
 breaks <- as.numeric(breaks$brks)
 ```
 
@@ -972,7 +972,7 @@ Now we can create out leaflet interactive map.
 
 Here you will see that I am using different syntax to that which has gone before. The %>% (pipe) operator is part of the magrittr package - https://cran.r-project.org/web/packages/magrittr/vignettes/magrittr.html. magrittr is an entirely new way of thinking about R syntax. Read up on it if you wish, but for now it is useful to think of the pipe operator as simply meaning “then”. Do this THEN do this THEN do that.
 
-```{r, cache=TRUE}
+```{r, cache=TRUE,warning=FALSE, message=FALSE}
 #create a new sp object from the earlier sf object with all of our data in THEN Transform it to WGS84 THEN convert it to SP.  
 
 BoroughDataMapSP <- BoroughDataMap %>%

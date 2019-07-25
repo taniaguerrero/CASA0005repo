@@ -257,7 +257,11 @@ NDVIfun <- function(NIR, Red) {
 }
 ```
 
-Here we have said our function needs two arguments NIR and Red, the next line calcualtes NDVI based on the formula and returns it.
+Here we have said our function needs two arguments NIR and Red, the next line calcualtes NDVI based on the formula and returns it. To be able to use this function throughout our analysis either copy it into the console or make a new R script, save it in your project then call it within this code using the ```source()``` function e.g...
+
+```{r eval=FALSE}
+source('insert file name')
+```
 
 17. To use the function do so through...
 

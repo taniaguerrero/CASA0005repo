@@ -1,0 +1,662 @@
+Ward name,Old code,New code,Population - 2015,Children aged 0-15 - 2015,Working-age (16-64) - 2015,Older people aged 65+ - 2015,Average GCSE capped point scores - 2014
+City of London,00AA,E09000001,"8,100",650,"6,250","1,250",355
+Barking and Dagenham - Abbey,00ABFX,E05000026,"14,750","3,850","10,150",750,318
+Barking and Dagenham - Alibon,00ABFY,E05000027,"10,600","2,700","6,800","1,050",307
+Barking and Dagenham - Becontree,00ABFZ,E05000028,"12,700","3,200","8,350","1,100",295
+Barking and Dagenham - Chadwell Heath,00ABGA,E05000029,"10,400","2,550","6,400","1,450",293
+Barking and Dagenham - Eastbrook,00ABGB,E05000030,"10,750","2,150","7,050","1,550",306
+Barking and Dagenham - Eastbury,00ABGC,E05000031,"11,900","3,000","7,750","1,150",316
+Barking and Dagenham - Gascoigne,00ABGD,E05000032,"15,850","5,100","9,900",850,301
+Barking and Dagenham - Goresbrook,00ABGE,E05000033,"11,450","3,000","7,250","1,250",302
+Barking and Dagenham - Heath,00ABGF,E05000034,"11,150","2,900","6,950","1,300",297
+Barking and Dagenham - Longbridge,00ABGG,E05000035,"11,900","2,600","7,850","1,450",338
+Barking and Dagenham - Mayesbrook,00ABGH,E05000036,"10,550","2,850","6,550","1,150",305
+Barking and Dagenham - Parsloes,00ABGJ,E05000037,"10,050","2,550","6,400","1,100",312
+Barking and Dagenham - River,00ABGK,E05000038,"11,950","3,150","7,600","1,200",300
+Barking and Dagenham - Thames,00ABGL,E05000039,"18,950","6,150","11,850",950,307
+Barking and Dagenham - Valence,00ABGM,E05000040,"10,250","2,600","6,450","1,150",303
+Barking and Dagenham - Village,00ABGN,E05000041,"11,050","2,750","7,100","1,200",302
+Barking and Dagenham - Whalebone,00ABGP,E05000042,"11,150","2,650","7,200","1,300",311
+Barnet - Brunswick Park,00ACFX,E05000043,"17,550","3,400","11,350","2,800",339
+Barnet - Burnt Oak,00ACFY,E05000044,"19,650","4,750","13,050","1,800",314
+Barnet - Childs Hill,00ACFZ,E05000045,"21,100","4,100","14,300","2,650",336
+Barnet - Colindale,00ACGA,E05000046,"26,600","6,100","18,550","2,000",308
+Barnet - Coppetts,00ACGB,E05000047,"18,050","3,500","12,500","2,000",343
+Barnet - East Barnet,00ACGC,E05000048,"17,100","3,550","11,050","2,550",337
+Barnet - East Finchley,00ACGD,E05000049,"16,850","3,250","11,300","2,300",350
+Barnet - Edgware,00ACGE,E05000050,"17,600","4,050","10,850","2,750",327
+Barnet - Finchley Church End,00ACGF,E05000051,"16,800","3,200","10,800","2,800",361
+Barnet - Garden Suburb,00ACGG,E05000052,"16,950","3,450","10,500","3,000",369
+Barnet - Golders Green,00ACGH,E05000053,"24,950","6,400","16,050","2,500",342
+Barnet - Hale,00ACGJ,E05000054,"18,250","4,100","11,500","2,650",326
+Barnet - Hendon,00ACGK,E05000055,"19,300","4,150","12,800","2,300",353
+Barnet - High Barnet,00ACGL,E05000056,"16,300","2,950","10,500","2,850",353
+Barnet - Mill Hill,00ACGM,E05000057,"20,000","4,350","12,800","2,800",353
+Barnet - Oakleigh,00ACGN,E05000058,"16,650","3,200","10,550","2,850",347
+Barnet - Totteridge,00ACGP,E05000059,"16,900","3,400","10,600","2,900",369
+Barnet - Underhill,00ACGQ,E05000060,"17,300","3,400","11,000","2,900",320
+Barnet - West Finchley,00ACGR,E05000061,"17,500","3,250","11,950","2,300",369
+Barnet - West Hendon,00ACGS,E05000062,"19,250","3,950","13,100","2,150",340
+Barnet - Woodhouse,00ACGT,E05000063,"18,700","3,500","12,650","2,550",357
+Bexley - Barnehurst,00ADGA,E05000064,"10,600","2,000","6,600","2,050",326
+Bexley - Belvedere,00ADGB,E05000065,"12,400","2,900","7,950","1,600",306
+Bexley - Blackfen and Lamorbey,00ADGC,E05000066,"10,700","1,950","6,700","2,050",333
+Bexley - Blendon and Penhill,00ADGD,E05000067,"11,000","2,000","6,900","2,150",340
+Bexley - Brampton,00ADGE,E05000068,"10,600","1,750","6,350","2,450",325
+Bexley - Christchurch,00ADGF,E05000069,"11,350","2,050","7,200","2,100",343
+Bexley - Colyers,00ADGG,E05000070,"11,400","2,550","7,150","1,700",298
+Bexley - Crayford,00ADGH,E05000071,"11,950","2,500","7,700","1,750",301
+Bexley - Cray Meadows,00ADGJ,E05000072,"11,350","2,350","6,950","2,000",325
+Bexley - Danson Park,00ADGK,E05000073,"11,000","2,000","7,000","1,950",337
+Bexley - East Wickham,00ADGL,E05000074,"11,000","2,000","6,850","2,100",332
+Bexley - Erith,00ADGM,E05000075,"12,800","3,200","8,100","1,500",312
+Bexley - Falconwood and Welling,00ADGN,E05000076,"10,950","2,000","7,100","1,800",336
+Bexley - Lesnes Abbey,00ADGP,E05000077,"11,450","2,300","7,250","1,900",303
+Bexley - Longlands,00ADGQ,E05000078,"10,600","1,750","6,600","2,250",349
+Bexley - North End,00ADGR,E05000079,"11,850","3,150","7,450","1,250",286
+Bexley - Northumberland Heath,00ADGS,E05000080,"10,700","2,100","6,800","1,800",325
+Bexley - St. Mary's,00ADGT,E05000081,"10,550","1,850","6,300","2,350",359
+Bexley - St. Michael's,00ADGU,E05000082,"11,250","2,300","7,200","1,750",327
+Bexley - Sidcup,00ADGW,E05000083,"11,000","1,750","7,050","2,200",348
+Bexley - Thamesmead East,00ADGX,E05000084,"12,550","3,500","8,100",950,305
+Brent - Alperton,00AEGJ,E05000085,"15,300","3,050","10,750","1,550",319
+Brent - Barnhill,00AEGK,E05000086,"16,250","3,400","10,850","2,000",322
+Brent - Brondesbury Park,00AEGL,E05000087,"13,300","2,350","9,250","1,700",355
+Brent - Dollis Hill,00AEGM,E05000088,"13,650","3,300","8,700","1,650",298
+Brent - Dudden Hill,00AEGN,E05000089,"15,750","3,350","10,750","1,700",312
+Brent - Fryent,00AEGP,E05000090,"14,150","2,900","9,450","1,800",327
+Brent - Harlesden,00AEGQ,E05000091,"17,500","4,750","11,150","1,550",305
+Brent - Kensal Green,00AEGR,E05000092,"15,050","3,200","10,350","1,550",308
+Brent - Kenton,00AEGS,E05000093,"12,550","2,050","8,150","2,350",357
+Brent - Kilburn,00AEGT,E05000094,"17,550","3,400","12,500","1,650",319
+Brent - Mapesbury,00AEGU,E05000095,"16,000","2,750","11,750","1,500",314
+Brent - Northwick Park,00AEGW,E05000096,"13,300","2,150","9,350","1,800",346
+Brent - Preston,00AEGX,E05000097,"15,750","3,300","10,400","2,050",339
+Brent - Queens Park,00AEGY,E05000098,"15,500","3,200","10,750","1,550",346
+Brent - Queensbury,00AEGZ,E05000099,"16,800","3,350","11,400","2,100",332
+Brent - Stonebridge,00AEHA,E05000100,"17,600","4,700","11,350","1,600",299
+Brent - Sudbury,00AEHB,E05000101,"15,250","3,250","10,350","1,700",331
+Brent - Tokyngton,00AEHC,E05000102,"18,900","3,800","13,300","1,850",311
+Brent - Welsh Harp,00AEHD,E05000103,"14,000","3,000","9,300","1,700",316
+Brent - Wembley Central,00AEHE,E05000104,"16,150","3,100","11,350","1,700",306
+Brent - Willesden Green,00AEHF,E05000105,"15,950","3,050","11,600","1,300",297
+Bromley - Bickley,00AFGD,E05000106,"15,450","3,000","9,300","3,150",359
+Bromley - Biggin Hill,00AFGE,E05000107,"10,250","1,850","6,400","2,000",312
+Bromley - Bromley Common and Keston,00AFGF,E05000108,"16,250","3,350","10,100","2,800",342
+Bromley - Bromley Town,00AFGG,E05000109,"18,600","3,900","12,200","2,500",340
+Bromley - Chelsfield and Pratts Bottom,00AFGH,E05000110,"14,800","2,800","9,000","3,000",364
+Bromley - Chislehurst,00AFGJ,E05000111,"15,400","2,900","9,200","3,300",343
+Bromley - Clock House,00AFGK,E05000112,"16,050","3,450","10,600","2,000",338
+Bromley - Copers Cope,00AFGL,E05000113,"15,950","2,500","10,750","2,650",336
+Bromley - Cray Valley East,00AFGM,E05000114,"15,850","3,600","9,550","2,700",297
+Bromley - Cray Valley West,00AFGN,E05000115,"17,150","4,050","10,500","2,600",303
+Bromley - Crystal Palace,00AFGP,E05000116,"12,950","2,700","9,200","1,050",287
+Bromley - Darwin,00AFGQ,E05000117,"5,300","1,000","3,050","1,300",337
+Bromley - Farnborough and Crofton,00AFGR,E05000118,"14,850","2,550","8,700","3,600",355
+Bromley - Hayes and Coney Hall,00AFGS,E05000119,"16,250","3,000","10,100","3,150",349
+Bromley - Kelsey and Eden Park,00AFGT,E05000120,"16,250","3,000","10,200","3,000",355
+Bromley - Mottingham and Chislehurst North,00AFGU,E05000121,"10,300","2,400","6,450","1,500",296
+Bromley - Orpington,00AFGW,E05000122,"15,650","2,900","9,350","3,450",329
+Bromley - Penge and Cator,00AFGX,E05000123,"17,900","3,900","12,100","1,900",323
+Bromley - Petts Wood and Knoll,00AFGY,E05000124,"13,950","2,550","8,250","3,150",357
+Bromley - Plaistow and Sundridge,00AFGZ,E05000125,"15,600","3,250","9,950","2,400",327
+Bromley - Shortlands,00AFHA,E05000126,"10,150","1,800","6,150","2,200",381
+Bromley - West Wickham,00AFHB,E05000127,"15,250","2,600","9,450","3,200",370
+Camden - Belsize,00AGGD,E05000128,"12,800","2,300","8,850","1,650",328
+Camden - Bloomsbury,00AGGE,E05000129,"11,700",750,"9,800","1,100",343
+Camden - Camden Town with Primrose Hill,00AGGF,E05000130,"13,100","1,900","9,550","1,650",338
+Camden - Cantelowes,00AGGG,E05000131,"12,450","1,850","9,450","1,200",317
+Camden - Fortune Green,00AGGH,E05000132,"12,100","1,850","9,000","1,300",326
+Camden - Frognal and Fitzjohns,00AGGJ,E05000133,"12,250","2,000","8,500","1,750",357
+Camden - Gospel Oak,00AGGK,E05000134,"11,500","2,100","7,950","1,450",323
+Camden - Hampstead Town,00AGGL,E05000135,"11,400","1,950","7,550","1,900",384
+Camden - Haverstock,00AGGM,E05000136,"12,750","2,400","8,900","1,450",297
+Camden - Highgate,00AGGN,E05000137,"11,150","1,850","7,500","1,800",316
+Camden - Holborn and Covent Garden,00AGGP,E05000138,"13,700","1,750","10,550","1,400",339
+Camden - Kentish Town,00AGGQ,E05000139,"13,850","2,150","10,400","1,350",305
+Camden - Kilburn,00AGGR,E05000140,"12,350","2,200","8,750","1,450",314
+Camden - King's Cross,00AGGS,E05000141,"12,550","1,600","10,000",950,322
+Camden - Regent's Park,00AGGT,E05000142,"14,700","2,200","11,200","1,350",320
+Camden - St. Pancras and Somers Town,00AGGU,E05000143,"16,200","2,850","12,000","1,350",314
+Camden - Swiss Cottage,00AGGW,E05000144,"13,200","2,200","9,400","1,550",305
+Camden - West Hampstead,00AGGX,E05000145,"12,550","1,650","9,750","1,150",328
+Croydon - Addiscombe,00AHGE,E05000146,"17,750","3,550","12,450","1,750",318
+Croydon - Ashburton,00AHGF,E05000147,"15,150","2,950","9,950","2,200",320
+Croydon - Bensham Manor,00AHGG,E05000148,"16,600","4,000","10,850","1,700",312
+Croydon - Broad Green,00AHGH,E05000149,"20,050","5,300","13,250","1,500",309
+Croydon - Coulsdon East,00AHGJ,E05000150,"12,700","2,350","7,600","2,750",335
+Croydon - Coulsdon West,00AHGK,E05000151,"14,150","2,600","9,250","2,300",352
+Croydon - Croham,00AHGL,E05000152,"16,200","3,250","10,900","2,050",341
+Croydon - Fairfield,00AHGM,E05000153,"21,750","4,200","15,350","2,250",317
+Croydon - Fieldway,00AHGN,E05000154,"11,850","3,500","7,150","1,200",276
+Croydon - Heathfield,00AHGP,E05000155,"13,600","2,450","8,650","2,450",309
+Croydon - Kenley,00AHGQ,E05000156,"15,650","3,250","9,900","2,450",330
+Croydon - New Addington,00AHGR,E05000157,"11,250","2,750","7,000","1,450",290
+Croydon - Norbury,00AHGS,E05000158,"17,100","3,550","11,250","2,300",327
+Croydon - Purley,00AHGT,E05000159,"15,550","3,050","10,050","2,450",346
+Croydon - Sanderstead,00AHGU,E05000160,"13,200","2,250","8,200","2,750",347
+Croydon - Selhurst,00AHGW,E05000161,"18,550","4,850","12,000","1,700",317
+Croydon - Selsdon and Ballards,00AHGX,E05000162,"12,200","1,700","7,800","2,750",340
+Croydon - Shirley,00AHGY,E05000163,"14,700","2,900","9,100","2,700",319
+Croydon - South Norwood,00AHGZ,E05000164,"16,900","3,750","11,450","1,750",319
+Croydon - Thornton Heath,00AHHA,E05000165,"16,900","4,300","11,000","1,600",298
+Croydon - Upper Norwood,00AHHB,E05000166,"16,600","3,450","11,200","1,950",318
+Croydon - Waddon,00AHHC,E05000167,"17,650","4,100","11,650","1,850",305
+Croydon - West Thornton,00AHHD,E05000168,"18,000","4,550","11,650","1,750",318
+Croydon - Woodside,00AHHE,E05000169,"17,100","4,200","11,400","1,500",299
+Ealing - Acton Central,00AJGC,E05000170,"15,850","3,150","11,050","1,600",336
+Ealing - Cleveland,00AJGD,E05000171,"14,850","3,200","9,750","1,900",339
+Ealing - Dormers Wells,00AJGE,E05000172,"14,150","3,150","9,250","1,750",308
+Ealing - Ealing Broadway,00AJGF,E05000173,"15,550","2,300","11,400","1,850",349
+Ealing - Ealing Common,00AJGG,E05000174,"14,200","2,250","10,250","1,700",339
+Ealing - East Acton,00AJGH,E05000175,"19,800","3,950","14,200","1,700",306
+Ealing - Elthorne,00AJGJ,E05000176,"15,100","3,150","10,350","1,600",313
+Ealing - Greenford Broadway,00AJGK,E05000177,"17,750","4,400","11,300","2,050",315
+Ealing - Greenford Green,00AJGL,E05000178,"14,500","3,100","9,600","1,800",325
+Ealing - Hanger Hill,00AJGM,E05000179,"15,750","3,000","10,550","2,200",330
+Ealing - Hobbayne,00AJGN,E05000180,"14,300","3,250","9,350","1,750",328
+Ealing - Lady Margaret,00AJGP,E05000181,"14,100","2,750","9,600","1,700",337
+Ealing - Northfield,00AJGQ,E05000182,"13,700","2,700","9,400","1,600",380
+Ealing - North Greenford,00AJGR,E05000183,"14,900","3,050","9,900","1,900",323
+Ealing - Northolt Mandeville,00AJGS,E05000184,"15,350","3,600","9,900","1,850",303
+Ealing - Northolt West End,00AJGT,E05000185,"15,200","3,950","9,700","1,550",320
+Ealing - Norwood Green,00AJGU,E05000186,"14,200","2,950","9,650","1,600",309
+Ealing - Perivale,00AJGW,E05000187,"15,450","3,200","10,350","1,950",340
+Ealing - South Acton,00AJGX,E05000188,"16,200","3,350","11,100","1,750",321
+Ealing - Southall Broadway,00AJGY,E05000189,"16,200","3,700","10,900","1,600",316
+Ealing - Southall Green,00AJGZ,E05000190,"15,200","3,600","10,250","1,350",306
+Ealing - Southfield,00AJHA,E05000191,"13,600","2,500","9,500","1,550",351
+Ealing - Walpole,00AJHB,E05000192,"13,500","2,600","9,400","1,550",371
+Enfield - Bowes,00AKGL,E05000193,"14,550","2,650","10,250","1,650",330
+Enfield - Bush Hill Park,00AKGM,E05000194,"14,150","2,500","9,050","2,600",353
+Enfield - Chase,00AKGN,E05000195,"14,000","3,150","8,950","1,950",317
+Enfield - Cockfosters,00AKGP,E05000196,"14,100","2,250","9,100","2,750",340
+Enfield - Edmonton Green,00AKGQ,E05000197,"18,350","4,950","11,750","1,600",294
+Enfield - Enfield Highway,00AKGR,E05000198,"16,350","4,050","10,500","1,800",311
+Enfield - Enfield Lock,00AKGS,E05000199,"17,000","4,500","11,100","1,400",303
+Enfield - Grange,00AKGT,E05000200,"13,300","2,300","8,400","2,600",364
+Enfield - Haselbury,00AKGU,E05000201,"16,500","4,050","10,800","1,700",307
+Enfield - Highlands,00AKGW,E05000202,"13,550","2,200","8,700","2,600",347
+Enfield - Jubilee,00AKGX,E05000203,"14,600","3,500","9,350","1,750",310
+Enfield - Lower Edmonton,00AKGY,E05000204,"16,700","4,700","10,300","1,700",304
+Enfield - Palmers Green,00AKGZ,E05000205,"15,650","2,900","10,550","2,250",337
+Enfield - Ponders End,00AKHA,E05000206,"17,050","4,400","11,100","1,550",314
+Enfield - Southbury,00AKHB,E05000207,"14,950","3,700","9,700","1,500",327
+Enfield - Southgate,00AKHC,E05000208,"14,800","2,850","9,900","2,050",361
+Enfield - Southgate Green,00AKHD,E05000209,"14,400","2,550","9,550","2,250",348
+Enfield - Town,00AKHE,E05000210,"15,150","3,000","9,750","2,400",328
+Enfield - Turkey Street,00AKHF,E05000211,"14,700","3,600","9,350","1,750",306
+Enfield - Upper Edmonton,00AKHG,E05000212,"18,600","4,800","12,050","1,750",291
+Enfield - Winchmore Hill,00AKHH,E05000213,"13,700","2,550","9,050","2,100",351
+Greenwich - Abbey Wood,00ALGP,E05000214,"16,200","4,300","10,250","1,650",301
+Greenwich - Blackheath Westcombe,00ALGQ,E05000215,"13,300","2,300","8,950","2,000",327
+Greenwich - Charlton,00ALGR,E05000216,"14,650","3,300","9,700","1,650",316
+Greenwich - Coldharbour and New Eltham,00ALGS,E05000217,"13,450","2,350","8,650","2,450",319
+Greenwich - Eltham North,00ALGT,E05000218,"12,900","2,250","8,250","2,400",339
+Greenwich - Eltham South,00ALGU,E05000219,"13,100","2,050","8,950","2,050",352
+Greenwich - Eltham West,00ALGW,E05000220,"12,500","2,700","8,350","1,450",311
+Greenwich - Glyndon,00ALGX,E05000221,"18,500","4,350","12,750","1,400",317
+Greenwich - Greenwich West,00ALGY,E05000222,"18,450","3,450","13,550","1,450",311
+Greenwich - Kidbrooke with Hornfair,00ALGZ,E05000223,"14,650","2,900","9,950","1,850",313
+Greenwich - Middle Park and Sutcliffe,00ALHA,E05000224,"13,900","2,900","8,850","2,200",329
+Greenwich - Peninsula,00ALHB,E05000225,"24,500","4,650","18,350","1,500",303
+Greenwich - Plumstead,00ALHC,E05000226,"17,050","3,950","11,550","1,600",306
+Greenwich - Shooters Hill,00ALHD,E05000227,"13,750","2,750","9,050","1,900",320
+Greenwich - Thamesmead Moorings,00ALHE,E05000228,"22,200","6,450","14,600","1,150",311
+Greenwich - Woolwich Common,00ALHF,E05000229,"19,550","5,250","13,100","1,200",313
+Greenwich - Woolwich Riverside,00ALHG,E05000230,"23,050","5,550","16,050","1,450",309
+Hackney - Brownswood,00AMGA,E05000231,"13,300","1,850","10,700",750,295
+Hackney - Cazenove,00AMGB,E05000232,"13,800","4,050","8,850",850,320
+Hackney - Chatham,00AMGC,E05000233,"13,950","2,950","10,050",950,326
+Hackney - Clissold,00AMGD,E05000234,"12,650","2,450","9,300",950,346
+Hackney - Dalston,00AMGE,E05000235,"15,950","2,650","12,300","1,000",332
+Hackney - De Beauvoir,00AMGF,E05000236,"15,200","2,400","11,700","1,050",315
+Hackney - Hackney Central,00AMGG,E05000237,"13,200","2,300","9,850","1,000",328
+Hackney - Hackney Downs,00AMGH,E05000238,"13,400","2,600","9,800","1,000",318
+Hackney - Haggerston,00AMGJ,E05000239,"15,250","2,200","12,150",900,295
+Hackney - Hoxton,00AMGK,E05000240,"16,300","2,450","12,850","1,000",323
+Hackney - King's Park,00AMGL,E05000241,"11,650","2,800","7,750","1,100",321
+Hackney - Leabridge,00AMGM,E05000242,"14,600","2,950","10,600","1,050",339
+Hackney - Lordship,00AMGN,E05000243,"12,700","3,650","8,000","1,050",336
+Hackney - New River,00AMGP,E05000244,"14,500","4,250","9,150","1,100",320
+Hackney - Queensbridge,00AMGQ,E05000245,"14,450","2,400","10,850","1,200",294
+Hackney - Springfield,00AMGR,E05000246,"12,800","4,200","7,650",950,332
+Hackney - Stoke Newington Central,00AMGS,E05000247,"13,050","2,100","9,950","1,000",328
+Hackney - Victoria,00AMGT,E05000248,"13,750","2,750","9,950","1,050",321
+Hackney - Wick,00AMGU,E05000249,"12,350","2,600","8,800",950,311
+Hammersmith and Fulham - Addison,00ANGA,E05000250,"11,650","1,850","8,850",900,331
+Hammersmith and Fulham - Askew,00ANGB,E05000251,"14,300","2,550","10,550","1,200",313
+Hammersmith and Fulham - Avonmore and Brook Green,00ANGC,E05000252,"12,700","1,550","9,750","1,400",343
+Hammersmith and Fulham - College Park and Old Oak,00ANGD,E05000253,"10,700","2,100","7,750",900,317
+Hammersmith and Fulham - Fulham Broadway,00ANGE,E05000254,"11,550","1,650","8,750","1,150",294
+Hammersmith and Fulham - Fulham Reach,00ANGF,E05000255,"11,800","1,550","9,250","1,000",343
+Hammersmith and Fulham - Hammersmith Broadway,00ANGG,E05000256,"12,250","2,000","9,000","1,250",325
+Hammersmith and Fulham - Munster,00ANGH,E05000257,"11,150","1,900","8,250","1,000",280
+Hammersmith and Fulham - North End,00ANGJ,E05000258,"12,650","1,600","10,150",850,300
+Hammersmith and Fulham - Palace Riverside,00ANGK,E05000259,"7,600","1,400","5,050","1,150",309
+Hammersmith and Fulham - Parsons Green and Walham,00ANGL,E05000260,"10,850","2,100","7,550","1,200",321
+Hammersmith and Fulham - Ravenscourt Park,00ANGM,E05000261,"11,000","1,950","7,700","1,350",340
+Hammersmith and Fulham - Sands End,00ANGN,E05000262,"13,550","2,550","9,850","1,150",321
+Hammersmith and Fulham - Shepherd's Bush Green,00ANGP,E05000263,"12,950","2,100","9,850","1,050",332
+Hammersmith and Fulham - Town,00ANGQ,E05000264,"11,350","2,050","8,450",900,334
+Hammersmith and Fulham - Wormholt and White City,00ANGR,E05000265,"13,750","2,950","9,500","1,300",309
+Haringey - Alexandra,00APGA,E05000266,"12,050","2,450","8,250","1,350",382
+Haringey - Bounds Green,00APGB,E05000267,"14,400","2,550","10,500","1,350",335
+Haringey - Bruce Grove,00APGC,E05000268,"15,050","3,250","10,500","1,250",299
+Haringey - Crouch End,00APGD,E05000269,"12,800","2,050","9,400","1,300",366
+Haringey - Fortis Green,00APGE,E05000270,"13,000","2,500","9,000","1,500",375
+Haringey - Harringay,00APGF,E05000271,"14,100","2,150","10,900","1,050",303
+Haringey - Highgate,00APGG,E05000272,"12,100","1,800","8,900","1,450",316
+Haringey - Hornsey,00APGH,E05000273,"13,100","2,300","9,600","1,200",329
+Haringey - Muswell Hill,00APGJ,E05000274,"11,050","1,900","7,700","1,500",375
+Haringey - Noel Park,00APGK,E05000275,"14,700","2,600","10,850","1,200",302
+Haringey - Northumberland Park,00APGL,E05000276,"15,150","3,800","10,200","1,200",293
+Haringey - St. Ann's,00APGM,E05000277,"16,100","2,850","12,000","1,300",305
+Haringey - Seven Sisters,00APGN,E05000278,"16,650","4,200","11,150","1,250",320
+Haringey - Stroud Green,00APGP,E05000279,"12,250","1,900","9,400",950,335
+Haringey - Tottenham Green,00APGQ,E05000280,"15,900","3,300","11,350","1,300",292
+Haringey - Tottenham Hale,00APGR,E05000281,"17,300","3,850","12,150","1,300",301
+Haringey - West Green,00APGS,E05000282,"14,050","2,550","10,100","1,400",309
+Haringey - White Hart Lane,00APGT,E05000283,"13,950","3,350","9,500","1,150",315
+Haringey - Woodside,00APGU,E05000284,"15,400","2,800","11,200","1,350",301
+Harrow - Belmont,00AQFY,E05000285,"11,650","2,350","7,550","1,700",356
+Harrow - Canons,00AQFZ,E05000286,"13,500","2,600","8,350","2,550",341
+Harrow - Edgware,00AQGA,E05000287,"12,050","2,550","8,000","1,500",334
+Harrow - Greenhill,00AQGB,E05000288,"13,100","2,500","9,250","1,350",318
+Harrow - Harrow on the Hill,00AQGC,E05000289,"12,850","2,800","8,450","1,600",343
+Harrow - Harrow Weald,00AQGD,E05000290,"11,650","2,200","7,350","2,100",324
+Harrow - Hatch End,00AQGE,E05000291,"10,950","2,050","6,700","2,200",351
+Harrow - Headstone North,00AQGF,E05000292,"10,400","1,800","6,700","1,850",360
+Harrow - Headstone South,00AQGG,E05000293,"11,600","2,350","7,750","1,500",351
+Harrow - Kenton East,00AQGH,E05000294,"11,500","2,150","7,800","1,550",337
+Harrow - Kenton West,00AQGJ,E05000295,"11,550","2,000","7,750","1,800",342
+Harrow - Marlborough,00AQGK,E05000296,"13,000","2,900","8,700","1,400",323
+Harrow - Pinner,00AQGL,E05000297,"10,300","1,850","6,300","2,150",332
+Harrow - Pinner South,00AQGM,E05000298,"10,650","2,200","6,450","2,000",369
+Harrow - Queensbury,00AQGN,E05000299,"12,350","2,600","8,200","1,500",332
+Harrow - Rayners Lane,00AQGP,E05000300,"11,450","2,350","7,350","1,750",350
+Harrow - Roxbourne,00AQGQ,E05000301,"13,150","3,200","8,550","1,350",321
+Harrow - Roxeth,00AQGR,E05000302,"12,000","2,650","7,950","1,400",335
+Harrow - Stanmore Park,00AQGS,E05000303,"11,450","2,000","6,850","2,650",313
+Harrow - Wealdstone,00AQGT,E05000304,"11,700","2,800","7,650","1,300",315
+Harrow - West Harrow,00AQGU,E05000305,"10,700","2,150","7,100","1,500",357
+Havering - Brooklands,00ARGC,E05000306,"17,100","3,850","11,050","2,200",307
+Havering - Cranham,00ARGD,E05000307,"12,650","2,150","7,450","3,050",337
+Havering - Elm Park,00ARGE,E05000308,"12,700","2,350","7,800","2,550",322
+Havering - Emerson Park,00ARGF,E05000309,"12,100","1,850","7,400","2,850",352
+Havering - Gooshays,00ARGG,E05000310,"15,400","3,600","9,900","1,900",284
+Havering - Hacton,00ARGH,E05000311,"12,600","2,000","7,950","2,650",341
+Havering - Harold Wood,00ARGJ,E05000312,"13,750","2,550","8,700","2,500",292
+Havering - Havering Park,00ARGK,E05000313,"13,200","2,700","8,200","2,300",291
+Havering - Heaton,00ARGL,E05000314,"13,200","2,900","8,100","2,200",298
+Havering - Hylands,00ARGM,E05000315,"13,150","2,100","8,600","2,500",341
+Havering - Mawneys,00ARGN,E05000316,"13,100","2,550","8,000","2,550",313
+Havering - Pettits,00ARGP,E05000317,"13,050","2,200","7,850","2,950",322
+Havering - Rainham and Wennington,00ARGQ,E05000318,"13,150","2,500","8,300","2,350",304
+Havering - Romford Town,00ARGR,E05000319,"18,700","3,650","12,550","2,450",314
+Havering - St. Andrew's,00ARGS,E05000320,"13,650","2,300","8,500","2,850",328
+Havering - South Hornchurch,00ARGT,E05000321,"16,550","3,600","10,350","2,650",305
+Havering - Squirrel's Heath,00ARGU,E05000322,"13,400","2,450","8,650","2,350",335
+Havering - Upminster,00ARGW,E05000323,"12,950","2,000","7,900","3,100",352
+Hillingdon - Barnhill,00ASGG,E05000324,"14,050","3,450","9,200","1,400",317
+Hillingdon - Botwell,00ASGH,E05000325,"15,950","4,200","10,200","1,500",312
+Hillingdon - Brunel,00ASGJ,E05000326,"14,750","2,350","10,850","1,600",294
+Hillingdon - Cavendish,00ASGK,E05000327,"12,100","2,400","7,750","2,000",347
+Hillingdon - Charville,00ASGL,E05000328,"13,200","3,000","8,550","1,650",334
+Hillingdon - Eastcote and East Ruislip,00ASGM,E05000329,"12,600","2,150","7,800","2,650",351
+Hillingdon - Harefield,00ASGN,E05000330,"7,750","1,550","4,900","1,350",307
+Hillingdon - Heathrow Villages,00ASGP,E05000331,"13,250","3,050","8,900","1,300",320
+Hillingdon - Hillingdon East,00ASGQ,E05000332,"13,700","3,100","9,000","1,600",327
+Hillingdon - Ickenham,00ASGR,E05000333,"10,750","1,900","6,600","2,250",367
+Hillingdon - Manor,00ASGS,E05000334,"11,900","2,400","7,600","1,900",351
+Hillingdon - Northwood,00ASGT,E05000335,"10,850","1,750","6,800","2,300",339
+Hillingdon - Northwood Hills,00ASGU,E05000336,"12,050","2,250","7,600","2,150",332
+Hillingdon - Pinkwell,00ASGW,E05000337,"15,750","4,150","10,200","1,400",326
+Hillingdon - South Ruislip,00ASGX,E05000338,"12,950","2,650","8,600","1,700",327
+Hillingdon - Townfield,00ASGY,E05000339,"14,900","3,550","9,900","1,450",309
+Hillingdon - Uxbridge North,00ASGZ,E05000340,"13,100","2,400","8,600","2,100",345
+Hillingdon - Uxbridge South,00ASHA,E05000341,"15,000","2,050","11,550","1,400",309
+Hillingdon - West Drayton,00ASHB,E05000342,"15,250","3,600","9,900","1,750",293
+Hillingdon - West Ruislip,00ASHC,E05000343,"11,600","2,150","7,450","2,000",340
+Hillingdon - Yeading,00ASHD,E05000344,"14,250","3,800","9,250","1,150",314
+Hillingdon - Yiewsley,00ASHE,E05000345,"13,750","3,150","9,250","1,350",290
+Hounslow - Bedfont,00ATFY,E05000346,"12,950","2,950","8,500","1,500",314
+Hounslow - Brentford,00ATFZ,E05000347,"15,800","2,950","11,300","1,550",331
+Hounslow - Chiswick Homefields,00ATGA,E05000348,"11,650","2,200","7,950","1,500",345
+Hounslow - Chiswick Riverside,00ATGB,E05000349,"11,700","2,300","7,800","1,600",356
+Hounslow - Cranford,00ATGC,E05000350,"12,750","2,800","8,600","1,350",315
+Hounslow - Feltham North,00ATGD,E05000351,"11,850","2,400","7,850","1,600",319
+Hounslow - Feltham West,00ATGE,E05000352,"15,800","3,950","10,700","1,150",309
+Hounslow - Hanworth,00ATGF,E05000353,"12,400","2,900","8,000","1,500",293
+Hounslow - Hanworth Park,00ATGG,E05000354,"12,250","2,600","8,150","1,500",317
+Hounslow - Heston Central,00ATGH,E05000355,"12,600","2,650","8,500","1,450",334
+Hounslow - Heston East,00ATGJ,E05000356,"12,700","2,600","8,650","1,500",337
+Hounslow - Heston West,00ATGK,E05000357,"12,750","2,900","8,450","1,400",323
+Hounslow - Hounslow Central,00ATGL,E05000358,"16,200","3,300","11,350","1,550",345
+Hounslow - Hounslow Heath,00ATGM,E05000359,"15,250","3,700","10,300","1,250",340
+Hounslow - Hounslow South,00ATGN,E05000360,"11,700","2,200","7,800","1,650",343
+Hounslow - Hounslow West,00ATGP,E05000361,"13,750","2,650","9,650","1,450",331
+Hounslow - Isleworth,00ATGQ,E05000362,"12,150","2,700","8,150","1,300",316
+Hounslow - Osterley and Spring Grove,00ATGR,E05000363,"13,350","2,600","9,050","1,750",367
+Hounslow - Syon,00ATGS,E05000364,"14,200","2,950","9,850","1,400",318
+Hounslow - Turnham Green,00ATGT,E05000365,"11,800","1,850","8,400","1,550",344
+Islington - Barnsbury,00AUFX,E05000366,"12,950","1,950","9,750","1,250",320
+Islington - Bunhill,00AUFY,E05000367,"16,700","2,200","13,350","1,150",324
+Islington - Caledonian,00AUFZ,E05000368,"14,950","2,200","11,450","1,250",312
+Islington - Canonbury,00AUGA,E05000369,"12,500","2,250","9,000","1,250",310
+Islington - Clerkenwell,00AUGB,E05000370,"12,350","1,450","9,850","1,000",301
+Islington - Finsbury Park,00AUGC,E05000371,"15,300","2,700","11,300","1,300",310
+Islington - Highbury East,00AUGD,E05000372,"12,150","2,250","8,700","1,200",343
+Islington - Highbury West,00AUGE,E05000373,"16,400","2,650","12,650","1,050",323
+Islington - Hillrise,00AUGF,E05000374,"12,350","2,300","8,900","1,150",316
+Islington - Holloway,00AUGG,E05000375,"16,050","2,400","12,400","1,250",312
+Islington - Junction,00AUGH,E05000376,"12,950","2,000","9,700","1,250",335
+Islington - Mildmay,00AUGJ,E05000377,"13,500","2,500","10,000","1,050",330
+Islington - St. George's,00AUGK,E05000378,"13,100","2,100","9,750","1,250",329
+Islington - St. Mary's,00AUGL,E05000379,"12,500","1,750","9,600","1,200",331
+Islington - St. Peter's,00AUGM,E05000380,"13,200","1,950","10,050","1,150",302
+Islington - Tollington,00AUGN,E05000381,"13,900","2,450","10,350","1,100",326
+Kensington and Chelsea - Abingdon,00AWFY,E05000382,"10,700","1,750","7,550","1,400",357
+Kensington and Chelsea - Brompton,00AWFZ,E05000383,"8,900","1,250","6,350","1,300",356
+Kensington and Chelsea - Campden,00AWGA,E05000384,"8,250","1,400","5,700","1,100",291
+Kensington and Chelsea - Colville,00AWGB,E05000385,"8,400","1,200","6,150","1,000",311
+Kensington and Chelsea - Courtfield,00AWGC,E05000386,"9,100","1,150","6,950",950,344
+Kensington and Chelsea - Cremorne,00AWGD,E05000387,"8,250","1,250","5,550","1,450",312
+Kensington and Chelsea - Earl's Court,00AWGE,E05000388,"9,300","1,150","7,300",900,359
+Kensington and Chelsea - Golborne,00AWGF,E05000389,"9,600","1,650","6,850","1,050",314
+Kensington and Chelsea - Hans Town,00AWGG,E05000390,"8,850","1,250","6,150","1,450",338
+Kensington and Chelsea - Holland,00AWGH,E05000391,"9,850","1,850","6,650","1,350",365
+Kensington and Chelsea - Norland,00AWGJ,E05000392,"8,750","1,600","5,650","1,500",323
+Kensington and Chelsea - Notting Barns,00AWGK,E05000393,"9,750","1,850","6,550","1,350",330
+Kensington and Chelsea - Pembridge,00AWGL,E05000394,"7,700","1,100","5,700",950,386
+Kensington and Chelsea - Queen's Gate,00AWGM,E05000395,"9,950","1,500","7,450","1,050",377
+Kensington and Chelsea - Redcliffe,00AWGN,E05000396,"9,300","1,400","6,750","1,100",342
+Kensington and Chelsea - Royal Hospital,00AWGP,E05000397,"7,350","1,000","4,750","1,600",366
+Kensington and Chelsea - St. Charles,00AWGQ,E05000398,"9,600","1,800","6,700","1,100",330
+Kensington and Chelsea - Stanley,00AWGR,E05000399,"8,250","1,300","5,650","1,300",345
+Kingston upon Thames - Alexandra,00AXFX,E05000400,"9,700","1,900","6,200","1,600",353
+Kingston upon Thames - Berrylands,00AXFY,E05000401,"9,800","1,800","6,500","1,500",343
+Kingston upon Thames - Beverley,00AXFZ,E05000402,"10,450","2,200","6,900","1,350",372
+Kingston upon Thames - Canbury,00AXGA,E05000403,"13,300","3,100","9,050","1,150",368
+Kingston upon Thames - Chessington North and Hook,00AXGB,E05000404,"9,000","1,800","5,800","1,400",307
+Kingston upon Thames - Chessington South,00AXGC,E05000405,"10,550","2,200","6,800","1,500",321
+Kingston upon Thames - Coombe Hill,00AXGD,E05000406,"10,750","1,950","7,150","1,600",340
+Kingston upon Thames - Coombe Vale,00AXGE,E05000407,"10,050","2,100","6,550","1,450",367
+Kingston upon Thames - Grove,00AXGF,E05000408,"11,800","1,950","8,750","1,050",325
+Kingston upon Thames - Norbiton,00AXGG,E05000409,"10,600","2,150","7,500","1,000",308
+Kingston upon Thames - Old Malden,00AXGH,E05000410,"9,700","1,850","6,100","1,750",347
+Kingston upon Thames - St. James,00AXGJ,E05000411,"9,250","1,700","5,900","1,650",355
+Kingston upon Thames - St. Mark's,00AXGK,E05000412,"10,900","1,350","8,650",900,336
+Kingston upon Thames - Surbiton Hill,00AXGL,E05000413,"10,950","1,900","7,550","1,450",362
+Kingston upon Thames - Tolworth and Hook Rise,00AXGM,E05000414,"10,650","2,150","7,050","1,450",338
+Kingston upon Thames - Tudor,00AXGN,E05000415,"9,850","2,150","6,200","1,450",379
+Lambeth - Bishop's,00AYFZ,E05000416,"11,400","1,250","9,200",950,325
+Lambeth - Brixton Hill,00AYGA,E05000417,"16,650","2,650","12,900","1,100",312
+Lambeth - Clapham Common,00AYGB,E05000418,"13,600","2,150","10,500",950,296
+Lambeth - Clapham Town,00AYGC,E05000419,"14,850","2,150","11,700","1,000",311
+Lambeth - Coldharbour,00AYGD,E05000420,"17,500","3,550","12,900","1,050",306
+Lambeth - Ferndale,00AYGE,E05000421,"16,400","2,050","13,400",950,313
+Lambeth - Gipsy Hill,00AYGF,E05000422,"13,900","3,150","9,600","1,150",314
+Lambeth - Herne Hill,00AYGG,E05000423,"15,600","2,950","11,450","1,200",324
+Lambeth - Knight's Hill,00AYGH,E05000424,"15,200","3,450","10,350","1,400",322
+Lambeth - Larkhall,00AYGJ,E05000425,"18,000","2,900","13,950","1,150",309
+Lambeth - Oval,00AYGK,E05000426,"16,600","2,300","13,150","1,150",322
+Lambeth - Prince's,00AYGL,E05000427,"15,400","2,550","11,450","1,400",334
+Lambeth - St. Leonard's,00AYGM,E05000428,"15,200","2,800","11,250","1,150",341
+Lambeth - Stockwell,00AYGN,E05000429,"15,250","2,800","11,350","1,100",314
+Lambeth - Streatham Hill,00AYGP,E05000430,"15,150","2,700","11,200","1,250",316
+Lambeth - Streatham South,00AYGQ,E05000431,"14,750","2,950","10,150","1,650",328
+Lambeth - Streatham Wells,00AYGR,E05000432,"15,250","3,050","10,950","1,250",311
+Lambeth - Thornton,00AYGS,E05000433,"14,000","2,800","10,150","1,050",319
+Lambeth - Thurlow Park,00AYGT,E05000434,"13,800","3,150","9,350","1,300",305
+Lambeth - Tulse Hill,00AYGU,E05000435,"16,250","3,300","11,900","1,100",292
+Lambeth - Vassall,00AYGW,E05000436,"15,600","2,600","11,900","1,100",317
+Lewisham - Bellingham,00AZGD,E05000437,"15,300","3,700","10,000","1,600",295
+Lewisham - Blackheath,00AZGE,E05000438,"15,000","2,700","10,700","1,550",296
+Lewisham - Brockley,00AZGF,E05000439,"18,550","2,950","14,450","1,150",312
+Lewisham - Catford South,00AZGG,E05000440,"15,650","3,200","10,650","1,800",311
+Lewisham - Crofton Park,00AZGH,E05000441,"15,350","3,200","10,700","1,450",314
+Lewisham - Downham,00AZGJ,E05000442,"15,000","3,500","9,600","1,850",290
+Lewisham - Evelyn,00AZGK,E05000443,"18,550","4,250","13,200","1,050",305
+Lewisham - Forest Hill,00AZGL,E05000444,"15,300","3,300","10,550","1,500",333
+Lewisham - Grove Park,00AZGM,E05000445,"15,100","3,100","10,100","1,900",308
+Lewisham - Ladywell,00AZGN,E05000446,"15,200","2,750","11,150","1,350",319
+Lewisham - Lee Green,00AZGP,E05000447,"15,050","3,000","10,300","1,700",334
+Lewisham - Lewisham Central,00AZGQ,E05000448,"20,250","4,050","14,700","1,500",303
+Lewisham - New Cross,00AZGR,E05000449,"17,650","3,550","13,150","1,000",299
+Lewisham - Perry Vale,00AZGS,E05000450,"16,050","3,350","11,150","1,550",314
+Lewisham - Rushey Green,00AZGT,E05000451,"16,650","3,800","11,500","1,350",301
+Lewisham - Sydenham,00AZGU,E05000452,"16,150","3,350","10,950","1,850",308
+Lewisham - Telegraph Hill,00AZGW,E05000453,"17,250","3,250","12,750","1,200",313
+Lewisham - Whitefoot,00AZGX,E05000454,"15,050","3,650","9,800","1,600",302
+Merton - Abbey,00BAFX,E05000455,"10,600","1,950","7,700",900,332
+Merton - Cannon Hill,00BAFY,E05000456,"9,500","1,700","6,100","1,650",364
+Merton - Colliers Wood,00BAFZ,E05000457,"11,250","1,900","8,400",950,335
+Merton - Cricket Green,00BAGA,E05000458,"11,800","2,850","7,650","1,350",296
+Merton - Dundonald,00BAGB,E05000459,"9,650","1,800","6,800","1,000",392
+Merton - Figge's Marsh,00BAGC,E05000460,"11,700","2,850","7,700","1,150",316
+Merton - Graveney,00BAGD,E05000461,"10,100","2,000","6,900","1,200",333
+Merton - Hillside,00BAGE,E05000462,"9,250","1,400","6,550","1,300",372
+Merton - Lavender Fields,00BAGF,E05000463,"10,650","2,300","7,500",850,301
+Merton - Longthornton,00BAGG,E05000464,"10,500","2,300","7,050","1,200",319
+Merton - Lower Morden,00BAGH,E05000465,"9,350","1,750","6,050","1,550",335
+Merton - Merton Park,00BAGJ,E05000466,"9,750","1,950","6,250","1,550",381
+Merton - Pollards Hill,00BAGK,E05000467,"10,800","2,550","7,050","1,150",313
+Merton - Ravensbury,00BAGL,E05000468,"10,250","2,250","6,700","1,350",313
+Merton - Raynes Park,00BAGM,E05000469,"10,000","2,050","6,550","1,450",341
+Merton - St. Helier,00BAGN,E05000470,"10,650","2,350","6,900","1,450",330
+Merton - Trinity,00BAGP,E05000471,"10,000","2,050","7,100",900,343
+Merton - Village,00BAGQ,E05000472,"8,750","1,650","5,350","1,800",389
+Merton - West Barnes,00BAGR,E05000473,"10,200","2,150","6,600","1,500",363
+Merton - Wimbledon Park,00BAGS,E05000474,"11,500","2,700","7,750","1,050",340
+Newham - Beckton,00BBGB,E05000475,"16,700","3,650","12,200",800,306
+Newham - Boleyn,00BBGC,E05000476,"16,350","4,050","11,000","1,300",325
+Newham - Canning Town North,00BBGD,E05000477,"16,650","3,550","11,850","1,250",306
+Newham - Canning Town South,00BBGE,E05000478,"20,350","4,050","15,100","1,250",299
+Newham - Custom House,00BBGF,E05000479,"14,850","3,500","10,400","1,000",299
+Newham - East Ham Central,00BBGG,E05000480,"16,200","3,650","11,350","1,200",311
+Newham - East Ham North,00BBGH,E05000481,"14,250","3,050","10,100","1,100",323
+Newham - East Ham South,00BBGJ,E05000482,"16,250","4,250","10,800","1,200",312
+Newham - Forest Gate North,00BBGK,E05000483,"16,550","3,500","11,800","1,250",331
+Newham - Forest Gate South,00BBGL,E05000484,"18,150","3,650","13,300","1,150",316
+Newham - Green Street East,00BBGM,E05000485,"16,250","3,650","11,650","1,000",316
+Newham - Green Street West,00BBGN,E05000486,"15,500","3,350","10,950","1,200",321
+Newham - Little Ilford,00BBGP,E05000487,"17,100","4,750","11,200","1,150",315
+Newham - Manor Park,00BBGQ,E05000488,"15,600","3,750","10,750","1,100",329
+Newham - Plaistow North,00BBGR,E05000489,"15,800","3,700","10,900","1,200",319
+Newham - Plaistow South,00BBGS,E05000490,"16,800","4,700","11,000","1,100",314
+Newham - Royal Docks,00BBGT,E05000491,"16,550","3,450","12,500",600,306
+Newham - Stratford and New Town,00BBGU,E05000492,"26,700","3,700","21,750","1,250",309
+Newham - Wall End,00BBGW,E05000493,"15,150","3,850","10,300","1,000",303
+Newham - West Ham,00BBGX,E05000494,"16,150","3,300","11,600","1,250",308
+Redbridge - Aldborough,00BCFY,E05000495,"15,800","3,500","10,400","1,900",340
+Redbridge - Barkingside,00BCFZ,E05000496,"13,150","2,600","8,600","1,950",357
+Redbridge - Bridge,00BCGA,E05000497,"11,850","2,350","7,750","1,750",323
+Redbridge - Chadwell,00BCGB,E05000498,"14,850","3,750","9,600","1,500",329
+Redbridge - Church End,00BCGC,E05000499,"11,900","2,300","8,100","1,450",344
+Redbridge - Clayhall,00BCGD,E05000500,"13,600","2,650","8,850","2,100",372
+Redbridge - Clementswood,00BCGE,E05000501,"16,950","4,750","10,950","1,250",330
+Redbridge - Cranbrook,00BCGF,E05000502,"13,300","2,900","8,700","1,700",355
+Redbridge - Fairlop,00BCGG,E05000503,"12,900","2,700","8,450","1,800",324
+Redbridge - Fullwell,00BCGH,E05000504,"13,150","2,750","8,350","2,100",333
+Redbridge - Goodmayes,00BCGJ,E05000505,"13,400","3,400","8,900","1,150",319
+Redbridge - Hainault,00BCGK,E05000506,"13,550","3,050","8,600","1,900",305
+Redbridge - Loxford,00BCGL,E05000507,"17,700","5,150","11,300","1,200",340
+Redbridge - Mayfield,00BCGM,E05000508,"13,950","3,400","8,900","1,650",339
+Redbridge - Monkhams,00BCGN,E05000509,"10,650","1,750","6,550","2,300",370
+Redbridge - Newbury,00BCGP,E05000510,"17,450","4,350","11,400","1,700",348
+Redbridge - Roding,00BCGQ,E05000511,"12,550","2,900","8,250","1,400",330
+Redbridge - Seven Kings,00BCGR,E05000512,"16,950","4,200","11,200","1,550",332
+Redbridge - Snaresbrook,00BCGS,E05000513,"12,100","2,150","7,900","2,050",371
+Redbridge - Valentines,00BCGT,E05000514,"15,050","3,950","9,750","1,300",341
+Redbridge - Wanstead,00BCGU,E05000515,"11,700","2,350","7,450","1,950",344
+Richmond upon Thames - Barnes,00BDFW,E05000516,"10,500","2,100","6,750","1,700",328
+Richmond upon Thames - East Sheen,00BDFX,E05000517,"10,500","2,500","6,400","1,650",396
+Richmond upon Thames - Fulwell and Hampton Hill,00BDFY,E05000518,"10,300","2,250","6,600","1,450",374
+"Richmond upon Thames - Ham, Petersham & Richmond Riverside",00BDFZ,E05000519,"10,550","2,000","6,700","1,900",338
+Richmond upon Thames - Hampton,00BDGA,E05000520,"10,250","2,050","6,300","1,850",343
+Richmond upon Thames - Hampton North,00BDGB,E05000521,"9,600","1,850","6,100","1,650",310
+Richmond upon Thames - Hampton Wick,00BDGC,E05000522,"10,550","2,150","6,900","1,450",374
+Richmond upon Thames - Heathfield,00BDGD,E05000523,"10,600","2,100","6,800","1,700",324
+Richmond upon Thames - Kew,00BDGE,E05000524,"11,650","2,450","7,450","1,750",363
+Richmond upon Thames - Mortlake and Barnes Common,00BDGF,E05000525,"11,100","2,600","7,100","1,400",342
+Richmond upon Thames - North Richmond,00BDGG,E05000526,"11,050","2,200","7,250","1,600",360
+Richmond upon Thames - St. Margarets & North Twickenham,00BDGH,E05000527,"11,800","2,750","8,000","1,100",369
+Richmond upon Thames - South Richmond,00BDGJ,E05000528,"11,100","1,900","7,600","1,550",361
+Richmond upon Thames - South Twickenham,00BDGK,E05000529,"10,100","2,000","6,900","1,200",376
+Richmond upon Thames - Teddington,00BDGL,E05000530,"10,550","2,050","6,900","1,600",378
+Richmond upon Thames - Twickenham Riverside,00BDGM,E05000531,"10,650","2,000","7,250","1,350",366
+Richmond upon Thames - West Twickenham,00BDGN,E05000532,"10,750","2,400","6,950","1,350",334
+Richmond upon Thames - Whitton,00BDGP,E05000533,"10,050","1,900","6,300","1,800",341
+Southwark - Brunswick Park,00BEGC,E05000534,"13,600","2,700","9,900",950,316
+Southwark - Camberwell Green,00BEGD,E05000535,"15,950","3,400","11,450","1,100",304
+Southwark - Cathedrals,00BEGE,E05000536,"17,250","1,700","14,350","1,200",313
+Southwark - Chaucer,00BEGF,E05000537,"16,200","2,300","13,050",850,318
+Southwark - College,00BEGG,E05000538,"11,900","2,450","8,000","1,400",324
+Southwark - East Dulwich,00BEGH,E05000539,"12,400","2,500","8,800","1,150",334
+Southwark - East Walworth,00BEGJ,E05000540,"13,850","2,450","10,300","1,100",320
+Southwark - Faraday,00BEGK,E05000541,"13,050","3,000","9,100","1,000",320
+Southwark - Grange,00BEGL,E05000542,"17,600","2,500","14,100","1,000",322
+Southwark - Livesey,00BEGM,E05000543,"15,000","3,450","10,300","1,300",314
+Southwark - Newington,00BEGN,E05000544,"15,500","2,600","11,650","1,250",320
+Southwark - Nunhead,00BEGP,E05000545,"13,850","2,850","9,750","1,250",325
+Southwark - Peckham,00BEGQ,E05000546,"15,350","3,650","10,600","1,100",321
+Southwark - Peckham Rye,00BEGR,E05000547,"13,550","2,950","9,450","1,150",330
+Southwark - Riverside,00BEGS,E05000548,"16,600","2,250","13,300","1,050",298
+Southwark - Rotherhithe,00BEGT,E05000549,"15,050","2,650","11,350","1,050",312
+Southwark - South Bermondsey,00BEGU,E05000550,"14,400","2,850","10,500","1,050",310
+Southwark - South Camberwell,00BEGW,E05000551,"13,200","2,550","9,700",950,325
+Southwark - Surrey Docks,00BEGX,E05000552,"15,400","1,950","12,500",950,319
+Southwark - The Lane,00BEGY,E05000553,"16,450","3,550","11,450","1,450",309
+Southwark - Village,00BEGZ,E05000554,"12,500","2,800","8,200","1,500",357
+Sutton - Beddington North,00BFGC,E05000555,"10,550","2,200","6,850","1,550",341
+Sutton - Beddington South,00BFGD,E05000556,"10,900","2,350","6,850","1,750",320
+Sutton - Belmont,00BFGE,E05000557,"10,350","1,900","6,600","1,800",369
+Sutton - Carshalton Central,00BFGF,E05000558,"10,400","2,050","6,750","1,600",360
+Sutton - Carshalton South and Clockhouse,00BFGG,E05000559,"10,200","2,150","6,350","1,750",360
+Sutton - Cheam,00BFGH,E05000560,"10,550","1,950","6,450","2,150",364
+Sutton - Nonsuch,00BFGJ,E05000561,"10,900","1,900","6,950","2,050",357
+Sutton - St. Helier,00BFGK,E05000562,"12,300","3,050","7,950","1,300",311
+Sutton - Stonecot,00BFGL,E05000563,"11,000","2,050","7,150","1,750",351
+Sutton - Sutton Central,00BFGM,E05000564,"11,550","2,500","7,800","1,300",314
+Sutton - Sutton North,00BFGN,E05000565,"10,600","2,200","6,550","1,850",344
+Sutton - Sutton South,00BFGP,E05000566,"10,000","1,700","6,600","1,700",338
+Sutton - Sutton West,00BFGQ,E05000567,"10,900","2,050","7,350","1,550",352
+Sutton - The Wrythe,00BFGR,E05000568,"10,500","2,100","6,900","1,500",332
+Sutton - Wallington North,00BFGS,E05000569,"10,900","2,250","7,100","1,500",349
+Sutton - Wallington South,00BFGT,E05000570,"10,650","2,000","6,800","1,850",377
+Sutton - Wandle Valley,00BFGU,E05000571,"12,250","3,000","8,100","1,150",306
+Sutton - Worcester Park,00BFGW,E05000572,"11,950","2,650","7,600","1,700",336
+Tower Hamlets - Bethnal Green North,00BGFW,E05000573,"14,750","2,650","11,150",950,323
+Tower Hamlets - Bethnal Green South,00BGFX,E05000574,"15,150","2,900","11,550",750,309
+Tower Hamlets - Blackwall and Cubitt Town,00BGFY,E05000575,"23,250","4,350","17,800","1,100",305
+Tower Hamlets - Bow East,00BGFZ,E05000576,"15,650","2,750","11,800","1,050",295
+Tower Hamlets - Bow West,00BGGA,E05000577,"13,650","2,700","9,950","1,050",323
+Tower Hamlets - Bromley-by-Bow,00BGGB,E05000578,"19,750","4,850","13,900","1,000",310
+Tower Hamlets - East India and Lansbury,00BGGC,E05000579,"16,550","4,250","11,250","1,000",290
+Tower Hamlets - Limehouse,00BGGD,E05000580,"17,100","3,800","12,350",950,309
+Tower Hamlets - Mile End and Globe Town,00BGGE,E05000581,"16,200","2,950","12,300",950,334
+Tower Hamlets - Mile End East,00BGGF,E05000582,"15,200","3,400","11,000",800,320
+Tower Hamlets - Millwall,00BGGG,E05000583,"26,350","4,500","20,850","1,000",313
+Tower Hamlets - St. Dunstan's and Stepney Green,00BGGH,E05000584,"17,100","3,800","12,050","1,300",325
+Tower Hamlets - St. Katherine's and Wapping,00BGGJ,E05000585,"13,550","2,000","10,700",900,324
+Tower Hamlets - Shadwell,00BGGK,E05000586,"15,900","3,700","11,250",950,320
+Tower Hamlets - Spitalfields and Banglatown,00BGGL,E05000587,"11,800","1,650","9,600",600,338
+Tower Hamlets - Weavers,00BGGM,E05000588,"15,050","2,500","11,600",950,321
+Tower Hamlets - Whitechapel,00BGGN,E05000589,"17,300","3,000","13,400",900,324
+Waltham Forest - Cann Hall,00BHFX,E05000590,"14,350","3,200","10,100","1,050",312
+Waltham Forest - Cathall,00BHFY,E05000591,"13,300","2,950","9,350","1,000",312
+Waltham Forest - Chapel End,00BHFZ,E05000592,"14,600","3,600","9,750","1,300",322
+Waltham Forest - Chingford Green,00BHGA,E05000593,"10,550","1,850","6,450","2,300",332
+Waltham Forest - Endlebury,00BHGB,E05000594,"11,150","1,900","7,250","2,000",342
+Waltham Forest - Forest,00BHGC,E05000595,"13,250","2,750","9,200","1,300",307
+Waltham Forest - Grove Green,00BHGD,E05000596,"15,300","3,300","10,800","1,150",306
+Waltham Forest - Hale End and Highams Park,00BHGE,E05000597,"12,200","2,650","8,050","1,500",322
+Waltham Forest - Hatch Lane,00BHGF,E05000598,"11,400","2,250","7,350","1,850",326
+Waltham Forest - High Street,00BHGG,E05000599,"14,850","3,200","10,450","1,200",328
+Waltham Forest - Higham Hill,00BHGH,E05000600,"14,200","3,500","9,550","1,150",307
+Waltham Forest - Hoe Street,00BHGJ,E05000601,"14,600","3,250","10,100","1,250",321
+Waltham Forest - Larkswood,00BHGK,E05000602,"12,050","2,350","7,850","1,850",312
+Waltham Forest - Lea Bridge,00BHGL,E05000603,"16,250","4,100","10,800","1,300",313
+Waltham Forest - Leyton,00BHGM,E05000604,"14,950","3,700","10,150","1,150",295
+Waltham Forest - Leytonstone,00BHGN,E05000605,"13,450","2,350","10,000","1,050",317
+Waltham Forest - Markhouse,00BHGP,E05000606,"15,250","3,700","10,400","1,200",301
+Waltham Forest - Valley,00BHGQ,E05000607,"11,850","2,450","7,750","1,650",319
+Waltham Forest - William Morris,00BHGR,E05000608,"13,750","3,250","9,400","1,100",318
+Waltham Forest - Wood Street,00BHGS,E05000609,"14,150","3,450","9,400","1,300",331
+Wandsworth - Balham,00BJFZ,E05000610,"15,050","2,650","11,150","1,250",348
+Wandsworth - Bedford,00BJGA,E05000611,"15,100","2,300","11,600","1,150",348
+Wandsworth - Earlsfield,00BJGB,E05000612,"16,100","2,750","12,250","1,050",326
+Wandsworth - East Putney,00BJGC,E05000613,"15,850","2,250","11,850","1,750",316
+Wandsworth - Fairfield,00BJGD,E05000614,"15,350","2,300","11,950","1,100",340
+Wandsworth - Furzedown,00BJGE,E05000615,"15,850","3,350","10,950","1,550",340
+Wandsworth - Graveney,00BJGF,E05000616,"15,700","3,000","11,250","1,400",329
+Wandsworth - Latchmere,00BJGG,E05000617,"15,850","3,050","11,350","1,400",319
+Wandsworth - Nightingale,00BJGH,E05000618,"14,950","2,750","10,850","1,350",318
+Wandsworth - Northcote,00BJGJ,E05000619,"15,400","3,300","11,050","1,000",342
+Wandsworth - Queenstown,00BJGK,E05000620,"20,150","3,000","15,650","1,500",315
+Wandsworth - Roehampton,00BJGL,E05000621,"17,550","3,050","12,850","1,650",297
+Wandsworth - St. Mary's Park,00BJGM,E05000622,"17,250","2,550","12,900","1,800",313
+Wandsworth - Shaftesbury,00BJGN,E05000623,"14,500","2,150","11,150","1,200",324
+Wandsworth - Southfields,00BJGP,E05000624,"16,750","3,400","11,950","1,450",338
+Wandsworth - Thamesfield,00BJGQ,E05000625,"15,400","2,650","11,250","1,550",345
+Wandsworth - Tooting,00BJGR,E05000626,"17,350","3,150","12,650","1,600",322
+Wandsworth - Wandsworth Common,00BJGS,E05000627,"16,350","3,150","11,850","1,350",341
+Wandsworth - West Hill,00BJGT,E05000628,"16,850","3,150","12,150","1,550",309
+Wandsworth - West Putney,00BJGU,E05000629,"15,400","2,750","10,650","2,000",328
+Westminster - Abbey Road,00BKGA,E05000630,"11,500","2,000","7,850","1,650",329
+Westminster - Bayswater,00BKGB,E05000631,"10,500","1,400","8,000","1,100",344
+Westminster - Bryanston and Dorset Square,00BKGC,E05000632,"12,650","1,350","9,950","1,350",358
+Westminster - Churchill,00BKGD,E05000633,"10,550","1,950","7,350","1,250",344
+Westminster - Church Street,00BKGE,E05000634,"12,000","2,700","7,650","1,650",318
+Westminster - Harrow Road,00BKGF,E05000635,"12,350","2,350","8,950","1,050",333
+Westminster - Hyde Park,00BKGG,E05000636,"13,450","1,750","10,400","1,300",336
+Westminster - Knightsbridge and Belgravia,00BKGH,E05000637,"10,050","1,050","7,650","1,400",341
+Westminster - Lancaster Gate,00BKGJ,E05000638,"13,800","1,600","11,050","1,150",349
+Westminster - Little Venice,00BKGK,E05000639,"11,050","2,000","7,900","1,200",304
+Westminster - Maida Vale,00BKGL,E05000640,"10,550","1,900","7,700","1,000",323
+Westminster - Marylebone High Street,00BKGM,E05000641,"11,150","1,050","8,850","1,250",390
+Westminster - Queen's Park,00BKGN,E05000642,"13,050","2,650","9,150","1,300",315
+Westminster - Regent's Park,00BKGP,E05000643,"12,500","1,950","8,550","2,000",297
+Westminster - St. James's,00BKGQ,E05000644,"12,050","1,100","9,650","1,350",353
+Westminster - Tachbrook,00BKGR,E05000645,"8,500",850,"6,350","1,250",368
+Westminster - Vincent Square,00BKGS,E05000646,"10,500","1,500","7,700","1,350",326
+Westminster - Warwick,00BKGT,E05000647,"9,800","1,050","7,550","1,200",310
+Westminster - Westbourne,00BKGU,E05000648,"13,200","2,750","9,250","1,200",339
+Westminster - West End,00BKGW,E05000649,"11,250",950,"8,950","1,300",363
+City of London,00AA,E09000001,"8,100",650,"6,250","1,250",355
+Barking and Dagenham,00AB,E09000002,"205,450","53,700","131,700","20,000",307
+Barnet,00AC,E09000003,"393,200","82,050","257,850","53,350",339
+Bexley,00AD,E09000004,"237,000","47,950","149,400","39,700",323
+Brent,00AE,E09000005,"326,350","67,200","222,800","36,350",319
+Bromley,00AF,E09000006,"320,100","63,050","200,500","56,550",337
+Camden,00AG,E09000007,"230,300","35,500","169,000","25,750",319
+Croydon,00AH,E09000008,"381,150","82,900","249,100","49,200",317
+Ealing,00AJ,E09000009,"349,350","72,800","236,650","39,900",324
+Enfield,00AK,E09000010,"322,150","71,100","209,350","41,650",321
+Greenwich,00AL,E09000011,"281,550","61,450","190,850","29,250",316
+Hackney,00AM,E09000012,"262,700","53,500","190,250","18,950",321
+Hammersmith and Fulham,00AN,E09000013,"189,850","31,850","140,250","17,750",318
+Haringey,00AP,E09000014,"269,100","52,200","192,600","24,350",320
+Harrow,00AQ,E09000015,"247,500","50,150","160,700","36,650",337
+Havering,00AR,E09000016,"250,350","47,250","157,150","45,950",318
+Hillingdon,00AS,E09000017,"289,500","61,100","190,500","37,900",323
+Hounslow,00AT,E09000018,"263,600","55,150","178,900","29,550",327
+Islington,00AU,E09000019,"220,800","35,100","166,750","18,950",320
+Kensington and Chelsea,00AW,E09000020,"161,700","25,350","114,300","22,050",332
+Kingston upon Thames,00AX,E09000021,"167,200","32,200","112,700","22,300",345
+Lambeth,00AY,E09000022,"320,450","57,150","238,750","24,500",316
+Lewisham,00AZ,E09000023,"293,050","60,600","205,500","27,000",308
+Merton,00BA,E09000024,"206,200","42,450","138,600","25,150",331
+Newham,00BB,E09000025,"338,000","75,100","240,500","22,400",313
+Redbridge,00BC,E09000026,"292,450","67,000","189,850","35,600",339
+Richmond upon Thames,00BD,E09000027,"191,600","39,250","124,250","28,100",350
+Southwark,00BE,E09000028,"308,650","57,100","227,800","23,750",319
+Sutton,00BF,E09000029,"196,400","40,000","126,650","29,750",342
+Tower Hamlets,00BG,E09000030,"284,300","55,700","212,450","16,150",315
+Waltham Forest,00BH,E09000031,"271,450","59,750","184,050","27,600",317
+Wandsworth,00BJ,E09000032,"322,750","56,750","237,300","28,700",326
+Westminster,00BK,E09000033,"230,550","33,900","170,350","26,300",330
+London,H,E12000007,"8,632,850","1,726,900","5,923,600","982,400",324
+England,921,E92000001,"54,613,400","10,335,450","34,540,350","9,737,650",310
+Source:,,,"GLA SHLAA Trend based Population Projection data, and Mid year estimates","GLA SHLAA Trend based Population Projection data, and Mid year estimates","GLA SHLAA Trend based Population Projection data, and Mid year estimates","GLA SHLAA Trend based Population Projection data, and Mid year estimates","Department for Education (via NeSS), and GLA calculations"

@@ -256,7 +256,7 @@ knitr::include_graphics('prac5_images/addXY.png')
 
 58. Navigate your listings.csv, select longitude as the X Field and latitude as the Y Field. You now need to change the Coordiate System of the Input...click edit, scroll up and select Geographic Coordiante Systems > World > WGS 1984 then click OK and click OK abou the ID warning.
 
-59. When you load data through add XY you need to export it to a new layer as at the moment we are still reading off the ```.csv```. Right click on it > Export Data, select an appropraite name, add it too the Map, then remove the ```.csv``` from ArcMap.
+59. When you load data through add XY you need to export it to a new layer as at the moment we are still reading off the ```.csv```. Right click on it > Export Data, select an appropraite name, add it too the Map, then remove the ```.csv``` from ArcMap. Make sure you also reproject it to British National Grid --- i forgot to do this and had to come back..
 
 60. As before you need to select only those points within the London boroughs then compute the number of air b n bs per borough....have a go at this yourself, if you get stuck go back and revisit the previous instructions...To try and make the comparsion a bit more even (scientific!) we shall filter the air b n b data (using select by attrbiutes) for only rentals that are classed as Entire home/apt and are available 365 days of the year...the select by attriubte code would be: room_type = 'Entire home/apt' AND availability_365 = 365
 
@@ -314,7 +314,7 @@ knitr::include_graphics('prac5_images/zoom.png')
 
 ### Export map
 
-70. Go  File > Export Map, save it as a ```.TIFF``` and check the Clip Output to Graphics Extent button (at the very bottom of the box).
+70. Go  File > Export Map, save it as a ```.png``` and check the Clip Output to Graphics Extent button (at the very bottom of the box).
 
 Here is what my Layout view looked like
 
@@ -332,7 +332,7 @@ Note there are some issues with mine...look at the inset map and how in Scotland
 
 ### Model builder
 
-In ArcMap you can automate tasks to an extent using model builder...i'll give a brief example with some of the data we have used
+The model builder is a visual interface which allows you to build up the elements of your model by dragging data, tools and iterators into the window...i'll give a brief example with some of the data we have used
 
 71. Click on the ModelBuilder icon
 
@@ -364,11 +364,15 @@ In the next stage i'd select all my points within the UK, however select by loca
 
 Ok, now we're going to reproduce our map in QIGS. As i've given most of the reasoning behind all the tools in the previous ArcMap section this will be more quickfire...
 
+#### Load data
+
 72. Load QGIS, Open and Save a new project (Project > New) 
 
 73. Right click on GeoPackage and create a new database to store our data in ```.gpkg```
 
 74. Load our data layers: London boroughs and OSM data (OSM data should be the  gis_osm_pois_a_free_1 polygon layer)
+
+### Manipulate data
 
 75. Reproject the OSM data. If you scroll right in the dialogue box you'll be able to save it into your GeoPackage. You might need to refresh the browers to see the layer in the 
 
@@ -399,7 +403,7 @@ knitr::include_graphics('prac5_images/extractbylocation.png')
 82. Next up is the Air b n b data, i'll show you how to load it then you need to produce a count of rentals per London borough using the same rules as before (entire place/apartment and available all year). To load the data click Data Source Manager > Delimited Text:
 
 ```{r echo=FALSE, out.width = "800", fig.align='center', cache=TRUE}
-knitr::include_graphics('prac5_images/QGISsymbology.png') 
+knitr::include_graphics('prac5_images/QGISxy.png') 
 ```
 
 You need to: 
@@ -410,17 +414,17 @@ You need to:
 
 **Note** You can filter by multiple attributes using extract by expression...here we would use the expression ("room_type" ILIKE '%Entire home/apt%') AND ("availability_365" ILIKE '%365%') to filter based on entire home/apt and available 365 days of the year.
 
+#### Map data
+
 83. So now you should have two London borough layers one with a count of all the hotels and the other with a count of all the air b n b properties...To make a thematic map right click on the hotel layer > Symbology (tab) select Graduated and your count coloumn as the coloumn, mode as natural breaks and then classify...
 
 ```{r echo=FALSE, out.width = "800", fig.align='center', cache=TRUE}
-knitr::include_graphics('prac5_images/QGISxy.png') 
+knitr::include_graphics('prac5_images/QGISsymbology.png') 
 ```
 
 84. Now save the style so we can use it on our other layer....Style > Save Style > select in Database and provide a name
 
 85. Go to the symbology of the other layer > select Graduated, select the correct count coloumn, then Style > Load Style, from database and your saved style should be listed. 
-
-### Mapping
 
 86. To create a new map document in QGIS go: Project > New Print Layout. THe layout works by adding a new map which is a snapshop of the main QGIS document....
 
@@ -460,6 +464,8 @@ This is what i came up with in my map layout
 knitr::include_graphics('prac5_images/QGIS_maplayout.png') 
 ```
 
+#### Export map
+
 To export your map to a file go: Layout > Export as Image and select crop to content...and here is my map...
 
 ```{r echo=FALSE, fig.align='center', cache=TRUE}
@@ -470,7 +476,7 @@ knitr::include_graphics('prac5_data/QGIS_hotel.png')
 (a) If you look closely at the vector layer for London you will see that one of the boroughs is missing from map (b) --- this is most likely because it has no data but could easily be fixed
 (b) Whilst this time i've displayed all the city names the colour scheme needs work...for ideas on this check out colour
 
-### Graphical modeler
+#### Graphical modeler
 
 As in ArcMap we can automate the methodological process in QGIS using the graphical modeler..again i'll provide a short example here
 
@@ -488,16 +494,17 @@ Make sure you save your model from the top tool bar either as a standalone model
 
 Your R and geogprahical are certainly improving by now, so i'm just going to provide you with the R code i used to do this analysis..we'll then have a quick look at making a Shiny app using the data --- which i'll explain fully.
 
-```{r warning=FALSE, message=FALSE}
+```{r warning=FALSE, message=FALSE, out.width = "800pt", cache=TRUE}
 ##Load all our data
 library(sf)
 library(tmap)
+tmap_mode("plot")
 
 OSM <- read_shape("prac5_data/greater-london-latest-free.shp/gis_osm_pois_a_free_1.shp",
                   as.sf = TRUE)
 
 Londonborough <- read_shape("Prac1_data/statistical-gis-boundaries-london/ESRI/London_Borough_Excluding_MHW.shp",
-                            as.sf = TRUE)
+  as.sf = TRUE)
 
 Airbnb <- read_csv("prac5_data/listings.csv")
   
@@ -520,7 +527,7 @@ Airbnb <- st_transform(Airbnb, 27700)
 # we don't need to reproject Londonborough, but it 
 # doesn't have a CRS..you could also use set_crs
 # it needs to have one for the next step
-Londonborough <- st_transform(Londonborough, 27700)
+Londonborough<- st_transform(Londonborough, 27700)
 
 #select hotels only
 OSM <- OSM[OSM$fclass == 'hotel',]
@@ -538,12 +545,12 @@ Joinfun <- function(data1, data2) {
   joined <- st_join(data1, data2, join = st_within)
   
   # count the number of hotels per borough
-  tree_tract_count <- as.data.frame(count(joined$GSS_CODE))
+  countno <- as.data.frame(count(joined$GSS_CODE))
   
   # join the count back to the borough layer
-  o <-left_join(data2, tree_tract_count, by=c("GSS_CODE"="x"))
+  counted <-left_join(data2, countno, by=c("GSS_CODE"="x"))
   
-  return(o)
+  return(counted)
 }
 
 # use the function for hotels
@@ -566,17 +573,18 @@ breaks = c(0, 5, 12, 26, 57, 286)
 #change the column name from freq for the legend
 colnames(Hotels)[colnames(Hotels)=="freq"] <- "Accom count"
 
+# plot each map
 tm1 <- tm_shape(Hotels) + 
   tm_polygons("Accom count", breaks=breaks)+
   tm_legend(show=FALSE)+
-  tm_layout(frame=FALSE)
-
+  tm_layout(frame=FALSE)+
+  tm_credits("(a)", position=c(0,0.85), size=1.5)
 
 tm2 <- tm_shape(Airbnb) + 
   tm_polygons("freq", breaks=breaks) + 
-  tm_legend(show=FALSE)
-  tm_layout(frame=FALSE)
-
+  tm_legend(show=FALSE)+
+  tm_layout(frame=FALSE)+
+  tm_credits("(b)", position=c(0,0.85), size=1.5)
 
 tm3 <- tm_shape(UK_outlinecrop)+ 
   tm_polygons(col="darkslategray1")+
@@ -587,17 +595,103 @@ tm3 <- tm_shape(UK_outlinecrop)+
 
 legend <- tm_shape(Hotels) +
     tm_polygons("Accom count") +
-    tm_scale_bar(position=c(0.2,0.01), size=0.6)+
+    tm_scale_bar(position=c(0.2,0.04), size=0.6)+
     tm_compass(north=0, position=c(0.65,0.6))+
-    tm_layout(legend.only = TRUE, legend.position=c(0.2,0.25),asp=0.1)
+    tm_layout(legend.only = TRUE, legend.position=c(0.2,0.25),asp=0.1)+
+    tm_credits("(c) OpenStreetMap contrbutors and Air b n b", position=c(0.0,0.0))
+  
 
 t=tmap_arrange(tm1, tm2, tm3, legend, ncol=2)
 
-```
-
-```{r, out.width = "800pt"}
 t
 ```
+
+### Output
+
+#### Static export
+So how do we output our map then...
+
+```{r eval=FALSE}
+tmap_save(t, 'hotelsandairbnbR.png')
+```
+
+#### Basic interactive map
+
+But could we not also make an interactive map like we did in practical 2?
+
+```{r message=FALSE, warning=FALSE}
+tmap_mode("view")
+
+tm_shape(Airbnb) + 
+  tm_polygons("freq", breaks=breaks) 
+```
+
+#### Advanced interactive map
+
+But let's take it a bit further so we can select our layers on an interactive map..
+
+```{r}
+# library for pop up boxes
+library(leafpop)
+library(leaflet)
+
+#join data
+ti<-st_join(Airbnb, Hotels)
+ti<-st_transform(ti,crs = 4326)
+
+#remove the geometry for our pop up boxes to avoid
+#the geometry field 
+ti2<-ti
+st_geometry(ti2)<-NULL
+popairbnb=popupTable(ti2, zcol=c("NAME.x", "GSS_CODE.x", "freq"))
+pophotels=popupTable(ti2, zcol=c("NAME.x", "GSS_CODE.x", "Accom count"))
+
+tmap_mode("view")
+
+# set the colour palettes using our previously defined breaks
+pal <- colorBin(palette = "YlOrRd", domain=t$freq, bins=breaks)
+pal2 <- colorBin(palette = "YlOrRd", domain=t$`Accom count`, bins=breaks)
+
+map<- leaflet(ti) %>%
+  
+  # add basemap options
+  addTiles(group = "OSM (default)") %>%
+  addProviderTiles(providers$Stamen.Toner, group = "Toner") %>%
+  addProviderTiles(providers$Stamen.TonerLite, group = "Toner Lite") %>%
+  addProviderTiles(providers$CartoDB.Positron, group = "CartoDB")%>%
+  
+  #add our polygons, linking to the tables we just made
+  addPolygons(color="white", 
+              weight = 2,
+              opacity = 1,
+              dashArray = "3",
+              popup = popairbnb,
+              fillOpacity = 0.7,
+              fillColor = ~pal(freq),
+              group = "Airbnb")%>%
+  
+  addPolygons(fillColor = ~pal(`Accom count`), 
+              weight = 2,
+              opacity = 1,
+              color = "white",
+              dashArray = "3",
+              popup = pophotels,
+              fillOpacity = 0.7,group = "Hotels")%>%
+  # add a legend
+  addLegend(pal = pal2, values = ~`Accom count`, group = c("Airbnb","Hotel"), 
+            position ="bottomleft") %>%
+  # specify layers control
+  addLayersControl(
+    baseGroups = c("OSM (default)", "Toner", "Toner Lite", "CartoDB"),
+    overlayGroups = c("Airbnb", "Hotels"),
+    options = layersControlOptions(collapsed = FALSE)
+  )
+
+# plot the map
+map
+```
+
+If you want to explore Leaflet more have a look at this website: https://rstudio.github.io/leaflet/
 
 
 
