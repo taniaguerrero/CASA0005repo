@@ -24,7 +24,7 @@
 <meta name="author" content="Andy MacLachlan and Adam Dennett" />
 
 
-<meta name="date" content="2019-07-17" />
+<meta name="date" content="2019-07-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -270,13 +270,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.5.2" data-path="map-making.html"><a href="map-making.html#graphical-modeler"><i class="fa fa-check"></i><b>5.5.2</b> Graphical modeler</a></li>
 </ul></li>
 <li class="chapter" data-level="5.6" data-path="map-making.html"><a href="map-making.html#r-1"><i class="fa fa-check"></i><b>5.6</b> R</a></li>
-<li class="chapter" data-level="5.7" data-path="map-making.html"><a href="map-making.html#r-2"><i class="fa fa-check"></i><b>5.7</b> R</a></li>
-<li class="chapter" data-level="5.8" data-path="map-making.html"><a href="map-making.html#geocomputation"><i class="fa fa-check"></i><b>5.8</b> Geocomputation</a><ul>
-<li class="chapter" data-level="5.8.1" data-path="map-making.html"><a href="map-making.html#general-ggplot2-maps"><i class="fa fa-check"></i><b>5.8.1</b> General ggplot2 maps</a></li>
-<li class="chapter" data-level="5.8.2" data-path="map-making.html"><a href="map-making.html#bivaraite-chloropleth-maps"><i class="fa fa-check"></i><b>5.8.2</b> Bivaraite chloropleth maps</a></li>
-<li class="chapter" data-level="5.8.3" data-path="map-making.html"><a href="map-making.html#rayshader"><i class="fa fa-check"></i><b>5.8.3</b> Rayshader</a></li>
-<li class="chapter" data-level="5.8.4" data-path="map-making.html"><a href="map-making.html#shiny"><i class="fa fa-check"></i><b>5.8.4</b> Shiny</a></li>
-</ul></li>
 </ul></li>
 <li class="chapter" data-level="6" data-path="an-introduction-to-analysing-spatial-patterns.html"><a href="an-introduction-to-analysing-spatial-patterns.html"><i class="fa fa-check"></i><b>6</b> An Introduction to Analysing Spatial Patterns</a><ul>
 <li class="chapter" data-level="6.1" data-path="an-introduction-to-analysing-spatial-patterns.html"><a href="an-introduction-to-analysing-spatial-patterns.html#learning-outcomes-5"><i class="fa fa-check"></i><b>6.1</b> Learning outcomes</a></li>
@@ -690,75 +683,119 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">5.6</span> R</h2>
 <p>Your R and geogprahical are certainly improving by now, so i’m just going to provide you with the R code i used to do this analysis..we’ll then have a quick look at making a Shiny app using the data — which i’ll explain fully.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co">##Load all our data</span>
+<span class="kw">library</span>(sf)
 <span class="kw">library</span>(tmap)
 
-OSM &lt;-<span class="st"> </span><span class="kw">read_shape</span>(<span class="st">&quot;prac5_data/greater-london-latest-free.shp/gis_osm_pois_a_free_1.shp&quot;</span>, <span class="dt">as.sf =</span> <span class="ot">TRUE</span>)
+OSM &lt;-<span class="st"> </span><span class="kw">read_shape</span>(<span class="st">&quot;prac5_data/greater-london-latest-free.shp/gis_osm_pois_a_free_1.shp&quot;</span>,
+                  <span class="dt">as.sf =</span> <span class="ot">TRUE</span>)
 
-Londonborough &lt;-<span class="st"> </span><span class="kw">read_shape</span>(<span class="st">&quot;Prac1_data/statistical-gis-boundaries-london/ESRI/London_Borough_Excluding_MHW.shp&quot;</span>, <span class="dt">as.sf =</span> <span class="ot">TRUE</span>)
+Londonborough &lt;-<span class="st"> </span><span class="kw">read_shape</span>(<span class="st">&quot;Prac1_data/statistical-gis-boundaries-london/ESRI/London_Borough_Excluding_MHW.shp&quot;</span>,
+                            <span class="dt">as.sf =</span> <span class="ot">TRUE</span>)
 
 Airbnb &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;prac5_data/listings.csv&quot;</span>)
   
-Worldcities &lt;-<span class="st"> </span><span class="kw">read_shape</span>(<span class="st">&quot;prac5_data/World_Cities/World_Cities.shp&quot;</span>, <span class="dt">as.sf =</span> <span class="ot">TRUE</span>)
+Worldcities &lt;-<span class="st"> </span><span class="kw">read_shape</span>(<span class="st">&quot;prac5_data/World_Cities/World_Cities.shp&quot;</span>, 
+                          <span class="dt">as.sf =</span> <span class="ot">TRUE</span>)
 
 <span class="co"># load as sp to use with spatialpointsdataframe  </span>
-UK_outline &lt;-<span class="st"> </span><span class="kw">read_shape</span>(<span class="st">&quot;prac5_data/gadm36_GBR_shp/gadm36_GBR_0.shp&quot;</span>, <span class="dt">as.sf =</span> <span class="ot">TRUE</span>)
+UK_outline &lt;-<span class="st"> </span><span class="kw">read_shape</span>(<span class="st">&quot;prac5_data/gadm36_GBR_shp/gadm36_GBR_0.shp&quot;</span>, 
+                         <span class="dt">as.sf =</span> <span class="ot">TRUE</span>)
 
 <span class="co"># plot xy data</span>
-
-Airbnb &lt;-<span class="st"> </span><span class="kw">st_as_sf</span>(Airbnb, <span class="dt">coords =</span> <span class="kw">c</span>(<span class="st">&quot;longitude&quot;</span>, <span class="st">&quot;latitude&quot;</span>), <span class="dt">crs =</span> <span class="dv">4326</span>)
+Airbnb &lt;-<span class="st"> </span><span class="kw">st_as_sf</span>(Airbnb, <span class="dt">coords =</span> <span class="kw">c</span>(<span class="st">&quot;longitude&quot;</span>, <span class="st">&quot;latitude&quot;</span>), 
+                   <span class="dt">crs =</span> <span class="dv">4326</span>)
 
 <span class="co"># reproject</span>
 OSM &lt;-<span class="st"> </span><span class="kw">st_transform</span>(OSM, <span class="dv">27700</span>)
 Worldcities &lt;-<span class="st"> </span><span class="kw">st_transform</span>(Worldcities, <span class="dv">27700</span>)
 UK_outline &lt;-<span class="st"> </span><span class="kw">st_transform</span>(UK_outline, <span class="dv">27700</span>)
 Airbnb &lt;-<span class="st"> </span><span class="kw">st_transform</span>(Airbnb, <span class="dv">27700</span>)
+<span class="co"># we don&#39;t need to reproject Londonborough, but it </span>
+<span class="co"># doesn&#39;t have a CRS..you could also use set_crs</span>
+<span class="co"># it needs to have one for the next step</span>
+Londonborough &lt;-<span class="st"> </span><span class="kw">st_transform</span>(Londonborough, <span class="dv">27700</span>)
 
-                           
+<span class="co">#select hotels only</span>
 OSM &lt;-<span class="st"> </span>OSM[OSM<span class="op">$</span>fclass <span class="op">==</span><span class="st"> &#39;hotel&#39;</span>,]
+Airbnb &lt;-<span class="st"> </span>Airbnb[Airbnb<span class="op">$</span>room_type <span class="op">==</span><span class="st"> &#39;Entire home/apt&#39;</span> <span class="op">&amp;</span>
+<span class="st">                   </span>Airbnb<span class="op">$</span>availability_<span class="dv">365</span><span class="op">==</span><span class="st">&#39;365&#39;</span>,]
 
-<span class="co">#set CRS</span>
+<span class="co"># make a function for the join</span>
+<span class="co"># functions are covered in practical 7</span>
+<span class="co"># but see if you can work out what is going on</span>
+<span class="co"># hint all you have to do is replace data1 and data2</span>
+<span class="co"># with the data you want to use</span>
 
-<span class="kw">st_crs</span>(Londonborough) &lt;-<span class="st"> </span><span class="dv">27700</span>
-<span class="kw">st_crs</span>(OSM) &lt;-<span class="st"> </span><span class="dv">27700</span>
+Joinfun &lt;-<span class="st"> </span><span class="cf">function</span>(data1, data2) {
+  <span class="co"># join OSM and London boroughs</span>
+  joined &lt;-<span class="st"> </span><span class="kw">st_join</span>(data1, data2, <span class="dt">join =</span> st_within)
+  
+  <span class="co"># count the number of hotels per borough</span>
+  tree_tract_count &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(<span class="kw">count</span>(joined<span class="op">$</span>GSS_CODE))
+  
+  <span class="co"># join the count back to the borough layer</span>
+  o &lt;-<span class="kw">left_join</span>(data2, tree_tract_count, <span class="dt">by=</span><span class="kw">c</span>(<span class="st">&quot;GSS_CODE&quot;</span>=<span class="st">&quot;x&quot;</span>))
+  
+  <span class="kw">return</span>(o)
+}
+
+<span class="co"># use the function for hotels</span>
+Hotels &lt;-<span class="st"> </span><span class="kw">Joinfun</span>(OSM, Londonborough)
+
+<span class="co"># then for airbnb</span>
+Airbnb &lt;-<span class="st"> </span><span class="kw">Joinfun</span>(Airbnb, Londonborough)
+
+Worldcities2 &lt;-<span class="st"> </span>Worldcities[Worldcities<span class="op">$</span>CNTRY_NAME<span class="op">==</span><span class="st">&#39;United Kingdom&#39;</span><span class="op">&amp;</span>
+<span class="st">                              </span>Worldcities<span class="op">$</span>CITY_NAME<span class="op">==</span><span class="st">&#39;Birmingham&#39;</span><span class="op">|</span>
+<span class="st">                              </span>Worldcities<span class="op">$</span>CITY_NAME<span class="op">==</span><span class="st">&#39;London&#39;</span><span class="op">|</span>
+<span class="st">                              </span>Worldcities<span class="op">$</span>CITY_NAME<span class="op">==</span><span class="st">&#39;Edinburgh&#39;</span>,]
+
+newbb &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dt">xmin=</span><span class="op">-</span><span class="dv">296000</span>, <span class="dt">ymin=</span><span class="dv">5408</span>, <span class="dt">xmax=</span><span class="dv">655696</span>, <span class="dt">ymax=</span><span class="dv">1000000</span>)
+UK_outlinecrop=<span class="kw">st_crop</span>(UK_outline<span class="op">$</span>geometry, newbb)
+
+<span class="co"># now try to arrange the plots with tmap</span>
+breaks =<span class="st"> </span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">12</span>, <span class="dv">26</span>, <span class="dv">57</span>, <span class="dv">286</span>) 
+
+<span class="co">#change the column name from freq for the legend</span>
+<span class="kw">colnames</span>(Hotels)[<span class="kw">colnames</span>(Hotels)<span class="op">==</span><span class="st">&quot;freq&quot;</span>] &lt;-<span class="st"> &quot;Accom count&quot;</span>
+
+tm1 &lt;-<span class="st"> </span><span class="kw">tm_shape</span>(Hotels) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">tm_polygons</span>(<span class="st">&quot;Accom count&quot;</span>, <span class="dt">breaks=</span>breaks)<span class="op">+</span>
+<span class="st">  </span><span class="kw">tm_legend</span>(<span class="dt">show=</span><span class="ot">FALSE</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">tm_layout</span>(<span class="dt">frame=</span><span class="ot">FALSE</span>)
 
 
-t=<span class="kw">st_within</span>(OSM, Londonborough)
+tm2 &lt;-<span class="st"> </span><span class="kw">tm_shape</span>(Airbnb) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">tm_polygons</span>(<span class="st">&quot;freq&quot;</span>, <span class="dt">breaks=</span>breaks) <span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">tm_legend</span>(<span class="dt">show=</span><span class="ot">FALSE</span>)
+  <span class="kw">tm_layout</span>(<span class="dt">frame=</span><span class="ot">FALSE</span>)</code></pre>
+<pre><code>## $tm_layout
+## $tm_layout$frame
+## [1] FALSE
+## 
+## $tm_layout$style
+## [1] NA
+## 
+## 
+## attr(,&quot;class&quot;)
+## [1] &quot;tm&quot;</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">tm3 &lt;-<span class="st"> </span><span class="kw">tm_shape</span>(UK_outlinecrop)<span class="op">+</span><span class="st"> </span>
+<span class="st">  </span><span class="kw">tm_polygons</span>(<span class="dt">col=</span><span class="st">&quot;darkslategray1&quot;</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">tm_layout</span>(<span class="dt">frame=</span><span class="ot">FALSE</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">tm_shape</span>(Worldcities2) <span class="op">+</span>
+<span class="st">  </span><span class="kw">tm_symbols</span>(<span class="dt">col =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">scale =</span> <span class="fl">.5</span>)<span class="op">+</span>
+<span class="st">  </span><span class="kw">tm_text</span>(<span class="st">&quot;CITY_NAME&quot;</span>, <span class="dt">xmod=</span><span class="op">-</span><span class="dv">1</span>, <span class="dt">ymod=</span><span class="op">-</span><span class="fl">0.5</span>)
 
-pointinpoly &lt;-<span class="st"> </span><span class="kw">st_join</span>(OSM, Londonborough, <span class="dt">join =</span> st_within)
+legend &lt;-<span class="st"> </span><span class="kw">tm_shape</span>(Hotels) <span class="op">+</span>
+<span class="st">    </span><span class="kw">tm_polygons</span>(<span class="st">&quot;Accom count&quot;</span>) <span class="op">+</span>
+<span class="st">    </span><span class="kw">tm_scale_bar</span>(<span class="dt">position=</span><span class="kw">c</span>(<span class="fl">0.2</span>,<span class="fl">0.01</span>), <span class="dt">size=</span><span class="fl">0.6</span>)<span class="op">+</span>
+<span class="st">    </span><span class="kw">tm_compass</span>(<span class="dt">north=</span><span class="dv">0</span>, <span class="dt">position=</span><span class="kw">c</span>(<span class="fl">0.65</span>,<span class="fl">0.6</span>))<span class="op">+</span>
+<span class="st">    </span><span class="kw">tm_layout</span>(<span class="dt">legend.only =</span> <span class="ot">TRUE</span>, <span class="dt">legend.position=</span><span class="kw">c</span>(<span class="fl">0.2</span>,<span class="fl">0.25</span>),<span class="dt">asp=</span><span class="fl">0.1</span>)
 
-t=<span class="kw">as.data.frame</span>(pointinpoly)
+t=<span class="kw">tmap_arrange</span>(tm1, tm2, tm3, legend, <span class="dt">ncol=</span><span class="dv">2</span>)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">t</code></pre>
+<p><img src="CASA0005_files/figure-html/unnamed-chunk-238-1.png" width="800pt" /></p>
 
-
-tree_tract_count &lt;-<span class="st"> </span><span class="kw">count</span>(pointinpoly<span class="op">$</span>osm_id, pointinpoly<span class="op">$</span>GSS_CODE) <span class="op">%&gt;%</span>
-<span class="st">  </span><span class="kw">print</span>()
-
-res &lt;-<span class="st"> </span><span class="kw">over</span>(OSM, Londonborough)
-
-
-t=<span class="kw">aggregate</span>(OSM[<span class="st">&quot;osm_id&quot;</span>], Londonborough, count)</code></pre>
-<p>Advanced</p>
-<p>Compare the diffrence, are they related to any other variable?</p>
-</div>
-<div id="r-2" class="section level2">
-<h2><span class="header-section-number">5.7</span> R</h2>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="co">##First, get the London Borough Boundaries</span>
-EW &lt;-<span class="st"> </span><span class="kw">geojson_read</span>(<span class="st">&quot;http://geoportal.statistics.gov.uk/datasets/8edafbe3276d4b56aec60991cbddda50_2.geojson&quot;</span>, <span class="dt">what =</span> <span class="st">&quot;sp&quot;</span>)</code></pre>
-</div>
-<div id="geocomputation" class="section level2">
-<h2><span class="header-section-number">5.8</span> Geocomputation</h2>
-<div id="general-ggplot2-maps" class="section level3">
-<h3><span class="header-section-number">5.8.1</span> General ggplot2 maps</h3>
-</div>
-<div id="bivaraite-chloropleth-maps" class="section level3">
-<h3><span class="header-section-number">5.8.2</span> Bivaraite chloropleth maps</h3>
-</div>
-<div id="rayshader" class="section level3">
-<h3><span class="header-section-number">5.8.3</span> Rayshader</h3>
-</div>
-<div id="shiny" class="section level3">
-<h3><span class="header-section-number">5.8.4</span> Shiny</h3>
-
-</div>
 </div>
 </div>
             </section>

@@ -488,123 +488,116 @@ Make sure you save your model from the top tool bar either as a standalone model
 
 Your R and geogprahical are certainly improving by now, so i'm just going to provide you with the R code i used to do this analysis..we'll then have a quick look at making a Shiny app using the data --- which i'll explain fully.
 
-```{r eval=FALSE}
+```{r warning=FALSE, message=FALSE}
 ##Load all our data
+library(sf)
 library(tmap)
 
-OSM <- read_shape("prac5_data/greater-london-latest-free.shp/gis_osm_pois_a_free_1.shp", as.sf = TRUE)
+OSM <- read_shape("prac5_data/greater-london-latest-free.shp/gis_osm_pois_a_free_1.shp",
+                  as.sf = TRUE)
 
-Londonborough <- read_shape("Prac1_data/statistical-gis-boundaries-london/ESRI/London_Borough_Excluding_MHW.shp", as.sf = TRUE)
+Londonborough <- read_shape("Prac1_data/statistical-gis-boundaries-london/ESRI/London_Borough_Excluding_MHW.shp",
+                            as.sf = TRUE)
 
 Airbnb <- read_csv("prac5_data/listings.csv")
   
-Worldcities <- read_shape("prac5_data/World_Cities/World_Cities.shp", as.sf = TRUE)
+Worldcities <- read_shape("prac5_data/World_Cities/World_Cities.shp", 
+                          as.sf = TRUE)
 
 # load as sp to use with spatialpointsdataframe  
-UK_outline <- read_shape("prac5_data/gadm36_GBR_shp/gadm36_GBR_0.shp", as.sf = TRUE)
+UK_outline <- read_shape("prac5_data/gadm36_GBR_shp/gadm36_GBR_0.shp", 
+                         as.sf = TRUE)
 
 # plot xy data
-
-Airbnb <- st_as_sf(Airbnb, coords = c("longitude", "latitude"), crs = 4326)
+Airbnb <- st_as_sf(Airbnb, coords = c("longitude", "latitude"), 
+                   crs = 4326)
 
 # reproject
 OSM <- st_transform(OSM, 27700)
 Worldcities <- st_transform(Worldcities, 27700)
 UK_outline <- st_transform(UK_outline, 27700)
 Airbnb <- st_transform(Airbnb, 27700)
+# we don't need to reproject Londonborough, but it 
+# doesn't have a CRS..you could also use set_crs
+# it needs to have one for the next step
+Londonborough <- st_transform(Londonborough, 27700)
 
-                           
+#select hotels only
 OSM <- OSM[OSM$fclass == 'hotel',]
+Airbnb <- Airbnb[Airbnb$room_type == 'Entire home/apt' &
+                   Airbnb$availability_365=='365',]
 
-#set CRS
+# make a function for the join
+# functions are covered in practical 7
+# but see if you can work out what is going on
+# hint all you have to do is replace data1 and data2
+# with the data you want to use
 
-st_crs(Londonborough) <- 27700
-st_crs(OSM) <- 27700
+Joinfun <- function(data1, data2) {
+  # join OSM and London boroughs
+  joined <- st_join(data1, data2, join = st_within)
+  
+  # count the number of hotels per borough
+  tree_tract_count <- as.data.frame(count(joined$GSS_CODE))
+  
+  # join the count back to the borough layer
+  o <-left_join(data2, tree_tract_count, by=c("GSS_CODE"="x"))
+  
+  return(o)
+}
+
+# use the function for hotels
+Hotels <- Joinfun(OSM, Londonborough)
+
+# then for airbnb
+Airbnb <- Joinfun(Airbnb, Londonborough)
+
+Worldcities2 <- Worldcities[Worldcities$CNTRY_NAME=='United Kingdom'&
+                              Worldcities$CITY_NAME=='Birmingham'|
+                              Worldcities$CITY_NAME=='London'|
+                              Worldcities$CITY_NAME=='Edinburgh',]
+
+newbb <- c(xmin=-296000, ymin=5408, xmax=655696, ymax=1000000)
+UK_outlinecrop=st_crop(UK_outline$geometry, newbb)
+
+# now try to arrange the plots with tmap
+breaks = c(0, 5, 12, 26, 57, 286) 
+
+#change the column name from freq for the legend
+colnames(Hotels)[colnames(Hotels)=="freq"] <- "Accom count"
+
+tm1 <- tm_shape(Hotels) + 
+  tm_polygons("Accom count", breaks=breaks)+
+  tm_legend(show=FALSE)+
+  tm_layout(frame=FALSE)
 
 
-t=st_within(OSM, Londonborough)
-
-pointinpoly <- st_join(OSM, Londonborough, join = st_within)
-
-t=as.data.frame(pointinpoly)
-
-
-tree_tract_count <- count(pointinpoly$osm_id, pointinpoly$GSS_CODE) %>%
-  print()
-
-res <- over(OSM, Londonborough)
+tm2 <- tm_shape(Airbnb) + 
+  tm_polygons("freq", breaks=breaks) + 
+  tm_legend(show=FALSE)
+  tm_layout(frame=FALSE)
 
 
-t=aggregate(OSM["osm_id"], Londonborough, count)
+tm3 <- tm_shape(UK_outlinecrop)+ 
+  tm_polygons(col="darkslategray1")+
+  tm_layout(frame=FALSE)+
+  tm_shape(Worldcities2) +
+  tm_symbols(col = "red", scale = .5)+
+  tm_text("CITY_NAME", xmod=-1, ymod=-0.5)
+
+legend <- tm_shape(Hotels) +
+    tm_polygons("Accom count") +
+    tm_scale_bar(position=c(0.2,0.01), size=0.6)+
+    tm_compass(north=0, position=c(0.65,0.6))+
+    tm_layout(legend.only = TRUE, legend.position=c(0.2,0.25),asp=0.1)
+
+t=tmap_arrange(tm1, tm2, tm3, legend, ncol=2)
 
 ```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Advanced
-
-Compare the diffrence, are they related to any other variable? 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## R 
-
-
-```{r}
-##First, get the London Borough Boundaries
-EW <- geojson_read("http://geoportal.statistics.gov.uk/datasets/8edafbe3276d4b56aec60991cbddda50_2.geojson", what = "sp")
+```{r, out.width = "800pt"}
+t
 ```
 
 
-## Geocomputation 
-
-
-
-### General ggplot2 maps
-
-
-
-
-### Bivaraite chloropleth maps
-
-### Rayshader
-
-### Shiny
 
