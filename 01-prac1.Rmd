@@ -474,7 +474,7 @@ Here, repos stands for repository where we will download the packages from.
 
 #### Load data
 
-Great, load the sf package so we can read our shapefile in --- remember to change to filepath to your shapefile.
+Great, load the sf package so we can read our shapefile in --- remember to change to filepath to your shapefile. For this first practical we'll just leave the datea where it is, next week we'll show you how to use projects to make calling data much easier.
 
 ***Note*** by default in R, the file path should be defined with / but on a #windows file system it is defined with \. Using \\ instead allows R #to read the path correctly – alternatively, just use /
 
@@ -555,8 +555,7 @@ Let's also add the ```.csv``` as we did in QGIS. This is a bit more complicated 
 
 ```{r}
 library(RSQLite)
-con = dbConnect(SQLite(),dbname="Prac1_data/Rwk1.gpkg")
-
+con <- dbConnect(SQLite(),dbname="Prac1_data/Rwk1.gpkg")
 ```
 
 Now examine what is in the ```.gpkg```:
@@ -584,7 +583,7 @@ shape<-append_data(shape, mycsv, key.shp="GSS_CODE", key.data = "Row.Labels")
 tmap_mode("plot")
 qtm(shape, fill = "X2011_12")
 st_write(shape, "Prac1_data/Rwk1.gpkg", "london_boroughs_fly_tipping", delete_layer=TRUE)
-con = dbConnect(SQLite(),dbname="Prac1_data/Rwk1.gpkg")
+con <- dbConnect(SQLite(),dbname="Prac1_data/Rwk1.gpkg")
 dbListTables(con)
 dbWriteTable(con,"original_csv", mycsv, overwrite=TRUE)
 dbDisconnect(con)

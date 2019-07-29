@@ -404,7 +404,7 @@ If you have selected an R Markdown Notebook, in the menu bar at the top of the p
 
 If you click the small arrow next to the preview button, a menu will appear giving you the option to knit into a selection of other formats, including PDF and Word. Try those too…
 
-## Further Reading
+## Further reading
 
 Since starting this little guide, I have come across this amazing book on using R and GitHub, by Jenny Bryan and Jim Hester. It’s brilliant - taught me things like how to avoid entering user credentials every time I push to my GitHub repo (Ch 11) - get involved! http://happygitwithr.com/
 

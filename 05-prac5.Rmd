@@ -296,7 +296,7 @@ knitr::include_graphics('prac5_images/dataframeprop.png')
 
 Cool, switch back to layer view you should see your three data frames, position them how you would like on the page...the black outline you can see is an A4 page
 
-*Hints* If you right click on a layer you can zoom to it or use the + and - icons to position the layers how you like within each frame...
+**Hint** If you right click on a layer you can zoom to it or use the + and - icons to position the layers how you like within each frame...
 
 ```{r echo=FALSE, out.width = "400pt", fig.align='center', cache=TRUE}
 knitr::include_graphics('prac5_images/zoom.png') 
@@ -364,7 +364,7 @@ In the next stage i'd select all my points within the UK, however select by loca
 
 Ok, now we're going to reproduce our map in QIGS. As i've given most of the reasoning behind all the tools in the previous ArcMap section this will be more quickfire...
 
-#### Load data
+### Load data
 
 72. Load QGIS, Open and Save a new project (Project > New) 
 
@@ -386,7 +386,7 @@ knitr::include_graphics('prac5_images/QGIS_reproj.png')
 
 78. To get only the hotels out of our OSM data we can use extract by attrbitue...this is my tool dialogue box
 
-```{r echo=FALSE, out.width = "800", fig.align='center', cache=TRUE}
+```{r echo=FALSE, out.width = "700", fig.align='center', cache=TRUE}
 knitr::include_graphics('prac5_images/extractattribute.png') 
 ```
 
@@ -414,7 +414,7 @@ You need to:
 
 **Note** You can filter by multiple attributes using extract by expression...here we would use the expression ("room_type" ILIKE '%Entire home/apt%') AND ("availability_365" ILIKE '%365%') to filter based on entire home/apt and available 365 days of the year.
 
-#### Map data
+### Map data
 
 83. So now you should have two London borough layers one with a count of all the hotels and the other with a count of all the air b n b properties...To make a thematic map right click on the hotel layer > Symbology (tab) select Graduated and your count coloumn as the coloumn, mode as natural breaks and then classify...
 
@@ -434,7 +434,7 @@ knitr::include_graphics('prac5_images/QGISsymbology.png')
 
 89. Make sure give the same size to both Maps...to do so click on a Map > Item Properties (bottom right) scroll down, expand Position and Size, give the same width and height values
 
-```{r echo=FALSE, out.width = "800", fig.align='center', cache=TRUE}
+```{r echo=FALSE, out.width = "600", fig.align='center', cache=TRUE}
 knitr::include_graphics('prac5_images/positionsize.png') 
 ```
 
@@ -444,7 +444,7 @@ knitr::include_graphics('prac5_images/positionsize.png')
 
 92. Add a legend: Add Item > Add Legend and draw a sqaure. Same process to adjust it. Untick Auto update then you can use the + and - icons to remove items along with the edit icon to change the text...this is what mine looks like...
 
-```{r echo=FALSE, out.width = "800", fig.align='center', cache=TRUE}
+```{r echo=FALSE, out.width = "600", fig.align='center', cache=TRUE}
 knitr::include_graphics('prac5_images/QGIS_legend.png') 
 ```
 
@@ -460,11 +460,11 @@ knitr::include_graphics('prac5_images/QGIS_legend.png')
 
 This is what i came up with in my map layout
 
-```{r echo=FALSE, out.width = "800", fig.align='center', cache=TRUE}
+```{r echo=FALSE, out.width = "600", fig.align='center', cache=TRUE}
 knitr::include_graphics('prac5_images/QGIS_maplayout.png') 
 ```
 
-#### Export map
+### Export map
 
 To export your map to a file go: Layout > Export as Image and select crop to content...and here is my map...
 
@@ -476,7 +476,7 @@ knitr::include_graphics('prac5_data/QGIS_hotel.png')
 (a) If you look closely at the vector layer for London you will see that one of the boroughs is missing from map (b) --- this is most likely because it has no data but could easily be fixed
 (b) Whilst this time i've displayed all the city names the colour scheme needs work...for ideas on this check out colour
 
-#### Graphical modeler
+### Graphical modeler
 
 As in ArcMap we can automate the methodological process in QGIS using the graphical modeler..again i'll provide a short example here
 
@@ -484,15 +484,17 @@ As in ArcMap we can automate the methodological process in QGIS using the graphi
 
 Graphical modeler is a bit different to model builder in ArcMap, here you drag inputs and algorthims from the inputs box (bottom left) into the model, you don't need to specify the inputs here. When you click the run buttom (play on the top toolbar) you'll be asked to provide the layers for the inputs. The options will be limited to those you currently have open in your map...check out the model i made to automate reprojecting cities and the UK outline, then extracting the cities within the UK outline...
 
-```{r echo=FALSE, fig.align='center', cache=TRUE}
-knitr::include_graphics('prac5_data/QGIS_model.png') 
+```{r echo=FALSE, out.width = "600", fig.align='center', cache=TRUE}
+knitr::include_graphics('prac5_images/QGIS_model.png') 
 ```
 
 Make sure you save your model from the top tool bar either as a standalone model or within your project
 
 ## R
 
-Your R and geogprahical are certainly improving by now, so i'm just going to provide you with the R code i used to do this analysis..we'll then have a quick look at making a Shiny app using the data --- which i'll explain fully.
+Your R and geogprahical are certainly improving by now, so i'm just going to provide you with the R code i used to do this analysis...
+
+### Static map
 
 ```{r warning=FALSE, message=FALSE, out.width = "800pt", cache=TRUE}
 ##Load all our data
@@ -606,31 +608,30 @@ t=tmap_arrange(tm1, tm2, tm3, legend, ncol=2)
 t
 ```
 
-### Output
+### Export
 
-#### Static export
 So how do we output our map then...
 
-```{r eval=FALSE}
+```{r eval=FALSE, cache=TRUE}
 tmap_save(t, 'hotelsandairbnbR.png')
 ```
 
-#### Basic interactive map
+### Basic interactive map
 
 But could we not also make an interactive map like we did in practical 2?
 
-```{r message=FALSE, warning=FALSE}
+```{r message=FALSE, warning=FALSE, cache=TRUE}
 tmap_mode("view")
 
 tm_shape(Airbnb) + 
   tm_polygons("freq", breaks=breaks) 
 ```
 
-#### Advanced interactive map
+### Advanced interactive map
 
 But let's take it a bit further so we can select our layers on an interactive map..
 
-```{r}
+```{r message=FALSE, warning=FALSE, cache=TRUE}
 # library for pop up boxes
 library(leafpop)
 library(leaflet)
@@ -690,6 +691,7 @@ map<- leaflet(ti) %>%
 # plot the map
 map
 ```
+
 
 If you want to explore Leaflet more have a look at this website: https://rstudio.github.io/leaflet/
 

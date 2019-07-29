@@ -1,10 +1,10 @@
-# Analysing Spatial Patterns
+# Analysing spatial patterns
 
 ## Learning outcomes
 
 By the end of this practical you should be able to:
 
-1.
+1. 
 2.
 3.
 
@@ -32,13 +32,15 @@ library(geojson)
 library(geojsonio)
 library(tmaptools)
 ```
-## Setting up Your data
+## Setting up your data
 
 Now, assuming that you've got a copy of your London Boroughs shapefile (from week 1) in your new week 6 folder, along with a shapefile of your Blue Plaques; read in the data...
 
 ```{r, cache=TRUE}
 ##First, get the London Borough Boundaries
-EW <- geojsonio::geojson_read("http://geoportal.statistics.gov.uk/datasets/8edafbe3276d4b56aec60991cbddda50_2.geojson", what = "sp")
+EW <- geojsonio::geojson_read(
+  "http://geoportal.statistics.gov.uk/datasets/8edafbe3276d4b56aec60991cbddda50_2.geojson",
+  what = "sp")
 ```
 
 Pull out london using grep and the regex wildcard for'start of the string' (^) to to look for the bit of the district code that relates to London (E09) from the 'lad15cd' column in the data slot of our spatial polygons dataframe
@@ -57,7 +59,9 @@ Now get the location of all Blue Plaques in the City
 
 ```{r}
 ##Now get the location of all Blue Plaques in the City
-BluePlaques <- geojson_read("https://s3.eu-west-2.amazonaws.com/openplaques/open-plaques-london-2018-04-08.geojson", what = "sp")
+BluePlaques <- geojson_read(
+  "https://s3.eu-west-2.amazonaws.com/openplaques/open-plaques-london-2018-04-08.geojson",
+  what = "sp")
 summary(BluePlaques)
 
 #now set up an EPSG string to help set the projection 
@@ -409,6 +413,8 @@ Now, at this point you have a choice and at bit like in those Fighting Fantasy (
 **Option 1**. If you've had enough of coding and you think you might like to do your coursework in ArcGIS and have a bit more practice with model builder, then go to [ArcMap part 2]. This will show you how to analyse spatial autocorrelation in ArcGIS and will give you more practice will model builder.
 
  **Option 2**. If you are a total bad-ass and want to continue with R, then brilliant!! Woo hoo!! You can keep following the instuctions below. 
+ 
+...Of course there is also **Option 3** and that is to give both a go...
 
 Have the Arc lot gone? OK great, here's some more lovely R...
 
@@ -416,7 +422,7 @@ In this section we are going to explore patterns of spatially referenced continu
 
 ### Data download
 
-Before we get any further, let's get some ward boundaries read in to R - download LondonWardData from Moodle, unzip it and then read it in.
+Before we get any further, let's get some ward boundaries read in to R --- download LondonWardData from Github and read it in...https://github.com/andrewmaclachlan/CASA0005repo/tree/master/prac6_data
 
 ```{r, cache=TRUE}
 library(rgdal)
@@ -675,157 +681,149 @@ Then try the following out:
 
 ## ArcMap part 2 
 
-In this part of the practical you will need to use the London Ward boundaries linked to your London Data file you can find on Moodle. 
+### Getting started
 
-If you carried out the exercise properly last time, you should have already aggregated the small City of London Wards into a single City of London zone and changed the code accordingly. If you did not manage to do this, then turn to the Appendix of this document where there are a series of steps to help you set up the file you need. 
+1. Create a new geodatabase in your working folder on your N: drive 
 
-Create a new geodatabase in a new wk6 folder on your N: drive and export last week’s London Ward data to a new file geodatabase feature class called ‘LondonWards’
+2. Start ArcMap and add the Ward boundary data from practical 1 or download it again from: https://data.london.gov.uk/dataset/statistical-gis-boundary-files-london
 
-**An exploratory research question: Are people with high or low GCSE scores spatially clustered in London?**
+3. Right-click on your layer and select Data > Export Data. Save your data as a new file geodatabase feature class and give it an appropriate name –-- we are doing this as we will be messing around with boundary polygons and it’s good practice not to ruin the original file!
 
-(*note, for those not familiar with the English schooling system, GCSEs are the examinations taken at age 16 – these are the only exams it is compulsory for anyone to take and so cover the academic attainment of almost all of the population below a certain age)
+4. Add your newly saved feature class your map. Open up the attribute table and sort the data by the column LG_GSS_CD (right-click the header column and sort ascending). As the LG_GSS_CD code for the City of London is E09000001, all of the Wards within the feature class will now be sorted to the top of the file
 
-1. We are almost ready to try some exploratory analysis, but before we do this, we will need to generate a unique ID column in your LondonWards feature class. Open the attribute table and in Table Options, select Add a Field of type Short Integer called ID. Scroll to the last column in the table and you should see your new column. Right click the header and select the field calculator. Set ID to = ObjectID and click OK
+5. Left-click the small box to the left of the first row – this should highlight the first row in blue (and the polygon on the map). Scroll down a few rows until you find the last City of London ward – this should be. Hold down shift and click the small box to the left of this row. All rows above should now be highlighted in blue (and this should show on the map). You can also click and drag 
 
-```{r echo=FALSE, out.width = "400pt", fig.align='center', cache=TRUE}
-knitr::include_graphics('prac6_images/fieldcalc.png')
+6. We are now ready to dissolve these boundaries into a single City of London zone. If you have not already done so, activate the Editor toolbar: Customize > Toolbars > Editor. On the Editor toolbar, select Start Editing from the dropdown menu 
+
+7.	If you have other layers open in your map, you may have to select the correct layer to edit
+8.	In the editor dropdown menu, ‘Merge’ should now be active. Click Merge. Select the first feature as your merge feature and click ‘OK’
+
+9. Whilst still in Editor change the GSS_CODE for Castle Bayard to E09000001
+
+10. In the Editor drop down menu, select Save Edits and then Stop Editing
+
+11. You should now see on your map that the ward boundaries have dissolved and in your attribute table, only the first row – Castle Baynard, should be left
+
+12.	We are now ready to join your London data to your new boundaries. Get the data from: https://data.london.gov.uk/dataset/ward-profiles-and-atlas. Ward Atlas data, excel format. Save it to your current working folder
+
+13.	Open the excel document and the data tab or worksheet (bottom left). Delete all the data we are not interested in and save it as a .csv…I’ve removed everything expect New Code and Median Household income estimate (2012/13).
+
+14.	Add your ```.csv``` layer to your map. Join the ```.csv``` data to your newly edited boundary data. Use GSS_CODE and New code to match the records, keeping only the matching records. Export your new layer as a new geodatabase feature class in a new file geodatabase for this week’s practical. I’ve called mine Londonwards_GCSE
+
+**Hint** make sure you don’t have any layers open twice (e.g. if you have your ```.csv``` open and they try to open it and join it to the ```.shp``` in ArcMap it will most likely not work).
+
+**An exploratory research question: Are households with high or low median incomes spatially clustered in London?**
+
+15. We are almost ready to try some exploratory analysis, but before we do this, we will need to generate a unique ID column in your new LondonWards feature class. Open the attribute table and in Table Options, select Add a Field of type Short Integer called ID. Scroll to the last column in the table and you should see your new column. Right click the header and select the field calculator. Set ID to = ObjectID and click OK.
+
+```{r echo=FALSE, out.width = "400px", fig.align='center', cache=TRUE}
+knitr::include_graphics('prac6_images/fieldcalc.png') 
 ```
 
-**Note** --– in the image here, the ID Field is FID, this is because I used a shape file here rather than a geodatabase feature class. With a feature class, the default ID is ObjectID
+16. Before we start our income values are stored as a string and we need to convert them to numeric…add a new field to the attribute table with the type of float, right click on the new field > Field Calculator then set the new field to equal to the Median_Household_income_estimate__2012_13 point scores --- use this new field from now on. If you can’t add a new field save and then reload the ArcMap document --- I think this is due to ArcMap locking certain layers, but that will solve it
 
-2. First of all, generate a standard choropleth map of the Average GCSE point score for people living in wards in London. Does it look like there might be a spatial pattern? From this map, what might your hypothesis be? In statistical analysis it is standard practice to reverse your hypothesis and turn it into a null hypothesis. Therefore, if your hypothesis is there is a spatial pattern to average GCSE scores, then the null-hypothesis is that there is not a relationship (and vice versa)
+17.	First of all, generate a standard choropleth map of median income for people living in wards in London. Does it look like there might be a spatial pattern? From this map, what might your hypothesis be? In statistical analysis it is standard practice to reverse your hypothesis and turn it into a null hypothesis. Therefore, if your hypothesis is there is a spatial pattern to median household income, then the null-hypothesis is that there is not a relationship (and vice versa)
 
-3. In order to confirm or reject your null hypothesis we will run both a global Geary’s C test and a global Moran’s I test
+18. In order to confirm or reject your null hypothesis we will run both a global Geary’s C test and a global Moran’s I test
 
-4. Go to Geoprocessing > Arc Toolbox and load the Arc Toolbox if it is not already there. 
+19. Go to Geoprocessing > Arc Toolbox and load the Arc Toolbox if it is not already there
 
-5. Select Spatial Statistics Tools > Analyzing Patterns > High/Low Clustering Getis-Ord General G
+20. Select Spatial Statistics Tools > Analyzing Patterns > High/Low Clustering Getis-Ord General G
 
-6. When the dialogue box opens, add your LondonWards feature class as the input feature class and choose the other options as shown below:
+21. When the dialogue box opens, add your LondonWards feature class as the input feature class and choose the other options as shown below:
 
-```{r echo=FALSE, out.width = "400pt", fig.align='center', cache=TRUE}
-knitr::include_graphics('prac6_images/getisord.png')
+```{r echo=FALSE, out.width = "600px", fig.align='center', cache=TRUE}
+knitr::include_graphics('prac6_images/getis.png') 
 ```
 
-7. In this instance we will use a standard inverse distance matrix for spatial weights – refer back to the lecture notes if you can’t remember what an inverse distance matrix is. Make sure the Generate Report option is ticked and then run the tool by clicking OK
+22. In this instance we will use a standard inverse distance matrix for spatial weights – refer back to the lecture notes if you can’t remember what an inverse distance matrix is. Make sure the Generate Report option is ticked and then run the tool by clicking OK
 
-8. The dialogue box will show you when the process is complete. If the results tab doesn’t appear, select Geoprocessing > Results and expand the results of HighLowClustering. Double click on the report file to open up the report
+23. The dialogue box will show you when the process is complete. If the results tab doesn’t appear, select Geoprocessing > Results and expand the results of HighLowClustering. Double click on the report file to open up the report
 
-```{r echo=FALSE, out.width = "400pt", fig.align='center', cache=TRUE}
-knitr::include_graphics('prac6_images/clusterreport.png')
+```{r echo=FALSE, out.width = "400px", fig.align='center', cache=TRUE}
+knitr::include_graphics('prac6_images/clusterreport.png') 
 ```
 
-9. What does the report suggest about the spatial clustering of GCSE scores in London? What is a Z-score (if you’re not sure, Wikipedia is always a good place to start - http://en.wikipedia.org/wiki/Standard_score)
+24. What does the report suggest about the spatial clustering of GCSE scores in London? What is a Z-score (if you’re not sure, Wikipedia is always a good place to start - http://en.wikipedia.org/wiki/Standard_score)
 
-10. Generate a similar report using the Spatial Autocorrelation (Moran’s I) tool. What does this report tell you?
+25. Generate a similar report using the Spatial Autocorrelation (Moran’s I) tool. What does this report tell you?
 
 **Where are the high and low clusters in London and how does the conception of spatial weights affect the patterns which are shown?**
 
-11.	 Now we have some global measures of spatial autocorrelation, it will be useful to look at where, specifically, spatial clusters are found. To do this we will also generate a series of spatial weights matrices using the Arc Model Builder and run Local Moran’s I and Geary’s C calculations to see how the conception of spatial weights affects the results of the analysis 
+26. Now we have some global measures of spatial autocorrelation, it will be useful to look at where, specifically, spatial clusters are found. To do this we will also generate a series of spatial weights matrices using the Arc Model Builder and run Local Moran’s I and Geary’s C calculations to see how the conception of spatial weights affects the results of the analysis
 
 ### Using the Model Builder
 
-12. First we will set our environment workspace. Select Geoprocessing > Environments… and under Workspace set the current and scratch workspaces to your wk6 file geodatabase. You should also set your default geodatabase to the one you created in your week 6 folder in your map document properties
+27.	First we will set our environment workspace. Select Geoprocessing > Environments… and under Workspace set the current and scratch workspaces to your wk6 file geodatabase. You should also set your default geodatabase to the one you created in your week 6 folder in your map document properties
 
-13. Select Geoprocessing > ModelBuilder and the Model Builder box should open up
+28.	Select Geoprocessing > ModelBuilder and the Model Builder box should open up. The model builder is a visual interface which allows you to build up the elements of your model by dragging data, tools and iterators into the window
 
-```{r echo=FALSE, out.width = "400pt", fig.align='center', cache=TRUE}
-knitr::include_graphics('prac6_images/modelbuilder.png')
+29. In Arc Toolbox, go to Spatial Statistics Tools > Modeling Spatial Relationships > Generate Spatial Weights Matrix and drag it into your model builder box. Double click the ‘Generate Spatial Weights Matrix’ box and the dialogue box for the tool should appear. We will first create a spatial weights matrix based on contiguity (Queen’s Case – edges and corners) using the options shown below. Save the ```.swm``` file into the same folder as your shapefile or geodatabase in your working directory, remembering to check the box next to row standardization
+
+```{r echo=FALSE, out.width = "650px", fig.align='center', cache=TRUE}
+knitr::include_graphics('prac6_images/spatialweights.png') 
 ```
 
-14. In Arc Toolbox, go to Spatial Statistics Tools > Modeling Spatial Relationships > Generate Spatial Weights Matrix and drag it into your model builder box. Double click the ‘Generate Spatial Weights Matrix’ box and the dialogue box for the tool should appear. We will first create a spatial weights matrix based on contiguity (Queen’s Case – edges and corners) using the options shown below. Save the .swm file into the same folder as your shapefile or geodatabase in your working directory, remembering to check the box next to row standardization
+30. Create a further two spatial weights matrices. The first one should be for the 8 nearest neighbours, the second a standard inverse distance. Both should be generated from the same feature class as below
 
-```{r echo=FALSE, out.width = "400pt", fig.align='center', cache=TRUE}
-knitr::include_graphics('prac6_images/spatialweights.png')
+```{r echo=FALSE, out.width = "650px", fig.align='center', cache=TRUE}
+knitr::include_graphics('prac6_images/modelbuilder_spatialweights.png') 
 ```
 
-15. Create a further two spatial weights matrices. The first one should be for the 8 nearest neighbours, the second a standard inverse distance. Both should be generated from the same feature class as below:
+**Note**, to join an existing input to a new tool, use the ‘Connect’ tool and drag a line to the tool you are using
 
-```{r echo=FALSE, out.width = "400pt", fig.align='center', cache=TRUE}
-knitr::include_graphics('prac6_images/spatialweightsmodel.png')
+31. Now we have our three spatial weights matices, we can carry out local Moran’s I and local Geary’s C analyses using the different conceptions of proximity. To do this, simply drag the tools (Cluster and Outlier Analysis and Hotspot analysis) from within Spatial Statistics Tools > Mapping Clusters into your Model Builder box. Double Click the tool and fill out the options as below – remember to select GET_SPATIAL_WEIGHTS_FROM_FILE and choose the appropriate spatial weights matrix. Make sure you use the feature class you saved to get the income data as the input feature class.
+
+```{r echo=FALSE, out.width = "600px", fig.align='center', cache=TRUE}
+knitr::include_graphics('prac6_images/clusteroutlier2.png') 
 ```
 
-**Note**, to join an existing input to a new tool, use the ‘Connect’   tool and drag a line to the tool you are using
+32. Double click your green output file and change its name to something recognisable
 
-16. Now we have our three spatial weights matices, we can carry out local Moran’s I and local Geary’s C analyses using the different conceptions of proximity. To do this, simply drag the tools (Cluster and Outlier Analysis and Hotspot analysis) from within Spatial Statistics Tools > Mapping Clusters into your Model Builder box. Double Click the tool and fill out the options as below –-- remember to select GET_SPATIAL_WEIGHTS_FROM_FILE and choose the appropriate spatial weights matrix
+33. Right click the output file and check the box next to OK 
 
-```{r echo=FALSE, out.width = "400pt", fig.align='center', cache=TRUE}
-knitr::include_graphics('prac6_images/clusterandoutlier.png')
+34. Add another two Moran’s I calculations – one for each of the other spatial weights matrices. Then add a Local Geary’s C calculation for each spatial weights matrix as well. You should end up with 6 output files as below. Make sure you change the names of each output file and add them to display as well
+
+```{r echo=FALSE, out.width = "650px", fig.align='center', cache=TRUE}
+knitr::include_graphics('prac6_images/modelbuilderfinal.png') 
 ```
 
-17. Double click your green output file and change its name to something recognisable
+35. When you have finished building your model, in the top menu, select Model > Save As and save your model into a new tool box   in your working directory
 
-18. Right click the output file and check the box next to ‘Add to display’ 
+36. 22.	Now you are ready to run your model. Select Model > Run Entire Model. The model will run, and if you have remembered to tick the ‘Add to display’ option next to each output file, each output should be added to your map. This will display confidence intervals, which can you change to Z scores under the layer symbology. Otherwise you can add them in from your GeoDatabase
 
-```{r echo=FALSE, out.width = "400pt", fig.align='center', cache=TRUE}
-knitr::include_graphics('prac6_images/spatialweightsmodel2.png')
+37. You are now able to review the results of your hotspot (Local Geary’s C) and Local Moran’s I analyses. To understand what the values HH, LL, HL and LH mean, you should consult the ArcGIS help system - http://help.arcgis.com/en/arcgisdesktop/10.0/help/index.html#/How_Cluster_and_Outlier_Analysis_Anselin_Local_Moran_s_I_works/005p00000012000000/
+
+38. If you wish, to aid interpretation, you can add some London Borough boundaries to your map --- you can get this layer from practical 1
+
+```{r echo=FALSE, out.width = "700px", fig.align='center', cache=TRUE}
+knitr::include_graphics('prac6_images/finalmap.png') 
 ```
 
-19. Add another two Moran’s I calculations – one for each of the other spatial weights matrices. Then add a Local Geary’s C calculation for each spatial weights matrix as well. You should end up with 6 output files as below. Make sure you change the names of each output file and add them to display as well
+39. Referring back to the exploratory research question asked above, what can you observe about the spatial clustering of median income in London? How does the conception of spatial relationships affect the results of these spatial autocorrelation analyses? Why might the ways that spatial relationships are conceived affect these results?
 
-```{r echo=FALSE, out.width = "400pt", fig.align='center', cache=TRUE}
-knitr::include_graphics('prac6_images/spatialweightsmodel3.png')
-```
+### Extension work
 
-20. When you have finished building your model, in the top menu, select Model > Save As and save your model into a new tool box in your working directory. If you decide to use model builder in your coursework assignment, you will be submitting a saved model. You can also export a diagram of your model
-
-21.	Now you are ready to run your model. Select Model > Run Entire Model. The model will run, and if you have remembered to tick the ‘Add to display’ option next to each output file, each output should be added to your map
-
-22.	You are now able to review the results of your hotspot (Local Geary’s C) and Local Moran’s I analyses. To understand what the values HH, LL, HL and LH mean, you should consult the ArcGIS help system - http://help.arcgis.com/en/arcgisdesktop/10.0/help/index.html#/How_Cluster_and_Outlier_Analysis_Anselin_Local_Moran_s_I_works/005p00000012000000/
-
-23.	If you wish, to aid interpretation, you can add some London Borough boundaries to your map
-
-```{r echo=FALSE, out.width = "400pt", fig.align='center', cache=TRUE}
-knitr::include_graphics('prac6_images/outmap.png')
-```
-
-24. Referring back to the exploratory research question asked above, what can you observe about the spatial clustering of GCSE Exam attainment in London? How does the conception of spatial relationships affect the results of these spatial autocorrelation analyses? Why might the ways that spatial relationships are conceived affect these results?
-
-### Extension Work
-
-#### Extension Option A – More practice with Arc Model Builder
+#### Model builder
 
 Build a model using model builder which:
-*	Reads in your blue plaques data from last week, 
-*	Adds a new short integer field using the ‘add field’ tool 
-*	Fills this new field with 1’s using the ‘calculate field’ tool
-*	Carries out a spatial join, calculating the number of blue plaques in each ward by using the sum of the new field you have just created
-*	Calculates the median centre of all of the blue plaques in London
-*	Carries out a hot spot analysis of these blue plaques to see if there is any noticeable spatial clustering.
+* Reads in your blue plaques data from last week, 
+* Adds a new short integer field using the ‘add field’ tool 
+* Fills this new field with 1’s using the ‘calculate field’ tool
+* Carries out a spatial join, calculating the number of blue plaques in each ward by using the sum of the new field you have just created
+* Calculates the median centre of all of the blue plaques in London
+* Carries out a hot spot analysis of these blue plaques to see if there is any noticeable spatial clustering
 
-#### Further practice
+#### Further practice 
 
-The introduction to model builder has only been very cursory –-- it is able to carry out far more complex tasks. If you think you would like to use Model Builder in your coursework assessment (remember your other option is to do something similar in R or QGIS), then ESRI have a number of tutorial activities to take you from the basics to something far more advanced
+The introduction to model builder has only been very cursory --– it is able to carry out far more complex tasks. If you think you would like to use Model Builder in your coursework assessment (remember you other option is to do something similar in R or QGIS), then ESRI have a number of tutorial activities to take you from the basics to something far more advanced.
 
-The tutorials can be accessed from the online help system then this is a good place to start: http://resources.arcgis.com/en/help/main/10.1/index.html#/What_is_ModelBuilder/002w00000001000000/
+The tutorials can be accessed from the online help system. If you are running ArcGIS 10.1 (I doubt the pages will change much for 10 or 10.2), then this is a good place to start:
+http://resources.arcgis.com/en/help/main/10.1/index.html#/What_is_ModelBuilder/002w00000001000000/
 
 These tutorials will introduce you to many more features that we didn’t cover today. 
 
-## Appendix
 
-### Merging the City of London Wards into a single zone
 
-1. Start ArcMap and add your 2011 Ward boundary data (downloaded from either the UK Data Service or ONS Geoportal – don’t get the Census Merged Wards, just Wards E+W) to a new map document
 
-2. Right-click on your layer and select Data > Export Data. Save your data as a new file geodatabase feature class and give it an appropriate name – we are doing this as we will be messing around with boundary polygons and it’s good practice not to ruin the original file!
-
-3. Add your newly saved feature class your map. Open up the attribute table and sort the data by the column WD11CDO (right-click the header column and sort ascending). As the borough code for the City of London is 00AA, all of the Wards within will now be sorted to the top of the file
-
-4. Left-click the small box to the left of the first row – this should highlight the first row in blue (and the polygon on the map). Scroll down a few rows until you find the last City of London ward – this should be 00AAGB, Walbrook. Hold down shift and click the small box to the left of this row. All rows above should now be highlighted in blue (and this should show on the map)
-
-5. We are now ready to dissolve these boundaries into a single City of London zone. If you have not already done so, activate the Editor toolbar: Customize > Toolbars > Editor. On the Editor toolbar, select Start Editing from the dropdown menu
-
-6. If you have other layers open in your map, you may have to select the correct layer to edit
-
-7. In the editor dropdown menu, ‘Merge’ should now be active. Click Merge. Select the first feature as your merge feature and click ‘OK’
-
-8. You should now see on your map that the ward boundaries have dissolved and in your attribute table, only the first row – Aldersgate, should be left
-
-9. In your attribute table, Click in the cells for WD11CD, WD11CDO and WD11NM and manually edit the codes so that for this new polygon, WD11CD = E09000001, WD11CDO = 00AA and WD11NM = City of London
-
-10. We are now ready to join your London data to your new boundaries
-
-11. Add your LondonData.xls layer to your map (not the .csv file – this, for some unknown reason might cause problems!). Join the xls data to your newly edited boundary data, keeping only the matching records. Export your new layer as a new geodatabase feature class in a new file geodatabase for this week’s practical
-
-12. In the Editor drop down menu, select Save Edits and then Stop Editing
 
