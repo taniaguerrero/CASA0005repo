@@ -208,6 +208,8 @@ To make a site you'll need the following to be within your project:
 
 For the site to work you only require (a) and (b)....but that would be a pretty boring site...
 
+11. In your new project add a RMarkdown a file called ```_site.yml``` and one called ```index.Rmd``
+
 
 
 ## Shiny
