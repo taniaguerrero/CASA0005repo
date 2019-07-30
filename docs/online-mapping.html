@@ -24,7 +24,7 @@
 <meta name="author" content="Andy MacLachlan and Adam Dennett" />
 
 
-<meta name="date" content="2019-07-29" />
+<meta name="date" content="2019-07-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -347,13 +347,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8" data-path="online-mapping.html"><a href="online-mapping.html"><i class="fa fa-check"></i><b>8</b> Online mapping</a><ul>
 <li class="chapter" data-level="8.1" data-path="online-mapping.html"><a href="online-mapping.html#learning-objectives-1"><i class="fa fa-check"></i><b>8.1</b> Learning objectives</a></li>
 <li class="chapter" data-level="8.2" data-path="online-mapping.html"><a href="online-mapping.html#introduction-9"><i class="fa fa-check"></i><b>8.2</b> Introduction</a></li>
-<li class="chapter" data-level="8.3" data-path="online-mapping.html"><a href="online-mapping.html#rmarkdown-site-generator"><i class="fa fa-check"></i><b>8.3</b> RMarkdown site generator</a></li>
+<li class="chapter" data-level="8.3" data-path="online-mapping.html"><a href="online-mapping.html#rpubs"><i class="fa fa-check"></i><b>8.3</b> RPubs</a></li>
+<li class="chapter" data-level="8.4" data-path="online-mapping.html"><a href="online-mapping.html#rmarkdown-site-generator"><i class="fa fa-check"></i><b>8.4</b> RMarkdown site generator</a></li>
+<li class="chapter" data-level="8.5" data-path="online-mapping.html"><a href="online-mapping.html#shiny"><i class="fa fa-check"></i><b>8.5</b> Shiny</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="assignment-resources-1.html"><a href="assignment-resources-1.html"><i class="fa fa-check"></i><b>9</b> Assignment resources</a><ul>
 <li class="chapter" data-level="9.1" data-path="assignment-resources-1.html"><a href="assignment-resources-1.html#booksreading-resources"><i class="fa fa-check"></i><b>9.1</b> Books/reading resources</a></li>
 <li class="chapter" data-level="9.2" data-path="assignment-resources-1.html"><a href="assignment-resources-1.html#data-3"><i class="fa fa-check"></i><b>9.2</b> Data</a></li>
 <li class="chapter" data-level="9.3" data-path="assignment-resources-1.html"><a href="assignment-resources-1.html#data-lists-1"><i class="fa fa-check"></i><b>9.3</b> Data lists</a></li>
-<li class="chapter" data-level="9.4" data-path="assignment-resources-1.html"><a href="assignment-resources-1.html#reading-and-writing"><i class="fa fa-check"></i><b>9.4</b> Reading and writing</a></li>
+<li class="chapter" data-level="9.4" data-path="assignment-resources-1.html"><a href="assignment-resources-1.html#critically-reading-and-writing"><i class="fa fa-check"></i><b>9.4</b> Critically reading and writing</a></li>
 <li class="chapter" data-level="9.5" data-path="assignment-resources-1.html"><a href="assignment-resources-1.html#free-flow-diagram-tools"><i class="fa fa-check"></i><b>9.5</b> Free flow diagram tools</a></li>
 </ul></li>
 <li class="divider"></li>
@@ -389,10 +391,179 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="introduction-9" class="section level2">
 <h2><span class="header-section-number">8.2</span> Introduction</h2>
-<p>In this practica we are going to explore several ways of publishing your R code and outputs (including interactive plots) online.</p>
+<p>In this practical we are going to explore several ways of publishing your R code and outputs (including interactive plots) online.</p>
+</div>
+<div id="rpubs" class="section level2">
+<h2><span class="header-section-number">8.3</span> RPubs</h2>
+<p>One of the most straight forward publishing tools is RPubs. It takes an <code>.Rmd</code> and directly uploads it to rpubs.com — all files are publically available on this website.</p>
+<ol style="list-style-type: decimal">
+<li><p>To start with you need to make a free account. Go to: <a href="https://rpubs.com/users/new" class="uri">https://rpubs.com/users/new</a> and register</p></li>
+<li><p>Create a new project in RStudio and open a new R Markdown file (File &gt; New File &gt; R Markdown)</p></li>
+<li><p>You’ll see that the file is automatically populated with some information, have a read through it then click the Knit icon (if you remember we covered this in <a href="git-github-and-rmarkdown.html#knitting-your-output">Knitting your output</a>)…</p></li>
+</ol>
+<p><img src="prac8_images/knitt.png" width="500pt" style="display: block; margin: auto;" /></p>
+<ol start="4" style="list-style-type: decimal">
+<li><p>Let’s make some changes to your <code>.Rmd</code>. Delete all the text and code except from header inforamtion (that is enclosed by three dashes at the top of the file)</p></li>
+<li><p>Insert a new code chunk (go back to <a href="git-github-and-rmarkdown.html#rmarkdown">RMarkdown</a> if you need a refresher) and add some code of your choice from either a previous practical or your own work. As it’s a new project you’ll have to either copy the data into your project folder or set the working directory <code>setwd()</code>. If it’s all online data that you’ve loaded directly from the web into R, this shouldn’t be an issue. I’m going to use the interactive map we made in practical 5 (the <a href="map-making.html#advanced-interactive-map">Advanced interactive map</a> section)..I have copied the…..Here is the code i’ve put in my chunk:</p></li>
+</ol>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(sf)
+<span class="kw">library</span>(tmap)
+<span class="kw">library</span>(leafpop)
+<span class="kw">library</span>(leaflet)
+<span class="kw">library</span>(tmaptools)
+<span class="kw">library</span>(tidyverse)
+<span class="kw">library</span>(plyr)
+
+OSM &lt;-<span class="st"> </span><span class="kw">read_shape</span>(<span class="st">&quot;data/gis_osm_pois_a_free_1.shp&quot;</span>,<span class="dt">as.sf =</span> <span class="ot">TRUE</span>)
+
+Londonborough &lt;-<span class="st"> </span><span class="kw">read_shape</span>(<span class="st">&quot;data/London_Borough_Excluding_MHW.shp&quot;</span>,<span class="dt">as.sf =</span> <span class="ot">TRUE</span>)
+
+Airbnb &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;data/listings.csv&quot;</span>)
+  
+<span class="co"># plot xy data</span>
+Airbnb &lt;-<span class="st"> </span><span class="kw">st_as_sf</span>(Airbnb, <span class="dt">coords =</span> <span class="kw">c</span>(<span class="st">&quot;longitude&quot;</span>, <span class="st">&quot;latitude&quot;</span>), 
+                   <span class="dt">crs =</span> <span class="dv">4326</span>)
+
+<span class="co"># reproject</span>
+OSM &lt;-<span class="st"> </span><span class="kw">st_transform</span>(OSM, <span class="dv">27700</span>)
+Airbnb &lt;-<span class="st"> </span><span class="kw">st_transform</span>(Airbnb, <span class="dv">27700</span>)
+<span class="co"># we don&#39;t need to reproject Londonborough, but it </span>
+<span class="co"># doesn&#39;t have a CRS..you could also use set_crs</span>
+<span class="co"># it needs to have one for the next step</span>
+Londonborough&lt;-<span class="st"> </span><span class="kw">st_transform</span>(Londonborough, <span class="dv">27700</span>)
+
+<span class="co">#select hotels only</span>
+OSM &lt;-<span class="st"> </span>OSM[OSM<span class="op">$</span>fclass <span class="op">==</span><span class="st"> &#39;hotel&#39;</span>,]
+Airbnb &lt;-<span class="st"> </span>Airbnb[Airbnb<span class="op">$</span>room_type <span class="op">==</span><span class="st"> &#39;Entire home/apt&#39;</span> <span class="op">&amp;</span>
+<span class="st">                   </span>Airbnb<span class="op">$</span>availability_<span class="dv">365</span><span class="op">==</span><span class="st">&#39;365&#39;</span>,]
+
+<span class="co"># make a function for the join</span>
+<span class="co"># functions are covered in practical 7</span>
+<span class="co"># but see if you can work out what is going on</span>
+<span class="co"># hint all you have to do is replace data1 and data2</span>
+<span class="co"># with the data you want to use</span>
+
+Joinfun &lt;-<span class="st"> </span><span class="cf">function</span>(data1, data2) {
+  <span class="co"># join OSM and London boroughs</span>
+  joined &lt;-<span class="st"> </span><span class="kw">st_join</span>(data1, data2, <span class="dt">join =</span> st_within)
+  
+  <span class="co"># count the number of hotels per borough</span>
+  countno &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(<span class="kw">count</span>(joined<span class="op">$</span>GSS_CODE))
+  
+  <span class="co"># join the count back to the borough layer</span>
+  counted &lt;-<span class="kw">left_join</span>(data2, countno, <span class="dt">by=</span><span class="kw">c</span>(<span class="st">&quot;GSS_CODE&quot;</span>=<span class="st">&quot;x&quot;</span>))
+  
+  <span class="kw">return</span>(counted)
+}
+
+<span class="co"># use the function for hotels</span>
+Hotels &lt;-<span class="st"> </span><span class="kw">Joinfun</span>(OSM, Londonborough)
+
+<span class="co"># then for airbnb</span>
+Airbnb &lt;-<span class="st"> </span><span class="kw">Joinfun</span>(Airbnb, Londonborough)
+
+<span class="co"># now try to arrange the plots with tmap</span>
+breaks =<span class="st"> </span><span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">5</span>, <span class="dv">12</span>, <span class="dv">26</span>, <span class="dv">57</span>, <span class="dv">286</span>) 
+
+<span class="co">#change the column name from freq for the legend</span>
+<span class="kw">colnames</span>(Hotels)[<span class="kw">colnames</span>(Hotels)<span class="op">==</span><span class="st">&quot;freq&quot;</span>] &lt;-<span class="st"> &quot;Accom count&quot;</span>
+
+
+<span class="co">#join data</span>
+ti&lt;-<span class="kw">st_join</span>(Airbnb, Hotels)
+ti&lt;-<span class="kw">st_transform</span>(ti,<span class="dt">crs =</span> <span class="dv">4326</span>)
+
+<span class="co">#remove the geometry for our pop up boxes to avoid</span>
+<span class="co">#the geometry field </span>
+ti2&lt;-ti
+<span class="kw">st_geometry</span>(ti2)&lt;-<span class="ot">NULL</span>
+popairbnb=<span class="kw">popupTable</span>(ti2, <span class="dt">zcol=</span><span class="kw">c</span>(<span class="st">&quot;NAME.x&quot;</span>, <span class="st">&quot;GSS_CODE.x&quot;</span>, <span class="st">&quot;freq&quot;</span>))
+pophotels=<span class="kw">popupTable</span>(ti2, <span class="dt">zcol=</span><span class="kw">c</span>(<span class="st">&quot;NAME.x&quot;</span>, <span class="st">&quot;GSS_CODE.x&quot;</span>, <span class="st">&quot;Accom count&quot;</span>))
+
+<span class="kw">tmap_mode</span>(<span class="st">&quot;view&quot;</span>)
+
+<span class="co"># set the colour palettes using our previously defined breaks</span>
+pal &lt;-<span class="st"> </span><span class="kw">colorBin</span>(<span class="dt">palette =</span> <span class="st">&quot;YlOrRd&quot;</span>, <span class="dt">domain=</span>ti2<span class="op">$</span>freq, <span class="dt">bins=</span>breaks)
+pal2 &lt;-<span class="st"> </span><span class="kw">colorBin</span>(<span class="dt">palette =</span> <span class="st">&quot;YlOrRd&quot;</span>, <span class="dt">domain=</span>ti2<span class="op">$</span><span class="st">`</span><span class="dt">Accom count</span><span class="st">`</span>, <span class="dt">bins=</span>breaks)
+
+map&lt;-<span class="st"> </span><span class="kw">leaflet</span>(ti) <span class="op">%&gt;%</span>
+<span class="st">  </span>
+<span class="st">  </span><span class="co"># add basemap options</span>
+<span class="st">  </span><span class="kw">addTiles</span>(<span class="dt">group =</span> <span class="st">&quot;OSM (default)&quot;</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">addProviderTiles</span>(providers<span class="op">$</span>Stamen.Toner, <span class="dt">group =</span> <span class="st">&quot;Toner&quot;</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">addProviderTiles</span>(providers<span class="op">$</span>Stamen.TonerLite, <span class="dt">group =</span> <span class="st">&quot;Toner Lite&quot;</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="kw">addProviderTiles</span>(providers<span class="op">$</span>CartoDB.Positron, <span class="dt">group =</span> <span class="st">&quot;CartoDB&quot;</span>)<span class="op">%&gt;%</span>
+<span class="st">  </span>
+<span class="st">  </span><span class="co">#add our polygons, linking to the tables we just made</span>
+<span class="st">  </span><span class="kw">addPolygons</span>(<span class="dt">color=</span><span class="st">&quot;white&quot;</span>, 
+              <span class="dt">weight =</span> <span class="dv">2</span>,
+              <span class="dt">opacity =</span> <span class="dv">1</span>,
+              <span class="dt">dashArray =</span> <span class="st">&quot;3&quot;</span>,
+              <span class="dt">popup =</span> popairbnb,
+              <span class="dt">fillOpacity =</span> <span class="fl">0.7</span>,
+              <span class="dt">fillColor =</span> <span class="op">~</span><span class="kw">pal</span>(freq),
+              <span class="dt">group =</span> <span class="st">&quot;Airbnb&quot;</span>)<span class="op">%&gt;%</span>
+<span class="st">  </span>
+<span class="st">  </span><span class="kw">addPolygons</span>(<span class="dt">fillColor =</span> <span class="op">~</span><span class="kw">pal</span>(<span class="st">`</span><span class="dt">Accom count</span><span class="st">`</span>), 
+              <span class="dt">weight =</span> <span class="dv">2</span>,
+              <span class="dt">opacity =</span> <span class="dv">1</span>,
+              <span class="dt">color =</span> <span class="st">&quot;white&quot;</span>,
+              <span class="dt">dashArray =</span> <span class="st">&quot;3&quot;</span>,
+              <span class="dt">popup =</span> pophotels,
+              <span class="dt">fillOpacity =</span> <span class="fl">0.7</span>,<span class="dt">group =</span> <span class="st">&quot;Hotels&quot;</span>)<span class="op">%&gt;%</span>
+<span class="st">  </span><span class="co"># add a legend</span>
+<span class="st">  </span><span class="kw">addLegend</span>(<span class="dt">pal =</span> pal2, <span class="dt">values =</span> <span class="op">~</span><span class="st">`</span><span class="dt">Accom count</span><span class="st">`</span>, <span class="dt">group =</span> <span class="kw">c</span>(<span class="st">&quot;Airbnb&quot;</span>,<span class="st">&quot;Hotel&quot;</span>), 
+            <span class="dt">position =</span><span class="st">&quot;bottomleft&quot;</span>) <span class="op">%&gt;%</span>
+<span class="st">  </span><span class="co"># specify layers control</span>
+<span class="st">  </span><span class="kw">addLayersControl</span>(
+    <span class="dt">baseGroups =</span> <span class="kw">c</span>(<span class="st">&quot;OSM (default)&quot;</span>, <span class="st">&quot;Toner&quot;</span>, <span class="st">&quot;Toner Lite&quot;</span>, <span class="st">&quot;CartoDB&quot;</span>),
+    <span class="dt">overlayGroups =</span> <span class="kw">c</span>(<span class="st">&quot;Airbnb&quot;</span>, <span class="st">&quot;Hotels&quot;</span>),
+    <span class="dt">options =</span> <span class="kw">layersControlOptions</span>(<span class="dt">collapsed =</span> <span class="ot">FALSE</span>)
+  )
+
+<span class="co"># plot the map</span>
+map</code></pre>
+<ol start="6" style="list-style-type: decimal">
+<li><p>Add some text at the start of your <code>.Rmd</code> you can include titles and subtitle using # followed by a space, a second level subtitle would be ##, and third ###</p></li>
+<li><p>Save the file, Knitt it to HTML, this should be default and specified in the header — enclosed by three dashes.</p></li>
+<li><p>Once knitted you can easily publish the file to Ppubs using the Publish icon either in the viewer pane or the toolbar area (by run)</p></li>
+</ol>
+<p><img src="prac8_images/publish.png" width="300pt" style="display: block; margin: auto;" /></p>
+<p>Now how about adding a few design features…i’ve changed my header section to…</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="op">---</span>
+title<span class="op">:</span><span class="st"> &quot;publishexample&quot;</span>
+output<span class="op">:</span>
+<span class="st">  </span>html_document<span class="op">:</span>
+<span class="st">    </span>theme<span class="op">:</span><span class="st"> </span>yeti
+    smart<span class="op">:</span><span class="st"> </span>true
+    highlight<span class="op">:</span><span class="st"> </span>textmate
+    toc<span class="op">:</span><span class="st"> </span>true
+    number_sections<span class="op">:</span><span class="st"> </span>true
+    toc_float<span class="op">:</span>
+<span class="st">      </span>collapsed<span class="op">:</span><span class="st"> </span>false
+      smooth_scroll<span class="op">:</span><span class="st"> </span>true
+<span class="op">---</span></code></pre>
+<ol start="9" style="list-style-type: decimal">
+<li><p>Knit and then publish again…you’ll notice a few aesthetic changes</p></li>
+<li><p>To learn more about these go explore:</p></li>
+</ol>
+<ul>
+<li><a href="https://bookdown.org/yihui/rmarkdown/html-document.html" class="uri">https://bookdown.org/yihui/rmarkdown/html-document.html</a></li>
+<li><a href="http://www.datadreaming.org/post/r-markdown-theme-gallery/" class="uri">http://www.datadreaming.org/post/r-markdown-theme-gallery/</a></li>
+<li><a href="https://cran.r-project.org/web/packages/prettydoc/vignettes/architect.html" class="uri">https://cran.r-project.org/web/packages/prettydoc/vignettes/architect.html</a></li>
+</ul>
+<p>And for more code chunk control..</p>
+<ul>
+<li><a href="https://bookdown.org/yihui/rmarkdown/r-code.html" class="uri">https://bookdown.org/yihui/rmarkdown/r-code.html</a></li>
+<li><a href="https://rmarkdown.rstudio.com/lesson-3.html" class="uri">https://rmarkdown.rstudio.com/lesson-3.html</a></li>
+</ul>
 </div>
 <div id="rmarkdown-site-generator" class="section level2">
-<h2><span class="header-section-number">8.3</span> RMarkdown site generator</h2>
+<h2><span class="header-section-number">8.4</span> RMarkdown site generator</h2>
+<p>RPubs are useful but what if you wanted to make a full site with different tabs for introduction, methodology, results and recommedations…one way is to use the RMarkdown site generator hosted on GitHub</p>
+</div>
+<div id="shiny" class="section level2">
+<h2><span class="header-section-number">8.5</span> Shiny</h2>
 
 </div>
 </div>

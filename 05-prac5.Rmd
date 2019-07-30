@@ -499,6 +499,9 @@ Your R and geogprahical are certainly improving by now, so i'm just going to pro
 ##Load all our data
 library(sf)
 library(tmap)
+library(tmaptools)
+library(plyr)
+
 tmap_mode("plot")
 
 OSM <- read_shape("prac5_data/greater-london-latest-free.shp/gis_osm_pois_a_free_1.shp",
@@ -649,8 +652,8 @@ pophotels=popupTable(ti2, zcol=c("NAME.x", "GSS_CODE.x", "Accom count"))
 tmap_mode("view")
 
 # set the colour palettes using our previously defined breaks
-pal <- colorBin(palette = "YlOrRd", domain=t$freq, bins=breaks)
-pal2 <- colorBin(palette = "YlOrRd", domain=t$`Accom count`, bins=breaks)
+pal <- colorBin(palette = "YlOrRd", domain=ti2$freq, bins=breaks)
+pal2 <- colorBin(palette = "YlOrRd", domain=ti2$`Accom count`, bins=breaks)
 
 map<- leaflet(ti) %>%
   

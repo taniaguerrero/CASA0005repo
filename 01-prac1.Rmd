@@ -476,7 +476,7 @@ Here, repos stands for repository where we will download the packages from. Whil
 
 Great, load the sf package so we can read our shapefile in --- remember to change to filepath to your shapefile. For this first practical we'll just leave the datea where it is, next week we'll show you how to use projects to make calling data much easier.
 
-**Note** by default in R, the file path should be defined with / but on a #windows file system it is defined with \. Using \\ instead allows R #to read the path correctly – alternatively, just use /
+**Note** by default in R, the file path should be defined with ```/``` but on a windows file system it is defined with ```\```. Using ```\\``` instead allows R to read the path correctly – alternatively, just use ```/```
 
 ```{r, message=FALSE, warning=FALSE, cache=TRUE}
 library(sf)

@@ -30,8 +30,16 @@ knitr::include_graphics('prac3_images/arcseconds.jpg')
 ```
 
 If you are still a bit confused by coordiate reference systems have a look at the following:
+
 * https://communityhub.esriuk.com/geoxchange/2012/3/26/coordinate-systems-and-projections-for-beginners.html
+
 * https://en.wikipedia.org/wiki/Spatial_reference_system
+
+Or watch this YouTube video that shows the differences between geographic and projected coordinate reference systems and some limitations of ArcMap...
+
+```{r echo=FALSE, fig.align='center', cache=TRUE}
+knitr::include_url("https://www.youtube.com/IOpQg0BXYvw")
+```
 
 3. Unzip and move the data to your project folder. Now load the data. We could do this individually....
 
@@ -386,7 +394,8 @@ spatialpt <- SpatialPointsDataFrame(spatialpt, samplestemp)
 33. You'll notice that here i've just nicked the CRS from our worldclimtemp. In generally it's good practice to avoid using *static* or *hard coding* references, by that i mean if we added another coloumn to our samplestemp data (or manipulated somehow) then using this...
 
 ```{r, eval=FALSE, cache=TRUE}
-spatialpt <- SpatialPoints(samplestemp[13:14],proj4string=CRS("+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0 "))
+spatialpt <- SpatialPoints(samplestemp[13:14],
+                           proj4string=CRS("+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0 "))
 ```
 
 Would give us a headache as coloumns 13 and 14 might no longer be longitude and latitude.
@@ -411,7 +420,6 @@ spatialpt<-as(spatialpt, 'Spatial')
 
 Ausoutline<-st_transform(Ausoutline, 3112)
 Ausoutline2<-as(Ausoutline, 'Spatial')
-
 ```
 
 I've been a bit lazy here, if you recall from the previous practical session there are different ways to reproject data based if you have an SP or SF object. SP objects require you to specify the entire CRS string, so i just convered it to SF, used the ESPG code and converted it back to SP. The main reason for doing this is that i  made a grid to store my interpolation and having a remote sensing background i wanted to specify the pixel size. The equivalent function if SF won't let you specify pixel size or there is no easy and straightforward way to do it (at least to my knowledge).

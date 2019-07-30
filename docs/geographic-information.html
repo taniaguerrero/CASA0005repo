@@ -24,7 +24,7 @@
 <meta name="author" content="Andy MacLachlan and Adam Dennett" />
 
 
-<meta name="date" content="2019-07-29" />
+<meta name="date" content="2019-07-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -347,13 +347,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8" data-path="online-mapping.html"><a href="online-mapping.html"><i class="fa fa-check"></i><b>8</b> Online mapping</a><ul>
 <li class="chapter" data-level="8.1" data-path="online-mapping.html"><a href="online-mapping.html#learning-objectives-1"><i class="fa fa-check"></i><b>8.1</b> Learning objectives</a></li>
 <li class="chapter" data-level="8.2" data-path="online-mapping.html"><a href="online-mapping.html#introduction-9"><i class="fa fa-check"></i><b>8.2</b> Introduction</a></li>
-<li class="chapter" data-level="8.3" data-path="online-mapping.html"><a href="online-mapping.html#rmarkdown-site-generator"><i class="fa fa-check"></i><b>8.3</b> RMarkdown site generator</a></li>
+<li class="chapter" data-level="8.3" data-path="online-mapping.html"><a href="online-mapping.html#rpubs"><i class="fa fa-check"></i><b>8.3</b> RPubs</a></li>
+<li class="chapter" data-level="8.4" data-path="online-mapping.html"><a href="online-mapping.html#rmarkdown-site-generator"><i class="fa fa-check"></i><b>8.4</b> RMarkdown site generator</a></li>
+<li class="chapter" data-level="8.5" data-path="online-mapping.html"><a href="online-mapping.html#shiny"><i class="fa fa-check"></i><b>8.5</b> Shiny</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="assignment-resources-1.html"><a href="assignment-resources-1.html"><i class="fa fa-check"></i><b>9</b> Assignment resources</a><ul>
 <li class="chapter" data-level="9.1" data-path="assignment-resources-1.html"><a href="assignment-resources-1.html#booksreading-resources"><i class="fa fa-check"></i><b>9.1</b> Books/reading resources</a></li>
 <li class="chapter" data-level="9.2" data-path="assignment-resources-1.html"><a href="assignment-resources-1.html#data-3"><i class="fa fa-check"></i><b>9.2</b> Data</a></li>
 <li class="chapter" data-level="9.3" data-path="assignment-resources-1.html"><a href="assignment-resources-1.html#data-lists-1"><i class="fa fa-check"></i><b>9.3</b> Data lists</a></li>
-<li class="chapter" data-level="9.4" data-path="assignment-resources-1.html"><a href="assignment-resources-1.html#reading-and-writing"><i class="fa fa-check"></i><b>9.4</b> Reading and writing</a></li>
+<li class="chapter" data-level="9.4" data-path="assignment-resources-1.html"><a href="assignment-resources-1.html#critically-reading-and-writing"><i class="fa fa-check"></i><b>9.4</b> Critically reading and writing</a></li>
 <li class="chapter" data-level="9.5" data-path="assignment-resources-1.html"><a href="assignment-resources-1.html#free-flow-diagram-tools"><i class="fa fa-check"></i><b>9.5</b> Free flow diagram tools</a></li>
 </ul></li>
 <li class="divider"></li>
@@ -758,7 +760,7 @@ ArcGIS (Version 10.6 is the latest at time of writing, but may have already been
 <div id="load-data-2" class="section level4">
 <h4><span class="header-section-number">1.3.7.2</span> Load data</h4>
 <p>Great, load the sf package so we can read our shapefile in — remember to change to filepath to your shapefile. For this first practical we’ll just leave the datea where it is, next week we’ll show you how to use projects to make calling data much easier.</p>
-<p><strong>Note</strong> by default in R, the file path should be defined with / but on a #windows file system it is defined with . Using \ instead allows R #to read the path correctly – alternatively, just use /</p>
+<p><strong>Note</strong> by default in R, the file path should be defined with <code>/</code> but on a windows file system it is defined with <code>\</code>. Using <code>\\</code> instead allows R to read the path correctly – alternatively, just use <code>/</code></p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(sf)
 shape &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="st">&quot;Prac1_data/statistical-gis-boundaries-london/ESRI/London_Borough_Excluding_MHW.shp&quot;</span>)</code></pre>
 <pre><code>## Reading layer `London_Borough_Excluding_MHW&#39; from data source `C:\Users\ucfnmac\OneDrive - University College London\Teaching\CASA0005repo\Prac1_data\statistical-gis-boundaries-london\ESRI\London_Borough_Excluding_MHW.shp&#39; using driver `ESRI Shapefile&#39;

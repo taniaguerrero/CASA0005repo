@@ -300,7 +300,7 @@ Go to: https://data.london.gov.uk/dataset/london-datastore-catalogue and downloa
 
 Leave the replace box empty each time and click Replace All to remove these from your file, before saving the file again.
 
-24. Once you have cleaned out all of the trixy characters from the file, to read it into R, we will use the read.csv() function:
+24. Once you have cleaned out all of the trixy characters from the file, to read it into R, we will use the ```read.csv()``` function:
 
 ```{r, cache=TRUE}
 LondonDataOSK<- read.csv("prac2_data/london_catalogue.csv")
@@ -499,7 +499,7 @@ install.packages(c("RColorBrewer", "sp", "rgeos", "tmaptools", "sf", "downloader
 
 Install Java 64-bit from: https://java.com/en/download/manual.jsp
 
-```{r, message=FALSE, cache=TRUE}
+```{r, message=FALSE, warning=FALSE, cache=TRUE}
 #Load Packages (ignore any error messages about being built under a #different R version):
 library(maptools)
 library(RColorBrewer)
