@@ -1,0 +1,64 @@
+# Assignment resources
+
+Listed below are some helful datasets and tools you might find useful when completing your assignments.
+
+## Books/reading resources
+
+There are a lot of free online books for geospatial analysis, especially using R, check out:
+
+* https://www.rstudio.com/resources/training/books/
+* http://hadley.nz/
+* https://geocompr.robinlovelace.net/
+
+## Data
+
+This is by no means an extensive data list, but summarises data used within all the practicals alondside a few additions that you might want to explore when sourcing data for your assignments. You are by no means limited to these data sets, so go and explore...
+
+* UK data service: https://census.edina.ac.uk/
+* ONS: https://www.ons.gov.uk/
+* Edina (e.g. OS mastermap): https://digimap.edina.ac.uk/
+* Open Topography: https://opentopography.org/
+* USGS Earth Explorer: https://earthexplorer.usgs.gov/
+* Geofabrik (OSM data): https://www.geofabrik.de/
+* Global weather data (points): https://rp5.ru/Weather_in_the_world
+* London data store: https://data.london.gov.uk/
+* Air b n b data: http://insideairbnb.com/get-the-data.html
+* NASA SocioEconomic Data and Applications Center (SEDAC): https://sedac.ciesin.columbia.edu/
+* UN environmental data explorer: http://geodata.grid.unep.ch/
+* World pop: https://www.worldpop.org/
+* DIVA-GIS: https://www.diva-gis.org/
+* DEFRA: https://environment.data.gov.uk/
+
+## Data lists
+
+Robin Wilson has authored one of the most extensive data lists that i've come across:
+
+https://freegisdata.rtwilson.com/
+
+## Reading and writing
+
+Hugh Kerans from Flinders Unversity, Adelaide has developed a range of materials to assist graduate students in producing effective reports and publications...check out his website and resouces here: https://www.ithinkwell.com.au/
+
+The most useful templates for the assignemnts are the critical reading one:
+
+```{r echo=FALSE, out.height = "600pt", out.width = "800pt", cache=TRUE}
+include_graphics('assignment/CriticalReading.pdf', auto_pdf = getOption("knitr.graphics.auto_pdf", FALSE)
+)
+```
+
+and questions to ask as you write a paper:
+
+```{r echo=FALSE, out.height = "600pt", out.width = "800pt", cache=TRUE}
+include_graphics('assignment/QuestionsToAskAsYouWriteAPaper.pdf', auto_pdf = getOption("knitr.graphics.auto_pdf", FALSE)
+)
+```
+
+You can download these from this website directly, my GitHub or Hugh's website.
+
+## Free flow diagram tools
+
+* PowerPoint (from UCL software site)
+* Draw.io: https://www.draw.io/ 
+* Lucidchart: https://www.lucidchart.com/pages/examples/flowchart-maker
+
+Free at the time of writing

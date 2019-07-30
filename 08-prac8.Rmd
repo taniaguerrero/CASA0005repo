@@ -1,0 +1,18 @@
+# Online mapping
+
+## Learning objectives
+
+By the end of this practical you should be able to:
+
+1. 
+2. 
+3. 
+
+## Introduction 
+
+In this practica we are going to explore several ways of publishing your R code and outputs (including interactive plots) online.
+
+## RMarkdown site generator 
+
+
+

@@ -16,7 +16,7 @@ You will be able to use the information contained in this guide to prepare the s
 
 * RStudio is a graphical user interface (that you should already be familiar with) - it contains a number of features which make it excellent for authoring reproducible and open geographic data science work.
 
-* RMarkdown is a version of the Markdown markup language which enables plain text to be formatted to contain links to data, code to run, text to explain what you a producing and metadata to tell your software what kinds of outputs to generate from your markdown code. For more information on RMarkdown, visit here.
+* RMarkdown is a version of the Markdown markup language which enables plain text to be formatted to contain links to data, code to run, text to explain what you a producing and metadata to tell your software what kinds of outputs to generate from your markdown code. For more information on RMarkdown, [visit here](https://rmarkdown.rstudio.com/).
 
 * Git is a software version control system which allows you to keep track of the code you produce and the changes that you or others make to it.
 
@@ -28,7 +28,7 @@ You will be able to use the information contained in this guide to prepare the s
 
 2. Go to http://github.com and install github (if working on your own computer). Create an account and create a new repository (call it anything you like - ‘gis_code’ or something similar), making sure it is public and you check the box that says ‘initialise new repository with a README’ - click ‘create repository’ at the bottom
 
-```{r echo=FALSE, out.width = "600pt", fig.align='center', cache=TRUE}
+```{r echo=FALSE, out.width = "700pt", fig.align='center', cache=TRUE}
 knitr::include_graphics('prac4_images/github.png') 
 ```
 
@@ -40,7 +40,7 @@ There are a couple of ways of doing this, but the easy one is to use the GUI tha
 
 5. The first thing you need to do is copy the Clone URL for your repo from the github website --- click the green button in your repo for ‘Clone or Download’ and copy the link:
 
-```{r echo=FALSE, out.width = "600pt", fig.align='center', cache=TRUE}
+```{r echo=FALSE, out.width = "700pt", fig.align='center', cache=TRUE}
 knitr::include_graphics('prac4_images/githubrepodownload.png') 
 ```
 
@@ -76,19 +76,19 @@ At the time of writing, because of the way that RStudio has been installed on th
 
 You should see the files appear under the Git tab
 
-```{r echo=FALSE, out.width = "600pt", fig.align='center', cache=TRUE}
+```{r echo=FALSE, out.width = "800pt", fig.align='center', cache=TRUE}
 knitr::include_graphics('prac4_images/makeafile.png') 
 ```
 
 13. As well as saving, which saves a copy to our local directory, we will also ‘commit’ or create a save point for our work on git. To do this, you should click the ‘Git’ icon and up will pop a menu like the one below:
 
-```{r echo=FALSE, out.width = "600pt", fig.align='center', cache=TRUE}
+```{r echo=FALSE, out.width = "400pt", fig.align='center', cache=TRUE}
 knitr::include_graphics('prac4_images/commit1.png') 
 ```
 
 You can also click the Git tab that will have appeared in the top-right window of RStudio. Up will then pop another window that looks a little like the one below:
 
-```{r echo=FALSE, out.width = "600pt", fig.align='center', cache=TRUE}
+```{r echo=FALSE, out.width = "800pt", fig.align='center', cache=TRUE}
 knitr::include_graphics('prac4_images/commit2.png') 
 ```
 
@@ -132,7 +132,7 @@ But....if the push button is greyed out go to the section [Greyed out push butto
 
 22. Add a line of code or a comment, preview the changes then commit directly to the master branch.
 
-```{r echo=FALSE, out.width = "600pt", fig.align='center', cache=TRUE}
+```{r echo=FALSE, out.width = "800pt", fig.align='center', cache=TRUE}
 knitr::include_graphics('prac4_images/pullexample.png') 
 ```
 
@@ -212,7 +212,7 @@ Each repository you make in git has a default branch but you can create new bran
 
 25. Go to the test repository you just forked on github. Click the branch drop down and type in the name for a new branch:
 
-```{r echo=FALSE, out.width = "600pt", fig.align='center', cache=TRUE}
+```{r echo=FALSE, out.width = "800pt", fig.align='center', cache=TRUE}
 knitr::include_graphics('prac4_images/branch.png') 
 ```
 
@@ -220,7 +220,7 @@ knitr::include_graphics('prac4_images/branch.png')
 
 27. Add some changes, preview them and complete the commit changes box at the bottom of the screen.
 
-```{r echo=FALSE, out.width = "600pt", fig.align='center', cache=TRUE}
+```{r echo=FALSE, out.width = "800pt", fig.align='center', cache=TRUE}
 knitr::include_graphics('prac4_images/branchtest.png') 
 ```
 
@@ -234,7 +234,7 @@ Now let's create a *pull* reqest to the master branch. It you had modified someo
 
 31. At the top you will see the branches that are being compared --- the base defaults to githubs example repository, change it to yours.
 
-```{r echo=FALSE, out.width = "600pt", fig.align='center', cache=TRUE}
+```{r echo=FALSE, out.width = "800pt", fig.align='center', cache=TRUE}
 knitr::include_graphics('prac4_images/branchcompare.png') 
 ```
 
@@ -246,7 +246,7 @@ knitr::include_graphics('prac4_images/branchcompare.png')
 
 ### Health warning 
 
-To avoid merge conflicts be careful with your commits, pushes and pulls. Think about what you are doing each time. GitHub help pages are quite comprehensive..https://help.github.com/en/articles/resolving-a-merge-conflict-on-github
+To avoid merge conflicts be careful with your commits, pushes and pulls. Think about what you are doing each time. GitHub help pages are quite comprehensive... https://help.github.com/en/articles/resolving-a-merge-conflict-on-github
 
 ## RMarkdown
 
@@ -254,7 +254,7 @@ OK, so now you have set everything up so that you can become a reproducable rese
 
 For the definitive guide on R Markdown, please read [R Markdown: The Definitive Guide](https://bookdown.org/yihui/rmarkdown/) --- obviously! It will tell you everything you need to know, far beyond what I am telling you here.
 
-There is also an excellent guide on the R Studio website -https://rmarkdown.rstudio.com/lesson-1.html
+There is also an excellent guide on the R Studio website --- https://rmarkdown.rstudio.com/lesson-1.html
 
 And a quick cheatsheet here: https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf
 
@@ -262,9 +262,7 @@ And an older one here: http://www.rstudio.com/wp-content/uploads/2016/03/rmarkdo
 
 One of the awesome things about R Markdown is it can be converted into a range of different formats --- html for webpages, word documents, PDFs, blogs, books --- virtually everything!
 
-Now, earlier on in this exercise, I got you to open a new R Notebook or R Markdown file. They are both R Markdown documents, the notebook originally let you run code chunks that could be exectued indpednetly, however you can also now do this if you select a markdown file.  
-
-....Add Rmarkdown, making a website then bookdown as advanced section. 
+Now, earlier on in this exercise, I got you to open a new R Notebook or R Markdown file. They are both R Markdown documents, the notebook originally let you run code chunks that could be exectued independently, however you can also now do this if you select a markdown file.  
 
 35. Go back to the notebook you created earlier in step 11. We are now going to insert some code from the practical last week that i've tweaked a bit and run it.
 
@@ -321,7 +319,7 @@ ihist
 
 38. When including code chunks in your work, there are various options that allow you to do things like include the code, but not run it: display the output but not the code, hide warnings etc. Most of these can be input automatically by clicking the cog icon in the top-right of the chunk, or you can specify them in the code header of the chunk...if you toggle the buttons you'll see the code change in the chunk 'header'. 
 
-```{r echo=FALSE, out.width = "400pt", fig.align='center', cache=TRUE}
+```{r echo=FALSE, out.width = "600pt", fig.align='center', cache=TRUE}
 knitr::include_graphics('prac4_images/code_chunk_options.png')
 ```
 
@@ -406,15 +404,7 @@ If you click the small arrow next to the preview button, a menu will appear givi
 
 ## Further reading
 
-Since starting this little guide, I have come across this amazing book on using R and GitHub, by Jenny Bryan and Jim Hester. It’s brilliant - taught me things like how to avoid entering user credentials every time I push to my GitHub repo (Ch 11) - get involved! http://happygitwithr.com/
-
-## Extension
-
-Aleady a whizz with Git, GitHub and Markdown? Well try out these extension task...
-
-1. Bookdown
-2. R markdown website 
-
+Since starting this little guide, I have come across this amazing book on using R and GitHub, by Jenny Bryan and Jim Hester. It’s brilliant --- taught me things like how to avoid entering user credentials every time I push to my GitHub repo (Ch 11) --- get involved! http://happygitwithr.com/
 
 
 

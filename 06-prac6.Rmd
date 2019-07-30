@@ -4,13 +4,14 @@
 
 By the end of this practical you should be able to:
 
-1. 
-2.
-3.
+1. Describe and evaluate methods for analysing spatial patterns 
+2. Execute data cleaning and manipulation appropairte for analysis 
+3. Determine the locations of spatial clusters using point pattern analysis methods
+4. Investigate the degree to which values at spatial points are similar (or different) to each other
 
 ## Introduction
 
-In this practical you will learn how to begin to analyse patterns in spatial data. Using data you are already familiar with, in the first part of the practical, you will explore some techniques for analysing patterns of point data in R. Then, in the second part of the practial, you will explore spatial autocorrelation using ArcGIS.
+In this practical you will learn how to begin to analyse patterns in spatial data. Using data you are already familiar with, in the first part of the practical, you will explore some techniques for analysing patterns of point data in R. Then, in the second part of the practial, you will explore spatial autocorrelation using R or ArcGIS.
 
 In this analysis we will analyse the patterns of Blue Plaques --- you will see these placed on around the UK linking the buildings of the present to people of the past.
 
@@ -158,9 +159,9 @@ plot(BluePlaquesSub.ppp,pch=16,cex=0.5, main="Blue Plaques Harrow")
 
 ## Point pattern analysis
 
-### Summarising your point data - a little aside on Kernel Density Estimation
+### Kernel Density Estimation
 
-We will explore what Kernel Density Estimation (KDE) is in a couple of week's, but here we are going to jump the gun a little bit. One way to summarise your point data is to plot the density of your points under a window called a 'Kernel'. The size and shape of the Kernel affects the density pattern produced (more of this next week), but it is very easy to produce a KDE map from a ppp object using the `density` function.
+One way to summarise your point data is to plot the density of your points under a window called a 'Kernel'. The size and shape of the Kernel affects the density pattern produced (more of this next week), but it is very easy to produce a KDE map from a ppp object using the `density` function.
 
 ```{r, cache=TRUE}
 plot(density(BluePlaquesSub.ppp, sigma = 500))
@@ -418,7 +419,7 @@ Now, at this point you have a choice and at bit like in those Fighting Fantasy (
 
 Have the Arc lot gone? OK great, here's some more lovely R...
 
-In this section we are going to explore patterns of spatially referenced continuous observations using various measures of spatial autocorrelation. Check out the various references in the reading list for more information about these methods. There are also useful links in the helpfile of the `spdep` package which we will be using here.
+In this section we are going to explore patterns of spatially referenced continuous observations using various measures of spatial autocorrelation. Spatial autocorrelation is a measure of similarity between nearby data. Check out the various references in the reading list for more information about the methods we will explore today. There are also useful links in the helpfile of the `spdep` package which we will be using here.
 
 ### Data download
 
@@ -807,6 +808,7 @@ knitr::include_graphics('prac6_images/finalmap.png')
 #### Model builder
 
 Build a model using model builder which:
+
 * Reads in your blue plaques data from last week, 
 * Adds a new short integer field using the ‘add field’ tool 
 * Fills this new field with 1’s using the ‘calculate field’ tool
@@ -822,8 +824,3 @@ The tutorials can be accessed from the online help system. If you are running Ar
 http://resources.arcgis.com/en/help/main/10.1/index.html#/What_is_ModelBuilder/002w00000001000000/
 
 These tutorials will introduce you to many more features that we didn’t cover today. 
-
-
-
-
-

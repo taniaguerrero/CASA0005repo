@@ -460,7 +460,7 @@ Below are bits of code, to start we will work using the **console**. So just cop
 R works on packages that are collections of functions and data. For this practical we will need the ones listed in the code chunk below. Whilst we've installed them, we haven't yet loaded them. It's best practice to do all this at the start of your code, however, for demonstration purposes I'll load each one as we need it. 
 
 ```{r, message=FALSE, warning=FALSE, eval=FALSE, cache=TRUE}
-install.packages("sf", "tmap", "tmaptools", "RSQLite", repos = "https://www.stats.bris.ac.uk/R/")
+install.packages("sf", "tmap", "tmaptools", "RSQLite", "tidyverse", repos = "https://www.stats.bris.ac.uk/R/")
 ```
 
 Packages we've installed:
@@ -470,13 +470,13 @@ Packages we've installed:
 * tmaptools: set of tools for reading and processing spatial data
 * RSQLite: embeds the SQLite database engine in R
 
-Here, repos stands for repository where we will download the packages from. 
+Here, repos stands for repository where we will download the packages from. Whilst we've installed the packages we haven't loaded them...this is done through using ```library()``` function...which we will now use.
 
 #### Load data
 
 Great, load the sf package so we can read our shapefile in --- remember to change to filepath to your shapefile. For this first practical we'll just leave the datea where it is, next week we'll show you how to use projects to make calling data much easier.
 
-***Note*** by default in R, the file path should be defined with / but on a #windows file system it is defined with \. Using \\ instead allows R #to read the path correctly – alternatively, just use /
+**Note** by default in R, the file path should be defined with / but on a #windows file system it is defined with \. Using \\ instead allows R #to read the path correctly – alternatively, just use /
 
 ```{r, message=FALSE, warning=FALSE, cache=TRUE}
 library(sf)
@@ -494,12 +494,18 @@ To have a quick look what the shapefile looks like enter the following:
 plot(shape)
 ```
 
+That plots everything in the shapefile (all the attitbues) if you just wanted the geometry (outline of the shape) you could use...
+
+```{r}
+plot(shape$geometry)
+```
+
 From what we did in QGIS and ArcMap this should look familiar. 
 
 We now need to load our ```.csv``` file:
 
 ```{r, cache=TRUE}
-mycsv <-  read.csv("Prac1_data/fly_tipping_borough_edit.csv")  
+mycsv <-  read_csv("Prac1_data/fly_tipping_borough_edit.csv")  
 ```
 
 To view the data just input:
@@ -512,14 +518,14 @@ mycsv
 
 In R we've given our London boroughs shapefile the name shape and our flytipping ```.csv``` the name mycsv. If you look in the Environment quadrant you should see them both listed. 
 
-Join the ```.csv``` to the shapefile. Here, replace Row.Labels with whatever your GSS_CODE is called in the ```.csv```:
+Join the ```.csv``` to the shapefile. Here, replace Row Labels with whatever your GSS_CODE is called in the ```.csv```:
 
 
-```{r}
+```{r warning=FALSE, message=FALSE, cache=TRUE}
 library(tmap)
 library(tmaptools)
 library(sf)
-shape <- append_data(shape, mycsv, key.shp="GSS_CODE", key.data = "Row.Labels")
+shape <- append_data(shape, mycsv, key.shp="GSS_CODE", key.data = "Row Labels")
 ```
 
 Let's break this down a bit. We just created a data frame (my.csv) where each column has a variable and each row contains a set of values --- so basically a normal table. The match simply found the GSS_CODE values in the ```.csv``` and joined the data to our shapefile.
@@ -538,7 +544,7 @@ Now, let's make a quick thematic map (or a qtm) using the package  ```tmap ```. 
 library(tmap)
 library(tmaptools)
 tmap_mode("plot")
-qtm(shape, fill = "X2011_12")
+qtm(shape, fill = "2011_12")
 ```
 
 ### Export data
@@ -577,11 +583,12 @@ To convert this bit of analysis into a script that we could save and run again i
 ```{r, eval=FALSE}
 install.packages("sf", "tmap", "tmaptools", "RSQLite", repos = "https://www.stats.bris.ac.uk/R/")
 library(sf, tmap, tmaptools, RSQLite)
-shape <- st_read("Prac1_data/statistical-gis-boundaries-london/ESRI/London_Borough_Excluding_MHW.shp")
-mycsv = read.csv("Prac1_data/fly_tipping_borough_edit.csv")  
-shape<-append_data(shape, mycsv, key.shp="GSS_CODE", key.data = "Row.Labels")
+shape <- st_read(
+  "Prac1_data/statistical-gis-boundaries-london/ESRI/London_Borough_Excluding_MHW.shp")
+mycsv <- read_csv("Prac1_data/fly_tipping_borough_edit.csv")  
+shape<-append_data(shape, mycsv, key.shp="GSS_CODE", key.data = "Row Labels")
 tmap_mode("plot")
-qtm(shape, fill = "X2011_12")
+qtm(shape, fill = "2011_12")
 st_write(shape, "Prac1_data/Rwk1.gpkg", "london_boroughs_fly_tipping", delete_layer=TRUE)
 con <- dbConnect(SQLite(),dbname="Prac1_data/Rwk1.gpkg")
 dbListTables(con)

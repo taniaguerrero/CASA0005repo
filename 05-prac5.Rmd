@@ -4,14 +4,14 @@
 
 By the end of this practical you should be able to:
 
-* 
-* 
-* 
-* 
+1. List and explain basic mapping concepts across QGIS, ArcMap and R
+2. Interpret and manipulate data from multiple sources
+3. Create near publishable static and interactive mapped outputs
+4. Evaluate and critique mapping approaches between QGIS, ArcMap and R
 
 ## Introduction 
 
-In this practical we're going to focus on creating mapped outputs using QGIS, ArcMap and R. For fun we're going to use spatial boundaries from xxx and OpenStreetMap (OSM) data.
+In this practical we're going to focus on creating mapped outputs using QGIS, ArcMap and R. For fun we're going to use data from OpenStreetMap (OSM) and Airbnb. OpenStreetMap is a  collaborative project that has created a free editable map of the World. Airbnb is an online marketplace that connects people looking to rent homes to those seeking accomodation often over short time periods.
 
 ## Data
 
@@ -26,7 +26,6 @@ It’s possible to download OSM data straight from the website, although the int
 3. Download greater-london-latest-free.shp.zip
 
 4. Unzip the data and save it to your current folder
-
 
 ### London boroughs
 

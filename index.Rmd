@@ -8,7 +8,7 @@ documentclass: book
 bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
-github-repo: rstudio/bookdown-demo
+#github-repo: rstudio/bookdown-demo
 description: ""
 ---
 
@@ -25,6 +25,7 @@ Practical data is divided into the relevant sessions, although sometimes i'll re
 Spatial analysis can yield fascinating insights into geographical relationships. However, at times it can be difficult to work with. You will get lots of error messages and have software crash. The academic staff are here to help you work through these practicals but we do not know everything. It's a good idea to become familar with online sources of help, such as:
 
 * Stack Exchange https://stackexchange.com/
+* RStudio community https://community.rstudio.com/
 * QGIS documemtation https://docs.qgis.org/3.4/en/docs/index.html
 * R documentation https://www.rdocumentation.org/
 * ArcGIS help pages https://support.esri.com/en
@@ -35,7 +36,7 @@ One of the issues with GIS is that many of the files we will be working with are
 
 ## Offline viewing {-}
 
-The best way to view this practical book is through the website. However if you are unable to access the internet you can either download the ```.epub``` book or save specific webpages for offline viewing. Insturctions for Google Chrome are provided here: https://support.google.com/chrome/answer/7343019?co=GENIE.Platform%3DDesktop&hl=en&oco=1
+The best way to view this practical book is through the website. However if you are unable to access the internet you can either download the ```.epub``` book or save specific webpages for offline viewing --- note that any interactive plots won't work in the ```.epub``` book. As this is a live document if you select to download the ```.epub``` make sure you redownload it regularly to keep up to date with any changes to the material. Insturctions for Google Chrome are provided here: https://support.google.com/chrome/answer/7343019?co=GENIE.Platform%3DDesktop&hl=en&oco=1
 
 ```{r include=FALSE}
 # automatically create a bib database for R packages
@@ -65,4 +66,12 @@ Adam: https://dr-d-casa.youcanbook.me
 
 ## Noticed a mistake? {-}
 
-No one is perfect, if you notice a mistake let us know through the GitHub issues tab...Don't worry if you are unsure about what GitHub is we cover it in the course.
+No one is perfect, if you notice a mistake let us know through the GitHub issues tab...
+
+https://github.com/andrewmaclachlan/CASA0005repo/issues
+
+Don't worry if you are unsure about what GitHub is we cover it in the course.
+
+## Assignment resources {-}
+
+Want some tips for resources on your assignment?.... head over to the [Assignment resources] pages
