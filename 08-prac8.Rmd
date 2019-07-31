@@ -253,31 +253,31 @@ So if you already have a RStudio project...like we do...we can link this to GitH
 knitr::include_graphics('prac8_images/gitnrerepo.png') 
 ```
 
-14. Clone the repository by copying the HTTPS 
+15. Clone the repository by copying the HTTPS 
 
 ```{r echo=FALSE, out.width = "500pt", fig.align='center', cache=TRUE}
 knitr::include_graphics('prac8_images/HTTPS.png') 
 ```
 
-15. Make one local commit. Under the Git tab > Diff > Stage the files > Add a commit message and click commit
+16. Make one local commit. Under the Git tab > Diff > Stage the files > Add a commit message and click commit
 
-15. Now we need to connect our local repository to the GitHub one. So Under the Git tab you'll the new brach button (two purple boxes linked to a white box)...
+17. Now we need to connect our local repository to the GitHub one. So Under the Git tab you'll the new brach button (two purple boxes linked to a white box)...
 
 ```{r echo=FALSE, out.width = "500pt", fig.align='center', cache=TRUE}
 knitr::include_graphics('prac8_images/addremote.png') 
 ```
 
-16. Click it > Add Remote. Paste in the URL use the remote name origin and the branch name of master --- which you can get from the GitHub Quick setup screen after creating your repo. Check sync the branch with the remote > click create then select overwrite
+18. Click it > Add Remote. Paste in the URL use the remote name origin and the branch name of master --- which you can get from the GitHub Quick setup screen after creating your repo. Check sync the branch with the remote > click create then select overwrite
 
 ```{r echo=FALSE, out.width = "500pt", fig.align='center', cache=TRUE}
 knitr::include_graphics('prac8_images/addremote2.png') 
 ```
 
-17. Push the files to your GitHub and they will appear on your GitHub repo
+19. Push the files to your GitHub and they will appear on your GitHub repo
 
-18. Next we need to actually build the site...there are a few ways to do this...Next to the Git tab you should see the Build tab, if you can't then go to Tools > Project Options > Build Tools and select website under Project build tools. Now click Build Website under the build tab
+20. Next we need to actually build the site...there are a few ways to do this...Next to the Git tab you should see the Build tab, if you can't then go to Tools > Project Options > Build Tools and select website under Project build tools. Now click Build Website under the build tab
 
-19. Alternatively you write the following in the console 
+21. Alternatively you write the following in the console 
 
 ```{r eval=FALSE, message=FALSE, warning=FALSE, cache=TRUE}
 rmarkdown::render_site()
@@ -289,8 +289,27 @@ If you wanted to just build a page from your site --- say if you have made a rat
 rmarkdown::render_site("index.Rmd")
 ```
 
+22. Stage, commit and then push the files to your GitHub. I had some issues staging the site_libs folder in the Git tab. I fixed it by closing and reloading my R project then clicking the cog symbol (under Git tab) > Shell and typing ```git add .``` If you get an error message about the index file being locked... go and delete in and try again. If you can't delete restart the machine and try again. You will find in under the .git folder within your project. Once ```git add .``` runs you should see all the files staged, be able to commit and then push the changes to GitHub   
+
+Help:
+
+* https://stackoverflow.com/questions/5834014/lf-will-be-replaced-by-crlf-in-git-what-is-that-and-is-it-important
+* https://stackoverflow.com/questions/9282632/git-index-lock-file-exists-when-i-try-to-commit-but-cannot-delete-the-file
+
+23. So your built website is up on GitHub, but you need to tell it where to build the site from...Go to your GitHub repo > Settings, scroll down to GitHub pages and select the Source as the master branch
+
+```{r echo=FALSE, out.width = "500pt", fig.align='center', cache=TRUE}
+knitr::include_graphics('prac8_images/GitHubpages.png') 
+```
+
+24. Click on the link that is provided where your site is published and you should have a website with two tabs. Here is what mine looks like:
+
+```{r echo=FALSE, out.width = "500pt", fig.align='center', cache=TRUE}
+knitr::include_graphics('prac8_images/Markdownsite.png') 
+```
 
 For more information on hosting your code from RStudio on GitHub check out: https://happygitwithr.com/usage-intro.html 
+
 
 ## Shiny
 
