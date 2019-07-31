@@ -22,7 +22,7 @@ One of the most straight forward publishing tools is RPubs. It takes an ```.Rmd`
 
 3. You'll see that the file is automatically populated with some information, have a read through it then click the Knit icon (if you remember we covered this in [Knitting your output])...
 
-```{r echo=FALSE, out.width = "500pt", fig.align='center', cache=TRUE}
+```{r echo=FALSE, out.width = "800pt", fig.align='center', cache=TRUE}
 knitr::include_graphics('prac8_images/knitt.png') 
 ```
 
@@ -157,7 +157,7 @@ map
 
 8. Once knitted you can easily publish the file to Ppubs using the Publish icon either in the viewer pane or the toolbar area (by run)
 
-```{r echo=FALSE, out.width = "300pt", fig.align='center', cache=TRUE}
+```{r echo=FALSE, out.width = "200pt", fig.align='center', cache=TRUE}
 knitr::include_graphics('prac8_images/publish.png') 
 ```
 
@@ -194,6 +194,8 @@ And for more code chunk control..
 
 ## RMarkdown site generator 
 
+### Set the file structure
+
 RPubs are useful but what if you wanted to make a full site with different tabs for introduction, methodology, results and recommedations...one way is to use the RMarkdown site generator hosted on GitHub
 
 RMarkdown site generator is useful as it does not require any third-party add ons like blogdown which is reliant on the hugo site generator
@@ -208,9 +210,87 @@ To make a site you'll need the following to be within your project:
 
 For the site to work you only require (a) and (b)....but that would be a pretty boring site...
 
-11. In your new project add a RMarkdown a file called ```_site.yml``` and one called ```index.Rmd``
+11. In your new project add two new RMarkdown files called:
+* ```_site.yml``` 
+* ```index.Rmd``` 
 
 
+```{r echo=FALSE, out.width = "500pt", fig.align='center', cache=TRUE}
+knitr::include_graphics('prac8_images/rsitegenerator.png') 
+```
+
+12. In the ```_site.yml``` remove all code and add the following
+
+```{r eval=FALSE, message=FALSE, warning=FALSE, cache=TRUE}
+name: "Hello world"
+output_dir: "."
+navbar:
+  title: "My example website"
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "About"
+      href: publishexample.html
+```
+
+### Link to GitHub
+
+There are two ways to do this....
+
+#### GitHub first
+
+This is the 'easy' way as you woould repeat the steps in [Practical 4][Git, GitHub and RMarkdown] by firstly making a new repository on GitHub then loading a new project in RStudio, linking that to GitHub and copying all your files into your new project from the exisiting one. 
+
+#### GitHub last
+
+So if you already have a RStudio project...like we do...we can link this to GitHub but the steps are a bit more invovled and there are several ways to acheive it --- as with most things in R.
+
+13. Make a Git repo in RStudio. Go to Tools > Project Options > Git/SVN and select Git under Version control system and initialize a new repository, then restart RStudio. The Git tab should appear..
+
+14. Next we need to make a new repository on GitHub. Go to GitHub, login and make a new repository. Make sure that it is **empty** with no README.. you should have something similar to this appear:
+
+```{r echo=FALSE, out.width = "500pt", fig.align='center', cache=TRUE}
+knitr::include_graphics('prac8_images/gitnrerepo.png') 
+```
+
+14. Clone the repository by copying the HTTPS 
+
+```{r echo=FALSE, out.width = "500pt", fig.align='center', cache=TRUE}
+knitr::include_graphics('prac8_images/HTTPS.png') 
+```
+
+15. Make one local commit. Under the Git tab > Diff > Stage the files > Add a commit message and click commit
+
+15. Now we need to connect our local repository to the GitHub one. So Under the Git tab you'll the new brach button (two purple boxes linked to a white box)...
+
+```{r echo=FALSE, out.width = "500pt", fig.align='center', cache=TRUE}
+knitr::include_graphics('prac8_images/addremote.png') 
+```
+
+16. Click it > Add Remote. Paste in the URL use the remote name origin and the branch name of master --- which you can get from the GitHub Quick setup screen after creating your repo. Check sync the branch with the remote > click create then select overwrite
+
+```{r echo=FALSE, out.width = "500pt", fig.align='center', cache=TRUE}
+knitr::include_graphics('prac8_images/addremote2.png') 
+```
+
+17. Push the files to your GitHub and they will appear on your GitHub repo
+
+18. Next we need to actually build the site...there are a few ways to do this...Next to the Git tab you should see the Build tab, if you can't then go to Tools > Project Options > Build Tools and select website under Project build tools. Now click Build Website under the build tab
+
+19. Alternatively you write the following in the console 
+
+```{r eval=FALSE, message=FALSE, warning=FALSE, cache=TRUE}
+rmarkdown::render_site()
+```
+
+If you wanted to just build a page from your site --- say if you have made a rather big site with lots of analysis use:
+
+```{r eval=FALSE, message=FALSE, warning=FALSE, cache=TRUE}
+rmarkdown::render_site("index.Rmd")
+```
+
+
+For more information on hosting your code from RStudio on GitHub check out: https://happygitwithr.com/usage-intro.html 
 
 ## Shiny
 

@@ -35,10 +35,16 @@ If you are still a bit confused by coordiate reference systems have a look at th
 
 * https://en.wikipedia.org/wiki/Spatial_reference_system
 
-Or watch this YouTube video that shows the differences between geographic and projected coordinate reference systems and some limitations of ArcMap...
+This YouTube video that shows the differences between geographic and projected coordinate reference systems and some limitations of ArcMap...
 
 ```{r echo=FALSE, fig.align='center', cache=TRUE}
 knitr::include_url("https://www.youtube.com/IOpQg0BXYvw")
+```
+
+And this great YouTube produced by SciShow shows the comporsises of different geographic map projections 
+
+```{r echo=FALSE, fig.align='center', cache=TRUE}
+knitr::include_url("https://www.youtube.com/8I_VpC6IuJs")
 ```
 
 3. Unzip and move the data to your project folder. Now load the data. We could do this individually....
