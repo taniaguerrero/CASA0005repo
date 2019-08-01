@@ -388,7 +388,8 @@ Now convert the basemap to British National Grid
 
 ```{r, cache=TRUE}
 basemap<-openmap(c(51.5530613,-0.4040719),c(51.6405318,-0.2671556), zoom=NULL,"stamen-toner")
-#convert the basemap to British National Grid - remember we created the BNG object right at the beginning of the practical - it's an epsg string...
+# convert the basemap to British National Grid - remember we created the 
+# BNG object right at the beginning of the practical - it's an epsg string...
 basemap_bng<-openproj(basemap, projection=BNG)
 ```
 Now we can plot our fancy map with the clusters on...

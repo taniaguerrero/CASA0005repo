@@ -1,5 +1,5 @@
 book_filename: "CASA0005"
-new_session: yes
+new_session: no
 output_dir: "docs"
 language:
   ui:
