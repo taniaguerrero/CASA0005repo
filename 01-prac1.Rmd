@@ -491,13 +491,13 @@ summary(shape)
 
 To have a quick look what the shapefile looks like enter the following:
 ```{r, cache=TRUE}
-plot(shape)
+plot(st_geometry(shape))
 ```
 
 That plots everything in the shapefile (all the attitbues) if you just wanted the geometry (outline of the shape) you could use...
 
 ```{r}
-#plot(shape$geometry)
+plot(shape$geometry)
 ```
 
 From what we did in QGIS and ArcMap this should look familiar. 
@@ -553,7 +553,7 @@ qtm(shape, fill = "2011_12")
 Finally write shape to a new GeoPackage (```.gpkg```) giving it the layer name of your choice:
 
 ```{r}
-sf::st_write(shape, "Prac1_data/Rwk1.gpkg", "london_boroughs_fly_tipping", delete_layer=TRUE)
+st_write(shape, "Prac1_data/Rwk1.gpkg", "london_boroughs_fly_tipping", delete_layer=TRUE)
 ```
 
 So here, we are saying the shape is the object we want to save, then to the GeoPackage file path, with the layer name of london_boroughs_fly_tipping. I've set delete_layer to true so I could overwrite mine when I developed this practical. Changing it to false would generate an error message if you ever tried to re-run the code.
