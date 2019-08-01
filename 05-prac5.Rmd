@@ -501,6 +501,7 @@ library(sf)
 library(tmap)
 library(tmaptools)
 library(plyr)
+library(tidyverse)
 
 tmap_mode("plot")
 
@@ -549,7 +550,7 @@ Joinfun <- function(data1, data2) {
   joined <- st_join(data1, data2, join = st_within)
   
   # count the number of hotels per borough
-  countno <- as.data.frame(count(joined$GSS_CODE))
+  countno <- as.data.frame(plyr::count(joined$GSS_CODE))
   
   # join the count back to the borough layer
   counted <-left_join(data2, countno, by=c("GSS_CODE"="x"))

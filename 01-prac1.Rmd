@@ -553,7 +553,7 @@ qtm(shape, fill = "2011_12")
 Finally write shape to a new GeoPackage (```.gpkg```) giving it the layer name of your choice:
 
 ```{r}
-st_write(shape, "Prac1_data/Rwk1.gpkg", "london_boroughs_fly_tipping", delete_layer=TRUE)
+sf::st_write(shape, "Prac1_data/Rwk1.gpkg", "london_boroughs_fly_tipping", delete_layer=TRUE)
 ```
 
 So here, we are saying the shape is the object we want to save, then to the GeoPackage file path, with the layer name of london_boroughs_fly_tipping. I've set delete_layer to true so I could overwrite mine when I developed this practical. Changing it to false would generate an error message if you ever tried to re-run the code.
@@ -561,8 +561,9 @@ So here, we are saying the shape is the object we want to save, then to the GeoP
 Let's also add the ```.csv``` as we did in QGIS. This is a bit more complicated as we have to use the SQLite database package. Firstly, connect to the ```.gpkg``` we just made:
 
 ```{r}
+library(readr)
 library(RSQLite)
-con <- dbConnect(SQLite(),dbname="Prac1_data/Rwk1.gpkg")
+con <- dbConnect(RSQLite::SQLite(),dbname="Prac1_data/Rwk1.gpkg")
 ```
 
 Now examine what is in the ```.gpkg```:

@@ -531,6 +531,7 @@ As with all plots in R, there are multiple ways we can do this. The basic ```plo
 6. So one mega cool thing about R is you can read spatial data in straight from the internetz! Try this below for downloading a GeoJson file:
 
 ```{r, cache=TRUE}
+library(geojsonio)
 EW <- geojson_read("http://geoportal.statistics.gov.uk/datasets/8edafbe3276d4b56aec60991cbddda50_2.geojson", what = "sp")
 ```
 

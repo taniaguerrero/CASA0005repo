@@ -8,3 +8,14 @@ RColorBrewer
 latticeExtra
 rasterVis
 ggplot2
+RStoolbox
+plotly
+tidyverse
+tibble
+tidyr
+readr
+purrr
+dplyr
+stringr
+forcats
+htmlwidgets

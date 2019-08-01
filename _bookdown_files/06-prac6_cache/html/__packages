@@ -21,3 +21,4 @@ ggplot2
 rgdal
 spData
 spdep
+geojson

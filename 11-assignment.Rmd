@@ -1,5 +1,10 @@
 # Assignment resources
 
+```{r echo=FALSE}
+library(knitr)
+```
+
+
 Listed below are some helpful books, datasets and tools you might find useful when completing your assignments.
 
 ## Books/reading resources
