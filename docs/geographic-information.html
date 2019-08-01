@@ -794,24 +794,15 @@ shape &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class=
 ##  Max.   :370.62                                                   
 ## </code></pre>
 <p>To have a quick look what the shapefile looks like enter the following:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="kw">st_geometry</span>(shape))</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(shape)</code></pre>
 <p><img src="CASA0005_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
 <p>That plots everything in the shapefile (all the attitbues) if you just wanted the geometry (outline of the shape) you could use…</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(shape<span class="op">$</span>geometry)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="kw">st_geometry</span>(shape))</code></pre>
 <p><img src="CASA0005_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
 <p>From what we did in QGIS and ArcMap this should look familiar.</p>
 <p>We now need to load our <code>.csv</code> file:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)</code></pre>
-<pre><code>## Warning: package &#39;tidyverse&#39; was built under R version 3.6.1</code></pre>
-<pre><code>## -- Attaching packages -------- tidyverse 1.2.1 --</code></pre>
-<pre><code>## v ggplot2 3.2.0     v purrr   0.3.2
-## v tibble  2.1.3     v dplyr   0.8.1
-## v tidyr   0.8.3     v stringr 1.4.0
-## v readr   1.3.1     v forcats 0.4.0</code></pre>
-<pre><code>## -- Conflicts ----------- tidyverse_conflicts() --
-## x dplyr::filter() masks stats::filter()
-## x dplyr::lag()    masks stats::lag()</code></pre>
-<pre class="sourceCode r"><code class="sourceCode r">mycsv &lt;-<span class="st">  </span><span class="kw">read_csv</span>(<span class="st">&quot;Prac1_data/fly_tipping_borough_edit.csv&quot;</span>)  </code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)
+mycsv &lt;-<span class="st">  </span><span class="kw">read_csv</span>(<span class="st">&quot;Prac1_data/fly_tipping_borough_edit.csv&quot;</span>)  </code></pre>
 <pre><code>## Parsed with column specification:
 ## cols(
 ##   `Row Labels` = col_character(),
@@ -894,9 +885,7 @@ shape &lt;-<span class="st"> </span><span class="kw">append_data</span>(shape, m
 ## 9        31889 MULTIPOLYGON (((525201 1825...
 ## 10        6541 MULTIPOLYGON (((524579.9 19...</code></pre>
 <p>Now, let’s make a quick thematic map (or a qtm) using the package <code>tmap</code>. I’ve made mine for flytipping between 2011 and 2012 (column X2011_12):</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tmap)
-<span class="kw">library</span>(tmaptools)
-<span class="kw">tmap_mode</span>(<span class="st">&quot;plot&quot;</span>)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">tmap_mode</span>(<span class="st">&quot;plot&quot;</span>)</code></pre>
 <pre><code>## tmap mode set to plotting</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qtm</span>(shape, <span class="dt">fill =</span> <span class="st">&quot;2011_12&quot;</span>)</code></pre>
 <p><img src="CASA0005_files/figure-html/unnamed-chunk-35-1.png" width="672" /></p>
@@ -905,7 +894,7 @@ shape &lt;-<span class="st"> </span><span class="kw">append_data</span>(shape, m
 <div id="export-data-2" class="section level3">
 <h3><span class="header-section-number">1.3.8</span> Export data</h3>
 <p>Finally write shape to a new GeoPackage (<code>.gpkg</code>) giving it the layer name of your choice:</p>
-<pre class="sourceCode r"><code class="sourceCode r">sf<span class="op">::</span><span class="kw">st_write</span>(shape, <span class="st">&quot;Prac1_data/Rwk1.gpkg&quot;</span>, <span class="st">&quot;london_boroughs_fly_tipping&quot;</span>, <span class="dt">delete_layer=</span><span class="ot">TRUE</span>)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">st_write</span>(shape, <span class="st">&quot;Prac1_data/Rwk1.gpkg&quot;</span>, <span class="st">&quot;london_boroughs_fly_tipping&quot;</span>, <span class="dt">delete_layer=</span><span class="ot">TRUE</span>)</code></pre>
 <pre><code>## Deleting layer `london_boroughs_fly_tipping&#39; using driver `GPKG&#39;
 ## Updating layer `london_boroughs_fly_tipping&#39; to data source `Prac1_data/Rwk1.gpkg&#39; using driver `GPKG&#39;
 ## features:       33
@@ -945,8 +934,7 @@ con &lt;-<span class="st"> </span><span class="kw">dbConnect</span>(RSQLite<span
 <div id="making-a-script" class="section level4">
 <h4><span class="header-section-number">1.3.8.1</span> Making a script</h4>
 <p>To convert this bit of analysis into a script that we could save and run again in future, I would write the following in the script quadrant:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;sf&quot;</span>, <span class="st">&quot;tmap&quot;</span>, <span class="st">&quot;tmaptools&quot;</span>, <span class="st">&quot;RSQLite&quot;</span>, <span class="dt">repos =</span> <span class="st">&quot;https://www.stats.bris.ac.uk/R/&quot;</span>)
-<span class="kw">library</span>(sf, tmap, tmaptools, RSQLite)
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(sf, tmap, tmaptools, RSQLite, tidyverse)
 shape &lt;-<span class="st"> </span><span class="kw">st_read</span>(
   <span class="st">&quot;Prac1_data/statistical-gis-boundaries-london/ESRI/London_Borough_Excluding_MHW.shp&quot;</span>)
 mycsv &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;Prac1_data/fly_tipping_borough_edit.csv&quot;</span>)  

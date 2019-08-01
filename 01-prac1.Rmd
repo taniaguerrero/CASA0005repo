@@ -491,13 +491,13 @@ summary(shape)
 
 To have a quick look what the shapefile looks like enter the following:
 ```{r, cache=TRUE}
-plot(st_geometry(shape))
+plot(shape)
 ```
 
 That plots everything in the shapefile (all the attitbues) if you just wanted the geometry (outline of the shape) you could use...
 
 ```{r}
-plot(shape$geometry)
+plot(st_geometry(shape))
 ```
 
 From what we did in QGIS and ArcMap this should look familiar. 
@@ -542,8 +542,6 @@ head(shape, n=10)
 Now, let's make a quick thematic map (or a qtm) using the package  ```tmap ```. I've made mine for flytipping between 2011 and 2012 (column X2011_12): 
 
 ```{r}
-library(tmap)
-library(tmaptools)
 tmap_mode("plot")
 qtm(shape, fill = "2011_12")
 ```
@@ -583,8 +581,7 @@ dbDisconnect(con)
 To convert this bit of analysis into a script that we could save and run again in future, I would write the following in the script quadrant: 
 
 ```{r, eval=FALSE}
-install.packages("sf", "tmap", "tmaptools", "RSQLite", repos = "https://www.stats.bris.ac.uk/R/")
-library(sf, tmap, tmaptools, RSQLite)
+library(sf, tmap, tmaptools, RSQLite, tidyverse)
 shape <- st_read(
   "Prac1_data/statistical-gis-boundaries-london/ESRI/London_Borough_Excluding_MHW.shp")
 mycsv <- read_csv("Prac1_data/fly_tipping_borough_edit.csv")  

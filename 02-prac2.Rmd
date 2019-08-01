@@ -680,9 +680,9 @@ tm_shape(BoroughDataMap) +
     tmap_options(max.categories = 5)
 ```
 
-```{r, cache=TRUE}
-####You can even save your map as an html file (uncomment, obvs)
-#save_tmap(filename = "truffle.html")
+```{r, cache=TRUE, eval=FALSE}
+####You can even save your map as an html file 
+save_tmap(filename = "truffle.html")
 ```
 
 #### Have a play around…
