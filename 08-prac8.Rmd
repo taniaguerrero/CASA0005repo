@@ -250,7 +250,7 @@ So if you already have a RStudio project...like we do...we can link this to GitH
 14. Next we need to make a new repository on GitHub. Go to GitHub, login and make a new repository. Make sure that it is **empty** with no README.. you should have something similar to this appear:
 
 ```{r echo=FALSE, out.width = "500pt", fig.align='center', cache=TRUE}
-knitr::include_graphics('prac8_images/gitnrerepo.png') 
+knitr::include_graphics('prac8_images/gitnewrepo.png') 
 ```
 
 15. Clone the repository by copying the HTTPS 

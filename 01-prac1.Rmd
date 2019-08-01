@@ -497,7 +497,7 @@ plot(shape)
 That plots everything in the shapefile (all the attitbues) if you just wanted the geometry (outline of the shape) you could use...
 
 ```{r}
-plot(shape$geometry)
+#plot(shape$geometry)
 ```
 
 From what we did in QGIS and ArcMap this should look familiar. 
@@ -505,6 +505,7 @@ From what we did in QGIS and ArcMap this should look familiar.
 We now need to load our ```.csv``` file:
 
 ```{r, cache=TRUE}
+library(tidyverse)
 mycsv <-  read_csv("Prac1_data/fly_tipping_borough_edit.csv")  
 ```
 

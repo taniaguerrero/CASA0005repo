@@ -33,7 +33,7 @@ Spatial analysis can yield fascinating insights into geographical relationships.
 Want to see what you can do with spatial analysis...check out this 'What's Next' video produced for the ESRI conference...
 
 ```{r echo=FALSE, fig.align='center', cache=TRUE}
-knitr::include_url("https://www.youtube.com/K0qZffiKwak")
+knitr::include_url("https://www.youtube.com/embed/K0qZffiKwak")
 ```
 
 ## Getting started {-}

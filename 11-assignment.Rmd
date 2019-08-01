@@ -11,7 +11,7 @@ There are a lot of free online books for geospatial analysis, especially using R
 * https://geocompr.robinlovelace.net/
 * https://happygitwithr.com/
 
-# New developments
+## New developments
 
 Every year there is a useR conference that provides a load to tutorials on the latest developments and research...check them out here: http://www.user2019.fr/tutorials/ and here: https://github.com/sowla/useR2019-materials
 
