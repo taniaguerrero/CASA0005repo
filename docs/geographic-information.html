@@ -797,8 +797,7 @@ shape &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class=
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(shape)</code></pre>
 <p><img src="CASA0005_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
 <p>That plots everything in the shapefile (all the attitbues) if you just wanted the geometry (outline of the shape) you could use…</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">plot</span>(<span class="kw">st_geometry</span>(shape))</code></pre>
-<p><img src="CASA0005_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">#plot(st_geometry(shape))</span></code></pre>
 <p>From what we did in QGIS and ArcMap this should look familiar.</p>
 <p>We now need to load our <code>.csv</code> file:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)
@@ -837,9 +836,7 @@ mycsv &lt;-<span class="st">  </span><span class="kw">read_csv</span>(<span clas
 <h4><span class="header-section-number">1.3.7.3</span> Join data</h4>
 <p>In R we’ve given our London boroughs shapefile the name shape and our flytipping <code>.csv</code> the name mycsv. If you look in the Environment quadrant you should see them both listed.</p>
 <p>Join the <code>.csv</code> to the shapefile. Here, replace Row Labels with whatever your GSS_CODE is called in the <code>.csv</code>:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tmap)
-<span class="kw">library</span>(tmaptools)
-<span class="kw">library</span>(sf)
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(sf)
 shape &lt;-<span class="st"> </span><span class="kw">append_data</span>(shape, mycsv, <span class="dt">key.shp=</span><span class="st">&quot;GSS_CODE&quot;</span>, <span class="dt">key.data =</span> <span class="st">&quot;Row Labels&quot;</span>)</code></pre>
 <p>Let’s break this down a bit. We just created a data frame (my.csv) where each column has a variable and each row contains a set of values — so basically a normal table. The match simply found the GSS_CODE values in the <code>.csv</code> and joined the data to our shapefile.</p>
 <p>The message detailing 1 out of the 34 data records were not appended refers to the Grand Total row within the <code>.csv</code>.</p>
@@ -885,7 +882,9 @@ shape &lt;-<span class="st"> </span><span class="kw">append_data</span>(shape, m
 ## 9        31889 MULTIPOLYGON (((525201 1825...
 ## 10        6541 MULTIPOLYGON (((524579.9 19...</code></pre>
 <p>Now, let’s make a quick thematic map (or a qtm) using the package <code>tmap</code>. I’ve made mine for flytipping between 2011 and 2012 (column X2011_12):</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">tmap_mode</span>(<span class="st">&quot;plot&quot;</span>)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tmap)
+<span class="kw">library</span>(tmaptools)
+<span class="kw">tmap_mode</span>(<span class="st">&quot;plot&quot;</span>)</code></pre>
 <pre><code>## tmap mode set to plotting</code></pre>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">qtm</span>(shape, <span class="dt">fill =</span> <span class="st">&quot;2011_12&quot;</span>)</code></pre>
 <p><img src="CASA0005_files/figure-html/unnamed-chunk-35-1.png" width="672" /></p>

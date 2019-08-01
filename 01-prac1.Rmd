@@ -497,7 +497,7 @@ plot(shape)
 That plots everything in the shapefile (all the attitbues) if you just wanted the geometry (outline of the shape) you could use...
 
 ```{r}
-plot(st_geometry(shape))
+#plot(st_geometry(shape))
 ```
 
 From what we did in QGIS and ArcMap this should look familiar. 
@@ -511,7 +511,7 @@ mycsv <-  read_csv("Prac1_data/fly_tipping_borough_edit.csv")
 
 To view the data just input:
 
-```{r}
+```{r cache=TRUE}
 mycsv 
 ```
 
@@ -523,8 +523,6 @@ Join the ```.csv``` to the shapefile. Here, replace Row Labels with whatever you
 
 
 ```{r warning=FALSE, message=FALSE, cache=TRUE}
-library(tmap)
-library(tmaptools)
 library(sf)
 shape <- append_data(shape, mycsv, key.shp="GSS_CODE", key.data = "Row Labels")
 ```
@@ -535,13 +533,15 @@ The message detailing 1 out of the 34 data records were not appended refers to t
 
 Check the merge was successful, this is just going to show the top 10 rows:
 
-```{r}
+```{r cache=TRUE}
 head(shape, n=10)
 ```
 
 Now, let's make a quick thematic map (or a qtm) using the package  ```tmap ```. I've made mine for flytipping between 2011 and 2012 (column X2011_12): 
 
-```{r}
+```{r cache=TRUE}
+library(tmap)
+library(tmaptools)
 tmap_mode("plot")
 qtm(shape, fill = "2011_12")
 ```
@@ -550,7 +550,7 @@ qtm(shape, fill = "2011_12")
 
 Finally write shape to a new GeoPackage (```.gpkg```) giving it the layer name of your choice:
 
-```{r}
+```{r cache=TRUE}
 st_write(shape, "Prac1_data/Rwk1.gpkg", "london_boroughs_fly_tipping", delete_layer=TRUE)
 ```
 
@@ -558,20 +558,20 @@ So here, we are saying the shape is the object we want to save, then to the GeoP
 
 Let's also add the ```.csv``` as we did in QGIS. This is a bit more complicated as we have to use the SQLite database package. Firstly, connect to the ```.gpkg``` we just made:
 
-```{r}
+```{r cahce=TRUE}
 library(readr)
 library(RSQLite)
 con <- dbConnect(RSQLite::SQLite(),dbname="Prac1_data/Rwk1.gpkg")
 ```
 
 Now examine what is in the ```.gpkg```:
-```{r}
+```{r cache=TRUE}
 dbListTables(con)
 ```
 
 Then add add our ```.csv``` and disconnect from the ```.gpkg```:
 
-```{r}
+```{r cache=TRUE}
 dbWriteTable(con,"original_csv", mycsv, overwrite=TRUE)
 dbDisconnect(con)
 ```
@@ -580,7 +580,7 @@ dbDisconnect(con)
 
 To convert this bit of analysis into a script that we could save and run again in future, I would write the following in the script quadrant: 
 
-```{r, eval=FALSE}
+```{r, eval=FALSE, cache=TRUE}
 library(sf, tmap, tmaptools, RSQLite, tidyverse)
 shape <- st_read(
   "Prac1_data/statistical-gis-boundaries-london/ESRI/London_Borough_Excluding_MHW.shp")
