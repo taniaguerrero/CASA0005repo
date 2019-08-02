@@ -901,9 +901,11 @@ shape &lt;-<span class="st"> </span><span class="kw">append_data</span>(shape, m
 ## geometry type:  Multi Polygon</code></pre>
 <p>So here, we are saying the shape is the object we want to save, then to the GeoPackage file path, with the layer name of london_boroughs_fly_tipping. I’ve set delete_layer to true so I could overwrite mine when I developed this practical. Changing it to false would generate an error message if you ever tried to re-run the code.</p>
 <p>Let’s also add the <code>.csv</code> as we did in QGIS. This is a bit more complicated as we have to use the SQLite database package. Firstly, connect to the <code>.gpkg</code> we just made:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(readr)
-<span class="kw">library</span>(RSQLite)
-con &lt;-<span class="st"> </span><span class="kw">dbConnect</span>(RSQLite<span class="op">::</span><span class="kw">SQLite</span>(),<span class="dt">dbname=</span><span class="st">&quot;Prac1_data/Rwk1.gpkg&quot;</span>)</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(readr)</code></pre>
+<pre><code>## Warning: package &#39;readr&#39; was built under R version 3.6.1</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(RSQLite)</code></pre>
+<pre><code>## Warning: package &#39;RSQLite&#39; was built under R version 3.6.1</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r">con &lt;-<span class="st"> </span><span class="kw">dbConnect</span>(RSQLite<span class="op">::</span><span class="kw">SQLite</span>(),<span class="dt">dbname=</span><span class="st">&quot;Prac1_data/Rwk1.gpkg&quot;</span>)</code></pre>
 <p>Now examine what is in the <code>.gpkg</code>:</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">dbListTables</span>(con)</code></pre>
 <pre><code>##  [1] &quot;gpkg_contents&quot;                                

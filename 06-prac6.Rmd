@@ -39,7 +39,7 @@ Now, assuming that you've got a copy of your London Boroughs shapefile (from wee
 
 ```{r, cache=TRUE}
 ##First, get the London Borough Boundaries
-EW <- geojsonio::geojson_read(
+EW <- geojson_read(
   "http://geoportal.statistics.gov.uk/datasets/8edafbe3276d4b56aec60991cbddda50_2.geojson",
   what = "sp")
 ```
@@ -58,7 +58,7 @@ BoroughMapBNG <- spTransform(BoroughMap,BNG)
 
 Now get the location of all Blue Plaques in the City
 
-```{r}
+```{r cache=TRUE}
 ##Now get the location of all Blue Plaques in the City
 BluePlaques <- geojson_read(
   "https://s3.eu-west-2.amazonaws.com/openplaques/open-plaques-london-2018-04-08.geojson",
