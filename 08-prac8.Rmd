@@ -434,9 +434,10 @@ There are plenty of options available in Shiny to make cool interactive features
 * https://shiny.rstudio.com/tutorial/written-tutorial/lesson1/
 * https://rstudio.github.io/leaflet/shiny.html
 
-Just add this right below the code above, i seperate it using a line of ##########################
 
 Load the packages we'll need here and do some final data manipulation. 
+
+Just add this right below the code above, i seperate it using a line of ##########################
 
 ```{r eval=FALSE, cache=TRUE}
 library(shiny)
@@ -454,7 +455,7 @@ ti$Airbnb[is.na(ti$Airbnb)] <- 0
 
 ### User interface 
 
-Ok, first let's set up the user interface or ```ui```
+Ok, first let's set up the user interface or ```ui```. I've commented the code to descrbie what each bit does.
 
 ```{r, eval=FALSE, cache=TRUE}
 # we'll use bootstrappage - a UI definition that can be passed to Shiny
@@ -665,7 +666,17 @@ Remember to update your site you'll need to build the website, commit to Git and
 
 Last year Adam created a similar (but slightly different) Shiny, check it out here: https://adam-dennett.shinyapps.io/londonShiny/
 
-His code can be found on GitHub here: 
+His code can be found on GitHub here: https://www.dropbox.com/s/g7cgzg7ep6pz3k4/LondonShiny.tar?raw=1 
+
+Notice how Adam separated his code into different files...the latest update of Shiny means we no longer have to do this, we can just use one script like we did. However, if you have a very large and complicated project this is still possible, you can then call other scripts like Adam has using... 
+
+```{r cache=TRUE, eval=FALSE}
+# change londongrapher.r to the script you are calling
+source("londongrapher.r")
+
+```
+
+To do it like this the scrips must be in the same project!
 
 ### Warning
 

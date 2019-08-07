@@ -364,12 +364,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.7" data-path="online-mapping.html"><a href="online-mapping.html#advanced-online-publishing"><i class="fa fa-check"></i><b>8.7</b> Advanced online publishing</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="assignment-resources-1.html"><a href="assignment-resources-1.html"><i class="fa fa-check"></i><b>9</b> Assignment resources</a><ul>
-<li class="chapter" data-level="9.1" data-path="assignment-resources-1.html"><a href="assignment-resources-1.html#booksreading-resources"><i class="fa fa-check"></i><b>9.1</b> Books/reading resources</a></li>
-<li class="chapter" data-level="9.2" data-path="assignment-resources-1.html"><a href="assignment-resources-1.html#new-developments"><i class="fa fa-check"></i><b>9.2</b> New developments</a></li>
-<li class="chapter" data-level="9.3" data-path="assignment-resources-1.html"><a href="assignment-resources-1.html#data-3"><i class="fa fa-check"></i><b>9.3</b> Data</a></li>
-<li class="chapter" data-level="9.4" data-path="assignment-resources-1.html"><a href="assignment-resources-1.html#data-lists-1"><i class="fa fa-check"></i><b>9.4</b> Data lists</a></li>
-<li class="chapter" data-level="9.5" data-path="assignment-resources-1.html"><a href="assignment-resources-1.html#reading-and-writing-critically"><i class="fa fa-check"></i><b>9.5</b> Reading and writing critically</a></li>
-<li class="chapter" data-level="9.6" data-path="assignment-resources-1.html"><a href="assignment-resources-1.html#free-flow-diagram-tools"><i class="fa fa-check"></i><b>9.6</b> Free flow diagram tools</a></li>
+<li class="chapter" data-level="9.1" data-path="assignment-resources-1.html"><a href="assignment-resources-1.html#cool-stuff-to-explore"><i class="fa fa-check"></i><b>9.1</b> Cool stuff to explore</a></li>
+<li class="chapter" data-level="9.2" data-path="assignment-resources-1.html"><a href="assignment-resources-1.html#booksreading-resources"><i class="fa fa-check"></i><b>9.2</b> Books/reading resources</a></li>
+<li class="chapter" data-level="9.3" data-path="assignment-resources-1.html"><a href="assignment-resources-1.html#new-developments"><i class="fa fa-check"></i><b>9.3</b> New developments</a></li>
+<li class="chapter" data-level="9.4" data-path="assignment-resources-1.html"><a href="assignment-resources-1.html#data-3"><i class="fa fa-check"></i><b>9.4</b> Data</a></li>
+<li class="chapter" data-level="9.5" data-path="assignment-resources-1.html"><a href="assignment-resources-1.html#data-lists-1"><i class="fa fa-check"></i><b>9.5</b> Data lists</a></li>
+<li class="chapter" data-level="9.6" data-path="assignment-resources-1.html"><a href="assignment-resources-1.html#reading-and-writing-critically"><i class="fa fa-check"></i><b>9.6</b> Reading and writing critically</a></li>
+<li class="chapter" data-level="9.7" data-path="assignment-resources-1.html"><a href="assignment-resources-1.html#free-flow-diagram-tools"><i class="fa fa-check"></i><b>9.7</b> Free flow diagram tools</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -771,8 +772,8 @@ accomall&lt;-<span class="kw">c</span>(ti<span class="op">$</span><span class="s
 <li><a href="https://shiny.rstudio.com/tutorial/written-tutorial/lesson1/" class="uri">https://shiny.rstudio.com/tutorial/written-tutorial/lesson1/</a></li>
 <li><a href="https://rstudio.github.io/leaflet/shiny.html" class="uri">https://rstudio.github.io/leaflet/shiny.html</a></li>
 </ul>
-<p>Just add this right below the code above, i seperate it using a line of ##########################</p>
 <p>Load the packages we’ll need here and do some final data manipulation.</p>
+<p>Just add this right below the code above, i seperate it using a line of ##########################</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(shiny)
 <span class="kw">library</span>(leaflet)
 <span class="kw">library</span>(RColorBrewer)
@@ -786,7 +787,7 @@ ti<span class="op">$</span>Hotel[<span class="kw">is.na</span>(ti<span class="op
 ti<span class="op">$</span>Airbnb[<span class="kw">is.na</span>(ti<span class="op">$</span>Airbnb)] &lt;-<span class="st"> </span><span class="dv">0</span></code></pre>
 <div id="user-interface" class="section level3">
 <h3><span class="header-section-number">8.6.1</span> User interface</h3>
-<p>Ok, first let’s set up the user interface or <code>ui</code></p>
+<p>Ok, first let’s set up the user interface or <code>ui</code>. I’ve commented the code to descrbie what each bit does.</p>
 <pre class="sourceCode r"><code class="sourceCode r"><span class="co"># we&#39;ll use bootstrappage - a UI definition that can be passed to Shiny</span>
 ui &lt;-<span class="st"> </span><span class="kw">bootstrapPage</span>(
     tags<span class="op">$</span><span class="kw">style</span>(<span class="dt">type =</span> <span class="st">&quot;text/css&quot;</span>, <span class="st">&quot;html, body {width:100%;height:100%}&quot;</span>),
@@ -952,7 +953,11 @@ ui &lt;-<span class="st"> </span><span class="kw">bootstrapPage</span>(
 <div id="additional-example" class="section level3">
 <h3><span class="header-section-number">8.6.5</span> Additional example</h3>
 <p>Last year Adam created a similar (but slightly different) Shiny, check it out here: <a href="https://adam-dennett.shinyapps.io/londonShiny/" class="uri">https://adam-dennett.shinyapps.io/londonShiny/</a></p>
-<p>His code can be found on GitHub here:</p>
+<p>His code can be found on GitHub here: <a href="https://www.dropbox.com/s/g7cgzg7ep6pz3k4/LondonShiny.tar?raw=1" class="uri">https://www.dropbox.com/s/g7cgzg7ep6pz3k4/LondonShiny.tar?raw=1</a></p>
+<p>Notice how Adam separated his code into different files…the latest update of Shiny means we no longer have to do this, we can just use one script like we did. However, if you have a very large and complicated project this is still possible, you can then call other scripts like Adam has using…</p>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co"># change londongrapher.r to the script you are calling</span>
+<span class="kw">source</span>(<span class="st">&quot;londongrapher.r&quot;</span>)</code></pre>
+<p>To do it like this the scrips must be in the same project!</p>
 </div>
 <div id="warning" class="section level3">
 <h3><span class="header-section-number">8.6.6</span> Warning</h3>
