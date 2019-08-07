@@ -259,7 +259,7 @@ NDVIfun <- function(NIR, Red) {
 
 Here we have said our function needs two arguments NIR and Red, the next line calcualtes NDVI based on the formula and returns it. To be able to use this function throughout our analysis either copy it into the console or make a new R script, save it in your project then call it within this code using the ```source()``` function e.g...
 
-```{r eval=FALSE}
+```{r eval=FALSE, cache=TRUE}
 source('insert file name')
 ```
 
@@ -467,7 +467,7 @@ NDBI=((lsatmask$LC08_L1TP_203023_20190513_20190521_01_T1_B6mask-
 
 But do you remember our function? ...Well this is the same calculation we used there just with different raster layers (or bands) so we could reuse it...
 
-```{r}
+```{r, cache=TRUE}
 NDBIfunexample <- NDVIfun(lsatmask$LC08_L1TP_203023_20190513_20190521_01_T1_B6mask,
                           lsatmask$LC08_L1TP_203023_20190513_20190521_01_T1_B5mask)
 ```

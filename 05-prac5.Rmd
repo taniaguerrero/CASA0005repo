@@ -640,7 +640,7 @@ library(leafpop)
 library(leaflet)
 
 #join data
-ti<-st_join(Airbnb, Hotels)
+ti<-st_join(Airbnb, Hotels, join = st_equals)
 ti<-st_transform(ti,crs = 4326)
 
 #remove the geometry for our pop up boxes to avoid

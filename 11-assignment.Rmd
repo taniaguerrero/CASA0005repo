@@ -4,8 +4,15 @@
 library(knitr)
 ```
 
+Listed below are some helpful website, books, datasets and tools you might find useful when completing your assignments.
 
-Listed below are some helpful books, datasets and tools you might find useful when completing your assignments.
+## Cool stuff to explore
+
+New pcakages and functions that i've recently come across that are worth exploring..
+
+* Animating plots: https://rpubs.com/jgleeson/ripple-effect
+* Bivariate maps: https://timogrossenbacher.ch/2019/04/bivariate-maps-with-ggplot2-and-sf/
+* https://www.rayshader.com/
 
 ## Books/reading resources
 
@@ -49,7 +56,7 @@ Awesome public datasets have a wide range all data (some geographic, some not): 
 
 Robin Wilson has authored one of the most extensive data lists that i've come across: https://freegisdata.rtwilson.com/
 
-## Critically reading and writing
+## Reading and writing critically
 
 Hugh Kerans from Flinders Unversity, Adelaide has developed a range of materials to assist graduate students in producing effective reports and publications...check out his website and resouces here: https://www.ithinkwell.com.au/
 

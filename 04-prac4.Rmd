@@ -325,7 +325,11 @@ ihist
 knitr::include_graphics('prac4_images/code_chunk_options.png')
 ```
 
-39. Various other options and tips can be found in the full R Markdown guide on RStudio here: https://rmarkdown.rstudio.com/lesson-1.html and in this the cheatsheets linked to above.
+39. Various other options and tips can be found in the full R Markdown guide on RStudio here: 
+
+* https://rmarkdown.rstudio.com/lesson-1.html 
+* https://rmarkdown.rstudio.com/lesson-3.html (for code chunk options)
+* and in this the cheatsheets linked to above
 
 ## Adding references
 

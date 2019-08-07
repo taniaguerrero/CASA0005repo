@@ -62,7 +62,9 @@ If you need specific assistance with this course please:
 
 Due to the size of the class we will only reply to messages on slack so all students can see the discussion.
 
-If after persuing all these avenues you still need help you can book into our office hours are specified below. These meetings are **to discuss a geographical concept in relation to the material/assignments or for any personal matters relevant to the completion of the course**. 
+If you are struggling to use R then head over to codeacademy and go through some of their free resources: https://www.codecademy.com/learn/learn-r
+
+If after persuing all these avenues you still need help you can book into our office hours are specified below. These meetings are **to discuss a geographical concept in relation to the material/assignments or for any personal matters relevant to the completion of the module**. 
 
 These meetings are **not** to be used for specific technical issues. Problems of this nature should be addressed in the practical sessions.
 
