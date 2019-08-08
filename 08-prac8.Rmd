@@ -4,9 +4,9 @@
 
 By the end of this practical you should be able to:
 
-1. Create
-2. 
-3. 
+1. Descrbie and explain different methods for producing online maps
+2. Create interative maps usong Rpubs, RMarkdown site generator and Shiny
+3. Critically appraise the appropriateness of mapping technqiues based on the dataset and purpose of the output map
 
 ## Introduction 
 
@@ -40,9 +40,9 @@ library(tmaptools)
 library(tidyverse)
 library(plyr)
 
-OSM <- read_shape("data/gis_osm_pois_a_free_1.shp",as.sf = TRUE)
+OSM <- st_read("data/gis_osm_pois_a_free_1.shp")
 
-Londonborough <- read_shape("data/London_Borough_Excluding_MHW.shp",as.sf = TRUE)
+Londonborough <- st_read("data/London_Borough_Excluding_MHW.shp")
 
 Airbnb <- read_csv("data/listings.csv")
   
@@ -204,7 +204,7 @@ To make a site you'll need the following to be within your project:
 
 (a) A configuration file with the filename ```_site.yml```
 
-(b) A ```index.Rmd```
+(b) An ```index.Rmd```
 
 (c) Any other ```.Rmd``` files you want to create into pages on the site
 
@@ -322,23 +322,23 @@ To build a shiny you require three main *'items'* or blocks of code:
 
 These could either be within one large ```.R``` file or over several ```.R``` files.
 
-Start a new R Project > New or existing directory > Shiny Web Application 
+25. Start a new R Project > New or existing directory > Shiny Web Application 
 
-Within your new R Project folder make a new folder called data and copy in the data we have been using
+26. Within your new R Project folder make a new folder called data and copy in the data we have been using
 
 The main purpose of this part of the practical is to show you how to use Shiny so we won't make a Git repository. Packrat is useful as it let's you store all of your loaded packages in a folder within your project, if you were then to move or share your project someone else could load the packages you have used (and the appopraite version) permitting them to run your code with no isses and no inflence their main R package library.
 
-Go File > New File > Shiny Web App
+27. Go File > New File > Shiny Web App
 
-Here you can select either a single file or multiple file format, originally SHiny needed multiple files to run however in the latest version you can have this all in one script
+Here you can select either a single file or multiple file format, originally Shiny needed multiple files to run however in the latest version you can have this all in one script
 
-If you click Run App on either the ```app.R``` the example Shiny will load.
+28. If you click Run App on either the ```app.R``` the example Shiny will load.
 
 Now let's make one with our data...
 
 ## Data preparation
 
-The first part is easy and is based on analysis we have already compelted...we need to produce a ```sf``` multipolygon layer containing the number of hotels and airbnbs per London borough through....
+29. The first part is easy and is based on analysis we have already compelted...we need to produce a ```sf``` multipolygon layer containing the number of hotels and airbnbs per London borough through....
 
 ```{r eval=FALSE, cache=TRUE}
 # load packages
@@ -435,11 +435,10 @@ There are plenty of options available in Shiny to make cool interactive features
 * https://rstudio.github.io/leaflet/shiny.html
 
 
-Load the packages we'll need here and do some final data manipulation. 
-
-Just add this right below the code above, i seperate it using a line of ##########################
+30. Load the packages we'll need here and do some final data manipulation. Just add this right below the code above, i seperate it using a line of ##########################
 
 ```{r eval=FALSE, cache=TRUE}
+################################################## ui
 library(shiny)
 library(leaflet)
 library(RColorBrewer)
@@ -455,7 +454,7 @@ ti$Airbnb[is.na(ti$Airbnb)] <- 0
 
 ### User interface 
 
-Ok, first let's set up the user interface or ```ui```. I've commented the code to descrbie what each bit does.
+31. Ok, first let's set up the user interface or ```ui```. I've commented the code to descrbie what each bit does.
 
 ```{r, eval=FALSE, cache=TRUE}
 # we'll use bootstrappage - a UI definition that can be passed to Shiny
@@ -515,9 +514,10 @@ ui <- bootstrapPage(
 
 ### Server function
 
-It's a good idea to actuallly see what this produces...at the bottom of the code add an empty server function and then generate the Shiny application **BE SURE TO COPY ALL OF BRACKETS**
+33. It's a good idea to actuallly see what this produces...at the bottom of the code add an empty server function and then generate the Shiny application **BE SURE TO COPY ALL OF BRACKETS**
 
 ```{r, eval=FALSE, cache=TRUE}
+####################################### server
 server <- function(input, output, session) {
 }
 
@@ -530,9 +530,10 @@ Click Run App and the following should appear
 knitr::include_graphics('prac8_images/shinyui.png') 
 ```
 
-Now we need to add some more code to our server function to let us like the user interface to the data. Change the server function to:
+34. Now we need to add some more code to our server function to let us link the user interface to the data. Change the server function to:
 
 ```{r, eval=FALSE, cache=TRUE}
+####################################### server
 server <- function(input, output, session) {
     
     output$map <- renderLeaflet({
@@ -607,7 +608,7 @@ server <- function(input, output, session) {
 
 ```
 
-Don't forget to call the Shinyapp
+35. Don't forget to call the Shinyapp at the end 
 
 ```{r eval=FALSE, cache=TRUE}
 shinyApp(ui, server)
@@ -617,21 +618,21 @@ shinyApp(ui, server)
 
 Now we will publish our Shiny app on the internet. There are a few ways to do this, but we'll use Shinyapps.io which let's us upload our app straight from our R session to a sever hosted by RStudio.
 
-Go to: https://www.shinyapps.io/ and make a free account
+36. Go to: https://www.shinyapps.io/ and make a free account
 
-Back in RStudio click on Publish > Publish Application
+37. Back in RStudio click on Publish > Publish Application
 
-```{r echo=FALSE, out.width = "800pt", fig.align='center', cache=TRUE}
+```{r echo=FALSE, out.width = "400pt", fig.align='center', cache=TRUE}
 knitr::include_graphics('prac8_images/publishapp.png') 
 ```
 
-You now need to connect RStudio to the Shinyapps.io account you just made. Follow the instructions provided in this box:
+38. You now need to connect RStudio to the Shinyapps.io account you just made. Follow the instructions provided in this box:
 
-```{r echo=FALSE, out.width = "800pt", fig.align='center', cache=TRUE}
+```{r echo=FALSE, out.width = "400pt", fig.align='center', cache=TRUE}
 knitr::include_graphics('prac8_images/publishapp.png') 
 ```
 
-You'll find the tokens under Account > Tokens. Make sure you click show secret then copy the code into the box in the figure above. You can now publish your Shinyapp, this might take a bit of time but you can see progress updates in the Deploy tab. Once completed the application will load...
+39. You'll find the tokens under Account > Tokens. Make sure you click show secret then copy the code into the box in the figure above. You can now publish your Shinyapp, this might take a bit of time but you can see progress updates in the Deploy tab. Once completed the application will load...
 
 ```{r echo=FALSE, out.width = "800pt", fig.align='center', cache=TRUE}
 knitr::include_graphics('prac8_images/finalapp.png') 
@@ -641,7 +642,7 @@ Mine is here: https://amaclachlan.shinyapps.io/test/
 
 ### Incoproate into RMarkdown site
 
-To include our Shiny application into our RMarkdown site just add the following code in a code chunk:
+40. To include our Shiny application into our RMarkdown site just add the following code in a code chunk:
 
 ```{r fig.align='center', cache=TRUE}
 knitr::include_app("https://amaclachlan.shinyapps.io/test/",
@@ -660,7 +661,7 @@ If you copy this make sure you also update the ```_site.yml``` to link it...
 knitr::include_graphics('prac8_images/Shiny_rmarksite_yml.png') 
 ```
 
-Remember to update your site you'll need to build the website, commit to Git and push to GitHub
+41. Remember to update your site you'll need to build the website, commit to Git and push to GitHub
 
 ### Additional example
 

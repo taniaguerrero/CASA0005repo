@@ -50,7 +50,7 @@ Beware of posting questions on these forums yourself – contributors to these f
 
 If you are specifically more interested in the spatial side of R, then Alex Singleton and Chris Brunsdon at the Universities of Liverpool and Maynooth also have a number of very useful R Spatial Tutorials – http://rpubs.com/alexsingleton/ & http://rpubs.com/chrisbrunsdon/
 
-Robin Lovelace in Leeds is also frequently at the bleeding edge of developments in R spatial stuff, so keep an eye on his website too: http://robinlovelace.net/. Robin is also in the process of completing a book on GeoComputation in R, which you should definitely read! - https://geocompr.robinlovelace.net/
+Robin Lovelace in Leeds is also frequently at the bleeding edge of developments in R spatial stuff, so keep an eye on his website too: http://robinlovelace.net/. Robin is also in the process of completing a book on GeoComputation in R, which you should definitely read! --- https://geocompr.robinlovelace.net/
 
 These websites are also very very good: https://pakillo.github.io/R-GIS-tutorial/ and http://www.maths.lancs.ac.uk/~rowlings/Teaching/UseR2012/cheatsheet.html
 
@@ -72,35 +72,31 @@ If you are some kind of masochist, you are welcome to use the bundled R GUI for 
 
 Once RStudio has opened, the first thing we will do is create a new project – projects enable you to organise your work effectively and store all of the files you create and work with for a particular task. 
 
-2. To create a new project (and this will vary a little depending on the version of RStudio you are using), either select File > New Project… or Project > Create Project
+2. To create a new project (and this will vary a little depending on the version of RStudio you are using), either select File > New Project
+
+3. Select Start a project in a brand new working directory and create a new project in a directory of a new ‘wk2’ directory on your N: drive:
 
 ```{r echo=FALSE, out.width = "500px", fig.align='center', cache=TRUE}
 knitr::include_graphics('prac2_images/r_newproject.png') 
 ```
 
-3. Select Start a project in a brand new working directory and create a new project in a directory of a new ‘wk2’ directory on your N: drive:
-
-```{r echo=FALSE, out.width = "500px", fig.align='center', cache=TRUE}
-knitr::include_graphics('prac2_images/new_proj.png') 
-```
-
-My file directory (the second box here) will be different to yours as this is my teaching resources folder. Keep yours simple N:/GIS/wk2.
+My file directory (the second box here) will be different to yours as this is my teaching resources folder. Keep yours simple ```N:/GIS/wk2```.
 
 Setting up a project is extremely useful as it lets you easily access your data and files...for example....the flytipping ```.csv``` we used last week is stored at the file path
 
-```{r eval=FALSE}
+```{r eval=FALSE, cache=TRUE}
 mycsv <- read_csv("C:/Teaching/CASA0005repo/Prac1_data/fly_tipping_borough_edit.csv")  
 ```
 
 However as i've set my R project up in the CASA0005repo folder i can just use:
 
-```{r eval=FALSE}
+```{r eval=FALSE, cache=TRUE}
 mycsv <- read_csv("Prac1_data/fly_tipping_borough_edit.csv")  
 ```
 
-I had the ```.csv``` file in the same folder as my project i could just use
+If i had the ```.csv``` file in the same folder as my project i could just use
 
-```{r eval=FALSE}
+```{r eval=FALSE, cache=TRUE}
 mycsv <- read_csv("fly_tipping_borough_edit.csv")  
 ```
 
@@ -110,13 +106,13 @@ RStudio should now open with three windows –-- the main R console on the left,
 
 1. R has a very steep learning curve, but hopefully it won’t take long to get your head around the basics. For example, at its most simple R can be used as a calculator. In the console window (bottom left), just type the following and press enter:
 
-```{r}
+```{r cache=TRUE}
 1+5
 ```
 
 or 
 
-```{r}
+```{r cache=TRUE}
 4*5^2
 ```
 
@@ -130,15 +126,15 @@ As you can see R performs these calculations instantly and prints the results in
 
 4. Usually one of the first things to do when starting a new R Script is to check that you are in the correct working directory. This is important especially if you are working on multiple projects in different locations. To do this type the following into your new empty R Script:
 
-```{r}
+```{r cache=TRUE}
 getwd()
 ```
 
 5. To run this line, hold Ctrl (Cmd on a Mac) and press the Return(↲) key (if you are in the standard R installation, you would run your script with Ctrl R). You should now see your current working directory appear in the console.
 
-6. Because of the new project we have already set up, this working directory should be correct, but if for any reason we wanted to change the working directory, we would use the setwd() function. For example, we wanted to change our directory to the documents folder on the C drive, we could run (don’t do this now):
+6. Because of the new project we have already set up, this working directory should be correct, but if for any reason we wanted to change the working directory, we would use the ```setwd()``` function. For example, we wanted to change our directory to the documents folder on the C drive, we could run (don’t do this now):
 
-```{r eval=FALSE}
+```{r eval=FALSE, cache=TRUE}
 setwd("C:/Documents")
 ```
 
@@ -146,7 +142,7 @@ setwd("C:/Documents")
 
 8. We can now begin to write a script without the need to run each line every time we press enter. In the script editor type:
 
-```{r}
+```{r cache=TRUE}
 A <- 1
 B <- 2
 C <- A+B
@@ -164,7 +160,7 @@ ls()
 ```
 R will produce a list of objects that are currently active.
 
-```{r}
+```{r cache=TRUE}
 rm(A)
 ```
 
@@ -172,17 +168,17 @@ will remove the object A from the workspace (do ls() again to check this or look
 
 ### Functions
 
-12. Both rm() and ls() are known as functions. Functions are the other fundamental aspect to the R language. Functions can be thought of as single or multiple calculations that you apply to objects. They generally take the form of:
+12. Both ```rm()``` and ```s()``` are known as functions. Functions are the other fundamental aspect to the R language. Functions can be thought of as single or multiple calculations that you apply to objects. They generally take the form of:
 
 ```{r, eval=FALSE, cache=TRUE}
-function(object, parameter1, parameter2, parameter3...)
+function(object, argument1, argument2, argument)
 ```
 
 13. You can write your own functions to carry out tasks (and we’ll come onto that in subsequent practical sessions), but normally you will just used one of the virtually infinite number of functions that other people have already written for us.
 
 ### Basic plotting
 
-For example, one common function is the ```plot()``` function for displaying data as a graphical output. Add these lines to your script and run them as before and you can see some ```plot()``` outputs:
+One common function is the ```plot()``` function for displaying data as a graphical output. Add these lines to your script and run them as before and you can see some ```plot()``` outputs:
 ```{r, cache=TRUE}
 #create some datasets, first a vector of 1-100 and 101-200
 Data1 <- c(1:100)
@@ -200,7 +196,9 @@ Data4 <- rnorm(100, mean = 64, sd=14)
 plot(Data3, Data4, col="blue")
 ```
 
-14. In the code above, you will have noticed the # symbol. This signifies that whatever comes after it on that line is a comment. Comments are ignored by the R console and they allow you to annotate your code so that you know what it is doing. It is good programming practice to comment your code extensively so that you can keep track of what your scripts are for.
+14. In the code above, you will have noticed the # symbol. This signifies that whatever comes after it on that line is a comment. Comments are ignored by the R console and they allow you to annotate your code so that you know what it is doing. It is good programming practice to comment your code extensively so that you can keep track of what your scripts are for. 
+
+**Warning** Heed our advice now and comment your code it will save you time in the future
 
 ### Help
 
@@ -253,7 +251,7 @@ Rows are always referenced first, before the comma, columns second, after the co
 
 20. Try the subsetting your df data frame with the following commands to see what is returned:
 
-```{r}
+```{r cache=TRUE}
 df[1:10, 1]
 df[5:15,]
 df[c(2,3,6),2]
@@ -316,27 +314,31 @@ If you look at the ```read.csv()``` help file - ```?read.csv``` - you will see t
 
 ```{r, cache=TRUE}
 # by default in R, the file path should be defined with / but on a #windows file system it is defined with \. Using \\ instead allows R #to read the path correctly – alternatively, just use /
-LondonDataOSK<- read.csv("prac2_data/london_catalogue.csv", header = TRUE, sep = ",")
+LondonDataOSK<- read.csv("prac2_data/london_catalogue.csv", 
+                         header = TRUE, sep = ",")
 ```
 
-This would specify the exact path; that the first row of the file contains header information; and the values in the file are separated with commas (not ; or : as can be the case sometimes).
+This would specify that the first row of the file contains header information; and the values in the file are separated with commas (not ; or : as can be the case sometimes).
 
 ### New skool cleaning 
 
-To clean our data as we read it in, we are going to use a package (more about packages later - for now, just think about it as a lovely gift from the R gods) called readr which comes bundled as part of the tidyverse package. If you want to find out more about the Tidyverse (and you really should) then you should start here: https://www.tidyverse.org/ - the Tidyverse package contains almost everything you need to become a kick-ass data scientist. ‘Tidy’ as a concept in data science is well worth reading about and you should start here with Hadley Wickham’s paper - http://vita.had.co.nz/papers/tidy-data.pdf
+To clean our data as we read it in, we are going to use a package (more about packages later --- for now, just think about it as a lovely gift from the R gods) called ```readr``` which comes bundled as part of the ```tidyverse``` package. If you want to find out more about the Tidyverse (and you really should) then you should start here: https://www.tidyverse.org/ --- the Tidyverse package contains almost everything you need to become a kick-ass data scientist. ‘Tidy’ as a concept in data science is well worth reading about and you should start here with Hadley Wickham’s paper --- http://vita.had.co.nz/papers/tidy-data.pdf
 
 Anyway, first install the package:
 
 ```{r, message=FALSE, eval=FALSE, cache=TRUE}
-install.packages("tidyverse", repos = "https://www.stats.bris.ac.uk/R/")
+install.packages("tidyverse", 
+                 repos = "https://www.stats.bris.ac.uk/R/")
 ```
 
-Now we can use the ```readr``` package which comes bundled as part of the tidyverse to read in some data (directly from the web this time - read.csv can do this too) and clean text characters out from the numeric columns before they cause problems:
+Now we can use the ```readr``` package which comes bundled as part of the ```tidyverse``` to read in some data (directly from the web this time --- ```read.csv``` can do this too) and clean text characters out from the numeric columns before they cause problems:
 
 ```{r, message=FALSE, cache=TRUE}
 library(tidyverse)
-#wang the data in straight from the web using read_csv, skipping over the 'n/a' entries as you go...
-LondonData <- read_csv("https://files.datapress.com/london/dataset/ward-profiles-and-atlas/2015-09-24T14:21:24/ward-profiles-excel-version.csv", na = "n/a")
+#wang the data in straight from the web using read_csv, 
+#skipping over the 'n/a' entries as you go...
+LondonData <- read_csv("https://files.datapress.com/london/dataset/ward-profiles-and-atlas/2015-09-24T14:21:24/ward-profiles-excel-version.csv", 
+                       na = "n/a")
 ```
 
 **note the use of read_csv here as opposed to read.csv. They are very similar, but read_csv is just a bit better - read this to understand why… Also, for those python fans out there - IT’S NOT THE SAME FUNCTION AS READ_CSV IN PYTHON**
@@ -346,7 +348,7 @@ LondonData <- read_csv("https://files.datapress.com/london/dataset/ward-profiles
 
 25. Your new data has been read in as a data frame / tibble (a tibble is just a data frame with a few extra bells and whistles). If you ever need to check what data type your new data set is, we can use the ```class()``` function:
 
-```{r}
+```{r cache=TRUE}
 class(LondonData)
 ```
 
@@ -356,9 +358,9 @@ class(LondonDataOSK)
 ```
 
 
-We can also use the ```class``` function within another two functions (cbind() and lapply()) to check that our data has been read in correctly and that, for example, numeric data haven’t been read in as text or other variables. Run the following line of code:
+We can also use the ```class``` function within another two functions ```(cbind() and lapply())``` to check that our data has been read in correctly and that, for example, numeric data haven’t been read in as text or other variables. Run the following line of code:
 
-```{r}
+```{r cache=TRUE}
 datatypelist <- data.frame(cbind(lapply(LondonData,class)))
 ```
 
@@ -369,13 +371,14 @@ LondonData <- read_csv("https://files.datapress.com/london/dataset/ward-profiles
 ```
 
 Now run the datatypelist function again - you should see that some of the columns (those the n/a values in) have been read in as something other than numeric. This is why we need to exclude them. Isn’t ```readr``` great for helping us avoid reading in our numeric data as text!
+
 ```{r, eval=FALSE, cache=TRUE}
 LondonData <- edit(LondonData)
 ```
 
 27. It is also possible to quickly and easily summarise the data or look at the column headers using
 
-```{r}
+```{r cache=TRUE}
 summary(df)
 ```
 
@@ -394,7 +397,7 @@ Now we have some data read into R, we need to select a small subset to work on. 
 
 We could select just the rows we need by explicitly specifying the range of rows we need:
 
-```{r}
+```{r cache=TRUE}
 LondonBoroughs<-LondonData[626:658,]
 ```
 
@@ -430,7 +433,7 @@ LondonBoroughs <- LondonBoroughs[2:34,]
 LondonBoroughs<-LondonBoroughs[,c(1,19,20,21)]
 ```
 
-30. You will have noticed the use of square brackets above – these are very useful in R. Refer back to points 19-21 above if you can’t remember how they work. The c() function is also used here – this is the ‘combine’ function - another very useful function in R which allows arguments (in this case, column reference numbers) into a single value
+30. You will have noticed the use of square brackets above – these are very useful in R. Refer back to points 19-21 above if you can’t remember how they work. The ```c()``` function is also used here –-- this is the ‘combine’ function - another very useful function in R which allows arguments (in this case, column reference numbers) into a single value
 
 #### Renaming columns
 
@@ -443,7 +446,7 @@ names(LondonBoroughs)[1] <- c("Borough Name")
 
 ### Plotting
 
-```{r}
+```{r, cache=TRUE}
 plot(LondonBoroughs$Male.life.expectancy..2009.13, LondonBoroughs$X..children.in.reception.year.who.are.obese...2011.12.to.2013.14)
 ```
 
@@ -456,14 +459,14 @@ install.packages("plotly", repos = "https://www.stats.bris.ac.uk/R/")
 
 ```
 
-```{r, message=FALSE, cache=TRUE}
+```{r, message=FALSE, warning=FALSE, cache=TRUE}
 library(plotly)
 plot_ly(LondonBoroughs, x = ~Male.life.expectancy..2009.13, y = ~X..children.in.reception.year.who.are.obese...2011.12.to.2013.14, text = ~LondonBoroughs$`Borough Name`, type = "scatter", mode = "markers")
 ```
 
 ### Spatial Data in R
 
-This next part of the practical applies the same principles introduced above to the much more complex problem of handling spatial data within R. In this workshop we will produce a gallery of maps using many of the plotting tools available in R. The resulting maps will not be that meaningful- the focus here is on sound visualisation with R and not sound analysis (I know one is useless without the other!). Good quality spatial analysis will come in the rest of the module.
+This next part of the practical applies the same principles introduced above to the much more complex problem of handling spatial data within R. In this workshop we will produce a gallery of maps using many of the plotting tools available in R. The resulting maps will not be that meaningful --- the focus here is on sound visualisation with R and not sound analysis (I know one is useless without the other!). Good quality spatial analysis will come in the rest of the module.
 
 Whilst the instructions are step by step you are encouraged to start deviating from them (trying different colours for example) to get a better understanding of what we are doing.
 
@@ -490,17 +493,21 @@ There are a few other packages we’ll need to get to grips with. Some, like ```
 ```{r, eval=FALSE, cache=TRUE}
 install.packages(c("OpenStreetMap", "classInt", "tmap"))
 
-install.packages(c("RColorBrewer", "sp", "rgeos", "tmaptools", "sf", "downloader", "rgdal", "geojsonio"))# might also need these ones
+# might also need these ones
+install.packages(c("RColorBrewer", "sp", "rgeos", 
+                   "tmaptools", "sf", "downloader", "rgdal", 
+                   "geojsonio"))
 ```
 
-4. Now that the packages have been installed you will not have to repeat the above steps again (when you use your account in these cluster rooms). Open a new script and save it to your working directory as “wk3_maps.r”. As before, type each of the lines of code into this window and then select and use the ctrl return keys to run them. Be sure to save your script often.
+4. Now that the packages have been installed you will not have to repeat the above steps again (when you use your account in these cluster rooms). Open a new script and save it to your working directory as “wk2_maps.r”. As before, type each of the lines of code into this window and then select and use the ctrl return keys to run them. Be sure to save your script often.
 
-5. The first task is to load the packages we have just installed. note, you might have some issues with the OpenStreetMap package if your installation of java on your computer doesn’t match your installation of R – e.g. if you have installed the 64bit version of R, you also need the 64bit version of java (same with the 32bit versions) - you may also need to install the package Rcpp separately and try again.
+5. The first task is to load the packages we have just installed. Note, you might have some issues with the OpenStreetMap package if your installation of java on your computer doesn’t match your installation of R --– e.g. if you have installed the 64bit version of R, you also need the 64bit version of java (same with the 32bit versions) - you may also need to install the package Rcpp separately and try again.
 
 Install Java 64-bit from: https://java.com/en/download/manual.jsp
 
 ```{r, message=FALSE, warning=FALSE, cache=TRUE}
-#Load Packages (ignore any error messages about being built under a #different R version):
+#Load Packages (ignore any error messages about being built under a 
+#different R version):
 library(maptools)
 library(RColorBrewer)
 library(classInt)
@@ -516,9 +523,9 @@ library(geojsonio)
 
 #### Background to spatial data in R
 
-R has a very well developed ecosystem of packages for working with Spatial Data. Early pioneers like Roger Bivand and Edzer Pebesma along with various colleagues were instrumental in writing packages to interface with some powerful open source libraries for working with spatial data, such as GDAL and GEOS. These were accessed via the ```rgdal``` and ```rgeos``` packages. The  ```maptools``` package by Roger Bivand, amongst other things, allowed Shapefiles to be read into R. The ```sp``` package (along with  ```spdep```) by Edzer Pebesma was very important for defining a series of classes and methods for spatial data natively in R which then allowed others to write software to work with these formats. Other packages like ```raster``` advanced the analysis of gridded spatial data, while packages like ```classint``` and ```RColorbrewer``` facilitated the binning of data and colouring of choropleth maps.
+R has a very well developed ecosystem of packages for working with Spatial Data. Early pioneers like Roger Bivand and Edzer Pebesma along with various colleagues were instrumental in writing packages to interface with some powerful open source libraries for working with spatial data, such as GDAL and GEOS. These were accessed via the ```rgdal``` and ```rgeos``` packages. The  ```maptools``` package by Roger Bivand, amongst other things, allowed Shapefiles to be read into R. The ```sp``` package (along with  ```spdep```) by Edzer Pebesma was very important for defining a series of classes and methods for spatial data natively in R which then allowed others to write software to work with these formats. Other packages like ```raster``` advanced the analysis of gridded spatial data, while packages like ```classInt``` and ```RColorbrewer``` facilitated the binning of data and colouring of choropleth maps.
 
-Whilst these packages were extremely important for advancing spatial data analysis in R, they were not always the most straightforward to use - making a map in R could take quite a lot of effort and they were static and visually basic. However, more recently new packages have arrived to change this. Now ```leaflet``` enables R to interface with the leaflet javascript library for online, dynamic maps. ```ggplot2``` which was developed by Hadley Wickam and colleagues radically changed the way that people thought about and created graphical objects in R, including maps, and introduced a graphical style which has been the envy of other software to the extent that there are now libraries in Python which copy the ggplot2 style!
+Whilst these packages were extremely important for advancing spatial data analysis in R, they were not always the most straightforward to use --- making a map in R could take quite a lot of effort and they were static and visually basic. However, more recently new packages have arrived to change this. Now ```leaflet``` enables R to interface with the leaflet javascript library for online, dynamic maps. ```ggplot2``` which was developed by Hadley Wickam and colleagues radically changed the way that people thought about and created graphical objects in R, including maps, and introduced a graphical style which has been the envy of other software to the extent that there are now libraries in Python which copy the ```ggplot2``` style!
 
 Building on all of these, the new ```tmap``` (Thematic Map) package has changed the game completely and now enables us to read, write and manipulate spatial data and produce visually impressive and interactive maps, very easily. In parallel, the ```sf``` (Simple Features) package is helping us re-think the way that spatial data can be stored and manipulated. It’s exciting times for geographic information / spatial data science!
 
@@ -531,12 +538,12 @@ As with all plots in R, there are multiple ways we can do this. The basic ```plo
 6. So one mega cool thing about R is you can read spatial data in straight from the internetz! Try this below for downloading a GeoJson file:
 
 ```{r, cache=TRUE}
-library(geojsonio)
 EW <- geojson_read("http://geoportal.statistics.gov.uk/datasets/8edafbe3276d4b56aec60991cbddda50_2.geojson", what = "sp")
 ```
 
+Pull out london using grep and the regex wildcard for'start of the string' (^) to to look for the bit of the district code that relates to London (E09) from the 'lad15cd' column in the data slot of our spatial polygons dataframe
+
 ```{r, cache=TRUE}
-#pull out london using grep and the regex wildcard for'start of the string' (^) to to look for the bit of the district code that relates to London (E09) from the 'lad15cd' column in the data slot of our spatial polygons dataframe
 LondonMap <- EW[grep("^E09",EW@data$lad15cd),]
 #plot it using the base plot function
 qtm(LondonMap)
@@ -546,9 +553,10 @@ qtm(LondonMap)
 
 ```{r, cache=TRUE}
 #read the shapefile into a simple features object
-BoroughMapSF <- read_shape("prac1_data/statistical-gis-boundaries-london/ESRI/London_Borough_Excluding_MHW.shp", as.sf = TRUE)
+BoroughMapSF <- st_read("prac1_data/statistical-gis-boundaries-london/ESRI/London_Borough_Excluding_MHW.shp")
 BoroughMapSP <- LondonMap
-#plot it very quickly usking qtm (quick thematic map) to check it has been read in correctly
+#plot it very quickly usking qtm (quick thematic map) to check
+#it has been read in correctly
 qtm(BoroughMapSF)
 ```
 
@@ -588,7 +596,7 @@ OK, enough messing around, show us the maps!!
 #join the data to the @data slot in the SP data frame
 BoroughMapSP@data <- data.frame(BoroughMapSP@data,LondonData[match(BoroughMapSP@data[,"GSS_CODE"],LondonData[,"New.code"]),])
 #check it's joined.
-#head(BoroughMapSP@data)
+head(BoroughMapSP@data)
 ```
 
 10. Joining data is a bit more intuitive with SF:
@@ -599,8 +607,9 @@ BoroughDataMap <- append_data(BoroughMapSF,LondonData, key.shp = "GSS_CODE", key
 
 An alternative to append_data would be to use a left-join (like in SQL)
 
-```{r, cache=TRUE}
-BoroughDataMap2 <- BoroughMapSF %>% left_join(LondonData, by = c("GSS_CODE" = "New.code"))
+```{r, cache=TRUE, warning=FALSE, message=FALSE}
+BoroughDataMap2 <- BoroughMapSF %>% left_join(LondonData, 
+                                              by = c("GSS_CODE" = "New.code"))
 ```
 
 However, you would need to remove the duplicate City of London row afterwards
@@ -609,7 +618,7 @@ However, you would need to remove the duplicate City of London row afterwards
 
 If you want to learn a bit more about the sorts of things you can do with tmap, then there are 2 vignettes that you can access here: https://cran.r-project.org/web/packages/tmap/ - I suggest you refer to these to see the various things you can do using tmap. Here’s a quick sample though:
 
-11. We can create a choropleth map very quickly now using ```qtm```
+11. We can create a choropleth map very quickly now using ```qtm()```
 
 ```{r, cache=TRUE}
 library(tmap)
@@ -618,14 +627,16 @@ tmap_mode("plot")
 ```
 
 ```{r, cache=TRUE}
-qtm(BoroughDataMap, fill = "Rate.of.JobSeekers.Allowance..JSA..Claimants...2015")
+qtm(BoroughDataMap, 
+    fill = "Rate.of.JobSeekers.Allowance..JSA..Claimants...2015")
 ```
 
 You can also add a basemap and some other guff, if you wish…
 
-```{r, cache=TRUE}
-london_osm <- read_osm(BoroughDataMap, type = "esri", zoom = NULL)
-qtm(london_osm) + 
+```{r, cache=TRUE, eval=FALSE}
+tmap_mode("plot")
+london_osm <- tmaptools::read_osm(BoroughDataMap, type = "esri", zoom = NULL)
+qtm(BoroughDataMap) + 
   tm_shape(BoroughDataMap) + 
   tm_polygons("Rate.of.JobSeekers.Allowance..JSA..Claimants...2015", 
         style="jenks",
@@ -654,13 +665,14 @@ You will notice that to choose the colour of the maps, I entered some codes. The
 If you want to look at the range of colour palettes available, as we; as going to the ColorBrewer website, you can use the a little shiny app which comes bundled with ```tmaptools```
 
 ```{r, eval=FALSE, cache=TRUE}
-#You might need to install the shinyjs paclage for this to work
+#You might need to install the shinyjs package for this to work
 install.packages("shinyjs")
 ```
 
 ```{r, eval=FALSE, cache=TRUE}
 library(shinyjs)
-#it's possible to explicitly tell R which package to get the function from with the :: operator...
+#it's possible to explicitly tell R which 
+#package to get the function from with the :: operator...
 tmaptools::palette_explorer()
 ```
 
@@ -687,17 +699,17 @@ save_tmap(filename = "truffle.html")
 
 #### Have a play around…
 
-There are loads of options for creating maps with ```tmap``` - read the vignettes that have been provided by the developers of the package and see if you can adapt the maps you have just made - or even make some alternative maps using built in data.
+There are loads of options for creating maps with ```tmap``` --- read the vignettes that have been provided by the developers of the package and see if you can adapt the maps you have just made - or even make some alternative maps using built in data.
 
 https://cran.r-project.org/web/packages/tmap/vignettes/tmap-nutshell.html https://cran.r-project.org/web/packages/tmap/vignettes/tmap-modes.html
 
 You should also read the reference manual on the package homepage: https://cran.r-project.org/web/packages/tmap/
 
-In fact, since I wrote this last year, the ```tmap``` package has developed quite a bit more - have a look at some of the cool examples here: https://github.com/mtennekes/tmap
+In fact, since I wrote this last year, the ```tmap``` package has developed quite a bit more --- have a look at some of the cool examples here: https://github.com/mtennekes/tmap
 
 Have a play and see what cool shiz you can create!
 
-This is an example from the BubbleMap folder on the tmap github. Don't worry about what github is we will cover that soon.
+This is an example from the BubbleMap folder on the tmap GitHub. Don't worry about what GitHub is we will cover that soon.
 
 ```{r message=FALSE, warning=FALSE, cache=TRUE}
 # load spatial data included in the tmap package
@@ -746,28 +758,32 @@ or, more flexibly at the level of the individual geom_ layer, e.g.
 geom_polygon(aes(x=x, y=y), data.frame)
 ```
 
-17. To begin our plot, we will start with the map layer – we will generate this using the geom_sf() function in ```ggplot2```:
+17. To begin our plot, we will start with the map layer – we will generate this using the ```geom_sf()``` function in ```ggplot2```:
 
 ```{r, cache=TRUE}
-ggplot()+geom_sf(mapping = aes(geometry=geometry),data = BoroughDataMap)+theme_minimal()
+ggplot()+geom_sf(mapping = aes(geometry=geometry),
+                 data = BoroughDataMap)+theme_minimal()
 ```
 
 18. To colour your map, then just pass the name of the variable you want to map to the fill parameter in the aesthetics:
 
 ```{r, cache=TRUE}
-ggplot()+geom_sf(mapping = aes(geometry=geometry, fill=Median.House.Price...U.00A3.....2014),data = BoroughDataMap)+theme_minimal()
+ggplot()+geom_sf(mapping = aes(geometry=geometry, fill=Median.House.Price...U.00A3.....2014),
+                 data = BoroughDataMap)+theme_minimal()
 ```
 
 19. As you can see, this map looks OK, but there are a few issues with things like the colour ramp and a lack of appropriate labels. We can correct this by adding a few more layers. Firstly we can change the palette:
 
 ```{r, cache=TRUE}
-palette1<-scale_fill_continuous(low="white", high="orange", "Price(£)")
+palette1<-scale_fill_continuous(low="white", 
+                                high="orange", "Price(£)")
 ```
 
 20. And some appropriate labels:
 
 ```{r, cache=TRUE}
-labels<-labs(title="Average House Price 2014",x="Longitude", y="Latitude")
+labels<-labs(title="Average House Price 2014",
+             x="Longitude", y="Latitude")
 ```
 
 21. Before plotting the all of them together:
@@ -778,21 +794,21 @@ ggplot()+geom_sf(mapping = aes(geometry=geometry, fill=Median.House.Price...U.00
 
 ### Changing projections
 
-Now until now, we’ve not really considered how our maps have been printed to the screen. The coordinates stored in the ```geometry``` column of your ```sf``` object contain the information to enable points, lines or polygons to be drawn on the screen (think back to the KML exercise in week 1). The ```ggplot``` map above could fool you into thinking the coordinate system we are using is latitude and longitude, but actually, the map coordinates are stored in British National Grid. How can we tell?
+Now until now, we’ve not really considered how our maps have been printed to the screen. The coordinates stored in the ```geometry``` column of your ```sf``` object contain the information to enable points, lines or polygons to be drawn on the screen. The ```ggplot``` map above could fool you into thinking the coordinate system we are using is latitude and longitude, but actually, the map coordinates are stored in British National Grid. How can we tell?
 
 You can check that the coordinate reference systems of  ```sf ``` or  ```sp ``` objects using the print function:
 
-```{r, cache=TRUE}
+```{r, cache=TRUE, echo=FALSE}
 print(BoroughMapSP)
 ```
 
-```{r, cache=TRUE}
+```{r, cache=TRUE, echo=FALSE}
 print(BoroughMapSF)
 ```
 
 #### Proj4
 
-If you’re a spatial geek and you’re used to looking at London, then a quick glance at the values of the extent / bounding box (bbox) will tell you that you are working in British National Grid as the x and y values are in 6 Figures, with x values around 52000 to 55000 and y values around 15000 to 20000. The other way of telling is by looking at the coordinate reference system (CRS) value - in the files above it’s defined by the bit that says:
+If you’re a spatial geek and you’re used to looking at London, then a quick glance at the values of the extent / bounding box (bbox) will tell you that you are working in British National Grid as the x and y values are in 6 Figures, with x values around 52000 to 55000 and y values around 15000 to 20000. The other way of telling is by looking at the coordinate reference system (CRS) value --- in the files above it’s defined by the bit that says:
 
 ```+proj=tmerc +lat_0=49 +lon_0=-2 +k=0.9996012717 +x_0=400000 +y_0=-100000 +ellps=airy```
 
@@ -806,42 +822,40 @@ To find the proj4-strings for a whole range of different geographic projections,
 
 #### EPSG
 
-Now, if you can store a whole proj4-string in your mind, you must be some kind of savant (why are you doing this course? you could make your fortune as a card-counting poker player or something!). The rest of us need something a little bit more easy to remember and for coordinate reference systems, the saviour is the European Petroleum Survey Group (EPSG) - (naturally!). Now managed and maintained by the International Association of Oil and Gas producers - http://www.epsg.org/ - EPSG codes are short numbers represent all coordinate reference systems in the world and link directly to proj4 strings.
+Now, if you can store a whole proj4-string in your mind, you must be some kind of savant (why are you doing this course? you could make your fortune as a card-counting poker player or something!). The rest of us need something a little bit more easy to remember and for coordinate reference systems, the saviour is the European Petroleum Survey Group (EPSG) --- (naturally!). Now managed and maintained by the International Association of Oil and Gas producers - http://www.epsg.org/ --- EPSG codes are short numbers represent all coordinate reference systems in the world and link directly to proj4 strings.
 
-The EPSG code for British National Grid is 27700 - http://epsg.io/27700. The EPSG code for the WGS84 World Geodetic System (usually the default CRS for most spatial data) is 4326 - http://epsg.io/4326
+The EPSG code for British National Grid is 27700 --- http://epsg.io/27700. The EPSG code for the WGS84 World Geodetic System (usually the default CRS for most spatial data) is 4326 - http://epsg.io/4326
 
 26. If your boundary data doesn’t have a spatial reference system, you can read it in you can read it in and set the projection either with the full proj4 string, or, more easily, with the EPSG code:
 
 ```{r, cache=TRUE}
 # read borough map in and explicitly set projection to British National Grid 
 # using the EPSG string code 27700
-BoroughMapSP <- read_shape("prac1_data/statistical-gis-boundaries-london/ESRI/London_Borough_Excluding_MHW.shp", current.projection = 27700)
+BoroughMapSF <- st_read("prac1_data/statistical-gis-boundaries-london/ESRI/London_Borough_Excluding_MHW.shp") 
+BoroughMapSF <- st_set_crs(BoroughMapSF, 27700)
 ```
 
 ```{r, cache=TRUE}
-#or, for SF
+#or more concisely
 BoroughMapSF <- st_read("prac1_data/statistical-gis-boundaries-london/ESRI/London_Borough_Excluding_MHW.shp") %>% st_set_crs(27700)
 ```
 
-27. Another option is to assign the coordinates reference system after the shapefile has been read in, for example. However as we have already assigned a CRS to BoroughMapSP R in the function read_shape R will through an error. So let's read the shape again using ```readOGR ``` from the rgdal package:
+27. Another option is to use the function ```readOGR()``` from the ```rgdal``` package:
 
 ```{r, message=FALSE, warning=FALSE, cache=TRUE}
 BoroughMapSP <- readOGR("prac1_data/statistical-gis-boundaries-london/ESRI/London_Borough_Excluding_MHW.shp")
-#create a variable for the EPSG code to reference the proj4string (EPSG codes are shorter and easier to remember than the full strings!) and store it in a variable...
+#create a variable for the EPSG code to reference the proj4string 
+#(EPSG codes are shorter and easier to remember than the full strings!) 
+#and store it in a variable...
 UKBNG <- "+init=epsg:27700"
-#now set the proj4string for your BoroughMap object - note, this will probably throw an error if your dataset already has a CRS, this is just for demonstration...
+#now set the proj4string for your BoroughMap object
+#note, this will probably throw an error if your dataset already has a 
+#CRS, this is just for demonstration...
 proj4string(BoroughMapSP) <- CRS(UKBNG)
 ```
 
 ```{r, cache=TRUE}
 print(BoroughMapSP) # check for new CRS
-```
-
-or for ```SF```:
-
-```{r, cache=TRUE}
-BoroughMapSF <- BoroughMapSF %>% st_set_crs(27700)
-print(BoroughMapSF)
 ```
 
 #### Reprojecting your spatial data
@@ -885,16 +899,24 @@ Now we can re-project our data, it frees us up to bring in, for example, differe
 #install.packages("ggmap")
 library(ggmap)
 
-BoroughDataMap <- append_data(BoroughMapSFWGS84,LondonData, key.shp = "GSS_CODE", key.data = "New.code", ignore.duplicates = TRUE)
+BoroughDataMap <- append_data(BoroughMapSFWGS84,LondonData, 
+                              key.shp = "GSS_CODE", 
+                              key.data = "New.code",
+                              ignore.duplicates = TRUE)
 
-londonbbox1 <- c(left = -0.5103766, bottom = 51.28676, right = 0.3340146, top = 51.69187)
+londonbbox1 <- c(left = -0.5103766, 
+                 bottom = 51.28676, 
+                 right = 0.3340146, 
+                 top = 51.69187)
 
 londonbbox2 <- as.vector(st_bbox(BoroughMapSFWGS84))
 
 #this bit of code uses the box we specified and gets map tiles from Stamen Maps (http://maps.stamen.com/#terrain/12/37.7706/-122.3782)
 
 # try changing the maptype to watercolor
-map <- get_stamenmap(londonbbox2, zoom = 10, maptype = "toner-lite")
+map <- get_stamenmap(londonbbox2, 
+                     zoom = 10, 
+                     maptype = "toner-lite")
 
 ggmap(map) + geom_sf(mapping = aes(geometry=geometry, fill=Median.House.Price...U.00A3.....2014),data = BoroughDataMap, inherit.aes = FALSE,alpha=0.7)+theme_minimal()+palette1+labels
 ```
@@ -911,22 +933,28 @@ See if you can create a faceted grid of London maps like the one shown below. To
 
 2. You will also need to make sure your subset includes a few columns of key ID information data at the beginning – e.g. ID and geometry.
 
-3. You will then need to use the reshape2 package to reformat your data using the ```melt()``` function, with an argument to specify the columns where your ID data ends (all columns afterwards containing data you want to plot). A call something like:
+3. You will then need to use the reshape2 package to reformat your data using the ```melt()``` function, with an argument to specify the columns where your ID data ends (all columns afterwards containing data you want to plot). Use melt to bung all of the variables into a single column on top of each other, but leave out the geometry column or it will throw an error. Make sure you know which coloumn holds the geometry.I'm only going to select 10 coloumns of data here (measure.vars=10:20)....a call something like:
+
+
+#have a look at borough_melt now - in this circumstance i find the best way is to click on the data in the enviroment window (top right), what do you notice?
 
 ```{r, cache=TRUE}
 #warning, this is messy, but it sort-of works...
 library(reshape2)
 library(dplyr)
-#use melt to bung all of the variables into a single column on top of each other, but leave out the geometry column or it will throw an error. Make sure you know which coloumn holds the geometry.I'm only going to select 10 coloumns of data here (measure.vars=10:20).
 
 borough_melt <- melt(BoroughDataMap,id.vars = 1:9, measure.vars = 10:20)
+```
 
-#have a look at borough_melt now - in this circumstance i find the best way is to click on the data in the enviroment window (top right), what do you notice?
+Have a look at borough_melt now --- in this circumstance i find the best way is to click on the data in the enviroment window (top right), what do you notice?
 
-#now join the geometry column back on - you will have to join it along with all of the data again.
+```{r, cache=TRUE}
+#now join the geometry column back on 
+#you will have to join it along with all of the data again.
 borough_melt <- left_join(borough_melt,BoroughDataMap,by = c("GSS_CODE" = "GSS_CODE"))
 
-#here i'm removing everything except the variable coloumn, values and the geometry inforamtion
+#here i'm removing everything except the variable coloumn, 
+#values and the geometry inforamtion
 borough_melt <- borough_melt[,c(10:11,84)]
 
 library(tmap)
@@ -938,8 +966,6 @@ tmap_mode("plot")
 borough_melt <- st_as_sf(borough_melt)
 
 qtm(borough_melt, fill = "value", by = "variable")
-
-
 ```
 
 or, indeed, in ggplot2 like this:
@@ -955,16 +981,11 @@ So we created an interactive map with ```tmap``` earlier and that was pretty coo
 Leaflet is a Java Script library for producing interactive web maps, and some enterprising coders over at RStudio have produced a package for allowing you to create your own Leaflet maps. All of the documentation for the R Leaflet package can be found here: https://rstudio.github.io/leaflet/
 
 ```{r, cache=TRUE, warning=FALSE, message=FALSE}
-library(leaflet)
-```
-
-```{r, cache=TRUE, warning=FALSE, message=FALSE}
 library(sf)
 library(sp)
 library(magrittr)
-```
-```{r, cache=TRUE,warning=FALSE, message=FALSE}
 library(classInt)
+library(leaflet)
 ```
 
 ##### Generating a colour ramp and palette
@@ -973,8 +994,13 @@ Before we create a leaflet map, we need to specify what the breaks in our data a
 
 ```{r, cache=TRUE,  warning=FALSE, message=FALSE}
 colours<- brewer.pal(5, "Blues")
-breaks<-classIntervals(BoroughDataMap$Claimant.Rate.of.Housing.Benefit..2015., n=5, style="jenks")
-graphics::plot(breaks, pal=colours)
+
+breaks<-classIntervals(BoroughDataMap$Claimant.Rate.of.Housing.Benefit..2015., 
+                       n=5, 
+                       style="jenks")
+
+graphics::plot(breaks, 
+               pal=colours)
 ```
 
 So we have now created a breaks object which uses the jenks natural breaks algorithm to divide up our variable into 5 classes. You will notice that breaks is a list of 2 objects. We want only the ```brks``` bit which contains the values for the breaks
@@ -989,10 +1015,12 @@ breaks <- as.numeric(breaks$brks)
 
 Now we can create out leaflet interactive map.
 
-Here you will see that I am using different syntax to that which has gone before. The %>% (pipe) operator is part of the magrittr package - https://cran.r-project.org/web/packages/magrittr/vignettes/magrittr.html. magrittr is an entirely new way of thinking about R syntax. Read up on it if you wish, but for now it is useful to think of the pipe operator as simply meaning “then”. Do this THEN do this THEN do that.
+Here you will see that I am using different syntax to that which has gone before. The %>% (pipe) operator is part of the ```magrittr``` package --- https://cran.r-project.org/web/packages/magrittr/vignettes/magrittr.html. ```magrittr``` is an entirely new way of thinking about R syntax. Read up on it if you wish, but for now it is useful to think of the pipe operator as simply meaning “then”. Do this THEN do this THEN do that.
 
 ```{r, cache=TRUE,warning=FALSE, message=FALSE}
-#create a new sp object from the earlier sf object with all of our data in THEN Transform it to WGS84 THEN convert it to SP.  
+#create a new sp object from the earlier sf object 
+#with all of our data in THEN Transform it to WGS84 
+#THEN convert it to SP.  
 
 BoroughDataMapSP <- BoroughDataMap %>%
   st_transform(crs = 4326) %>%
@@ -1003,7 +1031,10 @@ pal <- colorBin(palette = "YlOrRd",
                 domain = BoroughDataMapSP$Claimant.Rate.of.Housing.Benefit..2015.,
                 #create bins using the breaks object from earlier
                 bins = breaks)
-# now, add some polygons colour them using your colour palette, #overlay the, on top of a nice backdrop and add a legend. Note the #use of the magrittr pipe operator (%>%) – check the documentation #to understand how this is working…
+# now, add some polygons colour them using your colour palette,
+#overlay the, on top of a nice backdrop and add a legend. 
+#Note the use of the magrittr pipe operator (%>%)
+#check the documentation to understand how this is working…
 leaflet(BoroughDataMapSP) %>%
   addPolygons(stroke = FALSE, 
               fillOpacity = 0.5, 

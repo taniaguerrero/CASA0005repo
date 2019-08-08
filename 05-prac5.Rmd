@@ -11,7 +11,17 @@ By the end of this practical you should be able to:
 
 ## Introduction 
 
-In this practical we're going to focus on creating mapped outputs using QGIS, ArcMap and R. For fun we're going to use data from OpenStreetMap (OSM) and Airbnb. OpenStreetMap is a  collaborative project that has created a free editable map of the World. Airbnb is an online marketplace that connects people looking to rent homes to those seeking accomodation often over short time periods.
+In this practical we're going to focus on creating mapped outputs using QGIS, ArcMap and R. For fun we're going to use data from OpenStreetMap (OSM) and Airbnb. 
+
+### OSM
+
+OpenStreetMap is collaborative project that has created a free editable map of the World. As users can create their own content it is classed as Volunteered geographic Information (VGI). There is a lot of academic literature on VGI, it's advnatages and disadvantages. For an overview of VGI checkout: https://link.springer.com/article/10.1007/s10708-007-9111-y
+
+If you are interested in exploring the power of VGI and OSM further checkout missing maps: https://www.missingmaps.org/. They aim to map missing places, often in less developed countires, using OSM so that when natural disasters occur first responders can make data informed decisions. They run events all over the world and it's worth going to meet other spatial professionals, gain some experience with OSM and contribute to a good cause. 
+
+### Airbnb
+
+Airbnb is an online marketplace that connects people looking to rent homes to those seeking accomodation often over short time periods.
 
 ## Data
 
@@ -505,20 +515,15 @@ library(tidyverse)
 
 tmap_mode("plot")
 
-OSM <- read_shape("prac5_data/greater-london-latest-free.shp/gis_osm_pois_a_free_1.shp",
-                  as.sf = TRUE)
+OSM <- st_read("prac5_data/greater-london-latest-free.shp/gis_osm_pois_a_free_1.shp")
 
-Londonborough <- read_shape("Prac1_data/statistical-gis-boundaries-london/ESRI/London_Borough_Excluding_MHW.shp",
-  as.sf = TRUE)
+Londonborough <- st_read("Prac1_data/statistical-gis-boundaries-london/ESRI/London_Borough_Excluding_MHW.shp")
 
 Airbnb <- read_csv("prac5_data/listings.csv")
   
-Worldcities <- read_shape("prac5_data/World_Cities/World_Cities.shp", 
-                          as.sf = TRUE)
+Worldcities <- st_read("prac5_data/World_Cities/World_Cities.shp")
 
-# load as sp to use with spatialpointsdataframe  
-UK_outline <- read_shape("prac5_data/gadm36_GBR_shp/gadm36_GBR_0.shp", 
-                         as.sf = TRUE)
+UK_outline <- st_read("prac5_data/gadm36_GBR_shp/gadm36_GBR_0.shp")
 
 # plot xy data
 Airbnb <- st_as_sf(Airbnb, coords = c("longitude", "latitude"), 
@@ -600,7 +605,7 @@ tm3 <- tm_shape(UK_outlinecrop)+
 
 legend <- tm_shape(Hotels) +
     tm_polygons("Accom count") +
-    tm_scale_bar(position=c(0.2,0.04), size=0.6)+
+    tm_scale_bar(position=c(0.2,0.04), text.size=0.6)+
     tm_compass(north=0, position=c(0.65,0.6))+
     tm_layout(legend.only = TRUE, legend.position=c(0.2,0.25),asp=0.1)+
     tm_credits("(c) OpenStreetMap contrbutors and Air b n b", position=c(0.0,0.0))

@@ -40,6 +40,10 @@ knitr::include_url("https://www.youtube.com/embed/K0qZffiKwak")
 
 One of the issues with GIS is that many of the files we will be working with are quite large. Fortunately in recent years UCL has seriously beefed up the storage available for students. You now get 100GB of free storage, which should be plenty for the work you will be doing this year! The Bartlett faculty has several gigabytes of storage space available on their central servers, so before we get started, we will connect to our N drive to carry out all of our practical work over the coming weeks. 
 
+## Self guided learning {-}
+
+The lectures and practicals of this course only form a part of the learning process. You are expected to undertake wider reading and explore new methods and approaches. We have provided guidance on useful resources throughout the course to use as a starting point but you are encouraged to go beyond our recommedations and fully engage with applied GIS research, methods and visualisation techniques.
+
 ## Offline viewing {-}
 
 The best way to view this practical book is through the website. However if you are unable to access the internet you can either download the ```.epub``` book or save specific webpages for offline viewing --- note that any interactive plots won't work in the ```.epub``` book. As this is a live document if you select to download the ```.epub``` make sure you redownload it regularly to keep up to date with any changes to the material. Insturctions for Google Chrome are provided here: https://support.google.com/chrome/answer/7343019?co=GENIE.Platform%3DDesktop&hl=en&oco=1
@@ -51,6 +55,15 @@ knitr::write_bib(c(
 ), 'packages.bib')
 ```
 
+## Interactive lectures {-}
+
+During the lectures we will be using an interative polling and Q&A application called vevox. It's very simple to use you can either
+
+* Download the app on iOS or Android: http://get.vevox.app 
+* Use the web app: https://vevox.app/
+
+The meeting ID will change every week and we'll tell you what it is in the lectures
+
 ## More help {-}
 
 If you need specific assistance with this course please:
@@ -58,7 +71,7 @@ If you need specific assistance with this course please:
 * Check the module handbook for queries relating to assignments / deadlines 
 * Speak to a member of the teaching team in the computer lab sessions
 * Ask a question at the end of a lecture (time permitting)
-* Ask a question on slack
+* Ask a question on [slack](https://join.slack.com/t/casa0005-gis-19-20/shared_invite/enQtNzIyNzAwMTQ0MzU4LTE3MWYwYzExYWQxYzFkNzhiMTRhYmNjN2EzNGY0Y2FiZTVhNGQ5YTg4ZDZjZGRjM2E4YjNkNDIxMjMzYTcxOTQ)
 
 Due to the size of the class we will only reply to messages on slack so all students can see the discussion.
 
@@ -83,3 +96,7 @@ Don't worry if you are unsure about what GitHub is we cover it in the course.
 ## Assignment resources {-}
 
 Want some tips for resources on your assignment?.... head over to the [Assignment resources] pages
+
+## Reading list {-}
+
+We link to books and resources throughout each practical and in the [Assignment resources] pages, but a full reading list for the course it provided over on Moodle.

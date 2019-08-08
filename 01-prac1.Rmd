@@ -115,7 +115,12 @@ In your N drive: create a new folder called GIS and within this a sub folder cal
 
 ### Data download
 
-Firstly we need to get a spatial outline of the London boroughs. The geographic boundaries that are used in the UK are a complex, often inter-related, but ever changing mass of areas. For anyone new to the UK (or indeed not a trained quantitative geographer), it can be quite a daunting task to attempt to understand all of the boundaries that are in use. Fortunately the Office for National Statistics (ONS) has an online beginners guide to UK geography. If you need more information on the vast array of different UK geographies, this is the place to start: http://geoportal.statistics.gov.uk/datasets/a-beginners-guide-to-uk-geography-2018-v1-0  
+Firstly we need to get a spatial outline of the London boroughs. The geographic boundaries that are used in the UK are a complex, often inter-related, but ever changing mass of areas. For anyone new to the UK (or indeed not a trained quantitative geographer), it can be quite a daunting task to attempt to understand all of the boundaries that are in use. Fortunately the Office for National Statistics (ONS) has an online beginners guide to UK geography. If you need more information on the vast array of different UK geographies, go and explore these resources:
+
+* http://geoportal.statistics.gov.uk/datasets/a-beginners-guide-to-uk-geography-2018-v1-0 
+* https://data.gov.uk/dataset/d7dd9437-20d0-448f-a61b-6e0939dcc642/hierarchical-representation-of-uk-statistical-geographies-december-2017
+
+Let's download some data..
 
 * Spatial Data
 
@@ -168,7 +173,7 @@ Note how I've altered the total_action_taken to the sum of... as the original wa
 
 It's important to think about what data we actually need in the next step and it's good practice to avoid data redundancy where possible.
 
-**Spoiler** The spatial data we have downloaded already contains borough name, so we don't need it twice. However, we do need a field to link the two datasets on. You could use borough name, but when using text fields sometimes input variations can affect joins. For example, you had the University of Manchester in one dataset and Manchester University in another the join would fail. Consequently it's usually best to join datasets on a code field. 
+**Spoiler** The spatial data we have downloaded already contains borough name, so we don't need it twice. However, we do need a field to link the two datasets on. You could use borough name, but when using text fields sometimes input variations can affect joins. For example, if you had the University of Manchester in one dataset and Manchester University in another the join would fail. Consequently it's usually best to join datasets on a code field. 
 
 Now save the Excel sheet that contains the pivot table as a new ```.csv```. Make sure that the first row of data holds the column titles. Remove all empty rows.
 
@@ -649,6 +654,8 @@ I normally use this one: https://freegisdata.rtwilson.com/
 ## Summary
 
 Within this practical we have explored the different types, formats and software used to store, analyse and manipulate spatial data. In reflecting upon this practical you should consider the (dis)advantages of each, where and when they might be appropriate and the overall practicality. Next week we will delve further into R and RStudio.  
+
+## Reading list
 
 
 

@@ -6,13 +6,18 @@ library(knitr)
 
 Listed below are some helpful website, books, datasets and tools you might find useful when completing your assignments.
 
+## Examples of previous work
+
+Closer to the assignment deadline we will release examples of good student projects from previous years as a tab on Moodle.
+
 ## Cool stuff to explore
 
 New pcakages and functions that i've recently come across that are worth exploring..
 
+* RStudio cloud: https://rstudio.cloud/ --- like RStudio but online, great for collaborating
 * Animating plots: https://rpubs.com/jgleeson/ripple-effect
 * Bivariate maps: https://timogrossenbacher.ch/2019/04/bivariate-maps-with-ggplot2-and-sf/
-* https://www.rayshader.com/
+* Rayshader: https://www.rayshader.com/
 
 ## Books/reading resources
 
@@ -22,10 +27,19 @@ There are a lot of free online books for geospatial analysis, especially using R
 * http://hadley.nz/
 * https://geocompr.robinlovelace.net/
 * https://happygitwithr.com/
+* https://bookdown.org/
 
 ## New developments
 
-Every year there is a useR conference that provides a load to tutorials on the latest developments and research...check them out here: http://www.user2019.fr/tutorials/ and here: https://github.com/sowla/useR2019-materials
+Every year there is a useR conference that provides a load to tutorials on the latest developments and research...check them out here: 
+
+* http://www.user2019.fr/tutorials/
+* https://github.com/sowla/useR2019-materials
+
+Other useful tutorials can be found here:
+
+* http://rpubs.com/chrisbrunsdon/
+* http://rpubs.com/alexsingleton/
 
 ## Data
 
@@ -49,6 +63,9 @@ This is by no means an extensive data list, but summarises data used within all 
 * TFL open data: https://tfl.gov.uk/info-for/open-data-users/our-open-data?intcmp=3671#on-this-page-2
 * EU tourism data: https://ec.europa.eu/eurostat/statistics-explained/index.php/Tourism_statistics
 * NASA EARTHDATA: https://earthdata.nasa.gov/
+* Camden air action: https://camdenairaction.wordpress.com/2017/02/20/schools-monitoring-project-spring-2017/
+* Kings data on air pollution: https://www.londonair.org.uk/LondonAir/Default.aspx
+
 
 ## Data lists
 

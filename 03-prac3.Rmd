@@ -23,13 +23,15 @@ To start with we are going to use WorldClim data --- this is a dataset of free g
 
 1. Download the data from: http://worldclim.org/version2
 
-2. Select any variable you want at the 5 minute second resolution. What is a 5 minute resolution i hear you ask? Well, this geographic reference system treats the globe as if it was a sphere divided into 360 equal parts called degrees. Each degree has 60 minutes and each minute has 60 seconds. Arc-seconds of latitude remain almost constant whilst arc-seconds of longitude decrease in a trigonometric cosine-based fashion as you move towards the Earth's poles....
+2. Select any variable you want at the 5 minute second resolution. 
+
+What is a 5 minute resolution i hear you ask? Well, this geographic reference system treats the globe as if it was a sphere divided into 360 equal parts called degrees. Each degree has 60 minutes and each minute has 60 seconds. Arc-seconds of latitude remain almost constant whilst arc-seconds of longitude decrease in a trigonometric cosine-based fashion as you move towards the Earth's poles....In contrast a projected coordinate system is defined on a flat, two-dimensional plane (through projecting a spheriod onto a 2D surface) giving it constant lengths, angles and areas...
 
 ```{r echo=FALSE, out.width = "400pt", fig.align='center', cache=TRUE}
 knitr::include_graphics('prac3_images/arcseconds.jpg')
 ```
 
-If you are still a bit confused by coordiate reference systems have a look at the following:
+If you are still a bit confused by coordiate reference systems then **stop** and take some time to have a look at the resources listed here. It is very important to understand projection systems.
 
 * https://communityhub.esriuk.com/geoxchange/2012/3/26/coordinate-systems-and-projections-for-beginners.html
 
@@ -41,7 +43,7 @@ This YouTube video that shows the differences between geographic and projected c
 knitr::include_url("https://www.youtube.com/embed/IOpQg0BXYvw")
 ```
 
-And this great YouTube produced by SciShow shows the comporsises of different geographic map projections 
+And this great YouTube produced by SciShow shows the comporsises of different map projections 
 
 ```{r echo=FALSE, fig.align='center', cache=TRUE}
 knitr::include_url("https://www.youtube.com/embed/8I_VpC6IuJs")
@@ -51,7 +53,7 @@ knitr::include_url("https://www.youtube.com/embed/8I_VpC6IuJs")
 
 ```{r ,message=FALSE, cache=TRUE}
 library(raster)
-jan=raster("prac3_data/wc2.0_5m_tavg_01.tif")
+jan<-raster("prac3_data/wc2.0_5m_tavg_01.tif")
 # have a look at the raster layer jan
 jan
 ```
@@ -61,6 +63,17 @@ jan
 ```{r, cache=TRUE}
 plot(jan)
 ```
+
+
+Now we can actually see some data...here is a quick example of using the Robinson projection saved to a new variable. Don't worry about the code, just take in that it is different to the above plot
+
+```{r cache=TRUE, warning=FALSE, message=FALSE}
+library(sf)
+newproj<-"+proj=robin +lon_0=0 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs"
+pr1 <- projectRaster(jan, crs=newproj)
+plot(pr1)
+```
+
 
 5. A better and more efficient way is to firstly list all the files stored within our directory
 
@@ -74,7 +87,6 @@ listfiles
 6. Then load all of the data straight into a raster stack. A raster stack is a collection of raster layers with the same spatial extent and resolution.
 
 ```{r, cache=TRUE}
-library(raster)
 worldclimtemp <- stack(listfiles)
 #have a look at the raster stack
 worldclimtemp
@@ -118,7 +130,7 @@ lat <- c(-27.47, -37.91, -31.95, -33.87, 17.96, -12.46, -33.28, -33.33, -16.92,
 #Put all of this inforamtion into one list 
 samples <- data.frame(site, lon, lat, row.names="site")
 # Extract the data from the Rasterstack for all points 
-AUcitytemp<- extract(worldclimtemp, samples)
+AUcitytemp<- raster::extract(worldclimtemp, samples)
 ```
 
 11. Add the city names to the rows of AUcitytemp
