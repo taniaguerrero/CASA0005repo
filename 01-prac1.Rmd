@@ -617,7 +617,7 @@ The UK Data Service geography service (https://census.edina.ac.uk/) has a librar
 
 The Office for National Statistics (ONS) are the national statistical agency for England and Wales and have recently started to provide access to boundary data for the statistics they produce for various geographic areas. 
 
-Many of the boundaries on the ONS Geoportal are also available from the Edina Census Geography website in a more flexible fashion, however the ONS website provides very quick access to bulk-downloads –-- something which can be very useful when reading data directly from the web using computer software. 
+Many of the boundaries on the ONS Geoportal are also available from the Edina Census Geography website in a more flexible fashion, however the ONS website provides very quick access to bulk-downloads --- something which can be very useful when reading data directly from the web using computer software. 
 
 ### OS 
 
@@ -654,9 +654,3 @@ I normally use this one: https://freegisdata.rtwilson.com/
 ## Summary
 
 Within this practical we have explored the different types, formats and software used to store, analyse and manipulate spatial data. In reflecting upon this practical you should consider the (dis)advantages of each, where and when they might be appropriate and the overall practicality. Next week we will delve further into R and RStudio.  
-
-## Reading list
-
-
-
-

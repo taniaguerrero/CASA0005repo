@@ -336,7 +336,7 @@ Here you can select either a single file or multiple file format, originally Shi
 
 Now let's make one with our data...
 
-## Data preparation
+### Data preparation
 
 29. The first part is easy and is based on analysis we have already compelted...we need to produce a ```sf``` multipolygon layer containing the number of hotels and airbnbs per London borough through....
 
@@ -667,8 +667,7 @@ knitr::include_graphics('prac8_images/Shiny_rmarksite_yml.png')
 
 Last year Adam created a similar (but slightly different) Shiny, check it out here: https://adam-dennett.shinyapps.io/londonShiny/
 
-His code can be found on GitHub here: https://www.dropbox.com/s/g7cgzg7ep6pz3k4/LondonShiny.tar?raw=1 
-
+His code can be found here: https://www.dropbox.com/s/g7cgzg7ep6pz3k4/LondonShiny.tar?raw=1 
 Notice how Adam separated his code into different files...the latest update of Shiny means we no longer have to do this, we can just use one script like we did. However, if you have a very large and complicated project this is still possible, you can then call other scripts like Adam has using... 
 
 ```{r cache=TRUE, eval=FALSE}
@@ -679,7 +678,19 @@ source("londongrapher.r")
 
 To do it like this the scrips must be in the same project!
 
-### Warning
+Want to see something really cool i came across....how about controlling the map elements with your voice using Shiny...https://yihui.shinyapps.io/voice/
+
+## How to lie with maps
+
+If you play around with the Shiny app, changing the color scheme, interval style and accomodation count using the slider you'll notice that you can actually almost change what the maps shows. For example, if you wanted to hide the distribution of Airbnb accomodation over London you could select any color scheme, use the full range of accomodation count and then select the pretty interval style to give some like...
+
+```{r echo=FALSE, out.width = "800pt", fig.align='center', cache=TRUE}
+knitr::include_graphics('prac8_images/liewithmap.png') 
+```
+
+It's therefore important to provide reasoning for the choices you make in analysis and when creating mapped outputs. This especially true with the advent of GitHub and journals publishing data and code meaning it is almost impossible to present false representations of analysis. 
+
+## Warning
 
 Whilst it might seem tempting to use the most advanced interactive maps for your the assignments within this module and course it is important to think and reflect upon the appropriateness of the mapped output. You should ask yourself the following questions:
 

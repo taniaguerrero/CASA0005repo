@@ -61,11 +61,12 @@ This is by no means an extensive data list, but summarises data used within all 
 * DEFRA: https://environment.data.gov.uk/
 * US Cesus data: https://www.census.gov/data.html
 * TFL open data: https://tfl.gov.uk/info-for/open-data-users/our-open-data?intcmp=3671#on-this-page-2
+* TFL cycling data: https://cycling.data.tfl.gov.uk/
 * EU tourism data: https://ec.europa.eu/eurostat/statistics-explained/index.php/Tourism_statistics
 * NASA EARTHDATA: https://earthdata.nasa.gov/
 * Camden air action: https://camdenairaction.wordpress.com/2017/02/20/schools-monitoring-project-spring-2017/
 * Kings data on air pollution: https://www.londonair.org.uk/LondonAir/Default.aspx
-
+* Uber travel time data: https://movement.uber.com/?lang=en-GB
 
 ## Data lists
 

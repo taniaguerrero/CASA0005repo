@@ -1,3 +1,10 @@
-This is a minimal example of a book based on R Markdown and **bookdown** (https://github.com/rstudio/bookdown). Please see the page "[Get Started](https://bookdown.org/yihui/bookdown/get-started.html)" at https://bookdown.org/yihui/bookdown/ for how to compile this example into HTML. You may generate a copy of the book in `bookdown::pdf_book` format by calling `bookdown::render_book('index.Rmd', 'bookdown::pdf_book')`. More detailed instructions are available here https://bookdown.org/yihui/bookdown/build-the-book.html.
+# CASA0005 Geographic Information Systems and Science
 
-You can find the preview of this example at https://bookdown.org/yihui/bookdown-demo/.
+![Screenshot](casa_logo.jpg)
+
+## Description
+This GitHub repository generates the CASA0005 Geographic Information Systems and Science student practical handbook which can be found at: https://andrewmaclachlan.github.io/CASA0005repo/
+
+## File structure 
+Within each practical the assocaited data is stored in the prac(number)_data folder for example prac2_data. The image folders simply stored all the graphics used within the practical book to explain concepts/provide examples.
+

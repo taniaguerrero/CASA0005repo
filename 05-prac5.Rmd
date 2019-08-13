@@ -15,9 +15,9 @@ In this practical we're going to focus on creating mapped outputs using QGIS, Ar
 
 ### OSM
 
-OpenStreetMap is collaborative project that has created a free editable map of the World. As users can create their own content it is classed as Volunteered geographic Information (VGI). There is a lot of academic literature on VGI, it's advnatages and disadvantages. For an overview of VGI checkout: https://link.springer.com/article/10.1007/s10708-007-9111-y
+OpenStreetMap is collaborative project that has created a free editable map of the World. As users can create their own content it is classed as Volunteered geographic Information (VGI). There is a lot of academic literature on VGI, it's advnatages and disadvantages. For an overview of VGI checkout this [article](https://link.springer.com/article/10.1007/s10708-007-9111-y) by Goodchild (2007).
 
-If you are interested in exploring the power of VGI and OSM further checkout missing maps: https://www.missingmaps.org/. They aim to map missing places, often in less developed countires, using OSM so that when natural disasters occur first responders can make data informed decisions. They run events all over the world and it's worth going to meet other spatial professionals, gain some experience with OSM and contribute to a good cause. 
+If you are interested in exploring the power of VGI and OSM further checkout [missing maps](https://www.missingmaps.org/). They aim to map missing places, often in less developed countires, using OSM so that when natural disasters occur first responders can make data informed decisions. They run events all over the world and it's worth going to meet other spatial professionals, gain some experience with OSM and contribute to a good cause. 
 
 ### Airbnb
 
@@ -703,5 +703,14 @@ map
 
 If you want to explore Leaflet more have a look at this website: https://rstudio.github.io/leaflet/
 
+## Bad maps
 
+What makes a bad map then and what should you avoid:
+
+* Poor labeling --- don't present something as an output with the file name (e.g. layer_1_osm) in the legend --- name your layers properly 
+* No legend
+* Screenshot of the map --- export it properly, we've been doing this a while and can tell
+* Poor figure caption --- **a reader should know exactly what a figure shows from only reading the figure caption**
+* Too much data presented on one map --- be selective or plot multiple maps
+* Presented data is too small or too big --- be critical about what you produce, it should be easy to read and understand
 

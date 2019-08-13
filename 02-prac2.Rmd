@@ -36,7 +36,7 @@ If you want to really be up to date with the state of the art in R, then https:/
 
 ### Online forums are your friend!!
 
-With almost every problem you encounter with R, someone else will have had the same problem before you and posted it on a forum – someone will then post a solution below.
+With almost every problem you encounter with R, someone else will have had the same problem before you and posted it on a forum --– someone will then post a solution below.
 
 My usual route is to Google the problem and I’ll then be directed to a post, usually on Stack Overflow, Stack Exchange or Cross Validated. When doing so try to think about the minimal working (or not working) example (MWE), by this i mean remove anything very specific to your problem. I’ve rarely not found a solution to a problem this way. 
 
@@ -327,8 +327,7 @@ To clean our data as we read it in, we are going to use a package (more about pa
 Anyway, first install the package:
 
 ```{r, message=FALSE, eval=FALSE, cache=TRUE}
-install.packages("tidyverse", 
-                 repos = "https://www.stats.bris.ac.uk/R/")
+install.packages("tidyverse")
 ```
 
 Now we can use the ```readr``` package which comes bundled as part of the ```tidyverse``` to read in some data (directly from the web this time --- ```read.csv``` can do this too) and clean text characters out from the numeric columns before they cause problems:
@@ -416,7 +415,6 @@ Check it worked:
 head(LondonBoroughs)
 ```
 
-
 **AWWMAHGAWD!!!** Pretty cool hey?
 
 What that function is saying is *“grep (get) me all of the rows from the London Data data frame where the text in column 3 starts with (^) E09”*
@@ -455,11 +453,10 @@ plot(LondonBoroughs$Male.life.expectancy..2009.13, LondonBoroughs$X..children.in
 Now, of course, because this is R, we can pimp this graph using something a bit more fancy than the base graphics functions:
 
 ```{r, eval=FALSE, cache=TRUE}
-install.packages("plotly", repos = "https://www.stats.bris.ac.uk/R/")
-
+install.packages("plotly")
 ```
 
-```{r, message=FALSE, warning=FALSE, cache=TRUE}
+```{r}
 library(plotly)
 plot_ly(LondonBoroughs, x = ~Male.life.expectancy..2009.13, y = ~X..children.in.reception.year.who.are.obese...2011.12.to.2013.14, text = ~LondonBoroughs$`Borough Name`, type = "scatter", mode = "markers")
 ```
@@ -592,7 +589,7 @@ OK, enough messing around, show us the maps!!
 
 9. Hold your horses, before be can create a map, we need to join some attribute data to some boundaries. Doing this an ```SP``` object can be a bit of a pain, but I’ll show you here:
 
-```{r, cache=TRUE}
+```{r, cache=TRUE, results="hide"}
 #join the data to the @data slot in the SP data frame
 BoroughMapSP@data <- data.frame(BoroughMapSP@data,LondonData[match(BoroughMapSP@data[,"GSS_CODE"],LondonData[,"New.code"]),])
 #check it's joined.
@@ -631,10 +628,11 @@ qtm(BoroughDataMap,
     fill = "Rate.of.JobSeekers.Allowance..JSA..Claimants...2015")
 ```
 
-You can also add a basemap and some other guff, if you wish…
+You can also add a basemap and some other guff, if you wish...This part of the practical originally used the following code (do not run it):
 
-```{r, cache=TRUE, eval=FALSE}
+```{r, eval=FALSE, cache=TRUE}
 tmap_mode("plot")
+st_transform(BoroughDataMap, 4326)
 london_osm <- tmaptools::read_osm(BoroughDataMap, type = "esri", zoom = NULL)
 qtm(BoroughDataMap) + 
   tm_shape(BoroughDataMap) + 
@@ -649,9 +647,16 @@ qtm(BoroughDataMap) +
   tm_layout(title = "Job seekers' Allowance Claimants", legend.position = c("right", "bottom"))
 ```
 
-12. how about more than one map, perhaps using different data breaks…
+There seems to be an issue with ```read_osm()``` that means even the example data won't work. I've logged the issue on GitHub and stackexchange and will most likely get some pretty direct comments. Have a look:
 
-```{r, cache=TRUE}
+* https://github.com/mtennekes/tmaptools/issues/17
+* https://stackoverflow.com/questions/57408279/parameter-error-in-tmaptools-package-read-osm-when-using-example-data/57432541#57432541
+
+So in the mean time i've made a bit of a workaround that uses the packages ```ggmap``` and ```ggplot```... You can find this later on in this practical when we cover ```ggplot``` and extra map features in ([Maps with extra features]).
+
+12. How about more than one map, perhaps using different data breaks...
+
+```{r, cache=TRUE, warning=FALSE, message=FALSE}
 tm_shape(BoroughDataMap) +
     tm_polygons(c("Average.Public.Transport.Accessibility.score...2014", "Violence.against.the.person.rate...2014.15"), 
         style=c("jenks", "pretty"),
@@ -678,11 +683,11 @@ tmaptools::palette_explorer()
 
 13. ```tmap``` will even let you make a FRICKING INTERACTIVE MAP!!! Oh yes, we can do interactive maps…!
 
-```{r, cache=TRUE}
+```{r, cache=TRUE, warning=FALSE, message=FALSE}
 tmap_mode("view")
 ```
 
-```{r, cache=TRUE}
+```{r, cache=TRUE, warning=FALSE, message=FALSE}
 tm_shape(BoroughDataMap) +
     tm_polygons("X..children.in.year.6.who.are.obese..2011.12.to.2013.14",
         style="cont",
@@ -749,52 +754,68 @@ The latest development version of ```ggplot2``` has support for simple features 
 16. The important elements of any ```ggplot  ``` layer are the aesthetic mappings – aes(x,y, …) – which tell ggplot where to place the plot objects. We can imagine a map just like a graph with all features mapping to an x and y axis. All geometry (  ```geom_  ```) types in ggplot feature some kind of aesthetic mapping and these can either be declared at the plot level, e.g.
 
 ```{r, eval=FALSE, cache=TRUE}
-ggplot(data.frame, aes(x=x, y=y))
+ggplot(data.frame, 
+       aes(x=x, y=y))
 ```
 
 or, more flexibly at the level of the individual geom_ layer, e.g.
 
 ```{r, eval=FALSE, cache=TRUE}
-geom_polygon(aes(x=x, y=y), data.frame)
+geom_polygon(aes(x=x, y=y), 
+             data.frame)
 ```
 
 17. To begin our plot, we will start with the map layer – we will generate this using the ```geom_sf()``` function in ```ggplot2```:
 
 ```{r, cache=TRUE}
 ggplot()+geom_sf(mapping = aes(geometry=geometry),
-                 data = BoroughDataMap)+theme_minimal()
+                 data = BoroughDataMap)+
+  theme_minimal()
 ```
 
 18. To colour your map, then just pass the name of the variable you want to map to the fill parameter in the aesthetics:
 
 ```{r, cache=TRUE}
 ggplot()+geom_sf(mapping = aes(geometry=geometry, fill=Median.House.Price...U.00A3.....2014),
-                 data = BoroughDataMap)+theme_minimal()
+                 data = BoroughDataMap)+
+  theme_minimal()
 ```
 
 19. As you can see, this map looks OK, but there are a few issues with things like the colour ramp and a lack of appropriate labels. We can correct this by adding a few more layers. Firstly we can change the palette:
 
 ```{r, cache=TRUE}
 palette1<-scale_fill_continuous(low="white", 
-                                high="orange", "Price(£)")
+                                high="orange", 
+                                "Price(£)")
 ```
 
 20. And some appropriate labels:
 
 ```{r, cache=TRUE}
 labels<-labs(title="Average House Price 2014",
-             x="Longitude", y="Latitude")
+             x="Longitude", 
+             y="Latitude")
 ```
 
 21. Before plotting the all of them together:
 
 ```{r, cache=TRUE}
-ggplot()+geom_sf(mapping = aes(geometry=geometry, fill=Median.House.Price...U.00A3.....2014),data = BoroughDataMap)+theme_minimal()+palette1+labels
+ggplot()+
+  geom_sf(mapping = aes(geometry=geometry, 
+                        fill=Median.House.Price...U.00A3.....2014),
+          data = BoroughDataMap)+
+  theme_minimal()+
+  palette1+
+  labels
 ```
+
+Check out this resource for more options in ```ggplot```: https://www.r-spatial.org/r/2018/10/25/ggplot2-sf.html
 
 ### Changing projections
 
-Now until now, we’ve not really considered how our maps have been printed to the screen. The coordinates stored in the ```geometry``` column of your ```sf``` object contain the information to enable points, lines or polygons to be drawn on the screen. The ```ggplot``` map above could fool you into thinking the coordinate system we are using is latitude and longitude, but actually, the map coordinates are stored in British National Grid. How can we tell?
+Now until now, we’ve not really considered how our maps have been printed to the screen. The coordinates stored in the ```geometry``` column of your ```sf``` object contain the information to enable points, lines or polygons to be drawn on the screen. The first ```ggplot``` map above could fool you into thinking the coordinate system we are using is latitude and longitude, but actually, the map coordinates are stored in British National Grid. 
+
+How can we tell?
 
 You can check that the coordinate reference systems of  ```sf ``` or  ```sp ``` objects using the print function:
 
@@ -893,33 +914,67 @@ In the SF object, you can compare the values in the geometry column with those i
 
 ### Maps with extra features
 
-Now we can re-project our data, it frees us up to bring in, for example, different base maps and other stuff, a bit like ```tmap```.
+Now we can re-project our data, it frees us up to bring in, for example, different base maps and other stuff...
+
+How about adding a basemap to our map...this follows on from the earlier section (when i said ```read_osm()``` wasn't working) and builds on what we just learned about mapping with ```ggplot```
+
+```{r message=FALSE, cache=TRUE, eval=FALSE}
+install.packages(c("ggmap", "BAMMtools"))
+```
 
 ```{r, message=FALSE, cache=TRUE}
-#install.packages("ggmap")
 library(ggmap)
+library(BAMMtools)
 
-BoroughDataMap <- append_data(BoroughMapSFWGS84,LondonData, 
-                              key.shp = "GSS_CODE", 
-                              key.data = "New.code",
-                              ignore.duplicates = TRUE)
+# put into WGS84 to get basemap data
+BoroughDataMapWGS84<-st_transform(BoroughDataMap, 4326)
 
-londonbbox1 <- c(left = -0.5103766, 
-                 bottom = 51.28676, 
-                 right = 0.3340146, 
-                 top = 51.69187)
+# bounding box of London 
+londonbbox2 <- as.vector(st_bbox(BoroughDataMapWGS84))
 
-londonbbox2 <- as.vector(st_bbox(BoroughMapSFWGS84))
-
-#this bit of code uses the box we specified and gets map tiles from Stamen Maps (http://maps.stamen.com/#terrain/12/37.7706/-122.3782)
+# use bounding box to get our basemap
+b <- get_map(londonbbox2, 
+             maptype="roadmap", 
+             source="osm", 
+             zoom=10)
+plot(b)
 
 # try changing the maptype to watercolor
-map <- get_stamenmap(londonbbox2, 
-                     zoom = 10, 
-                     maptype = "toner-lite")
+b <- get_stamenmap(londonbbox2,
+                   zoom = 10,
+                   source="osm",
+                   maptype = "toner-lite")
+plot(b)
 
-ggmap(map) + geom_sf(mapping = aes(geometry=geometry, fill=Median.House.Price...U.00A3.....2014),data = BoroughDataMap, inherit.aes = FALSE,alpha=0.7)+theme_minimal()+palette1+labels
+# work out the jenks of our data, k means numnber of divisons
+jenks=getJenksBreaks(BoroughDataMapWGS84$Rate.of.JobSeekers.Allowance..JSA..Claimants...2015,
+                     k=5)
+
+# set the palette using colorbrewer
+palette1<- scale_fill_distiller(type = "seq", 
+                                palette = "YlOrBr", 
+                                breaks=jenks, 
+                                guide="legend")
+# any labels
+labels<-labs(title="Rate per 1,000 people",
+             x="Longitude", 
+             y="Latitude")
+
+# use the basemap then add our other data
+map<-ggmap::ggmap(b) + 
+  geom_sf(data = BoroughDataMapWGS84,
+          aes(geometry=geometry,
+              fill=Rate.of.JobSeekers.Allowance..JSA..Claimants...2015),
+          alpha=0.5,
+          inherit.aes = FALSE)+
+  theme_minimal()+
+  palette1+
+  labels+
+  guides(fill=guide_legend(title="JSA"))
+
+plot(map)
 ```
+
 
 ### Extension
 
@@ -934,9 +989,6 @@ See if you can create a faceted grid of London maps like the one shown below. To
 2. You will also need to make sure your subset includes a few columns of key ID information data at the beginning – e.g. ID and geometry.
 
 3. You will then need to use the reshape2 package to reformat your data using the ```melt()``` function, with an argument to specify the columns where your ID data ends (all columns afterwards containing data you want to plot). Use melt to bung all of the variables into a single column on top of each other, but leave out the geometry column or it will throw an error. Make sure you know which coloumn holds the geometry.I'm only going to select 10 coloumns of data here (measure.vars=10:20)....a call something like:
-
-
-#have a look at borough_melt now - in this circumstance i find the best way is to click on the data in the enviroment window (top right), what do you notice?
 
 ```{r, cache=TRUE}
 #warning, this is messy, but it sort-of works...

@@ -39,13 +39,13 @@ If you are still a bit confused by coordiate reference systems then **stop** and
 
 This YouTube video that shows the differences between geographic and projected coordinate reference systems and some limitations of ArcMap...
 
-```{r echo=FALSE, fig.align='center', cache=TRUE}
+```{r echo=FALSE, fig.align='center', cache=TRUE, warning=FALSE, message=FALSE}
 knitr::include_url("https://www.youtube.com/embed/IOpQg0BXYvw")
 ```
 
 And this great YouTube produced by SciShow shows the comporsises of different map projections 
 
-```{r echo=FALSE, fig.align='center', cache=TRUE}
+```{r echo=FALSE, fig.align='center', cache=TRUE, warning=FALSE, message=FALSE}
 knitr::include_url("https://www.youtube.com/embed/8I_VpC6IuJs")
 ```
 
