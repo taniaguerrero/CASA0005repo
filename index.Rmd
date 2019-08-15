@@ -20,6 +20,7 @@ If you need the practical data you can access it from my github repository here:
 
 Practical data is divided into the relevant sessions, although sometimes i'll refer to a dataset used within a previous week. 
 
+
 ## The world of GIS {-}
 
 Spatial analysis can yield fascinating insights into geographical relationships. However, at times it can be difficult to work with. You will get lots of error messages and have software crash. The academic staff are here to help you work through these practicals but we do not know everything. It's a good idea to become familar with online sources of help, such as:
@@ -100,3 +101,4 @@ Want some tips for resources on your assignment?.... head over to the [Assignmen
 ## Reading list {-}
 
 We link to books and resources throughout each practical and in the [Assignment resources] pages, but a full reading list for the course it provided over on Moodle.
+

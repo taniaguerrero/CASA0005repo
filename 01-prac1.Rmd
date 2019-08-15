@@ -529,6 +529,7 @@ Join the ```.csv``` to the shapefile. Here, replace Row Labels with whatever you
 
 ```{r warning=FALSE, message=FALSE, cache=TRUE}
 library(sf)
+library(tmaptools)
 shape <- append_data(shape, mycsv, key.shp="GSS_CODE", key.data = "Row Labels")
 ```
 

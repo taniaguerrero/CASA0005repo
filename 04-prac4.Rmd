@@ -125,7 +125,6 @@ Now we can push our changes to github using the up arrow either in the RStudio g
 
 But....if the push button is greyed out go to the section [Greyed out push button]
 
-
 ## Pull from GitHub
 
 21. Pull will take any changes to the global repo and bring them into your local repo. Go to your example GitHub repo (online) and click on your test file > edit this file.
@@ -262,6 +261,12 @@ And a quick cheatsheet here: https://github.com/rstudio/cheatsheets/raw/master/r
 
 And an older one here: http://www.rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf
 
+This video is also pretty good at explaining the benefits of RMarkdown
+
+```{r echo=FALSE, fig.align='center', cache=TRUE}
+knitr::include_url("https://www.youtube.com/embed/zNzZ1PfUDNk")
+```
+
 One of the awesome things about R Markdown is it can be converted into a range of different formats --- html for webpages, word documents, PDFs, blogs, books --- virtually everything!
 
 Now, earlier on in this exercise, I got you to open a new R Notebook or R Markdown file. They are both R Markdown documents, the notebook originally let you run code chunks that could be exectued independently, however you can also now do this if you select a markdown file.  
@@ -282,11 +287,23 @@ library(reshape2)
 library(raster)
 library(weathermetrics)
 
-GB_auto <- raster::getData('GADM', country="GBR", level=0)
-GBclim <- raster::getData("worldclim", res=5, var="tmean")
+GB_auto <- raster::getData('GADM', 
+                           country="GBR", 
+                           level=0, 
+                           #set the path to store your data in
+                           path='prac4_data/', 
+                           download=TRUE)
+
+GBclim <- raster::getData("worldclim", 
+                          res=5, 
+                          var="tmean",
+                          #set the path to store your data in
+                          path='prac4_data/', 
+                          download=TRUE)
 
 month <- c("Jan", "Feb", "Mar", "Apr", "May", "Jun", 
            "Jul", "Aug", "Sep", "Oct", "Nov", "Dec")
+
 names(GBclim) <- month
 GBtemp <- crop(GBclim, GB_auto)
 exactGB <- mask(GBtemp, GB_auto)
