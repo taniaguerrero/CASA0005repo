@@ -11,7 +11,11 @@ By the end of this practical you should be able to:
 
 ## The Basics of Geographic Information
 
-Geographic data, geospatial data or geographic information is data that identifies the location of features on Earth. There are two main types of data which are used in GIS applications to represent the real world. **Vectors** that are composed of points, lines and polygons and **rasters** that are grids of cells with individual values.
+Geographic data, geospatial data or geographic information is data that identifies the location of features on Earth. There are two main types of data which are used in GIS applications to represent the real world. **Vectors** that are composed of points, lines and polygons and **rasters** that are grids of cells with individual values...
+
+```{r echo=FALSE, out.width = "500pt", fig.align='center', cache=TRUE}
+knitr::include_graphics('prac1_images/rasvec.jpg') 
+```
 
 In the above example the features in the real world (e.g. lake, forest, marsh and grassland) have been represented by points, lines and polygons (vector) or discrete grid cells (raster) of a certain size (e.g. 1 x 1m) specifying land cover type.
 
@@ -21,9 +25,9 @@ There are a number of commonly used geographic data formats that store vector an
 
 #### Shapefiles
 
-Perhaps the most commonly used GIS data format is the shapefile. Shapefiles were developed by ESRI (http://www.esri.com/) – one of the first and now certainly the largest commercial GIS company in the world. Despite being developed by a commercial company, they are mostly an open format and can be used (read and written) by a host of GIS Software applications. 
+Perhaps the most commonly used GIS data format is the shapefile. Shapefiles were developed by [ESRI](http://www.esri.com/), one of the first and now certainly the largest commercial GIS company in the world. Despite being developed by a commercial company, they are mostly an open format and can be used (read and written) by a host of GIS Software applications. 
 
-A shapefile is actually a collection of files – at least three of which are needed for the shapefile to be displayed by GIS software. They are:
+A shapefile is actually a collection of files –-- at least three of which are needed for the shapefile to be displayed by GIS software. They are:
 
   1. ```.shp``` - the file which contains the feature geometry
   2. ```.shx``` - an index file which stores the position of the feature IDs in the  ```.shp ``` file
@@ -32,7 +36,7 @@ A shapefile is actually a collection of files – at least three of which are ne
   
 #### GeoJSON
 
-GeoJSON (Geospatial Data Interchange format for JavaScript Object Notation, http://geojson.org/) is becoming an increasingly popular spatial data format, particularly for web-based mapping as it is based on JavaScript Object Notation. Unlike a shapefile in a GeoJSON, the attributes, boundaries and projection information are all contained in the same file.  
+GeoJSON [Geospatial Data Interchange format for JavaScript Object Notation](http://geojson.org/) is becoming an increasingly popular spatial data format, particularly for web-based mapping as it is based on JavaScript Object Notation. Unlike a shapefile in a GeoJSON, the attributes, boundaries and projection information are all contained in the same file.  
   
 #### Shapefile and GeoJSON
 
@@ -58,7 +62,7 @@ Aforementioned data types and formats are likely to be the ones you predominatel
 
 **Vector**
 
-  * GML (Geography Markup Language – gave birth to KML) - http://www.opengeospatial.org/standards/gml 
+  * GML (Geography Markup Language –-- gave birth to Keyhold Markup Language (KML))
 
 **Raster**
 
@@ -95,7 +99,7 @@ SpatialLite is an open-source library that extends SQLite core. Support is fairl
 knitr::include_graphics('prac1_images/postGIS.jpg') 
 ```
 
-PostGIS is an opensource database extender for PostrgeSQL. Essentially PostgreSQL is a database and PostGIS is an add on which permits spatial functions. The advantages of using PostGIS over a GeoPackage are that it allows users to access the data at the same time, can handle large data more efficiently and reduces processing time. In this example (https://medium.com/@GispoLearning/learn-spatial-sql-and-master-geopackage-with-qgis-3-16b1e17f0291) calculating the number of bars per neighbourhood in Leon, Mexico the processing time reduced from 1.443 seconds (SQLite) to 0.08 seconds in PostGIS. However, data stored in PostGIS is  much harder to share, move or copy.
+PostGIS is an opensource database extender for PostrgeSQL. Essentially PostgreSQL is a database and PostGIS is an add on which permits spatial functions. The advantages of using PostGIS over a GeoPackage are that it allows users to access the data at the same time, can handle large data more efficiently and reduces processing time. In [this example](https://medium.com/@GispoLearning/learn-spatial-sql-and-master-geopackage-with-qgis-3-16b1e17f0291) calculating the number of bars per neighbourhood in Leon, Mexico the processing time reduced from 1.443 seconds (SQLite) to 0.08 seconds in PostGIS. However, data stored in PostGIS is  much harder to share, move or copy.
 
 #### What will I use
 
@@ -154,7 +158,7 @@ To this...
 knitr::include_graphics('prac1_images/csv_pivot.png')
 ```
 
-As we are going to use this dataset in ArcMap, QGIS and R I've done it in Excel using a pivot table.
+As we are going to use this dataset in ArcMap, QGIS and R I've done it in Excel using a pivot table. In future we'll use R to automate tasks like this.
 
 1. Go to Insert > PivotTable
 
@@ -198,16 +202,18 @@ ArcGIS should be installed as a standard programme in the UCL desktop and you ca
 ##### Installing ArcGIS on your own computer
 As a UCL student, you can install ArcGIS on your own computer. This is easy if you have a PC, but if you have a Mac this can be trickier as Arc will only run in a PC environment. If you have a Mac, the options open to you are either to:
 
-a)	Run ArcGIS through the Desktop@UCL application - http://www.ucl.ac.uk/isd/services/computers/remote-access/desktop 
+a)	Run ArcGIS through the Desktop@UCL application --- http://www.ucl.ac.uk/isd/services/computers/remote-access/desktop 
 b)	Duel boot your machine using bootcamp, install Windows (7 or 8 is fine) and then install Arc onto the Windows partition. 
-c)	Install some kind of virtualisation software such as Parallels (http://www.parallels.com/ca/products/desktop/) or VMware (http://www.vmware.com/products/fusion/), and run Arc on a virtual windows machine
+c)	Install some kind of virtualisation software such as [Parallels](http://www.parallels.com/ca/products/desktop/) or [VMware](http://www.vmware.com/products/fusion/), and run Arc on a virtual windows machine
 
 If you can, it is preferable to run Arc on Bootcamp as virtualisation software can be slow, but the Desktop@UCL facility should suffice for this course.
-ArcGIS (Version 10.6 is the latest at time of writing, but may have already been superseded) can be downloaded from the UCL Software Database for free --- https://swdb.ucl.ac.uk/.  
+ArcGIS (Version 10.6 is the latest at time of writing, but may have already been superseded) can be downloaded from the [UCL Software Database](https://swdb.ucl.ac.uk/) for free
+
+**Make sure** you read the instructions provided by the UCL Software Database fully if installing onto your own machine as you have to set the license correctly 
 
 ##### Getting Help
 
-ArcGIS is a huge and complex piece of software, but thankfully is has an excellent help system – depending on the version you are using (they are all quite similar anyway) you can access the online help system here:
+ArcGIS is a huge and complex piece of software, but thankfully is has an excellent help system –-- depending on the version you are using (they are all quite similar anyway) you can access the online help system here:
 
 * http://resources.arcgis.com/en/help/main/10.2/
 
@@ -241,7 +247,7 @@ knitr::include_graphics('prac1_images/file_geo.png')
 
 You can import data layers into a Geodatabase within ArcCatalog, however we will do this in ArcMap.
 
-Close ArcCatalog and never have both ArcCatalog and another ArcGIS product open at the same time.
+Close ArcCatalog and **never** have both ArcCatalog and another ArcGIS product open at the same time.
 
 #### ArcMap
 
@@ -309,7 +315,7 @@ We're now going to join our flytipping data to the London borough shapefile. So:
 ##### Export data
 
 15. Right click on the london boroughs layer > Data > Export Data 
-16. The location should default to our GeoDatabase. Be sure to change the filename --- again avoid all of the characters (e.g. spaces and -) previously mentioned. Add the data layer to the map  
+16. The location should default to our GeoDatabase. Be sure to change the filename --- again avoid all of the characters (e.g. spaces and -) previously mentioned. Add the new data layer to the map and remove the old one (Right Click (on the layer) > Remove)
 
 Now lets use the data we've joined to create a basic thematic map. 
 
@@ -343,7 +349,7 @@ knitr::include_graphics('prac1_images/coorindate_system.png')
 
 Save and then close your ArcMap document. We're now going to replicate this task in QGIS.
 
-***Note*** As we are going to open the same files in difference GIS systems it is important to close the software before moving on. If you don't then files can be *locked* and unreadable as they are still considered to be in use.
+**Note** As we are going to open the same files in difference GIS systems it is important to close the software before moving on. If you don't then files can be *locked* and unreadable as they are still considered to be in use.
 
 ### QGIS
 
@@ -397,7 +403,7 @@ Now instead of using a GeoDatabase, let's export to a GeoPackage.
 
 12. Right click on the London boroughs layer > Export > Save Feature As
 13. Select the GeoPackage format and complete the File name (the saved file name for the GeoPackage) and the Layer name (the name for this layer within the GeoPackage). Recall that a GeoPackage can store many data layers as a single file
-14. The new layer will be added to the map, so you can remove the old one. Make sure you remove the right one
+14. The new layer will be added to the map, so you can remove the old one (Right click on the layer > Remove Layer). Make sure you remove the right one!
 
 ```{r echo=FALSE, out.width = "500pt", fig.align='center', cache=TRUE}
 knitr::include_graphics('prac1_images/make_geopkg.png') 
@@ -418,7 +424,7 @@ Now let's make a quick thematic map like we did in ArcMap.
 20. Right click on your London boroughs layer > Properties > Symbology
 21. Select categorised and choose a data column and color ramp
 
-You could also select graduated, however our joined data fields are in the wrong data type. If you wish to change them follow this guide: https://wiki.tuflow.com/index.php?title=QGIS_Change_Attribute_Type
+You could also select graduated, however our joined data fields are in the wrong data type. If you wish to change them follow [this guide](https://wiki.tuflow.com/index.php?title=QGIS_Change_Attribute_Type)
 
 22. Save your QGIS project
 
@@ -454,7 +460,7 @@ In RStduio go:
 
 1. File > New File > R Script
 
-You should be able to see these quadrants: 
+You should be able to see these quadrants (without the code): 
 
 ```{r echo=FALSE, out.width = "800pt", fig.align='center', cache=TRUE}
 knitr::include_graphics('prac1_images/RStudio.png') 
@@ -470,16 +476,16 @@ install.packages("sf", "tmap", "tmaptools", "RSQLite", "tidyverse", repos = "htt
 
 Packages we've installed:
 
-* sf: simple features, standard way to encode spatial vector data
-* tmap: layer-based and easy approach to make thematic maps
-* tmaptools: set of tools for reading and processing spatial data
-* RSQLite: embeds the SQLite database engine in R
+* ```sf```: simple features, standard way to encode spatial vector data
+* ```tmap```: layer-based and easy approach to make thematic maps
+* ```tmaptools```: set of tools for reading and processing spatial data
+* ```RSQLite```: embeds the SQLite database engine in R
 
-Here, repos stands for repository where we will download the packages from. Whilst we've installed the packages we haven't loaded them...this is done through using ```library()``` function...which we will now use.
+Here, repos stands for repository where we will download the packages from. Whilst we've installed the packages we haven't loaded them...this is done through using ```library()``` function.
 
 #### Load data
 
-Great, load the sf package so we can read our shapefile in --- remember to change to filepath to your shapefile. For this first practical we'll just leave the datea where it is, next week we'll show you how to use projects to make calling data much easier.
+Load the ```sf``` package so we can read our shapefile in --- remember to change to filepath to your shapefile. For this first practical we'll just leave the datea where it is, next week we'll show you how to use projects to make calling data much easier.
 
 **Note** by default in R, the file path should be defined with ```/``` but on a windows file system it is defined with ```\```. Using ```\\``` instead allows R to read the path correctly – alternatively, just use ```/```
 
@@ -502,7 +508,7 @@ plot(shape)
 That plots everything in the shapefile (all the attitbues) if you just wanted the geometry (outline of the shape) you could use...
 
 ```{r}
-#plot(st_geometry(shape))
+plot(sf::st_geometry(shape))
 ```
 
 From what we did in QGIS and ArcMap this should look familiar. 
@@ -526,14 +532,13 @@ In R we've given our London boroughs shapefile the name shape and our flytipping
 
 Join the ```.csv``` to the shapefile. Here, replace Row Labels with whatever your GSS_CODE is called in the ```.csv```:
 
-
 ```{r warning=FALSE, message=FALSE, cache=TRUE}
 library(sf)
 library(tmaptools)
 shape <- append_data(shape, mycsv, key.shp="GSS_CODE", key.data = "Row Labels")
 ```
 
-Let's break this down a bit. We just created a data frame (my.csv) where each column has a variable and each row contains a set of values --- so basically a normal table. The match simply found the GSS_CODE values in the ```.csv``` and joined the data to our shapefile.
+Let's break this down a bit. We just created a tibble of mycsv (this is a new form of a dataframe) where each column has a variable and each row contains a set of values --- so basically a normal table. The match simply found the GSS_CODE values in the ```.csv``` and joined the data to our shapefile.
 
 The message detailing 1 out of the 34 data records were not appended refers to the Grand Total row within the ```.csv```. 
 
@@ -543,7 +548,7 @@ Check the merge was successful, this is just going to show the top 10 rows:
 head(shape, n=10)
 ```
 
-Now, let's make a quick thematic map (or a qtm) using the package  ```tmap ```. I've made mine for flytipping between 2011 and 2012 (column X2011_12): 
+Now, let's make a quick thematic map (or a qtm) using the package  ```tmap ```. I've made mine for flytipping between 2011 and 2012 (column 2011_12): 
 
 ```{r cache=TRUE}
 library(tmap)
@@ -560,7 +565,7 @@ Finally write shape to a new GeoPackage (```.gpkg```) giving it the layer name o
 st_write(shape, "Prac1_data/Rwk1.gpkg", "london_boroughs_fly_tipping", delete_layer=TRUE)
 ```
 
-So here, we are saying the shape is the object we want to save, then to the GeoPackage file path, with the layer name of london_boroughs_fly_tipping. I've set delete_layer to true so I could overwrite mine when I developed this practical. Changing it to false would generate an error message if you ever tried to re-run the code.
+So here, we are saying the shape is the object we want to save, then to the GeoPackage file path, with the layer name of ```london_boroughs_fly_tipping```. I've set ```delete_layer``` to true so I could overwrite mine when I developed this practical. Changing it to false would generate an error message if you ever tried to re-run the code.
 
 Let's also add the ```.csv``` as we did in QGIS. This is a bit more complicated as we have to use the SQLite database package. Firstly, connect to the ```.gpkg``` we just made:
 

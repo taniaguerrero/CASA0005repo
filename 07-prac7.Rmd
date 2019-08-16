@@ -10,7 +10,7 @@ By the end of this practical you should be able to:
 
 ## Introduction
 
-Within this practical we are going to be using data from the Landsat satellite series provided for free by the United States Geological Survey (USGS) to replicate some published methods. Landsat imagery is the longest free temporal image repository of consistent medium resolution data. It collects data at each point on Earth each every 16 days (temporal resolution) in a raster grid composed of 30 by 30 m cells (spatial resolution). Geographical analysis and concepts are becoming ever more entwined with remote sensing and Earth observation. Back when I was an undergraduate there was specific software for undertaking certain analysis, now you can basically use any GIS. I see remote sensing as the science behind collecting the data with spatial data analysis then taking that data and providing meaning. So whilst i'll give a background to Landsat data and remote sensing, this practical will focus on more advanced methods for analysing and extracting meaning from raster data.
+Within this practical we are going to be using data from the Landsat satellite series provided for free by the United States Geological Survey (USGS) to replicate published methods. Landsat imagery is the longest free temporal image repository of consistent medium resolution data. It collects data at each point on Earth each every 16 days (temporal resolution) in a raster grid composed of 30 by 30 m cells (spatial resolution). Geographical analysis and concepts are becoming ever more entwined with remote sensing and Earth observation. Back when I was an undergraduate there was specific software for undertaking certain analysis, now you can basically use any GIS. I see remote sensing as the science behind collecting the data with spatial data analysis then taking that data and providing meaning. So whilst i'll give a background to Landsat data and remote sensing, this practical will focus on more advanced methods for analysing and extracting meaning from raster data.
 
 ### Remote sensing background (required)
 
@@ -29,7 +29,7 @@ Later on we will compute temperature from the Landsat data, whilst i refer to an
 
 ### Shapefile
 
-The shapefile of Manchester is available on my GitHub account:
+The shapefile of Manchester is available from the data folder for this week on [GitHub](https://github.com/andrewmaclachlan/CASA0005repo/tree/master/prac7_data)
 
 ### Raster data (Landsat)
 
@@ -42,9 +42,9 @@ To download the data:
 
 1. Search for Manchester in the address/place box and select it. 
 2. Select the date range between the 12/5/2019 and 14/5/2019 --- it's a US website so check the dates are correct.
-3. Click dataset and select Landsat, then Landsat Collection 1 Level-1, check Landsat 8 (level 2 is surface reflectance --- see optional remote sensing background)
+3. Click dataset and select Landsat, then Landsat Collection 1 Level-1, check Landsat 8 (level 2 is surface reflectance --- see [Remote sensing background (optional)]
 4. Click results, there should be one image, download it..it might take a while
-5. Landsat data comes zipped twice as a ```.tar.gz```. Use 7Zip to extract it once to get to a ```.tar``` then extract again using 7Zip and files should appear.
+5. Landsat data comes zipped twice as a ```.tar.gz```. Use [7Zip](https://www.7-zip.org/) or another file extractor, extract it once to get to a ```.tar``` then extract again and files should appear.
 
 ## Processing raster data
 
@@ -67,7 +67,7 @@ library(ggplot2)
 7. Now let's list all our Landsat bands except band 8 (i'll explain why next) along with our study area shapefile. Each band is a seperate ```.TIF``` file.
 
 ```{r message=FALSE, warning=FALSE, cache=TRUE}
-# List your raster files excluding band 8
+# List your raster files excluding band 8 using the patter argument
 listlandsat <- list.files("prac7_data/Lsatdata",pattern=".*[B123456790]\\.tif$",
                           ignore.case=TRUE, full.names=TRUE)
 
@@ -87,6 +87,7 @@ crs(stacklandsat)
 8. There is an error with this dataset as band 8 does not fully align with the extent of the other raster layers. There are several ways to fix this, but in this tutorial we will resample the band 8 layer with the extent of band 1. Resampling takes awhile, so please be patient...
 
 ```{r eval=FALSE, cache=TRUE}
+# get band 8
 b8list <- list.files("prac7_data/Lsatdata",pattern=".*B[8]\\.tif$", 
                      ignore.case=TRUE, full.names=TRUE)
 b8 <- raster(b8list)
@@ -122,7 +123,7 @@ compareRaster(stacklandsat$LC08_L1TP_203023_20190513_20190521_01_T1_B1,
 
 ### Clipping 
 
-10. Our raster is currently the size of the scene which satellite data is distributed, to clip it to our study area it's best to first crop it to the extent of the shapefile and then mask it as we have done in previous practicals...
+10. Our raster is currently the size of the scene which satellite data is distributed in, to clip it to our study area it's best to first crop it to the extent of the shapefile and then mask it as we have done in previous practicals...
 
 ```{r, cache=TRUE}
 e <- extent(manchester_boundary)
@@ -142,11 +143,11 @@ outputfilenames <- paste("prac7_data/Lsatdata/", names(lsatmask), sep="")
 
 In the first line of code i'm taking the original names of the raster layers and adding "mask" to the end of them. This is done using ```paste()``` and the arguments
 
-* names(lsatmask): original raster layer names
-* "mask": what i want to add to the names
-* sep="": how the names and "mask" should be seperated --- "" means no spaces
+* ```names(lsatmask)```: original raster layer names
+* ```"mask"```: what i want to add to the names
+* ```sep=""```: how the names and "mask" should be seperated --- "" means no spaces
 
-As i can't upload my Landsat files to GitHub i'm storing them in a folder that is not linked (remember this is all sotred on GitHub) -- so you won't find prac7_data/Lsatdata on there. If you want to store your clipped Landsat files in your project directory just use:
+As i can't upload my Landsat files to GitHub i'm storing them in a folder that is not linked (remember this is all sotred on GitHub) -- so you won't find ```prac7_data/Lsatdata``` on there. If you want to store your clipped Landsat files in your project directory just use:
 
 ```{r eval=FALSE, cache=TRUE}
 writeRaster(lsatmask, names(lsatmask), bylayer=TRUE, format='GTiff', overwrite=TRUE)
@@ -158,7 +159,7 @@ For me though it's:
 writeRaster(lsatmask, outputfilenames, bylayer=TRUE, format='GTiff', overwrite=TRUE)
 ```
 
-Here i write out each raster layer individually though specifying bylayer=TRUE.
+Here i write out each raster layer individually though specifying ```bylayer=TRUE```.
 
 ## Data exploration
 
@@ -212,8 +213,7 @@ plotRGB(manc_false, axes=TRUE, stretch="lin")
 
 ### Data similarity
 
-15. What if you wanted to look at signle bands and also check their similarity? 
-
+15. What if you wanted to look at signle bands and also check the similarity between bands? 
 ```{r, cache=TRUE}
 # Looking at single bands
 plot(manc$SWIR2)
@@ -232,7 +232,17 @@ plot(manc$NIR, main = "NIR")
 pairs(manc[[1:7]])
 ```
 
-Low statistical significance means that the bands are sufficiently different enough in their wavelength reflectance to show different things in the image.
+Low statistical significance means that the bands are sufficiently different enough in their wavelength reflectance to show different things in the image. We can also make this look a bit nicer with ```ggplot2``` and ```GGally```
+
+```{r}
+library(ggplot2)
+library(GGally)
+mancdataframe=as.data.frame(manc[[1:7]], na.rm=TRUE)
+randomsample<-mancdataframe[sample(nrow(mancdataframe), 100), ]
+ggpairs(randomsample, axisLabels="none") 
+```
+
+You can do much more using ```GGally``` have a look at the great [documentation](https://ggobi.github.io/ggally/#ggallyggpairs)
 
 ## Basic raster calculations
 
@@ -345,28 +355,34 @@ Brightness temperature is the radiance travelling upward from the top of the atm
 
 K1 (774.8853) and K2 (1321.0789) are pre launch calibration constants provided by USGS.
 
-See: https://prd-wret.s3-us-west-2.amazonaws.com/assets/palladium/production/atoms/files/LSDS-1574_L8_Data_Users_Handbook_v4.0.pdf
+Check the [handbook](https://prd-wret.s3-us-west-2.amazonaws.com/assets/palladium/production/atoms/files/LSDS-1574_L8_Data_Users_Handbook_v4.0.pdf) for these values 
 
 25. Instead of hardcoding these values...yep, you guessed it... we can extract them from our ```MTL```
 
 ```{r, cache=TRUE}
-K1andK2 <- (readMTL$CALBT$K1)
 
-K1<-K1andK2[1]
-K2<-K1andK2[2]
+Calidata <- as.data.frame(readMTL$CALBT)
+
+# subet the rows
+Calidata <- subset(Calidata, rownames(Calidata) %in% "B10_dn")
+
+# subset the columns
+K1<-subset(Calidata, select=(K1))
+K2<-subset(Calidata, select=(K2))
+
+# get just the values out
+K1<-K1$K1
+K2<-K2$K2
+
+# this would also work for K1
+K1<-readMTL$CALBT$K1[1]
+
+#for K2
+K2<-readMTL$CALBT$K2[1]
 
 Brighttemp<-(K2 / log((K1 / TOA) + 1))
 ```
 
-...but wait haven't i used the wrong values from the ```MTL ```, it looks like it but no. The  ```RStoolbox ``` package is looking at the wrong values...
-
-```{r, cache=TRUE}
-# show the K1 and K2 values
-readMTL$CALBT
-```
-
-The K1 value for B11_dn should actually be the K2 value for B10_dn...this caught me out so treat it as warning to check inputs and outputs regularly.
- 
 Earlier we calcualted NDVI, let's use that to determine emissivity of each pixel.
 
 26. First we need to calcualte the fractional vegetation of each pixel, through the equation:

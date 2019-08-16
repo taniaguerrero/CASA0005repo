@@ -6,17 +6,17 @@ By the end of this practical you should be able to:
 
 * Explain the use of and differences between Git and GitHub
 * Create reproduciable and open R code
-* Produce RMarkdown documents that explain code or analysis
+* Produce RMarkdown documents that explain code and analysis
 
 ## Introduction 
 
 In this practical you will learn how to produce work that is open, reproducible, shareable and portable using RStudio, RMarkdown, Git and GitHub. As more and more researchers and organisations publish assocaited code with their manusripts or documents it's very imporant to become adept at using these tools.
 
-You will be able to use the information contained in this guide to prepare the submission for Part 1 of the assessment for this course. The tools you will use are:
+The tools you will use are:
 
-* RStudio is a graphical user interface (that you should already be familiar with) - it contains a number of features which make it excellent for authoring reproducible and open geographic data science work.
+* RStudio is a graphical user interface (that you should already be familiar with) --- it contains a number of features which make it excellent for authoring reproducible and open geographic data science work.
 
-* RMarkdown is a version of the Markdown markup language which enables plain text to be formatted to contain links to data, code to run, text to explain what you a producing and metadata to tell your software what kinds of outputs to generate from your markdown code. For more information on RMarkdown, [visit here](https://rmarkdown.rstudio.com/).
+* RMarkdown is a version of the Markdown markup language which enables plain text to be formatted to contain links to data, code to run, text to explain what you a producing and metadata to tell your software what kinds of outputs to generate from your markdown code. For more information on RMarkdown look [here](https://rmarkdown.rstudio.com/).
 
 * Git is a software version control system which allows you to keep track of the code you produce and the changes that you or others make to it.
 
@@ -24,9 +24,9 @@ You will be able to use the information contained in this guide to prepare the s
 
 ## Set up your GitHub
 
-1. If you are working on your own computer, you will first need to install git - https://git-scm.com/ - if you are working on the UCL Remote Desktop, you won’t need to do this as it is already installed for you.
+1. If you are working on your own computer, you will first need to install git --- https://git-scm.com/ --- if you are working on the UCL Remote Desktop, you won’t need to do this as it is already installed for you.
 
-2. Go to http://github.com and install github (if working on your own computer). Create an account and create a new repository (call it anything you like - ‘gis_code’ or something similar), making sure it is public and you check the box that says ‘initialise new repository with a README’ - click ‘create repository’ at the bottom
+2. Go to http://github.com and install GitHub (if working on your own computer). Create an account and create a new repository (call it anything you like - ‘gis_code’ or something similar), making sure it is public and you check the box that says ‘initialise new repository with a README’ --- click ‘create repository’ at the bottom
 
 ```{r echo=FALSE, out.width = "700pt", fig.align='center', cache=TRUE}
 knitr::include_graphics('prac4_images/github.png') 
@@ -58,15 +58,15 @@ knitr::include_graphics('prac4_images/gitsetup.png')
 
 Now, as I’ve mentioned before, RStudio is totally bad-ass. Not only does it make R fun to use, but the lovely people who created it also built in support for things like git!
 
-For a full and excellent tutorial on using Git with R Studio, watch this webinar: https://www.rstudio.com/resources/webinars/rstudio-essentials-webinar-series-managing-part-2/
+For a full and excellent tutorial on using Git with R Studio, watch [this webinar](https://www.rstudio.com/resources/webinars/rstudio-essentials-webinar-series-managing-part-2/)
 
 If you don’t want to watch the vid, I’ll do a quick summary below. So, to use git, first you need to enable it in RStudio:
 
-At the time of writing, because of the way that RStudio has been installed on the UCL Remote Desktop, git integration does not work. As such, if you are working on the remote desktop, DO NOT follow instructions 9 to 19 below, jump straight to instruction 20. If you are working on your own computer then fine, carry on.
+At the time of writing git integration *should* work within RStudio. If it doesn't try this again on your laptop.
 
 9. Open RStudio. In RStudio Tools > Global Options, under ‘Git/SVN’ check the box to allow version control and locate the folder on your computer where the git.exe file is located. Allow Version Control for new Projects and navigate to where the git.exe file is on your computer. Click OK.
 
-10. Now in RStudio, you should create a new project in an existing directory - File > New Project > Existing directory - choose your new git repository as your new project folder. You should not see a git tab in the environment window of RStudio (top right).
+10. Now in RStudio, you should create a new project in an existing directory --- File > New Project > Existing directory --- choose your new git repository as your new project folder. You should not see a git tab in the environment window of RStudio (top right).
 
 **Note** You could also link your Git directly from RStudio following: File > New Project > Version control > Git. But carry on using these insturctions for now. 
 
@@ -176,7 +176,7 @@ The fetch and push should be your repository on GitHub. If you need to set the r
 git remote add origin https://github.com/andrewmaclachlanc/myrepo.git
 ```
 
-**Replace my name and myrepo with your account and repo**
+**Replace** my name and myrepo with your account and repo
 
 Was it setup correctly ? Yes...
 
@@ -195,7 +195,7 @@ Origin/master shows that the local master is tracking the origin/master on the r
 git push --set-upstream origin master
 ```
 
-For more trouble shooting on Git and GitHub have a look at the book Happy Git and GitHub for the useR: https://happygitwithr.com/rstudio-git-github.html
+For more trouble shooting on Git and GitHub have a look at the book [Happy Git and GitHub for the useR](https://happygitwithr.com/rstudio-git-github.html)
 
 ## Fork a repository 
 
@@ -223,11 +223,11 @@ knitr::include_graphics('prac4_images/branch.png')
 knitr::include_graphics('prac4_images/branchtest.png') 
 ```
 
-28. Here, we're going to commit directly to the new branch. We could have made this changes to the master branch and then made a new branch for them at this stage. Commit the changes.
+28. Here, we're going to commit directly to the new branch. We could have made these changes to the master branch and then made a new branch for them at this stage. Commit the changes.
 
 29. Go to the home page of our example branch (click the branch down arrow and select your example branch). You'll see that our example branch is now 1 commit ahead of the master. 
 
-Now let's create a *pull* reqest to the master branch. It you had modified someone elses code, then you would send a reqest to them to pull in the changes. Here we are doing a pull request for ourselves --- from our example branch to our master.
+Now let's create a **pull** reqest to the master branch. If you had modified someone else's code, then you would send a reqest to them to pull in the changes. Here we are doing a pull request for ourselves --- from our example branch to our master.
 
 30. Click New pull request.
 
@@ -255,11 +255,11 @@ OK, so now you have set everything up so that you can become a reproducable rese
 
 For the definitive guide on R Markdown, please read [R Markdown: The Definitive Guide](https://bookdown.org/yihui/rmarkdown/) --- obviously! It will tell you everything you need to know, far beyond what I am telling you here.
 
-There is also an excellent guide on the R Studio website --- https://rmarkdown.rstudio.com/lesson-1.html
+There is also an excellent guide on the R Studio [website](https://rmarkdown.rstudio.com/lesson-1.html)
 
-And a quick cheatsheet here: https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf
+And a quick cheatsheet [here](https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf)
 
-And an older one here: http://www.rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf
+And an older one [here](http://www.rstudio.com/wp-content/uploads/2016/03/rmarkdown-cheatsheet-2.0.pdf)
 
 This video is also pretty good at explaining the benefits of RMarkdown
 
@@ -269,7 +269,7 @@ knitr::include_url("https://www.youtube.com/embed/zNzZ1PfUDNk")
 
 One of the awesome things about R Markdown is it can be converted into a range of different formats --- html for webpages, word documents, PDFs, blogs, books --- virtually everything!
 
-Now, earlier on in this exercise, I got you to open a new R Notebook or R Markdown file. They are both R Markdown documents, the notebook originally let you run code chunks that could be exectued independently, however you can also now do this if you select a markdown file.  
+Now, earlier on in this exercise, I got you to open a new R Notebook or R Markdown file. They are both R Markdown documents, the notebook originally let you run code chunks that could be exectued independently, however you can also now do this if you select a markdown file. To my knowledge the only difference is that a R Notebook adds ```output: html_notebook``` in the output option in the header of the file that adds a Preview button in the tool bar. If you don't have this then the preview option will be replaced with Knit. But you can mix the output options in your header for the file to get the Preview button back if you wish to. Basically, there isn't much difference and you can manually change it with one line of code. Have a look [here](https://stackoverflow.com/questions/43820483/difference-between-r-markdown-and-r-notebook) for more infomation.
 
 35. Go back to the notebook you created earlier in step 11. We are now going to insert some code from the practical last week that i've tweaked a bit and run it.
 
@@ -360,7 +360,7 @@ You need to get Mendeley to produce a BibTeX file.
 41. Select Escape LaTex special characters, enable BibTex syncing and Create a BibTex file for your whole library or per group.
 42. Select to save the BibTeX file in the same folder as your R project, otherwise R won't be able to find it
 
-*Warning* Whilst we've excluded the special characters if they happen to be in some of the fields within Mendeley (e.g. abstracts) this will throw an error
+**Warning** Whilst we've excluded the special characters if they happen to be in some of the fields within Mendeley (e.g. abstracts) this will throw an error
 
 This method will auto sync your references to the BibTex file, which you can then load in R.
 
@@ -417,17 +417,20 @@ Once you have incorporated some text and code into a test .Rmd document, you sho
 
 Information to help format your knitted file is contained in the YAML header at the top. In here, you can add things like tables of contents, apply specific themes, etc.
 
-For a selection of nice themes, see here: http://www.datadreaming.org/post/r-markdown-theme-gallery/
+For a selection of nice themes, see go [here](http://www.datadreaming.org/post/r-markdown-theme-gallery/)
 
-For things like adding Tables of Contents, tabbed sections (in HTML), figure and table parameters: https://bookdown.org/yihui/rmarkdown/html-document.html
+For things like adding Tables of Contents, tabbed sections (in HTML), figure and table parameters look [here](https://bookdown.org/yihui/rmarkdown/html-document.html)
 
-If you have selected an R Markdown Notebook, in the menu bar at the top of the page, you should see a ‘Preview’ button. If you click this, your .Rmd file will be knitted automatically into an interactive html document --- try it!
+If you have selected an R Markdown Notebook, in the menu bar at the top of the page, you should see a ‘Preview’ button. If you click this, your ```.Rmd``` file will be knitted automatically into an interactive html document --- try it!
 
-If you click the small arrow next to the preview button, a menu will appear giving you the option to knit into a selection of other formats, including PDF and Word. Try those too…
+If you click the small arrow next to the preview button, a menu will appear giving you the option to knit into a selection of other formats, including PDF and Word. Try those too...
+
+### Packrat
+Packrat is useful as it let's you store all of your loaded packages in a folder within your project, if you were then to move or share your project someone else could load the packages you have used (and the appopraite version) permitting them to run your code with no isses and no inflence their main R package library.
 
 ## Further reading
 
-Since starting this little guide, I have come across this amazing book on using R and GitHub, by Jenny Bryan and Jim Hester. It’s brilliant --- get involved! http://happygitwithr.com/
+Since starting this little guide, I have come across this amazing [book](http://happygitwithr.com/) on using R and GitHub, by Jenny Bryan and Jim Hester. It’s brilliant --- get involved! 
 
 
 

@@ -43,7 +43,7 @@ Other useful tutorials can be found here:
 
 ## Data
 
-This is by no means an extensive data list, but summarises data used within all the practicals alondside a few additions that you might want to explore when sourcing data for your assignments. You are by no means limited to these data sets, so go and explore...
+This is by no means an extensive data list, but summarises data used within some of the practicals alongside a few additions that you might want to explore when sourcing data for your assignments. You are **not limited** to these data sets for you assessment.
 
 * UK data service: https://census.edina.ac.uk/
 * ONS: https://www.ons.gov.uk/

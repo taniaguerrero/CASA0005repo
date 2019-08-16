@@ -14,12 +14,11 @@ description: ""
 
 # Welcome {-}
 
-Welcome to the CASA0005 Geographic Information Systems and Science online pratical handbook. This website is hosted on GitHub and holds all the practical instructions and data. All data used within the practicals is available online, however occasionally websites can undergo maintenance or be inaccessible due to political factors such as government shutdowns.  
+Welcome to the CASA0005 Geographic Information Systems and Science online pratical handbook. This website is hosted on GitHub and holds all the practical instructions and data. Data used within the practicals is available online, however occasionally websites can undergo maintenance or be inaccessible due to political factors such as government shutdowns.  
 
 If you need the practical data you can access it from my github repository here: https://github.com/andrewmaclachlan/CASA0005repo
 
-Practical data is divided into the relevant sessions, although sometimes i'll refer to a dataset used within a previous week. 
-
+Practical data is divided into the relevant sessions (e.g. prac1_data), although sometimes i'll refer to a dataset used within a previous week. 
 
 ## The world of GIS {-}
 
@@ -47,7 +46,7 @@ The lectures and practicals of this course only form a part of the learning proc
 
 ## Offline viewing {-}
 
-The best way to view this practical book is through the website. However if you are unable to access the internet you can either download the ```.epub``` book or save specific webpages for offline viewing --- note that any interactive plots won't work in the ```.epub``` book. As this is a live document if you select to download the ```.epub``` make sure you redownload it regularly to keep up to date with any changes to the material. Insturctions for Google Chrome are provided here: https://support.google.com/chrome/answer/7343019?co=GENIE.Platform%3DDesktop&hl=en&oco=1
+The best way to view this practical book is through the website. However if you are unable to access the internet you can either download the ```.epub``` book or save specific webpages for offline viewing --- note that any interactive plots won't work in the ```.epub``` book. As this is a live document if you select to download the ```.epub``` make sure you redownload it regularly to keep up to date with any changes to the material. 
 
 ```{r include=FALSE}
 # automatically create a bib database for R packages
@@ -69,7 +68,7 @@ The meeting ID will change every week and we'll tell you what it is in the lectu
 
 If you need specific assistance with this course please:
 
-* Check the module handbook for queries relating to assignments / deadlines 
+* Check the Moodle assessment tab for queries relating to assignments / deadlines 
 * Speak to a member of the teaching team in the computer lab sessions
 * Ask a question at the end of a lecture (time permitting)
 * Ask a question on [slack](https://join.slack.com/t/casa0005-gis-19-20/shared_invite/enQtNzIyNzAwMTQ0MzU4LTE3MWYwYzExYWQxYzFkNzhiMTRhYmNjN2EzNGY0Y2FiZTVhNGQ5YTg4ZDZjZGRjM2E4YjNkNDIxMjMzYTcxOTQ)
@@ -78,7 +77,7 @@ Due to the size of the class we will only reply to messages on slack so all stud
 
 If you are struggling to use R then head over to codeacademy and go through some of their free resources: https://www.codecademy.com/learn/learn-r
 
-If after persuing all these avenues you still need help you can book into our office hours are specified below. These meetings are **to discuss a geographical concept in relation to the material/assignments or for any personal matters relevant to the completion of the module**. 
+If after persuing all these avenues you still need help you can book into our office hours. These meetings are **to discuss a geographical concept in relation to the material/assessment or for any personal matters relevant to the completion of the module**.
 
 These meetings are **not** to be used for specific technical issues. Problems of this nature should be addressed in the practical sessions.
 

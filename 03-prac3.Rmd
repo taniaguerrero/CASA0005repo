@@ -64,12 +64,13 @@ jan
 plot(jan)
 ```
 
-
 Now we can actually see some data...here is a quick example of using the Robinson projection saved to a new variable. Don't worry about the code, just take in that it is different to the above plot
 
 ```{r cache=TRUE, warning=FALSE, message=FALSE}
 library(sf)
+# set the proj 4 to a new variable
 newproj<-"+proj=robin +lon_0=0 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs"
+# get the jan raster and give it the new proj4
 pr1 <- projectRaster(jan, crs=newproj)
 plot(pr1)
 ```
@@ -174,8 +175,12 @@ Remember what we're looking at here. The ```x``` axis is the temperature and the
 ```{r, cache=TRUE}
 #define where you want the breaks in the historgram
 userbreak<-c(8,10,12,14,16,18,20,22,24,26)
-hist(Perthtemp, breaks=userbreak, col="red", 
-     main="Histogram of Perth Temperature", xlab="Temperature", ylab="Frequency")
+hist(Perthtemp, 
+     breaks=userbreak, 
+     col="red", 
+     main="Histogram of Perth Temperature", 
+     xlab="Temperature", 
+     ylab="Frequency")
 ```
 
 16. Check out the histogram information R generated
@@ -201,7 +206,7 @@ This was still a rather basic histogram, what if we wanted to see the distributi
 
 17. First, we need to source and load a vector of Australia. Go to: https://gadm.org/download_country_v3.html and download the GeoPackage
 
-18. Check what layers are within a Geo package using:
+18. Check what layers are within a GeoPackage using:
 
 ```{r, message=FALSE, cache=TRUE}
 library(sf)
@@ -212,7 +217,7 @@ st_layers("prac3_data/gadm36_AUS.gpkg")
 
 ```{r, cache=TRUE}
 Ausoutline <- st_read("prac3_data/gadm36_AUS.gpkg", layer='gadm36_AUS_0')
-#Check the layer by plotting the geometry
+# check the layer by plotting the geometry
 plot(Ausoutline$geom)
 ```
 
@@ -246,11 +251,11 @@ Both our Austemp and exactAus are raster bricks. A brick is similar to a stack e
 hist(exactAus[[3]], col="red", main ="March temperature")
 ```
 
-However we have a bit more control with ggplot...
+However we have a bit more control with ```ggplot()```...
 
 ### Histogram with ggplot
 
-23. We need to make our raster into a data.frame to be compatible with ggplot2
+23. We need to make our raster into a data.frame to be compatible with ```ggplot2```
 
 ```{r, cache=TRUE}
 alldf=as.data.frame(exactAus)
@@ -258,12 +263,20 @@ alldf=as.data.frame(exactAus)
 
 ```{r, warning=FALSE, message=FALSE, cache=TRUE}
 library(ggplot2)
-gghist <- ggplot(alldf, aes(x=Mar)) + 
-  geom_histogram(color="black", fill="white")+
+# set up the basic histogram
+gghist <- ggplot(alldf, 
+                 aes(x=Mar)) + 
+  geom_histogram(color="black", 
+                 fill="white")+
   labs(title="Ggplot2 histogram of Australian March temperatures", 
-  x="Temperature", y="Frequency")
-gghist + geom_vline(aes(xintercept=mean(Mar, na.rm=TRUE)),
-            color="blue", linetype="dashed", size=1)+
+       x="Temperature", 
+       y="Frequency")
+# add a vertical line to the hisogram showing mean tempearture
+gghist + geom_vline(aes(xintercept=mean(Mar, 
+                                        na.rm=TRUE)),
+            color="blue", 
+            linetype="dashed", 
+            size=1)+
   theme(plot.title = element_text(hjust = 0.5))
 
 ```
@@ -287,7 +300,11 @@ twomonths<-subset(squishdata, variable=="Jan" | variable=="Jun")
 
 ```{r, cache=TRUE}
 library(plyr)
-meantwomonths <- ddply(twomonths, "variable", summarise, grp.mean=mean(value, na.rm=TRUE))
+meantwomonths <- ddply(twomonths, 
+                       "variable", 
+                       summarise, 
+                       grp.mean=mean(value, na.rm=TRUE))
+
 colnames(meantwomonths)[colnames(meantwomonths)=="variable"] <- "Month"
 
 head(meantwomonths)
@@ -297,22 +314,26 @@ head(meantwomonths)
 
 ```{r message=FALSE, warning=FALSE, cache=TRUE}
 
-#rename the coloumn from variable to month so it looks nice in the legend of the histogram
+#rename the coloumn from variable to month so it looks
+# nice in the legend of the histogram
 colnames(twomonths)[colnames(twomonths)=="variable"] <- "Month"
 
 ggplot(twomonths, aes(x=value, color=Month, fill=Month)) +
   geom_histogram(position="identity", alpha=0.5)+
-  geom_vline(data=meantwomonths, aes(xintercept=grp.mean, color=Month),
+  geom_vline(data=meantwomonths, 
+             aes(xintercept=grp.mean, 
+                 color=Month),
              linetype="dashed")+
   labs(title="Ggplot2 histogram of Australian Jan and Jun
-       temperatures",x="Temperature",y="Frequency")+
+       temperatures",
+       x="Temperature",
+       y="Frequency")+
   theme_classic()+
   theme(plot.title = element_text(hjust = 0.5))
 ```
 Note how i adjusted the title after i selected the theme, if i had done this before the theme defaults would have overwritten my command.
 
-
-28. Have you been getting an annoying error message about bin size and non-finate values? Me too!...Bin size defaults to 30 in ggplot2 and the non-finate values is referring to lots of NAs (no data) that we have in our dataset. In the code below i've selected a bin width of 5 and removed all the NAs with ```complete.cases``` and produced a faceted plot...
+28. Have you been getting an annoying error message about bin size and non-finate values? Me too!...Bin size defaults to 30 in ```ggplot2``` and the non-finate values is referring to lots of NAs (no data) that we have in our dataset. In the code below i've selected a bin width of 5 and removed all the NAs with ```complete.cases``` and produced a faceted plot...
 
 ```{r fig.height=10, fig.height=6, cache=TRUE}
 # Remove all NAs
@@ -327,7 +348,6 @@ ggplot(data_complete_cases, aes(x=value, na.rm=TRUE))+
   labs(title="Ggplot2 faceted histogram of Australian temperatures", x="Temperature",        y="Frequency")+
   facet_grid(variable ~ .)+
   theme(plot.title = element_text(hjust = 0.5))
-
 ```
 
 Does this seem right to you? Well...yes. It shows that the distribution of temperature is higher (or warmer) in the Australian summer (Dec-Feb) than the rest of the year, which makes perfect sense. 
@@ -474,7 +494,7 @@ IDW is just one method for interpolating data, there are many more, if you are i
 
 In this practical I've shown you how to source the data online, download it and load it into R. However for both WorldClim and GADM we can do this straight from R using the ```getData``` function....i'm sorry for making you do it the long way, but it's good to do things manually to see how they work.
 
-WARNING, this may take some time. I've changed the resolution to 10 degrees, but I'd advise not running this in the practical session.
+**WARNING**, this may take some time. I've changed the resolution to 10 degrees, but I'd advise not running this in the practical session.
 
 ```{r, eval=FALSE, cache=TRUE}
 #WorldClim data has a scale factor of 10 when using getData!
@@ -503,4 +523,3 @@ You could assume that one raster is the 'gold standard' meaning it's beleived to
 Free weather station data can be found here: https://rp5.ru/Weather_in_the_world
 
 Have a go and discuss with your fellow students / members of the teaching team during the practical sessions or on slack.
-

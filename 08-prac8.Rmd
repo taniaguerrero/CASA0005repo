@@ -5,7 +5,7 @@
 By the end of this practical you should be able to:
 
 1. Descrbie and explain different methods for producing online maps
-2. Create interative maps usong Rpubs, RMarkdown site generator and Shiny
+2. Create interative maps using Rpubs, RMarkdown site generator and Shiny
 3. Critically appraise the appropriateness of mapping technqiues based on the dataset and purpose of the output map
 
 ## Introduction 
@@ -28,7 +28,7 @@ knitr::include_graphics('prac8_images/knitt.png')
 
 4. Let's make some changes to your ```.Rmd```. Delete all the text and code except from header inforamtion (that is enclosed by three dashes at the top of the file)
 
-5. Insert a new code chunk (go back to [RMarkdown] if you need a refresher) and add some code of your choice from either a previous practical or your own work. As it's a new project you'll have to either copy the data into your project folder or set the working directory ```setwd()```. If it's all online data that you've loaded directly from the web into R, this shouldn't be an issue. I'm going to use the interactive map we made in practical 5 (the [Advanced interactive map] section)..I have copied the.....Here is the code i've put in my chunk:
+5. Insert a new code chunk (go back to [RMarkdown] if you need a refresher) and add some code of your choice from either a previous practical or your own work. As it's a new project you'll have to either copy the data into your project folder or set the working directory ```setwd()```. If it's all online data that you've loaded directly from the web into R, this shouldn't be an issue. I'm going to use the interactive map we made in practical 5 (the [Advanced interactive map] section).....Here is the code i've put in my chunk:
 
 ```{r, warnings=FALSE, message=FALSE, cache=TRUE, eval=FALSE}
 
@@ -153,6 +153,12 @@ map
 
 6. Add some text at the start of your ```.Rmd``` you can include titles and subtitle using # followed by a space, a second level subtitle would be ##, and third ###
 
+```{r warnings=FALSE, message=FALSE, cache=TRUE, eval=FALSE}
+# Title
+## Second sub title
+### Third sub title
+```
+
 7. Save the file, Knitt it to HTML, this should be default and specified in the header --- enclosed by three dashes.
 
 8. Once knitted you can easily publish the file to Ppubs using the Publish icon either in the viewer pane or the toolbar area (by run)
@@ -275,7 +281,7 @@ knitr::include_graphics('prac8_images/addremote2.png')
 
 19. Push the files to your GitHub and they will appear on your GitHub repo
 
-20. Next we need to actually build the site...there are a few ways to do this...Next to the Git tab you should see the Build tab, if you can't then go to Tools > Project Options > Build Tools and select website under Project build tools. Now click Build Website under the build tab
+20. Next we need to actually build the site...there are a few ways to do this...Go to the Git tab you should see the Build tab, if you can't then go to Tools > Project Options > Build Tools and select website under Project build tools. Now click Build Website under the build tab
 
 21. Alternatively you write the following in the console 
 
@@ -289,14 +295,14 @@ If you wanted to just build a page from your site --- say if you have made a rat
 rmarkdown::render_site("index.Rmd")
 ```
 
-22. Stage, commit and then push the files to your GitHub. I had some issues staging the site_libs folder in the Git tab. I fixed it by closing and reloading my R project then clicking the cog symbol (under Git tab) > Shell and typing ```git add .``` If you get an error message about the index file being locked... go and delete in and try again. If you can't delete restart the machine and try again. You will find in under the .git folder within your project. Once ```git add .``` runs you should see all the files staged, be able to commit and then push the changes to GitHub   
+22. Stage, commit and then push the files to your GitHub. I had some issues staging the ```site_libs``` folder in the Git tab. I fixed it by closing and reloading my R project then clicking the cog symbol (under Git tab) > Shell and typing ```git add .``` If you get an error message about the index file being locked... go and delete it and try again. If you can't delete restart the machine and try again. You will find it in the .git folder within your project. Once ```git add .``` runs you should see all the files staged, be able to commit and then push the changes to GitHub   
 
 Help:
 
 * https://stackoverflow.com/questions/5834014/lf-will-be-replaced-by-crlf-in-git-what-is-that-and-is-it-important
 * https://stackoverflow.com/questions/9282632/git-index-lock-file-exists-when-i-try-to-commit-but-cannot-delete-the-file
 
-23. So your built website is up on GitHub, but you need to tell it where to build the site from...Go to your GitHub repo > Settings, scroll down to GitHub pages and select the Source as the master branch
+23. So your 'built' website is up on GitHub, but you need to tell it where to build the site from...Go to your GitHub repo > Settings, scroll down to GitHub pages and select the Source as the master branch
 
 ```{r echo=FALSE, out.width = "800pt", fig.align='center', cache=TRUE}
 knitr::include_graphics('prac8_images/GitHubpages.png') 
@@ -308,16 +314,18 @@ knitr::include_graphics('prac8_images/GitHubpages.png')
 knitr::include_graphics('prac8_images/Markdownsite.png') 
 ```
 
-For more information on hosting your code from RStudio on GitHub check out: https://happygitwithr.com/usage-intro.html 
-
+For more information on hosting your code from RStudio on GitHub check out the book [Happy Git and GitHub for the useR](https://happygitwithr.com/usage-intro.html)
 
 ## Shiny
 
-Shiny is an R package that lets you build interative web apps, host them online and embed them within RMarkdown documents... have a look at some examples:https://shiny.rstudio.com/gallery/
+Shiny is an R package that lets you build interative web apps, host them online and embed them within RMarkdown documents... have a [look at some examples](https://shiny.rstudio.com/gallery/)
 
 To build a shiny you require three main *'items'* or blocks of code:
+
 (a) Code that specfies the user interface or ```ui```
+
 (b) Code that defines the server logic to plot variables (server function)
+
 (c) A call to the ```ShinyApp``` function
 
 These could either be within one large ```.R``` file or over several ```.R``` files.
@@ -326,11 +334,11 @@ These could either be within one large ```.R``` file or over several ```.R``` fi
 
 26. Within your new R Project folder make a new folder called data and copy in the data we have been using
 
-The main purpose of this part of the practical is to show you how to use Shiny so we won't make a Git repository. Packrat is useful as it let's you store all of your loaded packages in a folder within your project, if you were then to move or share your project someone else could load the packages you have used (and the appopraite version) permitting them to run your code with no isses and no inflence their main R package library.
+The main purpose of this part of the practical is to show you how to use Shiny so we won't make a Git repository. 
 
 27. Go File > New File > Shiny Web App
 
-Here you can select either a single file or multiple file format, originally Shiny needed multiple files to run however in the latest version you can have this all in one script
+Here you can select either a single file or multiple file format, originally Shiny needed multiple files to run however in the latest version you can have this all in one script, i've just used one script here.
 
 28. If you click Run App on either the ```app.R``` the example Shiny will load.
 
@@ -438,7 +446,7 @@ There are plenty of options available in Shiny to make cool interactive features
 30. Load the packages we'll need here and do some final data manipulation. Just add this right below the code above, i seperate it using a line of ##########################
 
 ```{r eval=FALSE, cache=TRUE}
-################################################## ui
+################################################## final data manipulation
 library(shiny)
 library(leaflet)
 library(RColorBrewer)
@@ -457,6 +465,8 @@ ti$Airbnb[is.na(ti$Airbnb)] <- 0
 31. Ok, first let's set up the user interface or ```ui```. I've commented the code to descrbie what each bit does.
 
 ```{r, eval=FALSE, cache=TRUE}
+################################################## ui
+
 # we'll use bootstrappage - a UI definition that can be passed to Shiny
 ui <- bootstrapPage(
     tags$style(type = "text/css", "html, body {width:100%;height:100%}"),
@@ -665,9 +675,10 @@ knitr::include_graphics('prac8_images/Shiny_rmarksite_yml.png')
 
 ### Additional example
 
-Last year Adam created a similar (but slightly different) Shiny, check it out here: https://adam-dennett.shinyapps.io/londonShiny/
+Last year Adam created a similar (but slightly different) Shiny, check it out [here](https://adam-dennett.shinyapps.io/londonShiny/)
 
-His code can be found here: https://www.dropbox.com/s/g7cgzg7ep6pz3k4/LondonShiny.tar?raw=1 
+His code can be found [here](https://www.dropbox.com/s/g7cgzg7ep6pz3k4/LondonShiny.tar?raw=1)
+
 Notice how Adam separated his code into different files...the latest update of Shiny means we no longer have to do this, we can just use one script like we did. However, if you have a very large and complicated project this is still possible, you can then call other scripts like Adam has using... 
 
 ```{r cache=TRUE, eval=FALSE}
@@ -682,7 +693,7 @@ Want to see something really cool i came across....how about controlling the map
 
 ## How to lie with maps
 
-If you play around with the Shiny app, changing the color scheme, interval style and accomodation count using the slider you'll notice that you can actually almost change what the maps shows. For example, if you wanted to hide the distribution of Airbnb accomodation over London you could select any color scheme, use the full range of accomodation count and then select the pretty interval style to give some like...
+If you play around with the Shiny app, changing the colour scheme, interval style and accomodation count using the slider you'll notice that you can actually almost change what the maps shows. For example, if you wanted to hide the distribution of Airbnb accomodation over London you could select any color scheme, use the full range of accomodation count and then select the pretty interval style to give some like...
 
 ```{r echo=FALSE, out.width = "800pt", fig.align='center', cache=TRUE}
 knitr::include_graphics('prac8_images/liewithmap.png') 
@@ -705,7 +716,7 @@ The take home message from this is to critically think about the best way to map
 
 ## Advanced online publishing
 
-Already familiar with Rpubs, RMarkdown site generator and Shiny? Try and and produce an onine document using either: bookdown, blogdown or shinydashboard. These are listed in order of difficutly from my experience. 
+Already familiar with Rpubs, RMarkdown site generator or Shiny? Try and and produce an onine document using either: bookdown, blogdown or shinydashboard. These are listed in order of difficutly from my experience. 
 
 **Hint** this document is made using bookdown, so checkout my GitHub for how i set it up
 
