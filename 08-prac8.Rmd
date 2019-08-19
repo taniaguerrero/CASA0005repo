@@ -5,7 +5,7 @@
 By the end of this practical you should be able to:
 
 1. Descrbie and explain different methods for producing online maps
-2. Create interative maps using Rpubs, RMarkdown site generator and Shiny
+2. Create interative maps using RPubs, RMarkdown site generator and Shiny
 3. Critically appraise the appropriateness of mapping technqiues based on the dataset and purpose of the output map
 
 ## Introduction 
@@ -716,7 +716,7 @@ The take home message from this is to critically think about the best way to map
 
 ## Advanced online publishing
 
-Already familiar with Rpubs, RMarkdown site generator or Shiny? Try and and produce an onine document using either: bookdown, blogdown or shinydashboard. These are listed in order of difficutly from my experience. 
+Already familiar with Rpubs, RMarkdown site generator or Shiny? Try and and produce an online document using either: bookdown, blogdown or shinydashboard. These are listed in order of difficutly from my experience. 
 
 **Hint** this document is made using bookdown, so checkout my GitHub for how i set it up
 

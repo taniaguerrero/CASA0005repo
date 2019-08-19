@@ -610,10 +610,24 @@ legend <- tm_shape(Hotels) +
     tm_layout(legend.only = TRUE, legend.position=c(0.2,0.25),asp=0.1)+
     tm_credits("(c) OpenStreetMap contrbutors and Air b n b", position=c(0.0,0.0))
   
-
 t=tmap_arrange(tm1, tm2, tm3, legend, ncol=2)
 
 t
+```
+
+We can also arrage our maps using the ```grid``` package...
+
+```{r warning=FALSE, message=FALSE, out.width = "800pt", cache=TRUE}
+
+library(grid)
+grid.newpage()
+
+pushViewport(viewport(layout=grid.layout(2,2)))
+print(tm1, vp=viewport(layout.pos.col=1, layout.pos.row=1, height=5))
+print(tm2, vp=viewport(layout.pos.col=2, layout.pos.row=1, height=5))
+print(tm3, vp=viewport(layout.pos.col=1, layout.pos.row=2, height=5))
+print(legend, vp=viewport(layout.pos.col=2, layout.pos.row=2, height=5))
+
 ```
 
 ### Export

@@ -2,11 +2,14 @@ bookdown::gitbook:
   css: style.css
   config:
     toc:
+      collapse: section
+      scroll_highlight: yes
       before: |
         <li><a href="./">CASA0005</a></li>
       after: |
         <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
     edit: https://github.com/rstudio/bookdown-demo/edit/master/%s
+    sharing: null
     download: ["epub"]
 bookdown::pdf_book:
   includes:

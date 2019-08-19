@@ -503,9 +503,9 @@ install.packages(c("RColorBrewer", "sp", "rgeos",
                    "geojsonio"))
 ```
 
-4. Now that the packages have been installed you will not have to repeat the above steps again (when you use your account in these cluster rooms). Open a new script and save it to your working directory as “wk2_maps.r”. As before, type each of the lines of code into this window and then select and use the ctrl return keys to run them. Be sure to save your script often.
+4. Now that the packages have been installed you will not have to repeat the above steps again (when you use your account in these cluster rooms). Open a new script and save it to your working directory as ```wk2_maps.r```. As before, type each of the lines of code into this window and then select and use the ctrl return keys to run them. Be sure to save your script often.
 
-5. The first task is to load the packages we have just installed. Note, you might have some issues with the OpenStreetMap package if your installation of java on your computer doesn’t match your installation of R --– e.g. if you have installed the 64bit version of R, you also need the 64bit version of java (same with the 32bit versions) - you may also need to install the package Rcpp separately and try again.
+5. The first task is to load the packages we have just installed. Note, you might have some issues with the OpenStreetMap package if your installation of java on your computer doesn’t match your installation of R --– e.g. if you have installed the 64bit version of R, you also need the 64bit version of java (same with the 32bit versions) --- you may also need to install the package Rcpp separately and try again.
 
 Install Java 64-bit from: https://java.com/en/download/manual.jsp
 
@@ -603,17 +603,19 @@ BoroughMapSP@data <- data.frame(BoroughMapSP@data,LondonData[match(BoroughMapSP@
 head(BoroughMapSP@data)
 ```
 
-10. Joining data is a bit more intuitive with ```SF```:
+10. Joining data is a bit more intuitive with ```merge()```:
 
 ```{r, warning=FALSE, cache=TRUE}
-BoroughDataMap <- append_data(BoroughMapSF,
-                              LondonData, 
-                              key.shp = "GSS_CODE", 
-                              key.data = "New.code", 
-                              ignore.duplicates = TRUE)
+
+BoroughDataMap<-merge(BoroughMapSF, 
+             LondonData, 
+             by.x="GSS_CODE", 
+             by.y="New.code",
+             no.dups = TRUE)
+
 ```
 
-An alternative to append_data would be to use a left-join (like in SQL)
+An alternative to ```merge()``` would be to use a ```left_join()``` (like in SQL)
 
 ```{r, cache=TRUE, warning=FALSE, message=FALSE}
 BoroughDataMap2 <- BoroughMapSF %>% left_join(LondonData, 
@@ -676,7 +678,7 @@ tm_shape(BoroughDataMap) +
         title=c("Average Public Transport Accessibility", "Violence Against the Person Rate"))
 ```
 
-You will notice that to choose the colour of the maps, I entered some codes. These are the names of colour ramps from the RColourBrewer package which comes bundled with ```tmap```. ```RColorBrewer``` uses colour palettes available from the colorbrewer2 [website](http://colorbrewer2.org/) which is in turn based on the work of Cynthia Brewer and colleagues at Penn State University (http://www.personal.psu.edu/cab38/ColorBrewer/ColorBrewer_updates.html). Cynthia brewer has carried out large amount of academic research into determining the best colour palettes for GIS applications and so we will defer to her expertise here.
+You will notice that to choose the colour of the maps, I entered some codes. These are the names of colour ramps from the RColourBrewer package which comes bundled with ```tmap```. ```RColorBrewer``` uses colour palettes available from the colorbrewer2 [website](http://colorbrewer2.org/) which is in turn based on the [work of Cynthia Brewer and colleagues at Penn State University](http://www.personal.psu.edu/cab38/ColorBrewer/ColorBrewer_updates.html). Cynthia brewer has carried out large amount of academic research into determining the best colour palettes for GIS applications and so we will defer to her expertise here.
 
 If you want to look at the range of colour palettes available, as we; as going to the ColorBrewer website, you can use the a little shiny app which comes bundled with ```tmaptools```
 
@@ -719,7 +721,7 @@ There are loads of options for creating maps with ```tmap``` --- read the vignet
 
 * https://cran.r-project.org/web/packages/tmap/vignettes/tmap-nutshell.html * https://cran.r-project.org/web/packages/tmap/vignettes/tmap-modes.html
 
-You should also read the reference manual on the package homepage: https://cran.r-project.org/web/packages/tmap/
+You should also read the reference manual on the [package homepage](https://cran.r-project.org/web/packages/tmap/)
 
 In fact, since I wrote this the ```tmap``` package has developed quite a bit more --- have a look at some of the cool examples [here](https://github.com/mtennekes/tmap)
 

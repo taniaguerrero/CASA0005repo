@@ -40,13 +40,13 @@ If you are still a bit confused by coordiate reference systems then **stop** and
 This YouTube video that shows the differences between geographic and projected coordinate reference systems and some limitations of ArcMap...
 
 ```{r echo=FALSE, fig.align='center', cache=TRUE, warning=FALSE, message=FALSE}
-knitr::include_url("https://www.youtube.com/embed/IOpQg0BXYvw")
+#knitr::include_url("https://www.youtube.com/embed/IOpQg0BXYvw")
 ```
 
 And this great YouTube produced by SciShow shows the comporsises of different map projections 
 
 ```{r echo=FALSE, fig.align='center', cache=TRUE, warning=FALSE, message=FALSE}
-knitr::include_url("https://www.youtube.com/embed/8I_VpC6IuJs")
+#knitr::include_url("https://www.youtube.com/embed/8I_VpC6IuJs")
 ```
 
 3. Unzip and move the data to your project folder. Now load the data. We could do this individually....
@@ -278,7 +278,6 @@ gghist + geom_vline(aes(xintercept=mean(Mar,
             linetype="dashed", 
             size=1)+
   theme(plot.title = element_text(hjust = 0.5))
-
 ```
 
 How about plotting multiple months of temperature data on the same histogram 
@@ -343,11 +342,14 @@ dim(data_complete_cases)
 # How many were there to start with
 dim(squishdata)
 # Plot faceted histogram
-ggplot(data_complete_cases, aes(x=value, na.rm=TRUE))+
-  geom_histogram(color="black", fill="white", binwidth = 5)+
-  labs(title="Ggplot2 faceted histogram of Australian temperatures", x="Temperature",        y="Frequency")+
+ggplot(data_complete_cases, aes(x=value, na.rm=TRUE, color=variable))+
+  geom_histogram(color="black", binwidth = 5)+
+  labs(title="Ggplot2 faceted histogram of Australian temperatures", 
+       x="Temperature",
+       y="Frequency")+
   facet_grid(variable ~ .)+
   theme(plot.title = element_text(hjust = 0.5))
+
 ```
 
 Does this seem right to you? Well...yes. It shows that the distribution of temperature is higher (or warmer) in the Australian summer (Dec-Feb) than the rest of the year, which makes perfect sense. 

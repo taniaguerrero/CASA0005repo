@@ -234,7 +234,7 @@ pairs(manc[[1:7]])
 
 Low statistical significance means that the bands are sufficiently different enough in their wavelength reflectance to show different things in the image. We can also make this look a bit nicer with ```ggplot2``` and ```GGally```
 
-```{r}
+```{r cache=TRUE}
 library(ggplot2)
 library(GGally)
 mancdataframe=as.data.frame(manc[[1:7]], na.rm=TRUE)

@@ -13,7 +13,7 @@ By the end of this practical you should be able to:
 
 Geographic data, geospatial data or geographic information is data that identifies the location of features on Earth. There are two main types of data which are used in GIS applications to represent the real world. **Vectors** that are composed of points, lines and polygons and **rasters** that are grids of cells with individual values...
 
-```{r echo=FALSE, out.width = "500pt", fig.align='center', cache=TRUE}
+```{r echo=FALSE, out.width = "300pt", fig.align='center', cache=TRUE}
 knitr::include_graphics('prac1_images/rasvec.jpg') 
 ```
 
@@ -448,7 +448,9 @@ R is both a programming language and software environment, originally designed f
 
 The purpose of this practical is just to demonstrate data loading and manipulation in different software. The next practical will provide much more detail on R, so don't worry.
 
-Search for and open R Studio.
+#### Setup 1
+
+Search for and open RStudio.
 
 You can install R Studio on your own machine from: https://www.rstudio.com/products/rstudio/download/#download
 
@@ -456,7 +458,19 @@ R studio requires R which you can download from: https://cran.rstudio.com/
 
 RStudio is a free and open-source integrated development environment for R --- it makes R much easier to use.
 
-In RStduio go:
+#### Setup 2
+
+If you RStudio insn't installed on your practical room PC...fear not...the good people over at RStudio have created a [cloud version](https://rstudio.cloud/)...you have to sign up but can use it the same as the desktop version. It even works with Git and GitHub which we will cover later on in the course. The only real limitation is the upload file size --- if you have any kind of 'big data' then you will reach the allowed limit. That won't be a problem for the majority of this course except [Advanced raster analysis]...that said you can now link R to googledrive and access any data stored on it with the ```googledrive()``` [function](https://googledrive.tidyverse.org/) that is part of the ```tidyverse``` package. You could possible do this one OneDrive too, but it's not as intuitive, have a look [here](https://stackoverflow.com/questions/29579782/reading-onedrive-files-to-r). 
+
+I'd recommend using RStudio locally (following [Setup 1]) to start with. If you are using RStudio cloud you'll need to make a new workspace and upload the files we are using here with the upload button....
+
+```{r echo=FALSE, out.width = "400pt", fig.align='center', cache=TRUE}
+knitr::include_graphics('prac1_images/upload.png') 
+```
+
+If you upload a shapefile you will need to incldue all the relevant files and upload them to RStudio cloud as a ```.zip```
+
+In RStudio go:
 
 1. File > New File > R Script
 
@@ -481,7 +495,7 @@ Packages we've installed:
 * ```tmaptools```: set of tools for reading and processing spatial data
 * ```RSQLite```: embeds the SQLite database engine in R
 
-Here, repos stands for repository where we will download the packages from. Whilst we've installed the packages we haven't loaded them...this is done through using ```library()``` function.
+Here, repos stands for repository where we will download the packages from. Once you have set it, you shouldn't need to specify it again. Whilst we've installed the packages we haven't loaded them...this is done through using ```library()``` function.
 
 #### Load data
 
@@ -493,6 +507,15 @@ Load the ```sf``` package so we can read our shapefile in --- remember to change
 library(sf)
 shape <- st_read("Prac1_data/statistical-gis-boundaries-london/ESRI/London_Borough_Excluding_MHW.shp")
 ```
+
+**Note** If you are working on RStudio cloud and have a shapefile (along with all the other relevant files required) you will just need to use...
+
+```{r, message=FALSE, warning=FALSE, cache=TRUE, eval=FALSE}
+library(sf)
+shape <- st_read("London_Borough_Excluding_MHW.shp")
+```
+
+As RStudio cloud knows you have setup a project and to look for files within it...we cover this very soon for RStudio desktop.
 
 To get a summary of the data held within the shapefile data (attribute table) enter the following:
 
@@ -532,15 +555,14 @@ In R we've given our London boroughs shapefile the name shape and our flytipping
 
 Join the ```.csv``` to the shapefile. Here, replace Row Labels with whatever your GSS_CODE is called in the ```.csv```:
 
-```{r warning=FALSE, message=FALSE, cache=TRUE}
+```{r, cache=TRUE}
 library(sf)
 library(tmaptools)
-shape <- append_data(shape, mycsv, key.shp="GSS_CODE", key.data = "Row Labels")
+
+shape<-merge(shape, mycsv, by.x="GSS_CODE", by.y="Row Labels")
 ```
 
 Let's break this down a bit. We just created a tibble of mycsv (this is a new form of a dataframe) where each column has a variable and each row contains a set of values --- so basically a normal table. The match simply found the GSS_CODE values in the ```.csv``` and joined the data to our shapefile.
-
-The message detailing 1 out of the 34 data records were not appended refers to the Grand Total row within the ```.csv```. 
 
 Check the merge was successful, this is just going to show the top 10 rows:
 
@@ -575,17 +597,19 @@ library(RSQLite)
 con <- dbConnect(RSQLite::SQLite(),dbname="Prac1_data/Rwk1.gpkg")
 ```
 
-Now examine what is in the ```.gpkg```:
+Now examine what is in the ```.gpkg```...you can see that i've already got my ```original_csv``` stored within the  ```.gpkg``` as when i developed this practical i made sure it was working! 
 ```{r cache=TRUE}
 dbListTables(con)
 ```
 
-Then add add our ```.csv``` and disconnect from the ```.gpkg```:
+Add your ```.csv``` and disconnect from the ```.gpkg```:
 
 ```{r cache=TRUE}
 dbWriteTable(con,"original_csv", mycsv, overwrite=TRUE)
 dbDisconnect(con)
 ```
+
+Here overwrite let's you well..overwrite the exisiting file...if this wasn't specified as true you would get an error saying the file already existed if you tried to run this code again.
 
 #### Making a script
 
@@ -593,16 +617,29 @@ To convert this bit of analysis into a script that we could save and run again i
 
 ```{r, eval=FALSE, cache=TRUE}
 library(sf, tmap, tmaptools, RSQLite, tidyverse)
+#read in the shapefile
 shape <- st_read(
   "Prac1_data/statistical-gis-boundaries-london/ESRI/London_Borough_Excluding_MHW.shp")
+# read in the csv
 mycsv <- read_csv("Prac1_data/fly_tipping_borough_edit.csv")  
-shape<-append_data(shape, mycsv, key.shp="GSS_CODE", key.data = "Row Labels")
+# merge csv and shapefile
+shape <- merge(shape, 
+               mycsv, 
+               by.x="GSS_CODE", 
+               by.y="Row Labels")
+# set tmap to plot
 tmap_mode("plot")
+# have a look at the map
 qtm(shape, fill = "2011_12")
+# write to a .gpkg
 st_write(shape, "Prac1_data/Rwk1.gpkg", "london_boroughs_fly_tipping", delete_layer=TRUE)
+# connect to the .gpkg
 con <- dbConnect(SQLite(),dbname="Prac1_data/Rwk1.gpkg")
+# list what is in it
 dbListTables(con)
+# add the original .csv
 dbWriteTable(con,"original_csv", mycsv, overwrite=TRUE)
+# disconnect from it
 dbDisconnect(con)
 ```
 You can then save your script through File > Save As.
