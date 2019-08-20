@@ -691,6 +691,8 @@ To do it like this the scrips must be in the same project!
 
 Want to see something really cool i came across....how about controlling the map elements with your voice using Shiny...https://yihui.shinyapps.io/voice/
 
+For more Shiny help explore [Mastering Shiny](https://mastering-shiny.org/index.html) and [Interactive web-based data visualization with R, plotly, and shiny](https://plotly-r.com/index.html), specifcally the section on Advanced applications. 
+
 ## How to lie with maps
 
 If you play around with the Shiny app, changing the colour scheme, interval style and accomodation count using the slider you'll notice that you can actually almost change what the maps shows. For example, if you wanted to hide the distribution of Airbnb accomodation over London you could select any color scheme, use the full range of accomodation count and then select the pretty interval style to give some like...
@@ -716,12 +718,19 @@ The take home message from this is to critically think about the best way to map
 
 ## Advanced online publishing
 
-Already familiar with Rpubs, RMarkdown site generator or Shiny? Try and and produce an online document using either: bookdown, blogdown or shinydashboard. These are listed in order of difficutly from my experience. 
+Already familiar with Rpubs, RMarkdown site generator or Shiny? Try and and produce an online document using either: bookdown, flexdashboard, blogdown or shinydashboard. These are listed in order of difficutly from my experience. 
 
 **Hint** this document is made using bookdown, so checkout my GitHub for how i set it up
 
 * Bookdown: https://bookdown.org/yihui/bookdown/, minimal bookdown example: https://github.com/rstudio/bookdown-demo
 
+* Flexdashboard: https://rmarkdown.rstudio.com/flexdashboard/
+
 * Blogdown: https://bookdown.org/yihui/blogdown/
 
 * Interactive Shiny dashboards: https://rstudio.github.io/shinydashboard/get_started.html
+
+## Feedback
+
+Was anything that we explained unclear this week or was something really clear...let us know [here](https://forms.gle/w2GUDYc7tSavGy7r6). It's anonymous and we'll use the responses to clear any issues up in the future / adapt the material. 
+

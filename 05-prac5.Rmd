@@ -728,3 +728,8 @@ What makes a bad map then... and what should you avoid:
 * Presented data is too small or too big --- be critical about what you produce, it should be easy to read and understand
 * A map or figure without enough detail --- A reader should be able to understand a map or figure using the graphic in the figure/map and the caption alone! A long caption is fine assuming it's all relevant information. 
 
+## Feedback
+
+Was anything that we explained unclear this week or was something really clear...let us know [here](https://forms.gle/w2GUDYc7tSavGy7r6). It's anonymous and we'll use the responses to clear any issues up in the future / adapt the material. 
+
+

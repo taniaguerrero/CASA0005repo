@@ -429,7 +429,7 @@ If you click the small arrow next to the preview button, a menu will appear givi
 Packrat is useful as it let's you store all of your loaded packages in a folder within your project, if you were then to move or share your project someone else could load the packages you have used (and the appopraite version) permitting them to run your code with no isses and no inflence their main R package library. You can access Packrat through the icon under the Packages tab...or Tools > Project Options..
 
 ```{r echo=FALSE, out.width = "200pt", fig.align='center', cache=TRUE}
-knitr::include_graphics('prac4_images/packrat.png')
+knitr::include_graphics('prac1_images/packrat.png')
 ```
 
 This practical book is build using RStudio, but as i update the packages and content every year i haven't used Packrat here. So go and check out the [documentation](http://rstudio.github.io/packrat/?version=1.2.1335&mode=desktop) for more information.
@@ -437,6 +437,11 @@ This practical book is build using RStudio, but as i update the packages and con
 ## Further reading
 
 Since starting this little guide, I have come across this amazing [book](http://happygitwithr.com/) on using R and GitHub, by Jenny Bryan and Jim Hester. It’s brilliant --- get involved! 
+
+## Feedback
+
+Was anything that we explained unclear this week or was something really clear...let us know [here](https://forms.gle/w2GUDYc7tSavGy7r6). It's anonymous and we'll use the responses to clear any issues up in the future / adapt the material. 
+
 
 
 

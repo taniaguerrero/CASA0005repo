@@ -28,6 +28,9 @@ There are a lot of free online books for geospatial analysis, especially using R
 * https://geocompr.robinlovelace.net/
 * https://happygitwithr.com/
 * https://bookdown.org/
+* https://plotly-r.com/index.html
+
+If you want to produce more efficent R code then have a look at the [Efficient R programming](https://csgillespie.github.io/efficientR/index.html) book.
 
 ## New developments
 
@@ -40,6 +43,20 @@ Other useful tutorials can be found here:
 
 * http://rpubs.com/chrisbrunsdon/
 * http://rpubs.com/alexsingleton/
+* https://mgimond.github.io/megug2017/#cropping-a-raster-interactively
+
+### Twitter
+
+R package authors regular tweet with updates and new developments. If twitter is your thing go and follow these people to start with:
+
+* [Hadley Wickham](https://twitter.com/hadleywickham)
+* [Alison Hill](https://twitter.com/apreshill)
+* [Robin Lovelace](https://twitter.com/robinlovelace)
+* [Yihui Xie](https://twitter.com/xieyihui)
+* [Hannah Frick](https://twitter.com/hfcfrick)
+* [Jakub Nowosad](https://twitter.com/jakub_nowosad)
+
+and anyone else you come across...
 
 ## Data
 
@@ -100,6 +117,8 @@ Sven Åke Bjørke from the University of Agder also produced a few Youtube video
 ```{r echo=FALSE, fig.align='center', cache=TRUE}
 knitr::include_url("https://www.youtube.com/embed/1NGMoW51jmA")
 ```
+
+...And the paper ['How to write a paper for publicaiton'](https://onlinelibrary.wiley.com/doi/full/10.1046/j.1444-2892.2000.00031.x)
 
 ## Free flow diagram tools
 

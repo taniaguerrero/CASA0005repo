@@ -833,3 +833,7 @@ The tutorials can be accessed from the online help system. If you are running Ar
 http://resources.arcgis.com/en/help/main/10.1/index.html#/What_is_ModelBuilder/002w00000001000000/
 
 These tutorials will introduce you to many more features that we didn’t cover today. 
+
+## Feedback
+
+Was anything that we explained unclear this week or was something really clear...let us know [here](https://forms.gle/w2GUDYc7tSavGy7r6). It's anonymous and we'll use the responses to clear any issues up in the future / adapt the material. 
