@@ -29,6 +29,7 @@ There are a lot of free online books for geospatial analysis, especially using R
 * https://happygitwithr.com/
 * https://bookdown.org/
 * https://plotly-r.com/index.html
+* https://bookdown.org/ndphillips/YaRrr/
 
 If you want to produce more efficent R code then have a look at the [Efficient R programming](https://csgillespie.github.io/efficientR/index.html) book.
 

@@ -306,11 +306,14 @@ plot(veg, add=TRUE, legend=FALSE)
 
 ## Advanced raster calculations
 
+The goal of this final section is to set up a mini investigation to see if there is a relationship between urban area and temperature. If our hypothesis is that there is a relationship then our null is that there is not a relationship...
+
 ### Calucating tempearture from Landsat data
 
 Here we are going to compute temperature from Landsat data --- there are many methods that can be found within literature to do so but we will use the one originally developed by Artis & Carnahan (1982), recently summarised by Guha et al. 2018 and and Avdan and Jovanovska (2016).
 
 Some of the terms used our outlined in the remote sensing background section at the end of the document, so check back there if you get confused.
+
 
 21. Calcualte the Top of Atmopshere (TOA) spectral radiance from the Digital Number (DN) using:
 
@@ -570,7 +573,33 @@ stat.sig=cor.test(computeddatadf$Temperature, computeddatadf$Urban, use = "compl
 stat.sig
 ```
 
-As p<0.05 is shows that are variables are have a statistically significant correlation... so as urban area (assuming the index in representative) per pixel increases so does temperature... but remember that doesn't imply causation. 
+Let's walk through the results here...
+
+* t: is the t-test statistic value, we can work out the critical t value using:
+
+```{r, cache=TRUE}
+abs(qt(0.05/2, 198268))
+```
+
+As our t values is > than the critial value we can say that there is a relationship between the datasets. However, we would normally report the p-value...
+
+* df: is the number of values we have -2...
+
+```{r, cache=TRUE}
+length(computeddatadf$Temperature)
+# but some are NA
+na.omit(computeddatadf)
+```
+
+* p-value: tells us wheather there is a statistically significant correlation between the datasets and if that we can reject the null hypothesis if p<0.05 (there is a 95% chance that the relationship is real).
+
+* cor: Pearon's correlation coefficient
+
+* 95 percent confidence interval: 95% confident that the population correlation coeffieicent is within this interval
+
+As p<0.05 is shows that are variables are have a statistically significant correlation... so as urban area (assuming the index in representative) per pixel increases so does temperature...therefore we can reject our null hypothesis... but remember that this does not imply causation!! 
+
+If you want more information on statistics in R go and read [YaRrr! A Pirate's Guide to R](https://bookdown.org/ndphillips/YaRrr/), chapter 13 on hypothesis tests.
 
 ## Considerations
 
