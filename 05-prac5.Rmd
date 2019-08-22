@@ -723,10 +723,9 @@ What makes a bad map then... and what should you avoid:
 * Poor labeling --- don't present something as an output with the file name (e.g. layer_1_osm) in the legend --- name your layers properly 
 * No legend
 * Screenshot of the map --- export it properly, we've been doing this a while and can tell
-* Poor figure caption --- **a reader should know exactly what a figure shows from only reading the figure caption**
 * Too much data presented on one map --- be selective or plot multiple maps
 * Presented data is too small or too big --- be critical about what you produce, it should be easy to read and understand
-* A map or figure without enough detail --- A reader should be able to understand a map or figure using the graphic in the figure/map and the caption alone! A long caption is fine assuming it's all relevant information. 
+* A map or figure without enough detail --- **A reader should be able to understand a map or figure using the graphic in the figure/map and the caption alone!** A long caption is **fine** assuming it's all relevant information. 
 
 ## Feedback
 

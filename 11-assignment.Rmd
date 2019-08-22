@@ -12,12 +12,13 @@ Closer to the assignment deadline we will release examples of good student proje
 
 ## Cool stuff to explore
 
-New pcakages and functions that i've recently come across that are worth exploring..
+New packages and functions that i've recently come across that are worth exploring..
 
 * RStudio cloud: https://rstudio.cloud/ --- like RStudio but online, great for collaborating
 * Animating plots: https://rpubs.com/jgleeson/ripple-effect
 * Bivariate maps: https://timogrossenbacher.ch/2019/04/bivariate-maps-with-ggplot2-and-sf/
 * Rayshader: https://www.rayshader.com/
+* Cartography package: http://riatelab.github.io/cartography/docs/
 
 ## Books/reading resources
 

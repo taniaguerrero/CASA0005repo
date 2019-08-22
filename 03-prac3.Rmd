@@ -27,26 +27,30 @@ To start with we are going to use WorldClim data --- this is a dataset of free g
 
 What is a 5 minute resolution i hear you ask? Well, this geographic reference system treats the globe as if it was a sphere divided into 360 equal parts called degrees. Each degree has 60 minutes and each minute has 60 seconds. Arc-seconds of latitude remain almost constant whilst arc-seconds of longitude decrease in a trigonometric cosine-based fashion as you move towards the Earth's poles....In contrast a projected coordinate system is defined on a flat, two-dimensional plane (through projecting a spheriod onto a 2D surface) giving it constant lengths, angles and areas...
 
-```{r echo=FALSE, out.width = "400pt", fig.align='center', cache=TRUE}
+```{r echo=FALSE, out.width = "400pt", fig.align='center', cache=TRUE, results=FALSE}
 knitr::include_graphics('prac3_images/arcseconds.jpg')
+```
+
+```{r vectorplots, fig.cap="Illustration of vector (point) data in which location of London (the red X) is represented with reference to an origin (the blue circle). The left plot represents a geographic CRS with an origin at 0° longitude and latitude. The right plot represents a projected CRS with an origin located in the sea west of the South West Peninsula.", out.width="49%", fig.show='hold', echo=FALSE, cache=TRUE}
+knitr::include_graphics(c("prac3_images/vector_lonlat.png","prac3_images/vector_projected.png"))
 ```
 
 If you are still a bit confused by coordiate reference systems then **stop** and take some time to have a look at the resources listed here. It is very important to understand projection systems.
 
-* https://communityhub.esriuk.com/geoxchange/2012/3/26/coordinate-systems-and-projections-for-beginners.html
+* https://geocompr.robinlovelace.net/spatial-class.html#vector-data
 
-* https://en.wikipedia.org/wiki/Spatial_reference_system
+* https://communityhub.esriuk.com/geoxchange/2012/3/26/coordinate-systems-and-projections-for-beginners.html
 
 This YouTube video that shows the differences between geographic and projected coordinate reference systems and some limitations of ArcMap...
 
 ```{r echo=FALSE, fig.align='center', cache=TRUE, warning=FALSE, message=FALSE}
-#knitr::include_url("https://www.youtube.com/embed/IOpQg0BXYvw")
+knitr::include_url("https://www.youtube.com/embed/IOpQg0BXYvw")
 ```
 
 And this great YouTube produced by SciShow shows the comporsises of different map projections 
 
 ```{r echo=FALSE, fig.align='center', cache=TRUE, warning=FALSE, message=FALSE}
-#knitr::include_url("https://www.youtube.com/embed/8I_VpC6IuJs")
+knitr::include_url("https://www.youtube.com/embed/8I_VpC6IuJs")
 ```
 
 3. Unzip and move the data to your project folder. Now load the data. We could do this individually....
@@ -451,7 +455,7 @@ plot(spatialpt, col="red", add=TRUE)
 
 For more infomation see: https://pro.arcgis.com/en/pro-app/help/analysis/geostatistical-analyst/how-inverse-distance-weighted-interpolation-works.htm
 
-36. To get a meaningful result we could run some more calucaltions on let's project our data
+36. To get a meaningful result we could run some more calucaltions on let's project our data to [GDA94 (EPSG:3112)](https://epsg.io/3112)
 
 ```{r message=FALSE, cache=TRUE}
 spatialpt <- st_as_sf(spatialpt)

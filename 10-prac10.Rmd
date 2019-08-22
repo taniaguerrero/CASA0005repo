@@ -1,0 +1,12 @@
+# The MAUP problem
+
+The Modifiable Areal Unit Problem des
+
+Use air b n b at lower london scales - ward etc
+
+
+```{r}
+library(sf)
+wards<-st_read("prac1_data/statistical-gis-boundaries-london/ESRI/London_Ward.shp")
+```
+

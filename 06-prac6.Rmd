@@ -35,12 +35,13 @@ library(tmaptools)
 ```
 ## Setting up your data
 
-Now, assuming that you've got a copy of your London Boroughs shapefile (from week 1) in your new week 6 folder, along with a shapefile of your Blue Plaques; read in the data...
+Now, assuming that you've got a copy of your London Boroughs shapefile (from week 1) in your new week 6 folder, along with a shapefile of your Blue Plaques. If not.. read in the data from [here](http://geoportal.statistics.gov.uk/datasets/8edafbe3276d4b56aec60991cbddda50_2
+)
 
 ```{r, cache=TRUE}
 ##First, get the London Borough Boundaries
 EW <- geojson_read(
-  "http://geoportal.statistics.gov.uk/datasets/8edafbe3276d4b56aec60991cbddda50_2.geojson",
+  "https://opendata.arcgis.com/datasets/8edafbe3276d4b56aec60991cbddda50_2.geojson",
   what = "sp")
 ```
 

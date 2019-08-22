@@ -588,7 +588,9 @@ As our t values is > than the critial value we can say that there is a relations
 ```{r, cache=TRUE}
 length(computeddatadf$Temperature)
 # but some are NA
-na.omit(computeddatadf)
+removena<-na.omit(computeddatadf)
+length(removena$Temperature)
+length(removena$Urban)
 ```
 
 * p-value: tells us wheather there is a statistically significant correlation between the datasets and if that we can reject the null hypothesis if p<0.05 (there is a 95% chance that the relationship is real).
