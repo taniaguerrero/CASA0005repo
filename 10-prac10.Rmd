@@ -1,12 +1,97 @@
-# The MAUP problem
+# Advanced R and the MAUP problem
 
 The Modifiable Areal Unit Problem des
 
 Use air b n b at lower london scales - ward etc
 
+Here we will be using London brough and ward data from practical 1. As we're getting better with R, we will try to automate almost everthing --- meaning that if you gave this code to someone else they could just run it without any data files and generate the same result. 
+
+1. Download and unzip the London statistical gis boundaries.
+
+```{r, cache=TRUE, warning=FALSE, message=FALSE}
+# make a temp file to store the .zip in
+temp <- tempfile()
+download.file("https://data.london.gov.uk/download/statistical-gis-boundary-files-london/9ba8c833-6370-4b11-abdc-314aa020d5e0/statistical-gis-boundaries-london.zip",temp)
+# unzip into data
+data <- unzip(temp)
+# unlink the temp file
+unlink(temp)
+```
+
+2. Take the downloaded data and filter it based on the filename that countains: Borough OR Ward_ AND `.shp` using `grepl()`
+
+```{r, cache=TRUE, warning=FALSE, message=FALSE}
+t<-grepl("Borough|Ward_", data) & grepl(".shp$", data)
+t
+```
+
+`t` just gives an index of where the values are equal to what we specified. 
+
+3. We then need to use it to subset from our original data...
+
+```{r, cache=TRUE, warning=FALSE, message=FALSE}
+boroughsandwards<-data[t]
+```
+
+4. Now read in both of the files using ```lapply()``` that applies a function (here `st_read()`) to a list 
+
+```{r, cache=TRUE, warning=FALSE, message=FALSE}
+boroughsandwardssf<-lapply(boroughsandwards, st_read)
+```
+To map or access each individual shapefile it's just...
+
+```{r, cache=TRUE, warning=FALSE, message=FALSE, output=FALSE}
+qtm(boroughsandwardssf[[2]]) 
+# or change to 1 
+```
+
+5. Get the data for Airbnb
+
+```{r, cache=TRUE, warning=FALSE, message=FALSE, output=FALSE}
+Airbnb <- read_csv("http://data.insideairbnb.com/united-kingdom/england/london/2019-07-10/visualisations/listings.csv")
+
+```
+ 
+6. And for OSM
 
 ```{r}
+library(tidyverse)
+library(osmdata)
 library(sf)
-wards<-st_read("prac1_data/statistical-gis-boundaries-london/ESRI/London_Ward.shp")
+library(ggmap)
+
+q <- getbb("London")%>%
+      opq()%>%
+       add_osm_feature(key="pois", value="hotel")
+Londonhotels <- osmdata_sf(q)
+
 ```
+
+
+```{r eval=FALSE}
+library(memisc)
+temp2 <- tempfile()
+download.file("http://download.geofabrik.de/europe/great-britain/england/greater-london-latest-free.shp.zip
+",mode='wb', temp2)
+# unzip into data
+temp2=paste(temp2, ".zip", sep="")
+i# unlink the temp file
+unlink(temp2)
+```
+
+
+
+
+```{r, eval=FALSE}
+src <- osmsource_api(url = "https://api.openstreetmap.org/api/0.6/")
+bb <- center_bbox(-0.112510,51.507627, 1000, 1000)
+ctown <- get_osm(bb, source = src)
+plot(ctown)
+points(-1.53492, 53.81934, col = "red", lwd = 5)
+
+summary(ctown$ways)
+
+```
+
+
 
