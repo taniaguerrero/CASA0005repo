@@ -25,6 +25,7 @@ New packages and functions that i've recently come across that are worth explori
 There are a lot of free online books for geospatial analysis, especially using R, check out:
 
 * https://www.rstudio.com/resources/training/books/
+* https://r-graphics.org/
 * http://hadley.nz/
 * https://geocompr.robinlovelace.net/
 * https://happygitwithr.com/
@@ -64,6 +65,7 @@ and anyone else you come across...
 
 This is by no means an extensive data list, but summarises data used within some of the practicals alongside a few additions that you might want to explore when sourcing data for your assignments. You are **not limited** to these data sets for you assessment.
 
+* https://geoportal.statistics.gov.uk/
 * UK data service: https://census.edina.ac.uk/
 * ONS: https://www.ons.gov.uk/
 * Edina (e.g. OS mastermap): https://digimap.edina.ac.uk/

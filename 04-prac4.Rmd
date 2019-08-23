@@ -68,7 +68,7 @@ At the time of writing git integration *should* work within RStudio. If it doesn
 
 10. Now in RStudio, you should create a new project in an existing directory --- File > New Project > Existing directory --- choose your new git repository as your new project folder. You should not see a git tab in the environment window of RStudio (top right).
 
-**Note** You could also link your Git directly from RStudio following: File > New Project > Version control > Git. But carry on using these insturctions for now. 
+> **Note** You could also link your Git directly from RStudio following: File > New Project > Version control > Git. But carry on using these insturctions for now. 
 
 11. Open a new R Notebook in RStudio: File > New File R Notebook
 
@@ -393,7 +393,7 @@ bibliography: library.bib
 [@MicheleAcuto2016; @McPherson2016]
 ```
 
-Note that the name i've used (e.g. McPherson2016) is what Mendeley provided as the citation key for me (see the details about every document you store to find it).
+> **Note** that the name i've used (e.g. McPherson2016) is what Mendeley provided as the citation key for me (see the details about every document you store to find it).
 
 45. The complete bibliography will be placed in the last section, to add a new section to the markdown document just use # and then a space (e.g. # Last section).
 
@@ -428,11 +428,22 @@ If you click the small arrow next to the preview button, a menu will appear givi
 ### Packrat
 Packrat is useful as it let's you store all of your loaded packages in a folder within your project, if you were then to move or share your project someone else could load the packages you have used (and the appopraite version) permitting them to run your code with no isses and no inflence their main R package library. You can access Packrat through the icon under the Packages tab...or Tools > Project Options..
 
-```{r echo=FALSE, out.width = "200pt", fig.align='center', cache=TRUE}
+```{r echo=FALSE, out.width = "400pt", fig.align='center', cache=TRUE}
 knitr::include_graphics('prac1_images/packrat.png')
 ```
 
 This practical book is build using RStudio, but as i update the packages and content every year i haven't used Packrat here. So go and check out the [documentation](http://rstudio.github.io/packrat/?version=1.2.1335&mode=desktop) for more information.
+
+## Binder
+
+[Binder](https://mybinder.org/) is a free platform that makes it possible to share code very easily. I've only just come across it, so i haven't personally tried it yet. But basically you can take your RProject (that is stored on GitHub) and add a bit of extra code to it that will provide a link button (called a bage), if clicked it will then take you to an RStudio cloud workspace with all your code and data loaded, meaning they could run your analysis with one click anywhere on any device. Fore more information have a look at:
+
+* [R binder blog post](https://kbroman.org/blog/2019/02/18/omg_binder/)
+
+* [YoutTube walkthrough](https://www.youtube.com/watch?v=wSkheV-Uqq4)
+
+* [R Studio conference talk on reproducible research](https://resources.rstudio.com/rstudio-conf-2019/a-guide-to-modern-reproducible-data-science-with-r)
+
 
 ## Further reading
 

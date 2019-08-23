@@ -33,6 +33,8 @@ A shapefile is actually a collection of files –-- at least three of which are 
   2. ```.shx``` - an index file which stores the position of the feature IDs in the  ```.shp ``` file
   3. ```.dbf``` - the file that stores all of the attribute information associated with the coordinates – this might be the name of the shape or some other information associated with the feature
   4. ```.prj``` - the file which contains all of the coordinate system information (the location of the shape on Earth's surface). Data can be displayed without a projection, but the ```.prj``` file allows software to display the data correctly where data with different projections might be being used
+
+On Twitter and wan't to see the love for shapefiles....have a look at [the shapefile account](https://twitter.com/shapefiIe)
   
 #### GeoJSON
 
@@ -281,7 +283,7 @@ knitr::include_graphics('prac1_images/arcmap.png')
 knitr::include_graphics('prac1_images/display_order.png')
 ```
 
-**Note**, while we have loaded the shapefile, it is not stored in our Geodatabase yet.
+> **Note**, while we have loaded the shapefile, it is not stored in our Geodatabase yet.
 
 **Useful tips**
   
@@ -310,7 +312,7 @@ We're now going to join our flytipping data to the London borough shapefile. So:
 
 14. The join should work, so reopen the attribute table for the layer London boroughs
 
-**Note**, the join we have made is not permanent. To do so we need to export the layer.
+> **Note**, the join we have made is not permanent. To do so we need to export the layer.
 
 ##### Export data
 
@@ -349,7 +351,7 @@ knitr::include_graphics('prac1_images/coorindate_system.png')
 
 Save and then close your ArcMap document. We're now going to replicate this task in QGIS.
 
-**Note** As we are going to open the same files in difference GIS systems it is important to close the software before moving on. If you don't then files can be *locked* and unreadable as they are still considered to be in use.
+> **Note** As we are going to open the same files in difference GIS systems it is important to close the software before moving on. If you don't then files can be *locked* and unreadable as they are still considered to be in use.
 
 ### QGIS
 
@@ -501,14 +503,14 @@ Here, repos stands for repository where we will download the packages from. Once
 
 Load the ```sf``` package so we can read our shapefile in --- remember to change to filepath to your shapefile. For this first practical we'll just leave the datea where it is, next week we'll show you how to use projects to make calling data much easier.
 
-**Note** by default in R, the file path should be defined with ```/``` but on a windows file system it is defined with ```\```. Using ```\\``` instead allows R to read the path correctly – alternatively, just use ```/```
+> **Note** by default in R, the file path should be defined with ```/``` but on a windows file system it is defined with ```\```. Using ```\\``` instead allows R to read the path correctly – alternatively, just use ```/```
 
 ```{r, message=FALSE, warning=FALSE, cache=TRUE}
 library(sf)
 shape <- st_read("Prac1_data/statistical-gis-boundaries-london/ESRI/London_Borough_Excluding_MHW.shp")
 ```
 
-**Note** If you are working on RStudio cloud and have a shapefile (along with all the other relevant files required) you will just need to use...
+> **Note** If you are working on RStudio cloud and have a shapefile (along with all the other relevant files required) you will just need to use...
 
 ```{r, message=FALSE, warning=FALSE, cache=TRUE, eval=FALSE}
 library(sf)
@@ -660,7 +662,11 @@ The UK Data Service geography service (https://census.edina.ac.uk/) has a librar
 
 The Office for National Statistics (ONS) are the national statistical agency for England and Wales and have recently started to provide access to boundary data for the statistics they produce for various geographic areas. 
 
-Many of the boundaries on the ONS Geoportal are also available from the Edina Census Geography website in a more flexible fashion, however the ONS website provides very quick access to bulk-downloads --- something which can be very useful when reading data directly from the web using computer software. 
+Many of the boundaries on the [ONS Geoportal](http://geoportal.statistics.gov.uk/) are also available from the Edina Census Geography website in a more flexible fashion, however the ONS website provides very quick access to bulk-downloads --- something which can be very useful when reading data directly from the web using computer software. From the ONS website you can also extract the URL at which the data is stored to use directly within your future code...
+
+### nomis
+
+
 
 ### OS 
 

@@ -696,7 +696,7 @@ Then try the following out:
 
 1. Create a new geodatabase in your working folder on your N: drive 
 
-2. Start ArcMap and add the Ward boundary data from practical 1 or download it again from: https://data.london.gov.uk/dataset/statistical-gis-boundary-files-london
+2. Start ArcMap and add the Ward boundary data from practical 1 or download it again from [here](https://data.london.gov.uk/dataset/statistical-gis-boundary-files-london)
 
 3. Right-click on your layer and select Data > Export Data. Save your data as a new file geodatabase feature class and give it an appropriate name –-- we are doing this as we will be messing around with boundary polygons and it’s good practice not to ruin the original file!
 
@@ -709,15 +709,15 @@ Then try the following out:
 7.	If you have other layers open in your map, you may have to select the correct layer to edit
 8.	In the editor dropdown menu, ‘Merge’ should now be active. Click Merge. Select the first feature as your merge feature and click ‘OK’
 
-9. Whilst still in Editor change the GSS_CODE for Castle Bayard to E09000001
+9. Whilst still in Editor change the `GSS_CODE` for Castle Bayard to E09000001
 
 10. In the Editor drop down menu, select Save Edits and then Stop Editing
 
-11. You should now see on your map that the ward boundaries have dissolved and in your attribute table, only the first row – Castle Baynard, should be left
+11. You should now see on your map that the ward boundaries have dissolved and in your attribute table, only the first row –-- Castle Baynard, should be left
 
-12.	We are now ready to join your London data to your new boundaries. Get the data from: https://data.london.gov.uk/dataset/ward-profiles-and-atlas. Ward Atlas data, excel format. Save it to your current working folder
+12.	We are now ready to join your London data to your new boundaries. Get the data from [here](https://data.london.gov.uk/dataset/ward-profiles-and-atlas). Select the excel format and save it to your current working folder
 
-13.	Open the excel document and the data tab or worksheet (bottom left). Delete all the data we are not interested in and save it as a .csv…I’ve removed everything expect New Code and Median Household income estimate (2012/13).
+13.	Open the excel document and the data tab or worksheet (bottom left). Delete all the data we are not interested in and save it as a `.csv`...I’ve removed everything expect New Code and Median Household income estimate (2012/13).
 
 14.	Add your ```.csv``` layer to your map. Join the ```.csv``` data to your newly edited boundary data. Use GSS_CODE and New code to match the records, keeping only the matching records. Export your new layer as a new geodatabase feature class in a new file geodatabase for this week’s practical. I’ve called mine Londonwards_GCSE
 
@@ -725,13 +725,13 @@ Then try the following out:
 
 **An exploratory research question: Are households with high or low median incomes spatially clustered in London?**
 
-15. We are almost ready to try some exploratory analysis, but before we do this, we will need to generate a unique ID column in your new LondonWards feature class. Open the attribute table and in Table Options, select Add a Field of type Short Integer called ID. Scroll to the last column in the table and you should see your new column. Right click the header and select the field calculator. Set ID to = ObjectID and click OK.
+15. We are almost ready to try some exploratory analysis, but before we do this, we will need to generate a unique ID column in your new LondonWards feature class. Open the attribute table and in Table Options, select Add a Field of type Short Integer called ID. Scroll to the last column in the table and you should see your new column. Right click the header and select the field calculator. Set `ID` to = `ObjectID` and click OK.
 
 ```{r echo=FALSE, out.width = "400px", fig.align='center', cache=TRUE}
 knitr::include_graphics('prac6_images/fieldcalc.png') 
 ```
 
-16. Before we start our income values are stored as a string and we need to convert them to numeric…add a new field to the attribute table with the type of float, right click on the new field > Field Calculator then set the new field to equal to the Median_Household_income_estimate__2012_13 point scores --- use this new field from now on. If you can’t add a new field save and then reload the ArcMap document --- I think this is due to ArcMap locking certain layers, but that will solve it
+16. Before we start our income values are stored as a string and we need to convert them to numeric…add a new field to the attribute table with the type of float, right click on the new field > Field Calculator then set the new field to equal to the `Median_Household_income_estimate__2012_13 point scores` --- use this new field from now on. If you can’t add a new field save and then reload the ArcMap document --- I think this is due to ArcMap locking certain layers, but that will solve it
 
 17.	First of all, generate a standard choropleth map of median income for people living in wards in London. Does it look like there might be a spatial pattern? From this map, what might your hypothesis be? In statistical analysis it is standard practice to reverse your hypothesis and turn it into a null hypothesis. Therefore, if your hypothesis is there is a spatial pattern to median household income, then the null-hypothesis is that there is not a relationship (and vice versa)
 
@@ -755,7 +755,7 @@ knitr::include_graphics('prac6_images/getis.png')
 knitr::include_graphics('prac6_images/clusterreport.png') 
 ```
 
-24. What does the report suggest about the spatial clustering of GCSE scores in London? What is a Z-score (if you’re not sure, Wikipedia is always a good place to start - http://en.wikipedia.org/wiki/Standard_score)
+24. What does the report suggest about the spatial clustering of GCSE scores in London? What is a Z-score (if you’re not sure, [Wikipedia is always a good place to start]( http://en.wikipedia.org/wiki/Standard_score))
 
 25. Generate a similar report using the Spatial Autocorrelation (Moran’s I) tool. What does this report tell you?
 
@@ -781,9 +781,9 @@ knitr::include_graphics('prac6_images/spatialweights.png')
 knitr::include_graphics('prac6_images/modelbuilder_spatialweights.png') 
 ```
 
-**Note**, to join an existing input to a new tool, use the ‘Connect’ tool and drag a line to the tool you are using
+> **Note**, to join an existing input to a new tool, use the ‘Connect’ tool and drag a line to the tool you are using
 
-31. Now we have our three spatial weights matices, we can carry out local Moran’s I and local Geary’s C analyses using the different conceptions of proximity. To do this, simply drag the tools (Cluster and Outlier Analysis and Hotspot analysis) from within Spatial Statistics Tools > Mapping Clusters into your Model Builder box. Double Click the tool and fill out the options as below – remember to select GET_SPATIAL_WEIGHTS_FROM_FILE and choose the appropriate spatial weights matrix. Make sure you use the feature class you saved to get the income data as the input feature class.
+31. Now we have our three spatial weights matices, we can carry out local Moran’s I and local Geary’s C analyses using the different conceptions of proximity. To do this, simply drag the tools (Cluster and Outlier Analysis and Hotspot analysis) from within Spatial Statistics Tools > Mapping Clusters into your Model Builder box. Double Click the tool and fill out the options as below – remember to select `GET_SPATIAL_WEIGHTS_FROM_FILE` and choose the appropriate spatial weights matrix. Make sure you use the feature class you saved to get the income data as the input feature class.
 
 ```{r echo=FALSE, out.width = "600px", fig.align='center', cache=TRUE}
 knitr::include_graphics('prac6_images/clusteroutlier2.png') 
@@ -801,9 +801,9 @@ knitr::include_graphics('prac6_images/modelbuilderfinal.png')
 
 35. When you have finished building your model, in the top menu, select Model > Save As and save your model into a new tool box   in your working directory
 
-36. 22.	Now you are ready to run your model. Select Model > Run Entire Model. The model will run, and if you have remembered to tick the ‘Add to display’ option next to each output file, each output should be added to your map. This will display confidence intervals, which can you change to Z scores under the layer symbology. Otherwise you can add them in from your GeoDatabase
+36. Now you are ready to run your model. Select Model > Run Entire Model. The model will run, and if you have remembered to tick the ‘Add to display’ option next to each output file, each output should be added to your map. This will display confidence intervals, which can you change to Z scores under the layer symbology. Otherwise you can add them in from your GeoDatabase
 
-37. You are now able to review the results of your hotspot (Local Geary’s C) and Local Moran’s I analyses. To understand what the values HH, LL, HL and LH mean, you should consult the ArcGIS help system - http://help.arcgis.com/en/arcgisdesktop/10.0/help/index.html#/How_Cluster_and_Outlier_Analysis_Anselin_Local_Moran_s_I_works/005p00000012000000/
+37. You are now able to review the results of your hotspot (Local Geary’s C) and Local Moran’s I analyses. To understand what the values HH, LL, HL and LH mean, you should consult the [ArcGIS help system](http://help.arcgis.com/en/arcgisdesktop/10.0/help/index.html#/How_Cluster_and_Outlier_Analysis_Anselin_Local_Moran_s_I_works/005p00000012000000/)
 
 38. If you wish, to aid interpretation, you can add some London Borough boundaries to your map --- you can get this layer from practical 1
 
@@ -830,8 +830,7 @@ Build a model using model builder which:
 
 The introduction to model builder has only been very cursory --– it is able to carry out far more complex tasks. If you think you would like to use Model Builder in your coursework assessment (remember you other option is to do something similar in R or QGIS), then ESRI have a number of tutorial activities to take you from the basics to something far more advanced.
 
-The tutorials can be accessed from the online help system. If you are running ArcGIS 10.1 (I doubt the pages will change much for 10 or 10.2), then this is a good place to start:
-http://resources.arcgis.com/en/help/main/10.1/index.html#/What_is_ModelBuilder/002w00000001000000/
+The tutorials can be accessed from the online help system. If you are running ArcGIS 10.1 (I doubt the pages will change much for 10 or 10.2), then [this is a good place to start](http://resources.arcgis.com/en/help/main/10.1/index.html#/What_is_ModelBuilder/002w00000001000000/)
 
 These tutorials will introduce you to many more features that we didn’t cover today. 
 

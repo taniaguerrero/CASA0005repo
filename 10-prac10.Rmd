@@ -12,8 +12,8 @@ Here we will be using London brough and ward data from practical 1. As we're get
 # make a temp file to store the .zip in
 temp <- tempfile()
 download.file("https://data.london.gov.uk/download/statistical-gis-boundary-files-london/9ba8c833-6370-4b11-abdc-314aa020d5e0/statistical-gis-boundaries-london.zip",temp)
-# unzip into data
-data <- unzip(temp)
+# unzip data into a folder (exdir) of your choice
+data <- unzip(temp, exdir="prac10_data")
 # unlink the temp file
 unlink(temp)
 ```
@@ -74,8 +74,10 @@ temp2 <- tempfile()
 download.file("http://download.geofabrik.de/europe/great-britain/england/greater-london-latest-free.shp.zip
 ",mode='wb', temp2)
 # unzip into data
-temp2=paste(temp2, ".zip", sep="")
-i# unlink the temp file
+data <- unzip(temp2, exdir="prac10_data")
+
+
+# unlink the temp file
 unlink(temp2)
 ```
 

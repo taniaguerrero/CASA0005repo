@@ -334,7 +334,7 @@ ggplot(twomonths, aes(x=value, color=Month, fill=Month)) +
   theme_classic()+
   theme(plot.title = element_text(hjust = 0.5))
 ```
-Note how i adjusted the title after i selected the theme, if i had done this before the theme defaults would have overwritten my command.
+> **Note** how i adjusted the title after i selected the theme, if i had done this before the theme defaults would have overwritten my command.
 
 28. Have you been getting an annoying error message about bin size and non-finate values? Me too!...Bin size defaults to 30 in ```ggplot2``` and the non-finate values is referring to lots of NAs (no data) that we have in our dataset. In the code below i've selected a bin width of 5 and removed all the NAs with ```complete.cases``` and produced a faceted plot...
 

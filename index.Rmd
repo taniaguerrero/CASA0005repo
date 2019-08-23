@@ -73,11 +73,13 @@ If you need specific assistance with this course please:
 * Check the Moodle assessment tab for queries relating to assignments / deadlines 
 * Speak to a member of the teaching team in the computer lab sessions
 * Ask a question at the end of a lecture (time permitting)
-* Ask a question on [slack](https://join.slack.com/t/casa0005-gis-19-20/shared_invite/enQtNzIyNzAwMTQ0MzU4LTE3MWYwYzExYWQxYzFkNzhiMTRhYmNjN2EzNGY0Y2FiZTVhNGQ5YTg4ZDZjZGRjM2E4YjNkNDIxMjMzYTcxOTQ)
+* Ask a question on [slack](https://join.slack.com/t/casa0005-gis-19-20/shared_invite/enQtNzI5NjU5NzAxNDU3LTJkNGI2OWJkZTg4MzVjZjczMDRjYjU5ODhkZmM5MmRkYmU5YzIyMjRmM2ExYTRhNmFiMmI2NDdmYmI3N2JlMjU)
 
 Due to the size of the class we will only reply to messages on slack so all students can see the discussion.
 
 If you are struggling to use R then head over to codeacademy and go through some of their [free resources](https://www.codecademy.com/learn/learn-r)
+
+[YaRrr! The Pirate's Guide to R](https://bookdown.org/ndphillips/YaRrr/) is also a fantastic resource for learning / troubleshooting problems in R
 
 If after persuing all these avenues you still need help you can book into our office hours. These meetings are **to discuss a geographical concept in relation to the material/assessment or for any personal matters relevant to the completion of the module**.
 

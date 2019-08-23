@@ -337,7 +337,7 @@ And here is what my map looked like...
 knitr::include_graphics('prac5_data/examplemap.png') 
 ```
 
-Note there are some issues with mine...look at the inset map and how in Scotland there are more points than place names --- this is beacuse my font is too large and they overlap.
+> **Note** there are some issues with mine...look at the inset map and how in Scotland there are more points than place names --- this is beacuse my font is too large and they overlap.
 
 ### Model builder
 
@@ -421,7 +421,7 @@ You need to:
 * Select by location (within London boroughs)
 * Join the output to a new (or original) London borough polygon layer
 
-**Note** You can filter by multiple attributes using extract by expression...here we would use the expression ```("room_type" ILIKE '%Entire home/apt%') AND ("availability_365" ILIKE '%365%')``` to filter based on entire home/apt and available 365 days of the year.
+> **Note** You can filter by multiple attributes using extract by expression...here we would use the expression ```("room_type" ILIKE '%Entire home/apt%') AND ("availability_365" ILIKE '%365%')``` to filter based on entire home/apt and available 365 days of the year.
 
 ### Map data
 
@@ -481,7 +481,7 @@ To export your map to a file go: Layout > Export as Image and select crop to con
 knitr::include_graphics('prac5_data/QGIS_hotel.png') 
 ```
 
-**Note** there are a few problems with my map that could be improved:
+> **Note** there are a few problems with my map that could be improved:
 (a) If you look closely at the vector layer for London you will see that one of the boroughs is missing from map (b) --- this is most likely because it has no data but could easily be fixed
 (b) Whilst this time i've displayed all the city names the colour scheme needs work...for ideas on this check out colour
 

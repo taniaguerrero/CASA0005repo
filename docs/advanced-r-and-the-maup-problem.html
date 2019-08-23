@@ -24,7 +24,7 @@
 <meta name="author" content="Andy MacLachlan and Adam Dennett" />
 
 
-<meta name="date" content="2019-08-22" />
+<meta name="date" content="2019-08-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -256,8 +256,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.12.4" data-path="git-github-and-rmarkdown.html"><a href="git-github-and-rmarkdown.html#knitting-your-output"><i class="fa fa-check"></i><b>4.12.4</b> Knitting your output</a></li>
 <li class="chapter" data-level="4.12.5" data-path="git-github-and-rmarkdown.html"><a href="git-github-and-rmarkdown.html#packrat"><i class="fa fa-check"></i><b>4.12.5</b> Packrat</a></li>
 </ul></li>
-<li class="chapter" data-level="4.13" data-path="git-github-and-rmarkdown.html"><a href="git-github-and-rmarkdown.html#further-reading"><i class="fa fa-check"></i><b>4.13</b> Further reading</a></li>
-<li class="chapter" data-level="4.14" data-path="git-github-and-rmarkdown.html"><a href="git-github-and-rmarkdown.html#feedback-3"><i class="fa fa-check"></i><b>4.14</b> Feedback</a></li>
+<li class="chapter" data-level="4.13" data-path="git-github-and-rmarkdown.html"><a href="git-github-and-rmarkdown.html#binder"><i class="fa fa-check"></i><b>4.13</b> Binder</a></li>
+<li class="chapter" data-level="4.14" data-path="git-github-and-rmarkdown.html"><a href="git-github-and-rmarkdown.html#further-reading"><i class="fa fa-check"></i><b>4.14</b> Further reading</a></li>
+<li class="chapter" data-level="4.15" data-path="git-github-and-rmarkdown.html"><a href="git-github-and-rmarkdown.html#feedback-3"><i class="fa fa-check"></i><b>4.15</b> Feedback</a></li>
 </ul></li>
 <li class="chapter" data-level="5" data-path="map-making.html"><a href="map-making.html"><i class="fa fa-check"></i><b>5</b> Map making</a><ul>
 <li class="chapter" data-level="5.1" data-path="map-making.html"><a href="map-making.html#learning-outcomes-4"><i class="fa fa-check"></i><b>5.1</b> Learning outcomes</a></li>
@@ -424,8 +425,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb401"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb401-1" title="1"><span class="co"># make a temp file to store the .zip in</span></a>
 <a class="sourceLine" id="cb401-2" title="2">temp &lt;-<span class="st"> </span><span class="kw">tempfile</span>()</a>
 <a class="sourceLine" id="cb401-3" title="3"><span class="kw">download.file</span>(<span class="st">&quot;https://data.london.gov.uk/download/statistical-gis-boundary-files-london/9ba8c833-6370-4b11-abdc-314aa020d5e0/statistical-gis-boundaries-london.zip&quot;</span>,temp)</a>
-<a class="sourceLine" id="cb401-4" title="4"><span class="co"># unzip into data</span></a>
-<a class="sourceLine" id="cb401-5" title="5">data &lt;-<span class="st"> </span><span class="kw">unzip</span>(temp)</a>
+<a class="sourceLine" id="cb401-4" title="4"><span class="co"># unzip data into a folder (exdir) of your choice</span></a>
+<a class="sourceLine" id="cb401-5" title="5">data &lt;-<span class="st"> </span><span class="kw">unzip</span>(temp, <span class="dt">exdir=</span><span class="st">&quot;prac10_data&quot;</span>)</a>
 <a class="sourceLine" id="cb401-6" title="6"><span class="co"># unlink the temp file</span></a>
 <a class="sourceLine" id="cb401-7" title="7"><span class="kw">unlink</span>(temp)</a></code></pre></div>
 <ol start="2" style="list-style-type: decimal">
@@ -476,45 +477,32 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ol start="6" style="list-style-type: decimal">
 <li>And for OSM</li>
 </ol>
-<div class="sourceCode" id="cb410"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb410-1" title="1"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
-<pre><code>## -- Attaching packages -------- tidyverse 1.2.1 --</code></pre>
-<pre><code>## v tibble  2.1.3     v dplyr   0.8.3
-## v tidyr   0.8.3     v stringr 1.4.0
-## v purrr   0.3.2     v forcats 0.4.0</code></pre>
-<pre><code>## -- Conflicts ----------- tidyverse_conflicts() --
-## x dplyr::filter() masks plotly::filter(), stats::filter()
-## x dplyr::lag()    masks stats::lag()</code></pre>
-<div class="sourceCode" id="cb414"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb414-1" title="1"><span class="kw">library</span>(osmdata)</a></code></pre></div>
-<pre><code>## Data (c) OpenStreetMap contributors, ODbL 1.0. http://www.openstreetmap.org/copyright</code></pre>
-<div class="sourceCode" id="cb416"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb416-1" title="1"><span class="kw">library</span>(sf)</a></code></pre></div>
-<pre><code>## Linking to GEOS 3.6.1, GDAL 2.2.3, PROJ 4.9.3</code></pre>
-<div class="sourceCode" id="cb418"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb418-1" title="1"><span class="kw">library</span>(ggmap)</a></code></pre></div>
-<pre><code>## Google&#39;s Terms of Service: https://cloud.google.com/maps-platform/terms/.</code></pre>
-<pre><code>## Please cite ggmap if you use it! See citation(&quot;ggmap&quot;) for details.</code></pre>
-<pre><code>## 
-## Attaching package: &#39;ggmap&#39;</code></pre>
-<pre><code>## The following object is masked from &#39;package:plotly&#39;:
-## 
-##     wind</code></pre>
-<div class="sourceCode" id="cb423"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb423-1" title="1">q &lt;-<span class="st"> </span><span class="kw">getbb</span>(<span class="st">&quot;London&quot;</span>)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb423-2" title="2"><span class="st">      </span><span class="kw">opq</span>()<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb423-3" title="3"><span class="st">       </span><span class="kw">add_osm_feature</span>(<span class="dt">key=</span><span class="st">&quot;pois&quot;</span>, <span class="dt">value=</span><span class="st">&quot;hotel&quot;</span>)</a>
-<a class="sourceLine" id="cb423-4" title="4">Londonhotels &lt;-<span class="st"> </span><span class="kw">osmdata_sf</span>(q)</a></code></pre></div>
-<div class="sourceCode" id="cb424"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb424-1" title="1"><span class="kw">library</span>(memisc)</a>
-<a class="sourceLine" id="cb424-2" title="2">temp2 &lt;-<span class="st"> </span><span class="kw">tempfile</span>()</a>
-<a class="sourceLine" id="cb424-3" title="3"><span class="kw">download.file</span>(<span class="st">&quot;http://download.geofabrik.de/europe/great-britain/england/greater-london-latest-free.shp.zip</span></a>
-<a class="sourceLine" id="cb424-4" title="4"><span class="st">&quot;</span>,<span class="dt">mode=</span><span class="st">&#39;wb&#39;</span>, temp2)</a>
-<a class="sourceLine" id="cb424-5" title="5"><span class="co"># unzip into data</span></a>
-<a class="sourceLine" id="cb424-6" title="6">temp2=<span class="kw">paste</span>(temp2, <span class="st">&quot;.zip&quot;</span>, <span class="dt">sep=</span><span class="st">&quot;&quot;</span>)</a>
-<a class="sourceLine" id="cb424-7" title="7">i<span class="co"># unlink the temp file</span></a>
-<a class="sourceLine" id="cb424-8" title="8"><span class="kw">unlink</span>(temp2)</a></code></pre></div>
-<div class="sourceCode" id="cb425"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb425-1" title="1">src &lt;-<span class="st"> </span><span class="kw">osmsource_api</span>(<span class="dt">url =</span> <span class="st">&quot;https://api.openstreetmap.org/api/0.6/&quot;</span>)</a>
-<a class="sourceLine" id="cb425-2" title="2">bb &lt;-<span class="st"> </span><span class="kw">center_bbox</span>(<span class="op">-</span><span class="fl">0.112510</span>,<span class="fl">51.507627</span>, <span class="dv">1000</span>, <span class="dv">1000</span>)</a>
-<a class="sourceLine" id="cb425-3" title="3">ctown &lt;-<span class="st"> </span><span class="kw">get_osm</span>(bb, <span class="dt">source =</span> src)</a>
-<a class="sourceLine" id="cb425-4" title="4"><span class="kw">plot</span>(ctown)</a>
-<a class="sourceLine" id="cb425-5" title="5"><span class="kw">points</span>(<span class="op">-</span><span class="fl">1.53492</span>, <span class="fl">53.81934</span>, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">lwd =</span> <span class="dv">5</span>)</a>
-<a class="sourceLine" id="cb425-6" title="6"></a>
-<a class="sourceLine" id="cb425-7" title="7"><span class="kw">summary</span>(ctown<span class="op">$</span>ways)</a></code></pre></div>
+<div class="sourceCode" id="cb410"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb410-1" title="1"><span class="kw">library</span>(tidyverse)</a>
+<a class="sourceLine" id="cb410-2" title="2"><span class="kw">library</span>(osmdata)</a>
+<a class="sourceLine" id="cb410-3" title="3"><span class="kw">library</span>(sf)</a>
+<a class="sourceLine" id="cb410-4" title="4"><span class="kw">library</span>(ggmap)</a>
+<a class="sourceLine" id="cb410-5" title="5"></a>
+<a class="sourceLine" id="cb410-6" title="6">q &lt;-<span class="st"> </span><span class="kw">getbb</span>(<span class="st">&quot;London&quot;</span>)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb410-7" title="7"><span class="st">      </span><span class="kw">opq</span>()<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb410-8" title="8"><span class="st">       </span><span class="kw">add_osm_feature</span>(<span class="dt">key=</span><span class="st">&quot;pois&quot;</span>, <span class="dt">value=</span><span class="st">&quot;hotel&quot;</span>)</a>
+<a class="sourceLine" id="cb410-9" title="9">Londonhotels &lt;-<span class="st"> </span><span class="kw">osmdata_sf</span>(q)</a></code></pre></div>
+<div class="sourceCode" id="cb411"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb411-1" title="1"><span class="kw">library</span>(memisc)</a>
+<a class="sourceLine" id="cb411-2" title="2">temp2 &lt;-<span class="st"> </span><span class="kw">tempfile</span>()</a>
+<a class="sourceLine" id="cb411-3" title="3"><span class="kw">download.file</span>(<span class="st">&quot;http://download.geofabrik.de/europe/great-britain/england/greater-london-latest-free.shp.zip</span></a>
+<a class="sourceLine" id="cb411-4" title="4"><span class="st">&quot;</span>,<span class="dt">mode=</span><span class="st">&#39;wb&#39;</span>, temp2)</a>
+<a class="sourceLine" id="cb411-5" title="5"><span class="co"># unzip into data</span></a>
+<a class="sourceLine" id="cb411-6" title="6">data &lt;-<span class="st"> </span><span class="kw">unzip</span>(temp2, <span class="dt">exdir=</span><span class="st">&quot;prac10_data&quot;</span>)</a>
+<a class="sourceLine" id="cb411-7" title="7"></a>
+<a class="sourceLine" id="cb411-8" title="8"></a>
+<a class="sourceLine" id="cb411-9" title="9"><span class="co"># unlink the temp file</span></a>
+<a class="sourceLine" id="cb411-10" title="10"><span class="kw">unlink</span>(temp2)</a></code></pre></div>
+<div class="sourceCode" id="cb412"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb412-1" title="1">src &lt;-<span class="st"> </span><span class="kw">osmsource_api</span>(<span class="dt">url =</span> <span class="st">&quot;https://api.openstreetmap.org/api/0.6/&quot;</span>)</a>
+<a class="sourceLine" id="cb412-2" title="2">bb &lt;-<span class="st"> </span><span class="kw">center_bbox</span>(<span class="op">-</span><span class="fl">0.112510</span>,<span class="fl">51.507627</span>, <span class="dv">1000</span>, <span class="dv">1000</span>)</a>
+<a class="sourceLine" id="cb412-3" title="3">ctown &lt;-<span class="st"> </span><span class="kw">get_osm</span>(bb, <span class="dt">source =</span> src)</a>
+<a class="sourceLine" id="cb412-4" title="4"><span class="kw">plot</span>(ctown)</a>
+<a class="sourceLine" id="cb412-5" title="5"><span class="kw">points</span>(<span class="op">-</span><span class="fl">1.53492</span>, <span class="fl">53.81934</span>, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">lwd =</span> <span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb412-6" title="6"></a>
+<a class="sourceLine" id="cb412-7" title="7"><span class="kw">summary</span>(ctown<span class="op">$</span>ways)</a></code></pre></div>
 
 </div>
             </section>

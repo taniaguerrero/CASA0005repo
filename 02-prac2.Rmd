@@ -308,7 +308,7 @@ Leave the replace box empty each time and click Replace All to remove these from
 LondonDataOSK<- read.csv("prac2_data/london_catalogue.csv")
 ```
 
-*Note*, I've made an R project for all these practicals, which is why my file path starts with ```prac2_data/```. If you save the ```.csv``` in the same folder as the ```.Rproj``` then you can just use:
+> **Note**, I've made an R project for all these practicals, which is why my file path starts with ```prac2_data/```. If you save the ```.csv``` in the same folder as the ```.Rproj``` then you can just use:
 
 ```{r eval=FALSE, cache=TRUE}
 LondonDataOSK<- read.csv("LondonData.csv")
@@ -344,7 +344,7 @@ LondonData <- read_csv("https://files.datapress.com/london/dataset/ward-profiles
                        na = "n/a")
 ```
 
-**Note** the use of read_csv here as opposed to read.csv. They are very similar, but read_csv is just a bit better. Read [this](http://yetanothermathprogrammingconsultant.blogspot.com/2016/12/reading-csv-files-in-r-readcsv-vs.html) for more information. Also, for those python fans out there ---IT’S NOT THE SAME FUNCTION AS READ_CSV IN PYTHON
+> **Note** the use of read_csv here as opposed to read.csv. They are very similar, but read_csv is just a bit better. Read [this](http://yetanothermathprogrammingconsultant.blogspot.com/2016/12/reading-csv-files-in-r-readcsv-vs.html) for more information. Also, for those python fans out there ---IT’S NOT THE SAME FUNCTION AS READ_CSV IN PYTHON
 
 ### Examining your new data
 
