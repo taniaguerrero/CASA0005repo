@@ -48,6 +48,8 @@ qtm(boroughsandwardssf[[2]])
 5. Get the data for Airbnb
 
 ```{r, cache=TRUE, warning=FALSE, message=FALSE, output=FALSE}
+
+
 Airbnb <- read_csv("http://data.insideairbnb.com/united-kingdom/england/london/2019-07-10/visualisations/listings.csv")
 
 ```
@@ -95,5 +97,19 @@ summary(ctown$ways)
 
 ```
 
+```{r}
+library(timevis)
+
+data <- data.frame(
+  id      = 1:4,
+  content = c("Item one", "Item two",
+              "Ranged item", "Item four"),
+  start   = c("2016-01-10", "2016-01-11",
+              "2016-01-20", "2016-02-14 15:00:00"),
+  end     = c(NA, NA, "2016-02-04", NA)
+)
+
+timevis(data)
+```
 
 

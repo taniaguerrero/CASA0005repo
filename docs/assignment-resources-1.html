@@ -24,7 +24,7 @@
 <meta name="author" content="Andy MacLachlan and Adam Dennett" />
 
 
-<meta name="date" content="2019-08-23" />
+<meta name="date" content="2019-08-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -63,6 +63,15 @@
 <script src="libs/leaflet-binding-2.0.2/leaflet.js"></script>
 <script src="libs/leaflet-providers-1.1.17/leaflet-providers.js"></script>
 <script src="libs/leaflet-providers-plugin-2.0.2/leaflet-providers-plugin.js"></script>
+<link href="libs/vis-4.16.1/vis.min.css" rel="stylesheet" />
+<script src="libs/vis-4.16.1/vis.min.js"></script>
+<link href="libs/timeline-0.4/timevis.css" rel="stylesheet" />
+<script src="libs/timevis-binding-0.5/timevis.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/respond.min.js"></script>
 
 
 <style type="text/css">
@@ -174,11 +183,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.4" data-path="geographic-information.html"><a href="geographic-information.html#data-sources-and-task"><i class="fa fa-check"></i><b>1.4</b> Data sources and task</a><ul>
 <li class="chapter" data-level="1.4.1" data-path="geographic-information.html"><a href="geographic-information.html#uk-data-service"><i class="fa fa-check"></i><b>1.4.1</b> UK Data Service</a></li>
 <li class="chapter" data-level="1.4.2" data-path="geographic-information.html"><a href="geographic-information.html#ons"><i class="fa fa-check"></i><b>1.4.2</b> ONS</a></li>
-<li class="chapter" data-level="1.4.3" data-path="geographic-information.html"><a href="geographic-information.html#os"><i class="fa fa-check"></i><b>1.4.3</b> OS</a></li>
-<li class="chapter" data-level="1.4.4" data-path="geographic-information.html"><a href="geographic-information.html#edina-digimap"><i class="fa fa-check"></i><b>1.4.4</b> Edina Digimap</a></li>
-<li class="chapter" data-level="1.4.5" data-path="geographic-information.html"><a href="geographic-information.html#osm"><i class="fa fa-check"></i><b>1.4.5</b> OSM</a></li>
-<li class="chapter" data-level="1.4.6" data-path="geographic-information.html"><a href="geographic-information.html#defra"><i class="fa fa-check"></i><b>1.4.6</b> DEFRA</a></li>
-<li class="chapter" data-level="1.4.7" data-path="geographic-information.html"><a href="geographic-information.html#data-lists"><i class="fa fa-check"></i><b>1.4.7</b> Data lists</a></li>
+<li class="chapter" data-level="1.4.3" data-path="geographic-information.html"><a href="geographic-information.html#nomis"><i class="fa fa-check"></i><b>1.4.3</b> nomis</a></li>
+<li class="chapter" data-level="1.4.4" data-path="geographic-information.html"><a href="geographic-information.html#os"><i class="fa fa-check"></i><b>1.4.4</b> OS</a></li>
+<li class="chapter" data-level="1.4.5" data-path="geographic-information.html"><a href="geographic-information.html#edina-digimap"><i class="fa fa-check"></i><b>1.4.5</b> Edina Digimap</a></li>
+<li class="chapter" data-level="1.4.6" data-path="geographic-information.html"><a href="geographic-information.html#osm"><i class="fa fa-check"></i><b>1.4.6</b> OSM</a></li>
+<li class="chapter" data-level="1.4.7" data-path="geographic-information.html"><a href="geographic-information.html#defra"><i class="fa fa-check"></i><b>1.4.7</b> DEFRA</a></li>
+<li class="chapter" data-level="1.4.8" data-path="geographic-information.html"><a href="geographic-information.html#data-lists"><i class="fa fa-check"></i><b>1.4.8</b> Data lists</a></li>
 </ul></li>
 <li class="chapter" data-level="1.5" data-path="geographic-information.html"><a href="geographic-information.html#summary"><i class="fa fa-check"></i><b>1.5</b> Summary</a></li>
 <li class="chapter" data-level="1.6" data-path="geographic-information.html"><a href="geographic-information.html#feedback"><i class="fa fa-check"></i><b>1.6</b> Feedback</a></li>
@@ -212,7 +222,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.4.2" data-path="introduction-to-r.html"><a href="introduction-to-r.html#maps-with-extra-features"><i class="fa fa-check"></i><b>2.4.2</b> Maps with extra features</a></li>
 <li class="chapter" data-level="2.4.3" data-path="introduction-to-r.html"><a href="introduction-to-r.html#extension"><i class="fa fa-check"></i><b>2.4.3</b> Extension</a></li>
 </ul></li>
-<li class="chapter" data-level="2.5" data-path="introduction-to-r.html"><a href="introduction-to-r.html#feedback-1"><i class="fa fa-check"></i><b>2.5</b> Feedback</a></li>
+<li class="chapter" data-level="2.5" data-path="introduction-to-r.html"><a href="introduction-to-r.html#writing-good-r-code"><i class="fa fa-check"></i><b>2.5</b> Writing good R code</a></li>
+<li class="chapter" data-level="2.6" data-path="introduction-to-r.html"><a href="introduction-to-r.html#feedback-1"><i class="fa fa-check"></i><b>2.6</b> Feedback</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="rasters-descriptive-statistics-and-interpolation.html"><a href="rasters-descriptive-statistics-and-interpolation.html"><i class="fa fa-check"></i><b>3</b> Rasters, descriptive statistics and interpolation</a><ul>
 <li class="chapter" data-level="3.1" data-path="rasters-descriptive-statistics-and-interpolation.html"><a href="rasters-descriptive-statistics-and-interpolation.html#learning-outcomes-2"><i class="fa fa-check"></i><b>3.1</b> Learning outcomes</a></li>
@@ -375,6 +386,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.5.4" data-path="online-mapping.html"><a href="online-mapping.html#publish-shiny-app"><i class="fa fa-check"></i><b>8.5.4</b> Publish Shiny app</a></li>
 <li class="chapter" data-level="8.5.5" data-path="online-mapping.html"><a href="online-mapping.html#incoproate-into-rmarkdown-site"><i class="fa fa-check"></i><b>8.5.5</b> Incoproate into RMarkdown site</a></li>
 <li class="chapter" data-level="8.5.6" data-path="online-mapping.html"><a href="online-mapping.html#additional-example"><i class="fa fa-check"></i><b>8.5.6</b> Additional example</a></li>
+<li class="chapter" data-level="8.5.7" data-path="online-mapping.html"><a href="online-mapping.html#more-shiny"><i class="fa fa-check"></i><b>8.5.7</b> More Shiny</a></li>
 </ul></li>
 <li class="chapter" data-level="8.6" data-path="online-mapping.html"><a href="online-mapping.html#how-to-lie-with-maps"><i class="fa fa-check"></i><b>8.6</b> How to lie with maps</a></li>
 <li class="chapter" data-level="8.7" data-path="online-mapping.html"><a href="online-mapping.html#warning"><i class="fa fa-check"></i><b>8.7</b> Warning</a></li>
@@ -437,12 +449,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>There are a lot of free online books for geospatial analysis, especially using R, check out:</p>
 <ul>
 <li><a href="https://www.rstudio.com/resources/training/books/" class="uri">https://www.rstudio.com/resources/training/books/</a></li>
+<li><a href="https://r-graphics.org/" class="uri">https://r-graphics.org/</a></li>
 <li><a href="http://hadley.nz/" class="uri">http://hadley.nz/</a></li>
 <li><a href="https://geocompr.robinlovelace.net/" class="uri">https://geocompr.robinlovelace.net/</a></li>
 <li><a href="https://happygitwithr.com/" class="uri">https://happygitwithr.com/</a></li>
 <li><a href="https://bookdown.org/" class="uri">https://bookdown.org/</a></li>
 <li><a href="https://plotly-r.com/index.html" class="uri">https://plotly-r.com/index.html</a></li>
 <li><a href="https://bookdown.org/ndphillips/YaRrr/" class="uri">https://bookdown.org/ndphillips/YaRrr/</a></li>
+<li><a href="https://thinkr-open.github.io/building-shiny-apps-workflow/" class="uri">https://thinkr-open.github.io/building-shiny-apps-workflow/</a></li>
 </ul>
 <p>If you want to produce more efficent R code then have a look at the <a href="https://csgillespie.github.io/efficientR/index.html">Efficient R programming</a> book.</p>
 </div>
@@ -477,6 +491,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">10.5</span> Data</h2>
 <p>This is by no means an extensive data list, but summarises data used within some of the practicals alongside a few additions that you might want to explore when sourcing data for your assignments. You are <strong>not limited</strong> to these data sets for you assessment.</p>
 <ul>
+<li>US City Open Data Census: <a href="http://us-cities.survey.okfn.org/" class="uri">http://us-cities.survey.okfn.org/</a></li>
+<li>nomis: <a href="https://www.nomisweb.co.uk/" class="uri">https://www.nomisweb.co.uk/</a></li>
+<li>ONS geoportal: <a href="https://geoportal.statistics.gov.uk/" class="uri">https://geoportal.statistics.gov.uk/</a></li>
 <li>UK data service: <a href="https://census.edina.ac.uk/" class="uri">https://census.edina.ac.uk/</a></li>
 <li>ONS: <a href="https://www.ons.gov.uk/" class="uri">https://www.ons.gov.uk/</a></li>
 <li>Edina (e.g. OS mastermap): <a href="https://digimap.edina.ac.uk/" class="uri">https://digimap.edina.ac.uk/</a></li>

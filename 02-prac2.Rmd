@@ -539,11 +539,13 @@ Choropleth maps are thematic maps which colour areas according to some phenomeno
 
 As with all plots in R, there are multiple ways we can do this. The basic ```plot()``` function requires no data preparation but additional effort in colour selection/ adding the map key etc. ```qplot()``` and ```ggplot()``` (installed in the ```ggplot2``` package) require some additional steps to format the spatial data but select colours and add keys etc automatically. Here, we are going to make use of the new ```tmap``` package which makes making maps very easy indeed.
 
-6. So one mega cool thing about R is you can read spatial data in straight from the internetz! Try this below for downloading a GeoJson file:
+6. So one mega cool thing about R is you can read spatial data in straight from the internetz! Try this below for downloading a GeoJson file...it might take a few minutes...
 
 ```{r, cache=TRUE}
-EW <- geojson_read("http://geoportal.statistics.gov.uk/datasets/8edafbe3276d4b56aec60991cbddda50_2.geojson", what = "sp")
+EW <- geojson_read("https://opendata.arcgis.com/datasets/8edafbe3276d4b56aec60991cbddda50_2.geojson", what = "sp")
 ```
+
+Or you can do a manual download from [here](http://geoportal.statistics.gov.uk/datasets/8edafbe3276d4b56aec60991cbddda50_2) --- see point 7.
 
 Pull out london using grep and the regex wildcard for'start of the string' (^) to to look for the bit of the district code that relates to London (E09) from the 'lad15cd' column in the data slot of our spatial polygons dataframe
 
@@ -1118,6 +1120,38 @@ leaflet(BoroughDataMapSP) %>%
             labFormat = labelFormat(prefix = "Per 1,000 people "),
             opacity = 1
   )
+```
+
+## Writing good R code
+
+There are some basic principles to follow when writing code
+
+1. Use descriptive names for variaibles so you know what they are --- this can be difficult especailly if you have multiple similar variables.
+2. Comment out parts you don't need to run using #
+3. Provide regular comments for each part of your code. As you work through this practical book you should be able to find a small description of what each part of the code does. This is good practice as it not only helps you remember what your codes does, when you inevitably forget in the future, but also lets other understand and 'read' your code quicker.
+4. Use indents appropriately --- this again greatly helps with readability and understanding. For example, what is easier to understand...this..
+
+```{r, cache=TRUE,warning=FALSE, message=FALSE, eval=FALSE}
+map<-ggmap::ggmap(b) + 
+  geom_sf(data = BoroughDataMapWGS84,
+          aes(geometry=geometry,
+              fill=Rate.of.JobSeekers.Allowance..JSA..Claimants...2015),
+          alpha=0.5,
+          inherit.aes = FALSE)+
+  theme_minimal()+
+  palette1+
+  labels+
+  guides(fill=guide_legend(title="JSA"))
+
+plot(map)
+```
+
+or this...
+
+```{r, cache=TRUE,warning=FALSE, message=FALSE, eval=FALSE}
+map<-ggmap::ggmap(b) + geom_sf(data = BoroughDataMapWGS84,aes(geometry=geometry,fill=Rate.of.JobSeekers.Allowance..JSA..Claimants...2015),alpha=0.5,inherit.aes = FALSE)+theme_minimal()+palette1+labels+guides(fill=guide_legend(title="JSA"))
+
+plot(map)
 ```
 
 ## Feedback

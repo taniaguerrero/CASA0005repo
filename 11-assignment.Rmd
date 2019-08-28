@@ -32,6 +32,7 @@ There are a lot of free online books for geospatial analysis, especially using R
 * https://bookdown.org/
 * https://plotly-r.com/index.html
 * https://bookdown.org/ndphillips/YaRrr/
+* https://thinkr-open.github.io/building-shiny-apps-workflow/
 
 If you want to produce more efficent R code then have a look at the [Efficient R programming](https://csgillespie.github.io/efficientR/index.html) book.
 
@@ -65,7 +66,9 @@ and anyone else you come across...
 
 This is by no means an extensive data list, but summarises data used within some of the practicals alongside a few additions that you might want to explore when sourcing data for your assignments. You are **not limited** to these data sets for you assessment.
 
-* https://geoportal.statistics.gov.uk/
+* US City Open Data Census: http://us-cities.survey.okfn.org/
+* nomis: https://www.nomisweb.co.uk/
+* ONS geoportal: https://geoportal.statistics.gov.uk/
 * UK data service: https://census.edina.ac.uk/
 * ONS: https://www.ons.gov.uk/
 * Edina (e.g. OS mastermap): https://digimap.edina.ac.uk/

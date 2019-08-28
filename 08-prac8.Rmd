@@ -10,7 +10,9 @@ By the end of this practical you should be able to:
 
 ## Introduction 
 
-In this practical we are going to explore several ways of publishing your R code and outputs (including interactive plots) online.
+In this practical we are going to preliminary stages of a mini-investigation. Since 2015 the law has capped short-term lets in London at 90 nights per year.  However, this is very hard to enforce due to a lack of data and extensive evidence required to prove that the limit has been exceeded. Whilst Air bnb have implemented a system the removes listings once they have been rented for 90 days per year unless an appropraite permit is in place we want to interactively visualise the the number of air bnb lettings (and hotels for comparison) per borough as a starting point. This could then be used to undertake further investigation into boroughs with high short term lets, for example exploring other websites to see if the properties are listed and jointly exceed 90 days or optimising localised monitoring. As these rules only apply to entire homes we will only extract only these, and for monitoring purposes (e.g. random annual inspections) those are availbale for 365 days of the year.
+
+We will now explore several ways to do this...
 
 ## RPubs
 
@@ -60,6 +62,9 @@ Londonborough<- st_transform(Londonborough, 27700)
 
 #select hotels only
 OSM <- OSM[OSM$fclass == 'hotel',]
+
+# this bit of code would reduce our Airbnb data
+# to entire places and available all year
 Airbnb <- Airbnb[Airbnb$room_type == 'Entire home/apt' &
                    Airbnb$availability_365=='365',]
 
@@ -655,7 +660,7 @@ Mine is here: https://amaclachlan.shinyapps.io/test/
 40. To include our Shiny application into our RMarkdown site just add the following code in a code chunk:
 
 ```{r fig.align='center', cache=TRUE}
-knitr::include_app("https://amaclachlan.shinyapps.io/test/",
+knitr::include_app("https://amaclachlan.shinyapps.io/Airbnb/",
                    height = "700px")
 ```
 
@@ -691,7 +696,11 @@ To do it like this the scrips must be in the same project!
 
 Want to see something really cool i came across....how about controlling the map elements with your voice using Shiny...https://yihui.shinyapps.io/voice/
 
-For more Shiny help explore [Mastering Shiny](https://mastering-shiny.org/index.html) and [Interactive web-based data visualization with R, plotly, and shiny](https://plotly-r.com/index.html), specifcally the section on Advanced applications. 
+### More Shiny
+
+For Shiny help explore [Mastering Shiny](https://mastering-shiny.org/index.html) and [Interactive web-based data visualization with R, plotly, and shiny](https://plotly-r.com/index.html), specifcally the section on Advanced applications. 
+
+For advancements / large scale projects with Shiny explore [Building Big Shiny Apps - A Workflow](https://thinkr-open.github.io/building-shiny-apps-workflow/) 
 
 ## How to lie with maps
 

@@ -24,7 +24,7 @@
 <meta name="author" content="Andy MacLachlan and Adam Dennett" />
 
 
-<meta name="date" content="2019-08-23" />
+<meta name="date" content="2019-08-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -47,6 +47,31 @@
 
 
 
+<script src="libs/htmlwidgets-1.3/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.9.0/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.0.0/css/crosstalk.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.0.0/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-1.46.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-1.46.1/plotly-latest.min.js"></script>
+<link href="libs/leaflet-1.3.1/leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-1.3.1/leaflet.js"></script>
+<link href="libs/leafletfix-1.0.0/leafletfix.css" rel="stylesheet" />
+<script src="libs/Proj4Leaflet-1.0.1/proj4-compressed.js"></script>
+<script src="libs/Proj4Leaflet-1.0.1/proj4leaflet.js"></script>
+<link href="libs/rstudio_leaflet-1.3.1/rstudio_leaflet.css" rel="stylesheet" />
+<script src="libs/leaflet-binding-2.0.2/leaflet.js"></script>
+<script src="libs/leaflet-providers-1.1.17/leaflet-providers.js"></script>
+<script src="libs/leaflet-providers-plugin-2.0.2/leaflet-providers-plugin.js"></script>
+<link href="libs/vis-4.16.1/vis.min.css" rel="stylesheet" />
+<script src="libs/vis-4.16.1/vis.min.js"></script>
+<link href="libs/timeline-0.4/timevis.css" rel="stylesheet" />
+<script src="libs/timevis-binding-0.5/timevis.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/respond.min.js"></script>
 
 
 <style type="text/css">
@@ -158,11 +183,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="1.4" data-path="geographic-information.html"><a href="geographic-information.html#data-sources-and-task"><i class="fa fa-check"></i><b>1.4</b> Data sources and task</a><ul>
 <li class="chapter" data-level="1.4.1" data-path="geographic-information.html"><a href="geographic-information.html#uk-data-service"><i class="fa fa-check"></i><b>1.4.1</b> UK Data Service</a></li>
 <li class="chapter" data-level="1.4.2" data-path="geographic-information.html"><a href="geographic-information.html#ons"><i class="fa fa-check"></i><b>1.4.2</b> ONS</a></li>
-<li class="chapter" data-level="1.4.3" data-path="geographic-information.html"><a href="geographic-information.html#os"><i class="fa fa-check"></i><b>1.4.3</b> OS</a></li>
-<li class="chapter" data-level="1.4.4" data-path="geographic-information.html"><a href="geographic-information.html#edina-digimap"><i class="fa fa-check"></i><b>1.4.4</b> Edina Digimap</a></li>
-<li class="chapter" data-level="1.4.5" data-path="geographic-information.html"><a href="geographic-information.html#osm"><i class="fa fa-check"></i><b>1.4.5</b> OSM</a></li>
-<li class="chapter" data-level="1.4.6" data-path="geographic-information.html"><a href="geographic-information.html#defra"><i class="fa fa-check"></i><b>1.4.6</b> DEFRA</a></li>
-<li class="chapter" data-level="1.4.7" data-path="geographic-information.html"><a href="geographic-information.html#data-lists"><i class="fa fa-check"></i><b>1.4.7</b> Data lists</a></li>
+<li class="chapter" data-level="1.4.3" data-path="geographic-information.html"><a href="geographic-information.html#nomis"><i class="fa fa-check"></i><b>1.4.3</b> nomis</a></li>
+<li class="chapter" data-level="1.4.4" data-path="geographic-information.html"><a href="geographic-information.html#os"><i class="fa fa-check"></i><b>1.4.4</b> OS</a></li>
+<li class="chapter" data-level="1.4.5" data-path="geographic-information.html"><a href="geographic-information.html#edina-digimap"><i class="fa fa-check"></i><b>1.4.5</b> Edina Digimap</a></li>
+<li class="chapter" data-level="1.4.6" data-path="geographic-information.html"><a href="geographic-information.html#osm"><i class="fa fa-check"></i><b>1.4.6</b> OSM</a></li>
+<li class="chapter" data-level="1.4.7" data-path="geographic-information.html"><a href="geographic-information.html#defra"><i class="fa fa-check"></i><b>1.4.7</b> DEFRA</a></li>
+<li class="chapter" data-level="1.4.8" data-path="geographic-information.html"><a href="geographic-information.html#data-lists"><i class="fa fa-check"></i><b>1.4.8</b> Data lists</a></li>
 </ul></li>
 <li class="chapter" data-level="1.5" data-path="geographic-information.html"><a href="geographic-information.html#summary"><i class="fa fa-check"></i><b>1.5</b> Summary</a></li>
 <li class="chapter" data-level="1.6" data-path="geographic-information.html"><a href="geographic-information.html#feedback"><i class="fa fa-check"></i><b>1.6</b> Feedback</a></li>
@@ -184,10 +210,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="2.3" data-path="introduction-to-r.html"><a href="introduction-to-r.html#reading-data-into-r"><i class="fa fa-check"></i><b>2.3</b> Reading data into R</a><ul>
 <li class="chapter" data-level="2.3.1" data-path="introduction-to-r.html"><a href="introduction-to-r.html#old-skool-cleaning"><i class="fa fa-check"></i><b>2.3.1</b> Old skool cleaning</a></li>
-<li class="chapter" data-level="2.3.2" data-path="introduction-to-r.html"><a href="introduction-to-r.html#maps-with-extra-features"><i class="fa fa-check"></i><b>2.3.2</b> Maps with extra features</a></li>
-<li class="chapter" data-level="2.3.3" data-path="introduction-to-r.html"><a href="introduction-to-r.html#extension"><i class="fa fa-check"></i><b>2.3.3</b> Extension</a></li>
+<li class="chapter" data-level="2.3.2" data-path="introduction-to-r.html"><a href="introduction-to-r.html#new-skool-cleaning"><i class="fa fa-check"></i><b>2.3.2</b> New skool cleaning</a></li>
+<li class="chapter" data-level="2.3.3" data-path="introduction-to-r.html"><a href="introduction-to-r.html#examining-your-new-data"><i class="fa fa-check"></i><b>2.3.3</b> Examining your new data</a></li>
+<li class="chapter" data-level="2.3.4" data-path="introduction-to-r.html"><a href="introduction-to-r.html#data-manipulation-in-r"><i class="fa fa-check"></i><b>2.3.4</b> Data manipulation in R</a></li>
+<li class="chapter" data-level="2.3.5" data-path="introduction-to-r.html"><a href="introduction-to-r.html#plotting"><i class="fa fa-check"></i><b>2.3.5</b> Plotting</a></li>
+<li class="chapter" data-level="2.3.6" data-path="introduction-to-r.html"><a href="introduction-to-r.html#pimp-my-graph"><i class="fa fa-check"></i><b>2.3.6</b> Pimp my graph!</a></li>
+<li class="chapter" data-level="2.3.7" data-path="introduction-to-r.html"><a href="introduction-to-r.html#spatial-data-in-r"><i class="fa fa-check"></i><b>2.3.7</b> Spatial Data in R</a></li>
 </ul></li>
-<li class="chapter" data-level="2.4" data-path="introduction-to-r.html"><a href="introduction-to-r.html#feedback-1"><i class="fa fa-check"></i><b>2.4</b> Feedback</a></li>
+<li class="chapter" data-level="2.4" data-path="introduction-to-r.html"><a href="introduction-to-r.html#making-maps-using-ggplot2"><i class="fa fa-check"></i><b>2.4</b> Making maps using ggplot2</a><ul>
+<li class="chapter" data-level="2.4.1" data-path="introduction-to-r.html"><a href="introduction-to-r.html#changing-projections"><i class="fa fa-check"></i><b>2.4.1</b> Changing projections</a></li>
+<li class="chapter" data-level="2.4.2" data-path="introduction-to-r.html"><a href="introduction-to-r.html#maps-with-extra-features"><i class="fa fa-check"></i><b>2.4.2</b> Maps with extra features</a></li>
+<li class="chapter" data-level="2.4.3" data-path="introduction-to-r.html"><a href="introduction-to-r.html#extension"><i class="fa fa-check"></i><b>2.4.3</b> Extension</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="introduction-to-r.html"><a href="introduction-to-r.html#writing-good-r-code"><i class="fa fa-check"></i><b>2.5</b> Writing good R code</a></li>
+<li class="chapter" data-level="2.6" data-path="introduction-to-r.html"><a href="introduction-to-r.html#feedback-1"><i class="fa fa-check"></i><b>2.6</b> Feedback</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="rasters-descriptive-statistics-and-interpolation.html"><a href="rasters-descriptive-statistics-and-interpolation.html"><i class="fa fa-check"></i><b>3</b> Rasters, descriptive statistics and interpolation</a><ul>
 <li class="chapter" data-level="3.1" data-path="rasters-descriptive-statistics-and-interpolation.html"><a href="rasters-descriptive-statistics-and-interpolation.html#learning-outcomes-2"><i class="fa fa-check"></i><b>3.1</b> Learning outcomes</a></li>
@@ -350,6 +386,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.5.4" data-path="online-mapping.html"><a href="online-mapping.html#publish-shiny-app"><i class="fa fa-check"></i><b>8.5.4</b> Publish Shiny app</a></li>
 <li class="chapter" data-level="8.5.5" data-path="online-mapping.html"><a href="online-mapping.html#incoproate-into-rmarkdown-site"><i class="fa fa-check"></i><b>8.5.5</b> Incoproate into RMarkdown site</a></li>
 <li class="chapter" data-level="8.5.6" data-path="online-mapping.html"><a href="online-mapping.html#additional-example"><i class="fa fa-check"></i><b>8.5.6</b> Additional example</a></li>
+<li class="chapter" data-level="8.5.7" data-path="online-mapping.html"><a href="online-mapping.html#more-shiny"><i class="fa fa-check"></i><b>8.5.7</b> More Shiny</a></li>
 </ul></li>
 <li class="chapter" data-level="8.6" data-path="online-mapping.html"><a href="online-mapping.html#how-to-lie-with-maps"><i class="fa fa-check"></i><b>8.6</b> How to lie with maps</a></li>
 <li class="chapter" data-level="8.7" data-path="online-mapping.html"><a href="online-mapping.html#warning"><i class="fa fa-check"></i><b>8.7</b> Warning</a></li>
@@ -646,7 +683,9 @@ ArcGIS (Version 10.6 is the latest at time of writing, but may have already been
 <ol start="14" style="list-style-type: decimal">
 <li>The join should work, so reopen the attribute table for the layer London boroughs</li>
 </ol>
+<blockquote>
 <p><strong>Note</strong>, the join we have made is not permanent. To do so we need to export the layer.</p>
+</blockquote>
 </div>
 <div id="export-data" class="section level5">
 <h5><span class="header-section-number">1.3.5.3.4</span> Export data</h5>
@@ -672,7 +711,9 @@ ArcGIS (Version 10.6 is the latest at time of writing, but may have already been
 <p>You’ll see that it is already set to Projected Coordinate Systems, National Grids, Europe, British National Grid. This is because ArcMap will default to the coordinate system of the first data layer loaded.</p>
 <p><img src="prac1_images/coorindate_system.png" width="300pt" style="display: block; margin: auto;" /></p>
 <p>Save and then close your ArcMap document. We’re now going to replicate this task in QGIS.</p>
+<blockquote>
 <p><strong>Note</strong> As we are going to open the same files in difference GIS systems it is important to close the software before moving on. If you don’t then files can be <em>locked</em> and unreadable as they are still considered to be in use.</p>
+</blockquote>
 </div>
 </div>
 </div>
@@ -791,7 +832,9 @@ ArcGIS (Version 10.6 is the latest at time of writing, but may have already been
 <div id="load-data-2" class="section level4">
 <h4><span class="header-section-number">1.3.7.4</span> Load data</h4>
 <p>Load the <code>sf</code> package so we can read our shapefile in — remember to change to filepath to your shapefile. For this first practical we’ll just leave the datea where it is, next week we’ll show you how to use projects to make calling data much easier.</p>
+<blockquote>
 <p><strong>Note</strong> by default in R, the file path should be defined with <code>/</code> but on a windows file system it is defined with <code>\</code>. Using <code>\\</code> instead allows R to read the path correctly – alternatively, just use <code>/</code></p>
+</blockquote>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">library</span>(sf)</a>
 <a class="sourceLine" id="cb2-2" title="2">shape &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="st">&quot;Prac1_data/statistical-gis-boundaries-london/ESRI/London_Borough_Excluding_MHW.shp&quot;</span>)</a></code></pre></div>
 <pre><code>## Reading layer `London_Borough_Excluding_MHW&#39; from data source `C:\Users\ucfnmac\OneDrive - University College London\Teaching\CASA0005repo\Prac1_data\statistical-gis-boundaries-london\ESRI\London_Borough_Excluding_MHW.shp&#39; using driver `ESRI Shapefile&#39;
@@ -801,7 +844,9 @@ ArcGIS (Version 10.6 is the latest at time of writing, but may have already been
 ## bbox:           xmin: 503568.2 ymin: 155850.8 xmax: 561957.5 ymax: 200933.9
 ## epsg (SRID):    NA
 ## proj4string:    +proj=tmerc +lat_0=49 +lon_0=-2 +k=0.999601272 +x_0=400000 +y_0=-100000 +datum=OSGB36 +units=m +no_defs</code></pre>
+<blockquote>
 <p><strong>Note</strong> If you are working on RStudio cloud and have a shapefile (along with all the other relevant files required) you will just need to use…</p>
+</blockquote>
 <div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1"><span class="kw">library</span>(sf)</a>
 <a class="sourceLine" id="cb4-2" title="2">shape &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="st">&quot;London_Borough_Excluding_MHW.shp&quot;</span>)</a></code></pre></div>
 <p>As RStudio cloud knows you have setup a project and to look for files within it…we cover this very soon for RStudio desktop.</p>
@@ -825,10 +870,10 @@ ArcGIS (Version 10.6 is the latest at time of writing, but may have already been
 ## </code></pre>
 <p>To have a quick look what the shapefile looks like enter the following:</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1"><span class="kw">plot</span>(shape)</a></code></pre></div>
-<p><img src="CASA0005_files/figure-html/unnamed-chunk-35-1.png" width="672" /></p>
+<p><img src="CASA0005_files/figure-html/unnamed-chunk-32-1.png" width="672" /></p>
 <p>That plots everything in the shapefile (all the attitbues) if you just wanted the geometry (outline of the shape) you could use…</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1"><span class="kw">plot</span>(sf<span class="op">::</span><span class="kw">st_geometry</span>(shape))</a></code></pre></div>
-<p><img src="CASA0005_files/figure-html/unnamed-chunk-36-1.png" width="672" /></p>
+<p><img src="CASA0005_files/figure-html/unnamed-chunk-33-1.png" width="672" /></p>
 <p>From what we did in QGIS and ArcMap this should look familiar.</p>
 <p>We now need to load our <code>.csv</code> file:</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1"><span class="kw">library</span>(tidyverse)</a>
@@ -919,7 +964,7 @@ ArcGIS (Version 10.6 is the latest at time of writing, but may have already been
 <a class="sourceLine" id="cb16-3" title="3"><span class="kw">tmap_mode</span>(<span class="st">&quot;plot&quot;</span>)</a></code></pre></div>
 <pre><code>## tmap mode set to plotting</code></pre>
 <div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" title="1"><span class="kw">qtm</span>(shape, <span class="dt">fill =</span> <span class="st">&quot;2011_12&quot;</span>)</a></code></pre></div>
-<p><img src="CASA0005_files/figure-html/unnamed-chunk-41-1.png" width="672" /></p>
+<p><img src="CASA0005_files/figure-html/unnamed-chunk-38-1.png" width="672" /></p>
 </div>
 </div>
 <div id="export-data-2" class="section level3">
@@ -991,7 +1036,7 @@ ArcGIS (Version 10.6 is the latest at time of writing, but may have already been
 </div>
 <div id="what-will-i-use-1" class="section level3">
 <h3><span class="header-section-number">1.3.9</span> What will I use</h3>
-<p>Well… it depends. If you wanted to quickly open a dataset to explore its contents then I’d use QGIS or ArcMap. However, if you had 100 raster images that you wanted to clip to your study area, I’d automate it in R. There are also specific packages developed for each type of software that might dictate what you use, for example I recently made use of the Urban Multi-scale Environmental Predictor (UMEP) plugin in QGIS. That said, as I needed to match different hourly meteorological variables over a three year period I automated the first part of the analysis in R and loaded a <code>.csv</code> into QGIS.</p>
+<p>Well… it depends. If you wanted to quickly open a dataset to explore its contents then I’d use QGIS or ArcMap. However, if you had 100 raster images that you wanted to clip to your study area, I’d automate it in R. There are also specific packages developed for each type of software that might dictate what you use, for example I recently made use of the Urban Multi-scale Environmental Predictor (UMEP) plugin in QGIS. That said, as I needed to match different hourly meteorological variables over a three year period I automated the first part of the analysis in R and loaded a <code>.csv</code> into QGIS. Recent advancments have also closed the gap somewhat between Graphic User Interface (GUI) GIS software (such as QGIS) and programming languages (such as R) with ‘bridges’ that allow you to control GUI software through code. To learn more about these bridges read <a href="https://geocompr.robinlovelace.net/gis.html#introduction-6">Lovelace et al. (2019) chapter 9</a>.</p>
 </div>
 </div>
 <div id="data-sources-and-task" class="section level2">
@@ -1004,30 +1049,34 @@ ArcGIS (Version 10.6 is the latest at time of writing, but may have already been
 <div id="ons" class="section level3">
 <h3><span class="header-section-number">1.4.2</span> ONS</h3>
 <p>The Office for National Statistics (ONS) are the national statistical agency for England and Wales and have recently started to provide access to boundary data for the statistics they produce for various geographic areas.</p>
-<p>Many of the boundaries on the ONS Geoportal are also available from the Edina Census Geography website in a more flexible fashion, however the ONS website provides very quick access to bulk-downloads — something which can be very useful when reading data directly from the web using computer software.</p>
+<p>Many of the boundaries on the <a href="http://geoportal.statistics.gov.uk/">ONS Geoportal</a> are also available from the Edina Census Geography website in a more flexible fashion, however the ONS website provides very quick access to bulk-downloads — something which can be very useful when reading data directly from the web using computer software. From the ONS website you can also extract the URL at which the data is stored to use directly within your future code…</p>
+</div>
+<div id="nomis" class="section level3">
+<h3><span class="header-section-number">1.4.3</span> nomis</h3>
+<p>Nomis is provided by the ONS giving free access to UK labour market statistics. You can also <a href="https://www.nomisweb.co.uk/census/2011/bulk/r2_2">bulk download census data</a> from the site too!</p>
 </div>
 <div id="os" class="section level3">
-<h3><span class="header-section-number">1.4.3</span> OS</h3>
+<h3><span class="header-section-number">1.4.4</span> OS</h3>
 <p>The Ordnance Survey (OS) are the national mapping agency for the UK. A few years ago, they opened up a number of their data products for public use including greenspace, OS Open Map and OS Terrain.</p>
 <p>For the full range see: <a href="https://www.ordnancesurvey.co.uk/business-and-government/products/finder.html?Licensed%20for=OpenData%20(Free)&amp;withdrawn=on" class="uri">https://www.ordnancesurvey.co.uk/business-and-government/products/finder.html?Licensed%20for=OpenData%20(Free)&amp;withdrawn=on</a></p>
 </div>
 <div id="edina-digimap" class="section level3">
-<h3><span class="header-section-number">1.4.4</span> Edina Digimap</h3>
+<h3><span class="header-section-number">1.4.5</span> Edina Digimap</h3>
 <p>Before the Ordnance Survey opened up much of its data for public use, academics and students in the UK could access OS data using the Edina Digimap Service –– this service is still available today and provides access to a number of products in addition to those available from OS Open Data.</p>
 <p>Perhaps the most exciting of the additional OS data products available from Digimap is OS MasterMap. MasterMap is a framework for all OS data and contains layers of data that include details of real world objects such as buildings, roads, paths, rivers, physical structures and land parcels, as well as the complete UK transport network. Whilst we still are required to go through Edina OS have recently announced plans to make this dataset free in the near future under the new Geospatial Commission.</p>
 <p><img src="prac1_images/mastermap.png" width="500pt" style="display: block; margin: auto;" /></p>
 </div>
 <div id="osm" class="section level3">
-<h3><span class="header-section-number">1.4.5</span> OSM</h3>
+<h3><span class="header-section-number">1.4.6</span> OSM</h3>
 <p>Open Street Map (OSM) is a fantastic resource –– as the name suggests, all data contained in Open Street Map are open and free for anyone to use. Much like Wikipedia, anyone can contribute content to OSM and this brings with it its own benefits (frequent updates, very large user-base) and problems (data quality and patch coverage). OSM is a very good example of Volunteered Geographic Information (VGI).</p>
 <p>It’s possible to download OSM data straight from the website, although the interface can be a little unreliable (it works better for small areas). There are, however, a number of websites that allow OSM data to be downloaded more easily and are directly linked to from the ‘Export’ option in OSM. Geofabrik (<a href="https://www.geofabrik.de/data/download.html" class="uri">https://www.geofabrik.de/data/download.html</a>) allows you to download frequently updated Shapefiles for various global subdivisions.</p>
 </div>
 <div id="defra" class="section level3">
-<h3><span class="header-section-number">1.4.6</span> DEFRA</h3>
+<h3><span class="header-section-number">1.4.7</span> DEFRA</h3>
 <p>The Department for Environment and Rural Affairs (DEFRA) have recently created the Data Services Platform to openly distribute environmental data. See: <a href="https://environment.data.gov.uk/" class="uri">https://environment.data.gov.uk/</a></p>
 </div>
 <div id="data-lists" class="section level3">
-<h3><span class="header-section-number">1.4.7</span> Data lists</h3>
+<h3><span class="header-section-number">1.4.8</span> Data lists</h3>
 <p>Another good place to start searching for data are data lists. They simply provide a comprehensive overview of all available data conveniently categorised by discipline and country.</p>
 <p>I normally use this one: <a href="https://freegisdata.rtwilson.com/" class="uri">https://freegisdata.rtwilson.com/</a></p>
 </div>
@@ -1084,6 +1133,19 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

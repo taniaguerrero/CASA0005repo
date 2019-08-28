@@ -648,7 +648,7 @@ You can then save your script through File > Save As.
 
 ### What will I use
 
-Well... it depends. If you wanted to quickly open a dataset to explore its contents then I'd use QGIS or ArcMap. However, if you had 100 raster images that you wanted to clip to your study area, I'd automate it in R. There are also specific packages developed for each type of software that might dictate what you use, for example I recently made use of the Urban Multi-scale Environmental Predictor (UMEP) plugin in QGIS. That said, as I needed to match different hourly meteorological variables over a three year period I automated the first part of the analysis in R and loaded a ```.csv``` into QGIS.  
+Well... it depends. If you wanted to quickly open a dataset to explore its contents then I'd use QGIS or ArcMap. However, if you had 100 raster images that you wanted to clip to your study area, I'd automate it in R. There are also specific packages developed for each type of software that might dictate what you use, for example I recently made use of the Urban Multi-scale Environmental Predictor (UMEP) plugin in QGIS. That said, as I needed to match different hourly meteorological variables over a three year period I automated the first part of the analysis in R and loaded a ```.csv``` into QGIS. Recent advancments have also closed the gap somewhat between Graphic User Interface (GUI) GIS software (such as QGIS) and programming languages (such as R) with 'bridges' that allow you to control GUI software through code. To learn more about these bridges read [Lovelace et al. (2019) chapter 9](https://geocompr.robinlovelace.net/gis.html#introduction-6).
 
 ## Data sources and task
 
@@ -666,7 +666,7 @@ Many of the boundaries on the [ONS Geoportal](http://geoportal.statistics.gov.uk
 
 ### nomis
 
-
+Nomis is provided by the ONS giving free access to UK labour market statistics. You can also [bulk download census data](https://www.nomisweb.co.uk/census/2011/bulk/r2_2) from the site too!
 
 ### OS 
 

@@ -14,6 +14,8 @@ description: ""
 
 # Welcome {-}
 
+<a href="https://www.ucl.ac.uk/bartlett/casa/"><img src="general_images/casa_logo.jpg" height="200" alt="CASAlogo" align="right" style="margin: 0 1em 0 1em" /></a>
+
 Welcome to the CASA0005 Geographic Information Systems and Science online pratical handbook. This website is hosted on GitHub and holds all the practical instructions and data. Data used within the practicals is available online, however occasionally websites can undergo maintenance or be inaccessible due to political factors such as government shutdowns.  
 
 If you need the practical data you can access it from my [GitHub repository](https://github.com/andrewmaclachlan/CASA0005repo)
@@ -77,9 +79,17 @@ If you need specific assistance with this course please:
 
 Due to the size of the class we will only reply to messages on slack so all students can see the discussion.
 
-If you are struggling to use R then head over to codeacademy and go through some of their [free resources](https://www.codecademy.com/learn/learn-r)
+If you are struggling to use R don't worry...here is some advice from an [interview](https://www.r-bloggers.com/advice-to-young-and-old-programmers-a-conversation-with-hadley-wickham/) with Hadley Wickham, chief scientist at RStudio 
 
-[YaRrr! The Pirate's Guide to R](https://bookdown.org/ndphillips/YaRrr/) is also a fantastic resource for learning / troubleshooting problems in R
+> It’s easy when you start out programming to get really frustrated and think, “Oh it’s me, I’m really stupid,” or, “I’m not made out to program.” But, that is absolutely not the case. Everyone gets frustrated. I still get frustrated occasionally when writing R code. It’s just a natural part of programming. So, it happens to everyone and gets less and less over time. Don’t blame yourself. Just take a break, do something fun, and then come back and try again later.
+
+You can also go through other free resources including: 
+
+* [Codeacademy](https://www.codecademy.com/learn/learn-r)
+
+* [YaRrr! The Pirate's Guide to R](https://bookdown.org/ndphillips/YaRrr/)
+
+At the end of every practical there is a link anonymous Google feeback form, let us know if something is unclear and we will go over it in a future session.
 
 If after persuing all these avenues you still need help you can book into our office hours. These meetings are **to discuss a geographical concept in relation to the material/assessment or for any personal matters relevant to the completion of the module**.
 
