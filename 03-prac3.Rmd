@@ -31,7 +31,7 @@ What is a 5 minute resolution i hear you ask? Well, this geographic reference sy
 knitr::include_graphics('prac3_images/arcseconds.jpg')
 ```
 
-```{r vectorplots, fig.cap="Illustration of vector (point) data in which location of London (the red X) is represented with reference to an origin (the blue circle). The left plot represents a geographic CRS with an origin at 0° longitude and latitude. The right plot represents a projected CRS with an origin located in the sea west of the South West Peninsula.", out.width="49%", fig.show='hold', echo=FALSE, cache=TRUE}
+```{r vectorplots, fig.cap="This figure is taken directly from Lovelace et al. (2019) section 2.2. Illustration of vector (point) data in which location of London (the red X) is represented with reference to an origin (the blue circle). The left plot represents a geographic CRS with an origin at 0° longitude and latitude. The right plot represents a projected CRS with an origin located in the sea west of the South West Peninsula.", out.width="49%", fig.show='hold', echo=FALSE, cache=TRUE}
 knitr::include_graphics(c("prac3_images/vector_lonlat.png","prac3_images/vector_projected.png"))
 ```
 

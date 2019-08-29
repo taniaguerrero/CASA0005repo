@@ -72,12 +72,15 @@ The meeting ID will change every week and we'll tell you what it is in the lectu
 
 If you need specific assistance with this course please:
 
-* Check the Moodle assessment tab for queries relating to assignments / deadlines 
+* Check the Moodle assessment tab for queries relating to assignments / deadlines. There is also an expected assignment timeline and frequently asked questions section within the assessment outline document.
+
 * Speak to a member of the teaching team in the computer lab sessions
+
 * Ask a question at the end of a lecture (time permitting)
+
 * Ask a question on [slack](https://join.slack.com/t/casa0005-gis-19-20/shared_invite/enQtNzI5NjU5NzAxNDU3LTJkNGI2OWJkZTg4MzVjZjczMDRjYjU5ODhkZmM5MmRkYmU5YzIyMjRmM2ExYTRhNmFiMmI2NDdmYmI3N2JlMjU)
 
-Due to the size of the class we will only reply to messages on slack so all students can see the discussion.
+Due to the size of the class we will **only reply** to messages **on slack** so all students can see the discussion. If you have a personal matter in relation to completing the course then please speak to or email Andy or Adam.
 
 If you are struggling to use R don't worry...here is some advice from an [interview](https://www.r-bloggers.com/advice-to-young-and-old-programmers-a-conversation-with-hadley-wickham/) with Hadley Wickham, chief scientist at RStudio 
 

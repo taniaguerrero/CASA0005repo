@@ -6,6 +6,14 @@ library(knitr)
 
 Listed below are some helpful website, books, datasets and tools you might find useful when completing your assignments.
 
+## Timeline
+
+There is a suggested timeline of work for your assignment provided in the assessment requirements document on Moodle. 
+
+## Markscheme
+
+The markscheme can be found on Moodle with a break down of how much percent is given to each criteron.  
+
 ## Examples of previous work
 
 Closer to the assignment deadline we will release examples of good student projects from previous years as a tab on Moodle.
