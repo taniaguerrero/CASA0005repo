@@ -282,7 +282,7 @@ popborough <- popupTable(boroighinfo2, zcol=c("Borough", "Count"))
 
 ```{r, cache=TRUE, warning=FALSE, message=FALSE}
 
-boroughs<- leaflet() %>%
+wardandboroughs<- leaflet() %>%
   # add basemap options
   addProviderTiles(providers$Stamen.TonerLite, group = "Toner Lite") %>%
   addTiles(group = "OSM") %>%
@@ -331,7 +331,7 @@ boroughs<- leaflet() %>%
     hideGroup(c("Borough"))
 
 # show us the map
-boroughs
+wardandboroughs
 ```
 
 Have a look around the map...Westminster borough uses a scale considering all other London borough values, whilst the ward scale is specific to Westminster. Use the following code to explore the values...
@@ -854,24 +854,24 @@ Our lowest MSE and highest R sqaured value here is provided by Ridge regression.
 
 >**Warning** The data used within this practical is purely for demonstration purposes!
 
-## What should i use
+### What should i use
 
-It depends, just because Ridge regression seems to be the best for this application, it might not be for yours. It's important to check the suitablity of each method for both your data and anaysis. 
+It depends, just because Ridge regression seems to be the best for this application, it might not be for yours. It's important to check the suitability of each method for both your data and analysis 
 
-## Wait how do i predict
+### So how do i predict
 
 Easy...just go back through the code and use the the `predict()` function --- this will also work for linear models...
 
 ```{r,cache=TRUE, warning=FALSE, message=FALSE, eval=FALSE}
 
-# replace with your - this is just an example
+# replace with your data - this is just an example
 # setting intervals specifies confidence intervals
 # at the required level
 predict(linearmodel, newdata, interval="confidence", level=0.95) 
 
 ```
 
-### More resources
+## More resources
 
 * [Ridge regression](https://www.youtube.com/watch?v=Q81RR3yKn30&t=443s)
 * [LASSO regression](https://www.youtube.com/watch?v=NGf0voTMlcs&t=351s)
