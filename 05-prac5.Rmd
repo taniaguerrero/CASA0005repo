@@ -505,7 +505,7 @@ Your R and geogprahical are certainly improving by now, so i'm just going to pro
 
 ### Static map
 
-```{r warning=FALSE, message=FALSE, out.width = "800pt", cache=TRUE}
+```{r, warning=FALSE, message=FALSE, out.width = "800pt", cache=TRUE}
 ##Load all our data
 library(sf)
 library(tmap)
@@ -664,14 +664,14 @@ ti<-st_transform(ti,crs = 4326)
 
 #remove the geometry for our pop up boxes to avoid
 #the geometry field 
-ti2<-ti
-st_geometry(ti2)<-NULL
-popairbnb=popupTable(ti2, zcol=c("NAME.x", "GSS_CODE.x", "freq"))
-pophotels=popupTable(ti2, zcol=c("NAME.x", "GSS_CODE.x", "Accom count"))
-
-tmap_mode("view")
+ti2 <- ti
+st_geometry(ti2) <- NULL
+popairbnb <- popupTable(ti2, zcol=c("NAME.x", "GSS_CODE.x", "freq"))
+pophotels <- popupTable(ti2, zcol=c("NAME.x", "GSS_CODE.x", "Accom count"))
 
 # set the colour palettes using our previously defined breaks
+# the colour palettes are the same using the same breaks
+# but different data
 pal <- colorBin(palette = "YlOrRd", domain=ti2$freq, bins=breaks)
 pal2 <- colorBin(palette = "YlOrRd", domain=ti2$`Accom count`, bins=breaks)
 
@@ -726,6 +726,8 @@ What makes a bad map then... and what should you avoid:
 * Too much data presented on one map --- be selective or plot multiple maps
 * Presented data is too small or too big --- be critical about what you produce, it should be easy to read and understand
 * A map or figure without enough detail --- **A reader should be able to understand a map or figure using the graphic in the figure/map and the caption alone!** A long caption is **fine** assuming it's all relevant information.
+
+For more cartography ideas/advice have a look at this [blog post](https://www.katiejolly.io/blog/2019-08-28/nyt-urban-heat) and consult [axis map catography guide](https://www.axismaps.com/guide/).
 
 ## Feedback
 

@@ -1,15 +1,26 @@
-# Advanced R and the MAUP problem
+# MAUP problem and regression
 
-The Modifiable Areal Unit Problem des
+## Leraning objectives
 
-Use air b n b at lower london scales - ward etc
+1. Describe, explain and visualise the MAUP problem
+2. Design and use loops and functions
+3. Execute linear, Ridge and LASSO regression to predict values (e.g. future or missing)
+4. Critically evaluate different regression approaches 
 
-Here we will be using London brough and ward data from practical 1. As we're getting better with R, we will try to automate almost everthing --- meaning that if you gave this code to someone else they could just run it without any data files and generate the same result. 
+## Introduction
+
+The Modifiable Areal Unit Problem (MAUP) represents the related effects of scale and aggregation on all geographic data and analysis. It was first deomstrated by the geographer Stan Openshaw in 1984 who showed that as you aggregated results to diffrent spatial units the reults could be manipulated to show different outcomes. Throughout this practical book we've considered London boroughs, but would any of the results change if we considered the data at ward level? Are we hiding any trends because we have just used the borough data that summed all of the wards within the borough? It's important to consider what is the most appropraite spatial unit for your analysis and provide appropraite reasoning. Even this is pretty straightforward (e.g. the data was only provided at the borough level) you must contextualise this and describe any potential limitations of it. In this practical i will firstly demonstrate the MAUP in action using some more advanced R code. Then we will have a look at some technqieus to model and validate data.
+
+Here we will be using London brough and ward data from practical 1. As we're getting better with R, we will try to automate almost everthing --- meaning that if you gave this code to someone else they could just run it without any data files and generate the same result. The only thing we won't automate later on is loading an excel file... i did find a function online that would let us read it from the interweb but it was more hassle than it was worth. I don't know why the data isn't just also distributed as a `.csv`.
+
+## MAUP
+### Get the data
 
 1. Download and unzip the London statistical gis boundaries.
 
 ```{r, cache=TRUE, warning=FALSE, message=FALSE}
 # make a temp file to store the .zip in
+library(sf)
 temp <- tempfile()
 download.file("https://data.london.gov.uk/download/statistical-gis-boundary-files-london/9ba8c833-6370-4b11-abdc-314aa020d5e0/statistical-gis-boundaries-london.zip",temp)
 # unzip data into a folder (exdir) of your choice
@@ -21,6 +32,7 @@ unlink(temp)
 2. Take the downloaded data and filter it based on the filename that countains: Borough OR Ward_ AND `.shp` using `grepl()`
 
 ```{r, cache=TRUE, warning=FALSE, message=FALSE}
+#|= OR
 t<-grepl("Borough|Ward_", data) & grepl(".shp$", data)
 t
 ```
@@ -38,9 +50,11 @@ boroughsandwards<-data[t]
 ```{r, cache=TRUE, warning=FALSE, message=FALSE}
 boroughsandwardssf<-lapply(boroughsandwards, st_read)
 ```
+
 To map or access each individual shapefile it's just...
 
 ```{r, cache=TRUE, warning=FALSE, message=FALSE, output=FALSE}
+library(tmap)
 qtm(boroughsandwardssf[[2]]) 
 # or change to 1 
 ```
@@ -48,68 +62,820 @@ qtm(boroughsandwardssf[[2]])
 5. Get the data for Airbnb
 
 ```{r, cache=TRUE, warning=FALSE, message=FALSE, output=FALSE}
-
-
+library(tidyverse)
 Airbnb <- read_csv("http://data.insideairbnb.com/united-kingdom/england/london/2019-07-10/visualisations/listings.csv")
-
 ```
  
-6. And for OSM
+6. And for OSM we'll download it from geofabrik, you can also use the OSM Application Programming Interface (API) but there is a limit on the number of points downloadable per call so you'd have to do something a bit more complicated to get the whole of London...however, I have provided an example of the api call.
 
-```{r}
-library(tidyverse)
-library(osmdata)
-library(sf)
-library(ggmap)
-
-q <- getbb("London")%>%
-      opq()%>%
-       add_osm_feature(key="pois", value="hotel")
-Londonhotels <- osmdata_sf(q)
-
-```
-
-
-```{r eval=FALSE}
+```{r eval=FALSE, cache=TRUE, warning=FALSE, message=FALSE}
 library(memisc)
 temp2 <- tempfile()
-download.file("http://download.geofabrik.de/europe/great-britain/england/greater-london-latest-free.shp.zip
-",mode='wb', temp2)
+download.file("http://download.geofabrik.de/europe/great-britain/england/greater-london-latest-free.shp.zip",
+              mode='wb', 
+              temp2)
 # unzip into data
-data <- unzip(temp2, exdir="prac10_data")
-
+data <- unzip(temp2, 
+              exdir="prac10_data")
 
 # unlink the temp file
 unlink(temp2)
 ```
 
+Example of using the API....
 
-
-
-```{r, eval=FALSE}
+```{r, eval=FALSE, cache=TRUE, warning=FALSE, message=FALSE}
+library(osmar)
 src <- osmsource_api(url = "https://api.openstreetmap.org/api/0.6/")
+# 1000 refers to distance from centre point
 bb <- center_bbox(-0.112510,51.507627, 1000, 1000)
-ctown <- get_osm(bb, source = src)
-plot(ctown)
-points(-1.53492, 53.81934, col = "red", lwd = 5)
+LDN <- get_osm(bb, source = src)
+plot(LDN)
+# extract just highwways
+ways <- find(LDN, way(tags(k == "highway")))
+hway <- find_down(LDN, way(ways))
+hway <- subset(LDN, ids = hway)
+```
 
-summary(ctown$ways)
+### Project the data
+
+7. Next up we need to project our `.shp` data ...we could project our data indiviudally using:
+
+```{r, cache=TRUE, warning=FALSE, message=FALSE, eval=FALSE}
+st_transform(boroughsandwardssf[[1]], 27700)
+st_transform(boroughsandwardssf[[2]], 27700)
+```
+
+or use `lapply()` again...
+
+```{r, cache=TRUE, warning=FALSE, message=FALSE}
+library(plyr)
+
+boroughsandwardssf<- lapply(boroughsandwardssf, crs=27700, st_transform)
+
+# change the airbnb data to spatial 
+Airbnb <- st_as_sf(Airbnb, coords = c("longitude", "latitude"), 
+                   crs = 4326)
+
+# project it too - remember that 27700 is
+# British National Grid
+Airbnb <- st_transform(Airbnb, 27700)
 
 ```
 
+### Functions
+
+8. Now remember our function we made for joining our Airbnb data (or Hotels) to the London boroughs layer... let's make the fucntion again...
+
+```{r cache=TRUE, warning=FALSE, message=FALSE}
+
+Joinfun <- function(data1, data2) {
+  # join OSM and London boroughs
+  joined <- st_join(data1, data2, join = st_within)
+  
+  # count the number of hotels per borough
+  countno <- as.data.frame(plyr::count(joined$GSS_CODE))
+  
+  # join the count back to the borough layer
+  counted <-left_join(data2, countno, by=c("GSS_CODE"="x"))
+  
+  return(counted)
+}
+
+```
+
+### Loops
+
+9. Ok, but we want to get a count of Airbnb points per London ward and Borough...how can we do that?...well manually of course...like this...
+
+```{r, cache=TRUE, warning=FALSE, message=FALSE}
+Airbnbborough <- Joinfun(Airbnb, boroughsandwardssf[[1]])
+Airbnbward <- Joinfun(Airbnb, boroughsandwardssf[[2]])
+```
+
+But we can also autmoate this using a loop (either a while or for loop). I've used a while loop here as when i did my MSc you weren't able to put a for loop inside a for loop. I beleive that has now changed but because of that one day i had to spend changing everything i always default to using a while loop. 
+
+Tell us what a loop is aleady?
+
+A loop let's you go over something adding 1 (or any value) each time...for example let's look a basic loop. You need to run everything in the loop at once from the while to the }. If you make just a normal Rscript you can set breakpoints --- the code will the stop each time it hits the breakpoint within the loop. You can't do this at the moment with RMarkdown code chunks, i normally develop the loop outside of it looping then put it all together.
+
+```{r, cache=TRUE, warning=FALSE, message=FALSE}
+# set up a variable  
+basicloop <- 1
+# so while our variable is less than 
+#6 run the following code within the {}
+while (basicloop < 6) {
+  #print the varaible (starts at 1)
+  print(basicloop)
+  # then add 2 to the variable
+  basicloop = basicloop+1
+  # go back to the start of the loop
+  #and if it is still <6 run again
+}
+```
+
+That loop outputs the values of 1-5, as we started with a value of 1, then added 1 to make 2. It remained below 6 so the code ran again printing the 2 then added 1 again to make 3 and so on. As we specified less than 6 it stopped there..
+
+We can also save these results to diffrent variables but we need to make a list (or dataframe/ whatever you need) to start with to save them in
+
+```{r, cache=TRUE, warning=FALSE, message=FALSE}
+# here is my empty list
+emptylist <- list()
+  
+basicloop <- 1
+
+while (basicloop < 6) {
+  print(basicloop)
+  emptylist[[basicloop]] <- basicloop
+  basicloop <- basicloop+1
+}
+```
+
+Here we are using the varaible `basicloop` to index our emptylist.. so everytime we add 1 it changes the index value....have a look what i mean...
+
+```{r, cache=TRUE, warning=FALSE, message=FALSE}
+emptylist
+emptylist[[1]]
+emptylist[[2]]
+```
+
+Right, so how are we going to apply this to our data. We have two `.shp` files (boroughs and wards) in a list that we want to apply our function to..
+
+Firstly let's set up the length to stop at, make an empty list and a starting point. As our data is in a list we just want the length of that (as a number)..
+
+```{r, cache=TRUE, warning=FALSE, message=FALSE}
+# get the length - add 1 as we are using less than
+boroughlen<-length(boroughsandwardssf)+1
+# empty list
+hold<-list()
+# here is our starting point variable
+i<-1
+```
+
+Now here is the loop..
+
+```{r, cache=TRUE, warning=FALSE, message=FALSE}
+
+# while i is less than boroughlength 
+# max of boroughlength is 3
+while (i < boroughlen){
+  # put the output in our varible
+  # use the function for boroughs and then wards
+  hold[[i]] <- Joinfun(Airbnb, boroughsandwardssf[[i]])
+  # add one to the index
+  i<-i+1
+}
+
+# make a quick thematic map to have a look
+qtm(hold[[1]], fill = "freq")
+qtm(hold[[2]], fill = "freq")
+```
+
+When should i use a loop?
+
+Well that's a hard question...generally loops are considered inefficient in R, but i'm yet to come across a method that will let you increment one varibale whilst keeping another consistent ...by this i mean like what we did in our loop. We changed what spatial data was joined with the Airbnb data --- the Airbnb data remained the same. There are a few other functions like `mapply()`, `sapply()` and `tapply()` that work in the same format as `lapply()` but to my knowledge they still will increment all of the variables at the same time.
+
+### Advanced mapping (again)
+
+10. Right, so we can sort of see the difference between the spatial levels (boroughs and wards) but let's take a closer look within Westminster... here is the 'preamble' for the `leaflet` map ...basically all the stuff we need to set it up...
+
+```{r, cache=TRUE, warning=FALSE, message=FALSE}
+library(classInt)
+library(leaflet)
+library(leafpop)
+library(tidyverse)
+
+# extract only westminster from boroughs
+Borough <- hold[[1]][hold[[1]]$NAME=="Westminster",]
+# extract only westminster from wards
+wardsatborough<- hold[[2]][hold[[2]]$BOROUGH=="Westminster",]
+
+# we need to set the projection to WGS84
+# to use with leaflet
+Borough<-st_transform(Borough,crs = 4326)
+wardsatborough<-st_transform(wardsatborough,crs = 4326)
+
+# set our breaks for the map
+breaks1<-classIntervals(hold[[1]]$freq, n=5, style = "quantile")
+breaks2<-classIntervals(wardsatborough$freq, n=5, style = "quantile")
+
+# use the breaks to set our colour palettes
+pal <- colorBin(palette = "YlOrRd", domain=hold[[1]]$freq, bins=breaks1$brks)
+pal2 <- colorBin(palette = "YlOrRd", domain=wardsatborough$freq, bins=breaks2$brks)
+
+# we want a popup of information too
+# here we make a new varaible with no 
+#spatial info (remove geometry)
+wardinfo <- as.data.frame(st_set_geometry(wardsatborough, NULL))
+boroighinfo <- st_set_geometry(Borough, NULL)
+
+# rename the coloumns to tidy up the appearance
+wardinfo2<-dplyr::rename(wardinfo, Ward = "NAME", Count = freq)
+boroighinfo2<-dplyr::rename(boroighinfo, Borough = NAME, Count = freq)
+
+# select the coloumns we want to appear in our popup
+popward <- popupTable(wardinfo2, zcol=c("Ward", "Count"))
+popborough <- popupTable(boroighinfo2, zcol=c("Borough", "Count"))
+```
+
+11. Now let's map it using what we just specified... i've added a few more features than were in the [Map making] practical
+
+```{r, cache=TRUE, warning=FALSE, message=FALSE}
+
+boroughs<- leaflet() %>%
+  # add basemap options
+  addProviderTiles(providers$Stamen.TonerLite, group = "Toner Lite") %>%
+  addTiles(group = "OSM") %>%
+
+  #add our Borough polygons, linking to the tables we just made
+  addPolygons(data=Borough,
+              color="white", 
+              weight = 2,
+              opacity = 1,
+              dashArray = "3",
+              fillOpacity = 0.7,
+              popup = popborough,
+              fillColor = ~pal(Borough$freq),
+              group = "Borough")%>%
+  
+  #add our ward polygons, linking to the tables we just made
+  addPolygons(data=wardsatborough,
+              color="white", 
+              weight = 2,
+              opacity = 1,
+              dashArray = "3",
+              fillOpacity = 0.7,
+              popup = popward,
+              fillColor = ~pal2(wardsatborough$freq),
+              group = "Wards")%>%
+
+  # add a legend for wards
+  addLegend(pal = pal2, 
+            values = wardsatborough$freq,
+            group=c("Wards"), 
+            position ="bottomleft",
+            title ="Accom count")%>%
+   
+  # add a legend for boroughs
+  addLegend(pal = pal, 
+            values = Borough,
+            group=c("Borough"), 
+            title ="Accom count",
+            position ="bottomleft")%>%
+  
+  # specify layers control
+  addLayersControl(
+    baseGroups = c("Toner Lite", "OSM"),
+    overlayGroups = c("Borough", "Wards"),
+    options = layersControlOptions(collapsed = FALSE))%>%
+    hideGroup(c("Borough"))
+
+# show us the map
+boroughs
+```
+
+Have a look around the map...Westminster borough uses a scale considering all other London borough values, whilst the ward scale is specific to Westminster. Use the following code to explore the values...
+
+```{r, cache=TRUE, warning=FALSE, message=FALSE}
+# range of Airbnbs per ward in Westminster
+wardsrange<-c(min(wardsatborough$freq), max(wardsatborough$freq))
+wardsrange
+# value of all Airbnbs in Westminster
+Borough$freq
+```
+
+```{r, fig.show="hide", eval=FALSE, include=FALSE, cache=TRUE}
+tmap_mode("view")
+tm_shape(Borough) +
+  tm_borders(lwd=2)+
+tm_shape(wardsatborough)+
+    tm_polygons(col = "freq", alpha = 0.5) 
+
+
+qtm(Borough, fill = "freq")
+```
+
+## Regression relationships 
+
+>**Warning** The data used within this practical is purely for demonstration purposes!
+
+### Preprocessing
+
+In this part of the practical we're going to try and model the relationship between the Airbnb counts at ward level and other variables. Our mini investagion here would be to see if it's possible to produce a statisitcally valid and rigorous model for predicting Airbnb values at the ward level. This type of analysis might be useful if you had missing or limited data at one spatial level (e.g. wards) but had a more complete dataset at a larger spatial scale (e.g. boroughs). Essentially, we're trying to use the data at the borough level to give us an estiamte of the data at the ward level. Obviously this isn't an issue for us here but if you ever use survey data or any kind of count data (e.g. health) if may well be limited to specific areas...
+
+This section will also show you how to make/ use different regression models in R. Regression aims to find a mathematical equation to predict a value (in this case Airbnb at ward level) from one (or more) predictor variables (e.g. borough data). So we'll use values of X (borough data) to predict values of Y (ward data)...
+
+```{r echo=FALSE, out.width = "400", fig.align='center', cache=TRUE}
+knitr::include_graphics('prac10_images/linear_regression.png') 
+```
+
+This can be represented with the equation:
+
+$$Y = \beta_{1} + \beta_{2} X + \epsilon$$
+Where $\beta_{1}$ is the intercept (expected value of Y when X=0, also called bias in machine learning), $\beta_{2}$ is the slope of the line and $\epsilon$ is the error term, the part that the model is unable to explain...
+
+12. To start with we're going to crop our wards data to our boroughs data. In the borough data you can see the river Thames which isn't in the wards data. I don't think this is technically required, but it's good practice to make sure you datasets align and if they don't to do something about it...
 ```{r}
-library(timevis)
+library(tmaptools)
+tmp2 <- crop_shape(hold[[2]], hold[[1]], polygon = TRUE)
 
-data <- data.frame(
-  id      = 1:4,
-  content = c("Item one", "Item two",
-              "Ranged item", "Item four"),
-  start   = c("2016-01-10", "2016-01-11",
-              "2016-01-20", "2016-02-14 15:00:00"),
-  end     = c(NA, NA, "2016-02-04", NA)
-)
+# something like this would just extract the 
+# values within the shape, but not clip like a cookie cutter
+# we want to use the borough layer to cut out the river from 
+# the wards layer
+###test <- hold[[2]][hold[[1]],]
 
-timevis(data)
+# check it worked, you should be 
+#able to see the river
+plot(sf::st_geometry(tmp2))
 ```
 
+13. Now we need to join our wards data and borough data togther to give us a borough  value for each ward within...
+
+```{r, cache=TRUE, warning=FALSE, message=FALSE}
+# join wards and boroughs
+joined <- st_join(hold[[1]], tmp2, join=st_contains)
+# rename the coloumns 
+joinednames<-dplyr::rename(joined, Boroughcount = freq.x, Wardcount = freq.y)
+```
+
+### Scatter plot
+
+14. To start with let's just visualise the relationship between the borough an ward count using a scatter plot. If you have multiple predictor variables (explied later on) a plot will be drawn for each of them...
+
+```{r cache=TRUE, warning=FALSE, message=FALSE}
+scatter.smooth(x=joinednames$Boroughcount, 
+               y=joinednames$Wardcount, 
+               main="Borough count ~ Ward count",
+               xlab="Borough count",
+               ylab="Ward count") 
+```
+
+The scatter plot shows some kind of linear relationship. The point variation around borough count is beacuse for each borough the wards will have a range of values...like we saw in the interactive map...Westminster borough had a value of 9410 and the wards ranged from 159 to 1215
+
+### Outliers 
+
+15. Generally any point that is outside 1.5* the interquartile-range (or IQR) is considered an outlier (a data point that differs significantly from all others) and you could use something like the methods here to remove and replace them...the IQR is the distance between the 25th and 75th percentile..
+
+```{r cache=TRUE, warning=FALSE, message=FALSE}
+par(mfrow=c(1, 2))  # divide graph area in 2 columns
+boxplot(joinednames$Boroughcount, main="Boroughs")
+boxplot(joinednames$Wardcount, main="Wards")
+
+```
+
+### Correlation
+
+16. Correlation let's use see the level of linear dependence between two varaibles between -1 and 1. High values (towards 1) mean that for every x instance there is an increase in y. Low values (towards -1) mean the opposite. 
+
+```{r cache=TRUE, warning=FALSE, message=FALSE}
+stat_sig=cor.test(joinednames$Boroughcount, 
+                  joinednames$Wardcount, 
+                  use ="complete.obs",
+                  method = c("pearson"))
+stat_sig
+```
+
+17. Have a look back at the [Statistical summary] under [Advanced raster analysis] to see what all these values mean. Basically we've got a strong relationship that is statistically significant.
+
+### Linear model
+
+18. Now let's use a linear model to establish a relationship between predictor and response with the function `lm()`. Here we are calling the `lm()(then stating the Formula, then the data)`
+
+```{r, cache=TRUE, warning=FALSE, message=FALSE}
+linearMod <- lm(Wardcount ~ Boroughcount, data=joinednames)
+linearMod
+summary(linearMod)
+```
+
+So from this output we have the coefficients of intercept and Boroughcount, going back to our formula from earlier this would mean...
+
+$$Wardcount = -3.8188 + 0.0541*Boroughcount$$
+
+### Linear model outputs
+
+**p-value**
+
+A linear model is only statistically significant when both p-values are <0.05 within the summary call. There are two values as one if for the coefficient  (is the specific coefficient significant) and the other is for the model (is the model significant). Here as they both are, this would allow us to accept the alternative hypothesis that the coefficients are not euqal to 0 (and therefore there is a relationship between the independent and dependent variabile)
+
+**R-squared**
+
+R squared represents the proportion of variance of the dependent variable that is explained by the independent. It is different from correlation as that is the strength of the relationship!!!
+
+But there are a few issues with R squared --- every time you add a predictor to the model R squared will increase and if there are too many predictors it will model random noise
+
+**Adjusted R squared**
+
+Adjusted R squared therefore considered the number of variables within the model, increasing only if the new term assits by more than just chance.
+
+**Standard error**
+
+The coefficient standard error represents the average amoint that coeffieint estaimtes vary from the average of our response. It basically shows the expected range if we were to model again and again 
+
+**t**
+
+Coefficient t shows how many standard deviations the coefficient estaimte is away from 0 - the further away means the more likely we can reject the null hypothesis.
+
+**Residual error**
+
+Residual standard error is a measure of the quality of fit of the linear regression line. It is an average of the error that the points differ from out line.
+
+**F**
+
+F-statistcs, basically, the futher from 1 the better it is.
+
+See [this guide](https://feliperego.github.io/blog/2015/10/23/Interpreting-Model-Output-In-R) for more information on the outputs
+
+### Validation
+
+19. We've made a regression model using all of our data but there is now no way to test its validity...what if we take 20% as a test sample and use the remaining 80% to train it...
+
+```{r, cache=TRUE, warning=FALSE, message=FALSE}
+# training 80% index
+trainingRowIndex <- sample(1:nrow(joinednames), 0.8*nrow(joinednames))
+# subset the data with the index
+trainingData <- joinednames[trainingRowIndex, ] 
+# use the rest of it for the test data
+testData  <- joinednames[-trainingRowIndex, ] 
+
+```
+
+Now let's build the model...
+
+```{r, cache=TRUE, warning=FALSE, message=FALSE}
+# build the model
+lmMod <- lm(Wardcount ~ Boroughcount, data=trainingData)  
+# use the model to make some predicitons with our test data
+wardpredict <- predict(lmMod, testData)
+
+summary (lmMod)
+```
+
+20. We can just run a correlation between the data we left out and the predicted data to assess the accuracy...
+
+```{r, cache=TRUE, warning=FALSE, message=FALSE}
+
+actuals_preds <- data.frame(cbind(actuals=testData$Wardcount,
+                                  predicteds=wardpredict)) 
+
+stat_sig2=cor.test(actuals_preds$actuals, 
+                  actuals_preds$predicteds,
+                  use = "complete.obs",
+                  method = c("pearson"))
+stat_sig2
+```
+
+This shows us that we have a strong and statistically significant relationship between our model output and the test data.
+
+21. We can also use min-max accuracy to see how close the actual and predicted values are...using the equation...
+
+$$MinMaxAccuracy= mean\left( \frac{min(actuals, predicteds}{max(actuals, predicteds)} \right)$$
+
+
+```{r, cache=TRUE, warning=FALSE, message=FALSE}
+min_max_accuracy <- mean(apply(actuals_preds, 1, min, na.rm=TRUE) /
+                           apply(actuals_preds, 1, max, na.rm=TRUE))  
+min_max_accuracy
+```
+
+22. This gives around a 60% accuracy...another alternative is mean absolute percentage deviation which is a statistical measure showing how accurate the prediciton was...through the equation...
+
+$$MAPE= mean\left( \frac{abs(predicteds - actuals}{actuals} \right)$$
+
+
+```{r, cache=TRUE, warning=FALSE, message=FALSE}
+mape <- mean(abs((actuals_preds$predicteds -
+                    actuals_preds$actuals))/
+               actuals_preds$actuals, na.rm=TRUE)  
+
+mape
+```
+
+Here we've got a very high MAPE --- this is most likely because of the range of values of the wards for individual boroughs...
+
+### Cross validation 
+
+23. Our validation approach so far was OK, but what if the test data was a different 20% --- would it still hold up? We can test this by dividing all our data into blocks and then running the analysis several times, each time selecting a different block to be the test data...this is called cross validation ...
+
+```{r, echo=FALSE, out.width = "600", fig.align='center', cache=TRUE}
+knitr::include_graphics('prac10_images/cross_validation.jpg') 
+```
+
+24. To start with we'll remove the geomtery, set up a data frame and replace any NAs with 0 --- this is appropraite here as if there are no Airbnbs within the ward they would be 0.
+
+```{r, cache=TRUE, warning=FALSE, message=FALSE}
+joinednamesdf<-as.data.frame(st_set_geometry(joinednames, NULL))
+joinednamesdf$Wardcount[is.na(joinednamesdf$Wardcount)] <- 0
+
+```
+
+25. Now let's change our training data... here i've got 5 iterations then the whole lot is repeated 3 times. Search literautre for the right number to use, i think 10 iterations with no repeats is a good place to start. 
+
+```{r, cache=TRUE, warning=FALSE, message=FALSE}
+library(caret)
+model<- train(Wardcount ~ Boroughcount, 
+              joinednamesdf,
+              method="lm", 
+              trControl=trainControl(method="repeatedcv",
+                                     number=5,
+                                     repeats=3,
+                                     # change to true to
+                                     # see it iterate
+                                     verboseIter=FALSE))
+
+summary(model)
+```
+
+Results show that our cross validated model accounts for around 60% of varaince of the number of Airbnbs per ward...compare this to the results from the standard linear regression...
+
+## Advanced regression
+
+### More data
+
+26. We're going to have a look at Ridge and LASSO regression next...however, they require us to have more than 1 predictor variable, so we'll load a few in and demonstrate how to use them in normal regression first...
+
+We'll get our OSM data, project it, extract only hotels, join it with the boroughs, set any NAs to 0, join it with the wards, rename the new 'freq' coloumn to Hotel count, remove the geometry and then set any more NAs to 0...
+
+```{r, cache=TRUE, warning=FALSE, message=FALSE}
+# read in OSM data
+OSM <- st_read("prac10_data/gis_osm_pois_a_free_1.shp")
+# project it
+
+OSM <- st_transform(OSM, 27700)
+
+# select only hotels
+OSM <- OSM[OSM$fclass == 'hotel',]
+
+# join hotels with the boroughs
+Hotels <- Joinfun(OSM, boroughsandwardssf[[1]])
+
+# set any NAs to 0
+Hotels$freq[is.na(Hotels$freq)] <- 0
+
+# join the Hotels to wards layer
+joined2 <- st_join(joinednames, Hotels, join=st_contains)
+
+# rename the freq to Hotelcount
+joined2<-dplyr::rename(joined2, Hotelcount = freq)
+
+# remove the geometry
+joined2df=as.data.frame(st_set_geometry(joined2, NULL))
+
+# set any NA values to 0
+joined2df$Hotelcount[is.na(joined2df$Hotelcount)] <- 0
+joined2df$Boroughcount[is.na(joined2df$Boroughcount)] <- 0
+joined2df$Wardcount[is.na(joined2df$Wardcount)] <- 0
+
+```
+
+### Multiple linear regression
+
+27. Re run the model including Hotel count...you simply use a +
+
+```{r, cache=TRUE, warning=FALSE, message=FALSE}
+model2<- train(Wardcount ~ Boroughcount+Hotelcount, 
+              joined2df,
+              method="lm", 
+              trControl=trainControl(method="repeatedcv",
+                                     number=5,
+                                     repeats=3,
+                                     # change to true to see it 
+                                     # iterate
+                                     verboseIter=FALSE))
+
+summary(model2)
+
+```
+
+The summary here shows that the hotel count predictor is not statistically significant so we should remove it...how about we add some population and house price data....download [the excel data from here](https://data.london.gov.uk/dataset/ward-profiles-and-atlas)
+
+```{r, cache=TRUE, warning=FALSE, message=FALSE}
+library("readxl")
+# read the excel sheet
+my_data <- read_excel("prac10_data/ward-profiles-excel-version.xls", sheet=2, col_names=TRUE)
+
+# set it as a data frame
+my_data2 <-data.frame(my_data)
+
+# extract everything that begins with E
+# the ward codes
+my_data2 <- my_data2[grep("^E",my_data2[,3]),]
+
+# make sure the variables are numeric
+my_data2$Population...2015 <- as.numeric(my_data2$Population...2015)
+my_data2$Median.House.Price.......2014 <-
+  as.numeric(my_data2$Median.House.Price.......2014)
+
+
+# merge the new data to the existing data
+joined3df <- merge(joined2df, 
+                   my_data2, 
+                   by.x="GSS_CODE.y", 
+                   by.y="New.code")
+
+# set any NAs as 0
+joined3df$Population...2015[is.na(joined3df$Population...2015)] <- 0
+joined3df$Median.House.Price.......2014[is.na(joined3df$Median.House.Price.......2014)] <- 0
+```
+
+28. Now run the model again
+
+```{r, cache=TRUE, warning=FALSE, message=FALSE}
+model3<- train(Wardcount ~ Boroughcount+Population...2015
+               +Median.House.Price.......2014,
+              joined3df,
+              method="lm", 
+              trControl=trainControl(method="repeatedcv",
+                                     number=5,
+                                     repeats=3,
+                                     verboseIter=FALSE))
+
+summary(model3)
+```
+
+Our R squared and adjusted R squared have increased (albeit slightly) and all predictors are statistically significant. 
+
+>**Note** that whilst i have selected variables pretty randomly here for demonstration, if you use something like this in practice it's important to have supported (referenced) reasoning behind your selections.
+
+### Ridge regression 
+
+```{r, echo=FALSE, out.width = "300", fig.align='center', cache=TRUE}
+knitr::include_graphics('prac10_images/ridge.jpg') 
+```
+
+Ridge regression probably won't fit our training data as well, becuase we introduce a small amount of bias to give us less overall variance...Basically least squares regression tries to minimise how far each point is away from the line...
+
+```{r echo=FALSE, out.width = "300", fig.align='center', cache=TRUE}
+knitr::include_graphics('prac10_images/least_squares.png') 
+```
+
+Whereas ridge minimises this plus the value of $\lambda$ * the slope squared...Here, $\lambda$ controls the shrinkage that regulairze the coeffeicinets towards 0. This is also a property of LASSO regression which we will cover next.
+
+29. Let's see an exmaple to show that if $\lambda$ is 0, then we have our box standard linear regression...as the plus value of $\lambda$ * the slope squared will equal 0...
+
+```{r, cache=TRUE, warning=FALSE, message=FALSE}
+library(tidyverse)
+library(broom)
+library(glmnet)
+
+
+# sort the data our for ridge regression
+y <- joined3df$Wardcount
+x <- joined3df %>% dplyr::select(Boroughcount, Hotelcount,
+                                 Population...2015,
+                                 Median.House.Price.......2014 ) %>%data.matrix()
+
+# set NAs to 0
+x[is.na(x)] <- 0
+y[is.na(y)] <- 0
+
+# set seed means that if we re run this 
+# we will get the same results
+set.seed(489)
+# this gives us a 50/50 split between
+# training and test data
+train = sample(1:nrow(x), nrow(x)/2)
+test = (-train)
+ytest = y[test]
+xtest =x[test]
+
+# run normmal regression
+normallm <- lm(Wardcount ~ Hotelcount+Boroughcount+Population...2015
+               +Median.House.Price.......2014,
+               data = joined3df)
+summary(normallm)
+
+# make a variable for loads of lambda values
+# just for the example here
+lambda <- 10^seq(10, -2, length = 100)
+
+#run ridge regression, here we use x to predict y
+ridge_mod <- glmnet(x, y, alpha = 0, lambda = lambda)
+# x and y are our original data,
+#s is the size of the penalty which is 0
+# and we want the coefficients out
+predict(ridge_mod, x=x,y=y, s = 0, exact = T, type = 'coefficients')
+```
+
+30. The coefficient estaimtes should be the same or very very similar...now let's try and use ridge regression to improve upon our least squares regression...first let's show linear regression for comparison using the train data..
+
+```{r, cache=TRUE, warning=FALSE, message=FALSE}
+
+normallm2 <- lm(Wardcount ~ Hotelcount+Boroughcount+
+                  Population...2015+
+                  Median.House.Price.......2014, 
+               data = joined3df, 
+               subset = train)
+
+
+s_pred <- predict(normallm2, newdata = joined3df[test,])
+mean((s_pred-ytest)^2)
+```
+
+31. Now we will find the best value for $\lambda$ using cross validation --- the lowest point of the curve is the optinmal value that best minimsed the error
+
+```{r, cache=TRUE, warning=FALSE, message=FALSE}
+
+#find the best lambda from our list via cross-validation
+# family = gaussian means linear regression
+# type.measure = how cross evaluation will be evaluated 
+# mse is mean square error
+cv_out <- cv.glmnet(x[train,], y[train], alpha = 0, family="gaussian", type.measure = "mse")
+```
+
+Combined, this will fit a linear regression with ridge regression penatly with 10-fold cross validation to find the best $\lambda$ values. Let's apply it to the model
+
+```{r, cache=TRUE, warning=FALSE, message=FALSE}
+plot(cv_out)
+
+# best value 
+opt_lambda <- cv_out$lambda.min
+
+# prediction to the testing data
+# s is set to optimal lambda
+# you could also use lambda.1se as
+# technically they are indistinguishable 
+ridge_pred <- predict(ridge_mod, s = opt_lambda, newx = x[test,])
+
+# rsquared
+ridge_r <- cor(y[test], ridge_pred)^2
+ridge_r
+
+# mean square error
+mean((ridge_pred-ytest)^2)
+```
+
+You can also doing this in a few less steps with the `ridge` package
+
+### LASSO
+
+```{r, echo=FALSE, out.width = "200", fig.align='center', cache=TRUE}
+knitr::include_graphics('prac10_images/LASSO.jpg') 
+```
+
+Least absolute shrinkage and selection operator (LASSO) performs varaible selection and regularisation to increase prediction accuracy of the model...the only difference to ridge is that the regularisation term is an absolute value. So instead of squaring the slope (like i metioned in Ridge regression), we take the actual value. As a result high values for coefficients are set to 0 if they are not relevant --- this would remove features from the model for you.
+
+```{r, cache=TRUE, warning=FALSE, message=FALSE}
+#find the best lambda from our list via cross-validation
+cv_out <- cv.glmnet(x[train,], y[train], alpha = 1, family="gaussian", type.measure = "mse")
+
+plot(cv_out)
+
+# best value 
+opt_lambda <- cv_out$lambda.min
+
+# make the model
+lasso_mod <- glmnet(x[train,], y[train], alpha = 1, lambda = opt_lambda)
+
+# make the prediction 
+lasso_pred <- predict(lasso_mod, s = opt_lambda, newx = x[test,])
+
+# r sqaured
+LASSO_r <- cor(y[test], lasso_pred)^2
+LASSO_r
+
+# mean square error
+mean((lasso_pred-ytest)^2)
+```
+
+### Elastic net regression
+
+Elastic net regression is where you change the alpha value between 0 and 1. You would use elastic net regression to see if it was possible to reduce the mean square error any further. Have a look at [this video](https://www.youtube.com/watch?v=ctmNq7FgbvI) to see how to use a for loop to test different values for alpha.
+
+### What's the best here
+
+Let's compare the results of the MSE and r sqaured for the normallm2, LASSO and Ridge as we used the same predictors...this is the code to get the values we don't already have...
+
+```{r,cache=TRUE, warning=FALSE, message=FALSE}
+summary(normallm2)$r.squared
+```
+
+Our lowest MSE and highest R sqaured value here is provided by Ridge regression...so from this anaylsis i'd select Ridge regression to predict any future values of Airbnbs within the London wards...
+
+>**Warning** The data used within this practical is purely for demonstration purposes!
+
+## What should i use
+
+It depends, just because Ridge regression seems to be the best for this application, it might not be for yours. It's important to check the suitablity of each method for both your data and anaysis. 
+
+## Wait how do i predict
+
+Easy...just go back through the code and use the the `predict()` function --- this will also work for linear models...
+
+```{r,cache=TRUE, warning=FALSE, message=FALSE, eval=FALSE}
+
+# replace with your - this is just an example
+# setting intervals specifies confidence intervals
+# at the required level
+predict(linearmodel, newdata, interval="confidence", level=0.95) 
+
+```
+
+### More resources
+
+* [Ridge regression](https://www.youtube.com/watch?v=Q81RR3yKn30&t=443s)
+* [LASSO regression](https://www.youtube.com/watch?v=NGf0voTMlcs&t=351s)
+* [Elastic net regression](https://www.youtube.com/watch?v=1dKRdX9bfIo)
+* [All of them in R](https://www.youtube.com/watch?v=ctmNq7FgbvI)
+* [Evaluation methods](https://towardsdatascience.com/how-to-select-the-right-evaluation-metric-for-machine-learning-models-part-1-regrression-metrics-3606e25beae0)
 
