@@ -470,15 +470,15 @@ Adjusted R squared therefore considered the number of variables within the model
 
 **Standard error**
 
-The coefficient standard error represents the average amoint that coeffieint estaimtes vary from the average of our response. It basically shows the expected range if we were to model again and again 
+The coefficient standard error represents the average amoint that coeffieint estaimtes vary from the average of our response. It basically shows the expected range if we were to model again and again. 
 
 **t**
 
-Coefficient t shows how many standard deviations the coefficient estaimte is away from 0 - the further away means the more likely we can reject the null hypothesis.
+Coefficient t shows how many standard deviations the coefficient estaimte is away from 0 --- the further away means the more likely we can reject the null hypothesis.
 
 **Residual error**
 
-Residual standard error is a measure of the quality of fit of the linear regression line. It is an average of the error that the points differ from out line.
+Residual standard error is a measure of the quality of fit of the linear regression line. It is an average of the error that the points differ out from the line.
 
 **F**
 
@@ -703,15 +703,30 @@ Our R squared and adjusted R squared have increased (albeit slightly) and all pr
 knitr::include_graphics('prac10_images/ridge.jpg') 
 ```
 
-Ridge regression probably won't fit our training data as well, becuase we introduce a small amount of bias to give us less overall variance...Basically least squares regression tries to minimise how far each point is away from the line...
+Least squares regression tries to minimise how far each point is away from the line...but if you look in this figure...the red dots are the training data and the green dots are the test data. Here normal OLS has been fitted to the training data perfcetly...the sum of the sqaured residuals (squared error distance from the line) is very small, probably 0. But when applied to the test data the sum of the squared residuals is large --- it therefore has high variance and would be termed to be overfitting the training data.
 
-```{r echo=FALSE, out.width = "300", fig.align='center', cache=TRUE}
-knitr::include_graphics('prac10_images/least_squares.png') 
+```{r echo=FALSE, out.width = "300", fig.align='center',fig.cap="This is a screenshot from the YouTube video Regularization Part 1: Ridge Regression by StatQuest", cache=TRUE}
+knitr::include_graphics('prac10_images/ridge_eg.png') 
 ```
 
-Whereas ridge minimises this plus the value of $\lambda$ * the slope squared...Here, $\lambda$ controls the shrinkage that regulairze the coeffeicinets towards 0. This is also a property of LASSO regression which we will cover next.
+Ridge regression probably won't fit our training data as well, becuase we introduce a small amount of bias (adding value to the intercept --- which is the Y value when X=0) to give us less overall variance (distance from the line...the difference between the point and line value)...So essentailly when the values are calculated the formula is trying to get the line of best fit through all the points with each point having minimum distance to the line.
 
-29. Let's see an exmaple to show that if $\lambda$ is 0, then we have our box standard linear regression...as the plus value of $\lambda$ * the slope squared will equal 0...
+Ridge regression also tries to minimise the sum of the sqaured residuals (distance to the line) but adds onto this $\lambda$ x $slope^2$ --- this  increases the value of Y when X=0. Ok so let's try and look at this with numbers...
+
+The goal here is to minimise the sum of the sqaured residuals...plus the ridge regression penalty $\lambda * slope^2$...
+
+Firstly let's assume you have a perfectly fit line --- the sum of the least sqaure residuals would be 0 (the line overlaps the points). Assume $\lambda$ is 0.5 and the slope is 1.2, we have 0 + 1.44 = 1.44
+
+Now we use ridge regression that shifts the line away from the perfect fit (with a bias (or intercept) penalty) that we had in least square regression...this would create residual values as the points no longer perfectly fit the line, assume these add to 0.2, $\lambda$ is 0.5, and the slope is 0.7...so this would give 0.445.
+
+So if we were trying to minimise the sum of the sqaured residuals plus the ridge regression penatly the ridge regression wins with a lower value.
+
+The penatly $\lambda * slope^2$ adds a bias (value to the intercept) to reduce the slope of the line and hopefully the variance between the line and the points.
+
+But wait.... how do we calcualte $\lambda$, well we try a load of values and use cross validation (10 fold) to get the overall lowest variance from the line to the data points! COOL!!!!
+
+
+29. Let's see an exmaple to show that if $\lambda$ is 0, then we have our box standard linear regression...as the penalty $\lambda * the slope^2$ will be 0, so we will just be minimising the sum of the sqaured residuals. 
 
 ```{r, cache=TRUE, warning=FALSE, message=FALSE}
 library(tidyverse)
@@ -772,7 +787,7 @@ s_pred <- predict(normallm2, newdata = joined3df[test,])
 mean((s_pred-ytest)^2)
 ```
 
-31. Now we will find the best value for $\lambda$ using cross validation --- the lowest point of the curve is the optinmal value that best minimsed the error
+31. Now we will find the best value for $\lambda$ using cross validation
 
 ```{r, cache=TRUE, warning=FALSE, message=FALSE}
 
@@ -783,7 +798,7 @@ mean((s_pred-ytest)^2)
 cv_out <- cv.glmnet(x[train,], y[train], alpha = 0, family="gaussian", type.measure = "mse")
 ```
 
-Combined, this will fit a linear regression with ridge regression penatly with 10-fold cross validation to find the best $\lambda$ values. Let's apply it to the model
+Combined, this will fit a linear regression with a ridge regression penatly using 10-fold cross validation to find the best $\lambda$ value that minimises mean square error (average squared distance of the data points to the line). Let's apply it to the model...
 
 ```{r, cache=TRUE, warning=FALSE, message=FALSE}
 plot(cv_out)
@@ -813,7 +828,9 @@ You can also doing this in a few less steps with the `ridge` package
 knitr::include_graphics('prac10_images/LASSO.jpg') 
 ```
 
-Least absolute shrinkage and selection operator (LASSO) performs varaible selection and regularisation to increase prediction accuracy of the model...the only difference to ridge is that the regularisation term is an absolute value. So instead of squaring the slope (like i metioned in Ridge regression), we take the actual value. As a result high values for coefficients are set to 0 if they are not relevant --- this would remove features from the model for you.
+Least absolute shrinkage and selection operator (LASSO) performs variable selection and regularisation to increase prediction accuracy of the model...the only difference to ridge is that the regularisation term is an absolute value. So instead of squaring the slope (like i metioned in Ridge regression), we take the absolute value. As a result LASSO regression can increase $\lambda$ then set irrelevant provided parameters to 0 (Ridge will just shrink them but not set to 0) --- relevant paramters might shink a litte bit in both. The advantage here is that LASSO can exclude useless variables --- so if you have a lot of variables it might be preferable. However, if most variables are useful then Ridge regression would probably work better.  
+
+result high values for coefficients are set to 0 if they are not relevant --- this would remove features from the model for you.
 
 ```{r, cache=TRUE, warning=FALSE, message=FALSE}
 #find the best lambda from our list via cross-validation
@@ -840,7 +857,9 @@ mean((lasso_pred-ytest)^2)
 
 ### Elastic net regression
 
-Elastic net regression is where you change the alpha value between 0 and 1. You would use elastic net regression to see if it was possible to reduce the mean square error any further. Have a look at [this video](https://www.youtube.com/watch?v=ctmNq7FgbvI) to see how to use a for loop to test different values for alpha.
+When you don't know much about our variables in a model you can use Elastic-Net Regression. It starts with least squares then adds the LASSO and ridge regression penatly, alowing to use the strengths of both. Both the LASSO penatly and ridge penatly get their own $\lambda$ values, $\lambda_1$ for LASSO, $\lambda_2$  for ridge. Cross validation runs for both $\lambda_1$ and $\lambda_2$. If both $\lambda_1$ and $\lambda_2$ > 0 then we get a hybrid approach, this is good when we have correlated variables. LASSO will pick just one correlated variable and eliminate the other, whereas ridge will just shrink all of them. Using both LASSO and ridge we can group and shrink correlated variables or remove them all at the same time.
+
+In R, Elastic-Net Regression is where you change the alpha value between 0 and 1. You would use elastic net regression to see if it was possible to reduce the mean square error any further. Have a look at [this video](https://www.youtube.com/watch?v=ctmNq7FgbvI) to see how to use a for loop to test different values for alpha.
 
 ### What's the best here
 
@@ -856,7 +875,7 @@ Our lowest MSE and highest R sqaured value here is provided by Ridge regression.
 
 ### What should i use
 
-It depends, just because Ridge regression seems to be the best for this application, it might not be for yours. It's important to check the suitability of each method for both your data and analysis 
+It depends, just because Ridge regression seems to be the best for this application, it might not be for yours. It's important to check the suitability of each method for both your data and analysis.
 
 ### So how do i predict
 
@@ -879,3 +898,16 @@ predict(linearmodel, newdata, interval="confidence", level=0.95)
 * [All of them in R](https://www.youtube.com/watch?v=ctmNq7FgbvI)
 * [Evaluation methods](https://towardsdatascience.com/how-to-select-the-right-evaluation-metric-for-machine-learning-models-part-1-regrression-metrics-3606e25beae0)
 
+## Extension
+
+If you are already familiar with these regression methods try the following:
+
+* Apply them to a dataset of your choice to see if you can predict a specific variable 
+* Explore and apply machine learning techniques for predicting data such as [Random Forest](https://www.guru99.com/r-random-forest-tutorial.html), [Classification and Regression Trees, Support Vector Machine and others](https://machinelearningmastery.com/machine-learning-in-r-step-by-step/)
+* Try out [maximum likelihood](https://www.r-bloggers.com/fitting-a-model-by-maximum-likelihood/) for estimating model parameters 
+* Have a look at the [new tidymodels package](https://rviews.rstudio.com/2019/06/19/a-gentle-intro-to-tidymodels/)
+* Check out [Machine learning fundamentals](https://www.youtube.com/watch?v=EuBBz3bI-aA) too.
+
+## Acknowledgement
+
+I'm certainly not an expert statistician but [StatQuest with Josh Starmer](https://www.youtube.com/channel/UCtYLUTtgS3k1Fg4y5tAhLbw) really helped me explain all this.
