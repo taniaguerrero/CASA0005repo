@@ -1,6 +1,6 @@
 # MAUP problem and regression
 
-## Leraning objectives
+## Learning outcomes
 
 1. Describe, explain and visualise the MAUP problem
 2. Design and use loops and functions
@@ -372,7 +372,7 @@ knitr::include_graphics('prac10_images/linear_regression.png')
 This can be represented with the equation:
 
 $$Y = \beta_{1} + \beta_{2} X + \epsilon$$
-Where $\beta_{1}$ is the intercept (expected value of Y when X=0, also called bias in machine learning), $\beta_{2}$ is the slope of the line and $\epsilon$ is the error term, the part that the model is unable to explain...
+Where $\beta_{1}$ is the intercept (expected value of Y when X=0, also called bias in machine learning), $\beta_{2}$ is the slope of the line and $\epsilon$ is the error term, the part that the model is unable to explain (and variables are not included)...
 
 12. To start with we're going to crop our wards data to our boroughs data. In the borough data you can see the river Thames which isn't in the wards data. I don't think this is technically required, but it's good practice to make sure you datasets align and if they don't to do something about it...
 ```{r}
@@ -456,7 +456,7 @@ $$Wardcount = -3.8188 + 0.0541*Boroughcount$$
 
 **p-value**
 
-A linear model is only statistically significant when both p-values are <0.05 within the summary call. There are two values as one if for the coefficient  (is the specific coefficient significant) and the other is for the model (is the model significant). Here as they both are, this would allow us to accept the alternative hypothesis that the coefficients are not euqal to 0 (and therefore there is a relationship between the independent and dependent variabile)
+A linear model is only statistically significant when both p-values are <0.05 within the summary call. There are two values as one if for the coefficient  (is the specific coefficient significant) and the other is for the model (is the model significant). Here as they both are, this would allow us to accept the alternative hypothesis that the coefficients are not equal to 0 (and therefore there is a relationship between the independent and dependent variabile)
 
 **R-squared**
 
@@ -709,19 +709,25 @@ Least squares regression tries to minimise how far each point is away from the l
 knitr::include_graphics('prac10_images/ridge_eg.png') 
 ```
 
-Ridge regression probably won't fit our training data as well, becuase we introduce a small amount of bias (adding value to the intercept --- which is the Y value when X=0) to give us less overall variance (distance from the line...the difference between the point and line value)...So essentailly when the values are calculated the formula is trying to get the line of best fit through all the points with each point having minimum distance to the line.
+Ridge regression probably won't fit our training data as well, becuase we introduce a small amount of bias (adding value to the intercept --- which is the Y value when X=0) to give us less overall variance (the difference between the point and line value)...So essentially when the values are calculated the formula is trying to get the line of best fit through all the points with each point having minimum distance to the line.
 
-Ridge regression also tries to minimise the sum of the sqaured residuals (distance to the line) but adds onto this $\lambda$ x $slope^2$ --- this  increases the value of Y when X=0. Ok so let's try and look at this with numbers...
+Ridge regression also tries to minimise the sum of the sqaured residuals (distance to the line) but then adds $\lambda$ x $slope^2$ --- this  increases the value of Y when X=0. 
+
+Ok so let's try and look at this with numbers...
 
 The goal here is to minimise the sum of the sqaured residuals...plus the ridge regression penalty $\lambda * slope^2$...
 
 Firstly let's assume you have a perfectly fit line --- the sum of the least sqaure residuals would be 0 (the line overlaps the points). Assume $\lambda$ is 0.5 and the slope is 1.2, we have 0 + 1.44 = 1.44
 
-Now we use ridge regression that shifts the line away from the perfect fit (with a bias (or intercept) penalty) that we had in least square regression...this would create residual values as the points no longer perfectly fit the line, assume these add to 0.2, $\lambda$ is 0.5, and the slope is 0.7...so this would give 0.445.
+Now we use ridge regression that shifts the line away from the perfect fit (with a bias penalty) that we had in least square regression...this would create residual values as the points no longer perfectly fit the line, assume these add to 0.2, $\lambda$ is 0.5, and the slope is 0.7...so this would give 0.445.
 
 So if we were trying to minimise the sum of the sqaured residuals plus the ridge regression penatly the ridge regression wins with a lower value.
 
-The penatly $\lambda * slope^2$ adds a bias (value to the intercept) to reduce the slope of the line and hopefully the variance between the line and the points.
+The penatly $\lambda * slope^2$ adds a bias (value to the intercept) to reduce the slope of the line as it tries to the minimise the sum of the distance of the points from the line and hopefully the variance between the line and the points...like this --- Ridge is the blue line that has become slightly more horizontal...
+
+```{r echo=FALSE, out.width = "300", fig.align='center',fig.cap="This is a screenshot from the YouTube video Regularization Part 1: Ridge Regression by StatQuest", cache=TRUE}
+knitr::include_graphics('prac10_images/ridge_eg2.png') 
+```
 
 But wait.... how do we calcualte $\lambda$, well we try a load of values and use cross validation (10 fold) to get the overall lowest variance from the line to the data points! COOL!!!!
 
@@ -828,9 +834,7 @@ You can also doing this in a few less steps with the `ridge` package
 knitr::include_graphics('prac10_images/LASSO.jpg') 
 ```
 
-Least absolute shrinkage and selection operator (LASSO) performs variable selection and regularisation to increase prediction accuracy of the model...the only difference to ridge is that the regularisation term is an absolute value. So instead of squaring the slope (like i metioned in Ridge regression), we take the absolute value. As a result LASSO regression can increase $\lambda$ then set irrelevant provided parameters to 0 (Ridge will just shrink them but not set to 0) --- relevant paramters might shink a litte bit in both. The advantage here is that LASSO can exclude useless variables --- so if you have a lot of variables it might be preferable. However, if most variables are useful then Ridge regression would probably work better.  
-
-result high values for coefficients are set to 0 if they are not relevant --- this would remove features from the model for you.
+Least absolute shrinkage and selection operator (LASSO) performs variable selection and regularisation to increase prediction accuracy of the model...the only difference to ridge is that the regularisation term is an absolute value. So instead of squaring the slope (like i metioned in Ridge regression), we take the absolute value. As a result LASSO regression can increase $\lambda$ then set irrelevant parameters to 0 (Ridge will just shrink them but not set to 0) --- relevant paramters might shink a little bit in both too. The advantage here is that LASSO can exclude useless variables --- so if you have a lot of variables it might be preferable. However, if most variables are useful then Ridge regression would probably work better.  
 
 ```{r, cache=TRUE, warning=FALSE, message=FALSE}
 #find the best lambda from our list via cross-validation
@@ -857,9 +861,9 @@ mean((lasso_pred-ytest)^2)
 
 ### Elastic net regression
 
-When you don't know much about our variables in a model you can use Elastic-Net Regression. It starts with least squares then adds the LASSO and ridge regression penatly, alowing to use the strengths of both. Both the LASSO penatly and ridge penatly get their own $\lambda$ values, $\lambda_1$ for LASSO, $\lambda_2$  for ridge. Cross validation runs for both $\lambda_1$ and $\lambda_2$. If both $\lambda_1$ and $\lambda_2$ > 0 then we get a hybrid approach, this is good when we have correlated variables. LASSO will pick just one correlated variable and eliminate the other, whereas ridge will just shrink all of them. Using both LASSO and ridge we can group and shrink correlated variables or remove them all at the same time.
+When you don't know much about our variables in a model you can use Elastic-Net Regression. It starts with least squares then adds the LASSO and ridge regression penatly, allowing you to use the strengths of both. Both the LASSO penatly and ridge penatly get their own $\lambda$ values, $\lambda_1$ for LASSO, $\lambda_2$  for ridge. Cross validation runs for both $\lambda_1$ and $\lambda_2$. If both $\lambda_1$ and $\lambda_2$ > 0 then we get a hybrid approach, this is good when we have correlated variables. LASSO will pick just one correlated variable and eliminate the other, whereas ridge will just shrink all of them. Using both LASSO and ridge we can group and shrink correlated variables or remove them all at the same time.
 
-In R, Elastic-Net Regression is where you change the alpha value between 0 and 1. You would use elastic net regression to see if it was possible to reduce the mean square error any further. Have a look at [this video](https://www.youtube.com/watch?v=ctmNq7FgbvI) to see how to use a for loop to test different values for alpha.
+In R, Elastic-Net Regression is where you change the alpha value between 0 and 1. You would use elastic net regression to see if it is  possible to reduce the mean square error any further. Have a look at [this video](https://www.youtube.com/watch?v=ctmNq7FgbvI) to see how to use a for loop to test different values for alpha.
 
 ### What's the best here
 
@@ -869,7 +873,7 @@ Let's compare the results of the MSE and r sqaured for the normallm2, LASSO and 
 summary(normallm2)$r.squared
 ```
 
-Our lowest MSE and highest R sqaured value here is provided by Ridge regression...so from this anaylsis i'd select Ridge regression to predict any future values of Airbnbs within the London wards...
+Our lowest MSE and highest R sqaured value here is provided by Ridge regression...so from this anaylsis i'd select Ridge regression to predict any missing or future values of Airbnbs within the London wards...i'd probably also conisder exploring using machine learning methods that are linked to below...
 
 >**Warning** The data used within this practical is purely for demonstration purposes!
 
@@ -889,6 +893,8 @@ Easy...just go back through the code and use the the `predict()` function --- th
 predict(linearmodel, newdata, interval="confidence", level=0.95) 
 
 ```
+
+>**WARNING** Never try and predict data outside the range of your values, for example in the first regression model we ran when the count within Boroughs was 0 we had -3.8188 for Airbnbs within wards and it's impossible to have negative Airbnbs.
 
 ## More resources
 
