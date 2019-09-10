@@ -34,7 +34,7 @@ A shapefile is actually a collection of files –-- at least three of which are 
   3. ```.dbf``` - the file that stores all of the attribute information associated with the coordinates – this might be the name of the shape or some other information associated with the feature
   4. ```.prj``` - the file which contains all of the coordinate system information (the location of the shape on Earth's surface). Data can be displayed without a projection, but the ```.prj``` file allows software to display the data correctly where data with different projections might be being used
 
-On Twitter and wan't to see the love for shapefiles....have a look at [the shapefile account](https://twitter.com/shapefiIe)
+On Twitter and want to see the love for shapefiles....have a look at [the shapefile account](https://twitter.com/shapefiIe)
   
 #### GeoJSON
 

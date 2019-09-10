@@ -1,4 +1,4 @@
-# MAUP problem and regression
+# MAUP and more regression
 
 ## Learning outcomes
 
@@ -451,7 +451,6 @@ summary(linearMod)
 So from this output we have the coefficients of intercept and Boroughcount, going back to our formula from earlier this would mean...
 
 $$Wardcount = -3.8188 + 0.0541*Boroughcount$$
-
 ### Linear model outputs
 
 **p-value**
@@ -485,6 +484,49 @@ Residual standard error is a measure of the quality of fit of the linear regress
 F-statistcs, basically, the futher from 1 the better it is.
 
 See [this guide](https://feliperego.github.io/blog/2015/10/23/Interpreting-Model-Output-In-R) for more information on the outputs
+
+
+Remeber the formula produced from the regression equation, well we can also extract this automatically ...to make that original formula in RMarkdown I used this (not within a code chunk)....
+
+```{r, cache=TRUE, warning=FALSE, message=FALSE, eval=FALSE}
+$$Wardcount = -3.8188 + 0.0541*Boroughcount$$
+```
+
+But we can also extract it directly using a new package from GitHub...
+
+```{r, cache=TRUE, warning=FALSE, message=FALSE}
+# load remotes so we can get the new package
+library(remotes)
+```
+
+```{r,  cache=TRUE, warning=FALSE, message=FALSE, eval=FALSE}
+# get the new package equatiomatic()
+remotes::install_github("datalorax/equatiomatic")
+```
+
+```{r, cache=TRUE, warning=FALSE, message=FALSE}
+# load it
+library(equatiomatic)
+# extract the info to make the equation
+extract_eq(linearMod)
+```
+
+Play around with line length and use the actual coefficient names
+
+```{r, cache=TRUE, warning=FALSE, message=FALSE}
+extract_eq(linearMod, use_coefs = TRUE, wrap=TRUE, terms_per_line = 2)
+```
+
+This would produce the following in RMarkdown....
+
+$$
+\begin{aligned}
+\text{Wardcount} &= -3.82 + 0.05(\text{Boroughcount})\ + \\
+&\quad \epsilon
+\end{aligned}
+$$
+
+Have a [look here](https://github.com/datalorax/equatiomatic) for more information on using `equatiomatic()`.
 
 ### Validation
 
@@ -895,6 +937,10 @@ predict(linearmodel, newdata, interval="confidence", level=0.95)
 ```
 
 >**WARNING** Never try and predict data outside the range of your values, for example in the first regression model we ran when the count within Boroughs was 0 we had -3.8188 for Airbnbs within wards and it's impossible to have negative Airbnbs.
+
+### Should i write advanced code
+
+It would be great if you could write your analysis in as least possible lines of code as possible...**BUT** you are not marked on how concise or efficient your code is in this course. My advice would be to get something that works and addresses all of the marking criteria. 
 
 ## More resources
 
