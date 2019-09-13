@@ -321,6 +321,8 @@ knitr::include_graphics('prac8_images/Markdownsite.png')
 
 For more information on hosting your code from RStudio on GitHub check out the book [Happy Git and GitHub for the useR](https://happygitwithr.com/usage-intro.html)
 
+My RMarkdown site can be found here, but note that i've added a Shiny tab...we'll cover Shint next...
+
 ## Shiny
 
 Shiny is an R package that lets you build interative web apps, host them online and embed them within RMarkdown documents... have a [look at some examples](https://shiny.rstudio.com/gallery/)

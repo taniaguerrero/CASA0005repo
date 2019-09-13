@@ -29,10 +29,20 @@ data <- unzip(temp, exdir="prac10_data")
 unlink(temp)
 ```
 
+Using a recent update we could also change this a bit with the `pins()` package that downlaods and caches the url and automatically checks for file changes, only re-downloading if needed!
+
+```{r, cache=TRUE, warning=FALSE, message=FALSE}
+library(pins)
+pinexample<-pin("https://data.london.gov.uk/download/statistical-gis-boundary-files-london/9ba8c833-6370-4b11-abdc-314aa020d5e0/statistical-gis-boundaries-london.zip")
+```
+
+`pins()` also lets you share data easily, [have a look at this blog for more information](https://blog.rstudio.com/2019/09/09/pin-discover-and-share-resources/)
+
 2. Take the downloaded data and filter it based on the filename that countains: Borough OR Ward_ AND `.shp` using `grepl()`
 
 ```{r, cache=TRUE, warning=FALSE, message=FALSE}
 #|= OR
+# change data to pinexample to use result from pins
 t<-grepl("Borough|Ward_", data) & grepl(".shp$", data)
 t
 ```
@@ -949,6 +959,7 @@ It would be great if you could write your analysis in as least possible lines of
 * [Elastic net regression](https://www.youtube.com/watch?v=1dKRdX9bfIo)
 * [All of them in R](https://www.youtube.com/watch?v=ctmNq7FgbvI)
 * [Evaluation methods](https://towardsdatascience.com/how-to-select-the-right-evaluation-metric-for-machine-learning-models-part-1-regrression-metrics-3606e25beae0)
+* [An Introduction to Statistical Learning with Applications in R](https://ucl-new-primo.hosted.exlibrisgroup.com/primo-explore/fulldisplay?docid=UCL_LMS_DS21130746790004761&context=L&vid=UCL_VU2&lang=en_US&search_scope=CSCOP_UCL&adaptor=Local%20Search%20Engine&tab=local&query=any,contains,An%20introduction%20to%20statistical%20learning:%20with%20applications%20in%20R%20-%20section%20on%20Ridge%20and%20LASSO%20-%20Gareth%20James,%20Daniela%20Witten,%20Trevor%20Hastie,%20Robert%20Tibshirani%20,%202013,%20%C2%A92013&offset=0)
 
 ## Extension
 

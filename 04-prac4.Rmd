@@ -8,7 +8,7 @@ By the end of this practical you should be able to:
 2. Create reproduciable and open R code
 3. Produce RMarkdown documents that explain code and analysis
 
-## Introduction 
+## Introduction  
 
 In this practical you will learn how to produce work that is open, reproducible, shareable and portable using RStudio, RMarkdown, Git and GitHub. As more and more researchers and organisations publish assocaited code with their manusripts or documents it's very imporant to become adept at using these tools.
 
@@ -70,7 +70,7 @@ At the time of writing git integration *should* work within RStudio. If it doesn
 
 > **Note** You could also link your Git directly from RStudio following: File > New Project > Version control > Git. But carry on using these insturctions for now. 
 
-11. Open a new R Notebook in RStudio: File > New File R Notebook
+11. Open a new R Script file in RStudio: File > New R Script.
 
 12. Type some stuff (anything so that’s it’s not a blank empty file) at the top of the file and save it.
 
@@ -267,15 +267,23 @@ This video is also pretty good at explaining the benefits of RMarkdown
 knitr::include_url("https://www.youtube.com/embed/zNzZ1PfUDNk")
 ```
 
-One of the awesome things about R Markdown is it can be converted into a range of different formats --- html for webpages, word documents, PDFs, blogs, books --- virtually everything!
+R Markdown is awesome as you can show code, explanations and results within the same document!!!! Often it could be very hard to reproduce results owing to a lack of information in the methodology / userguides or walkthrougts not matching up with the latest version of software. Think back to a time where you had to use software and consult a massive userguide in how to use it...for me it was a very painful experience. R Markdown is a big improvement as it puts all of the information in the same document, which can then be convereted into a range of different formats --- html for webpages, word documents, PDFs, blogs, books --- virtually everything! It's also not limited to R code!!! To change the code language all you have to do is edit what is between the {} in a code chunk (we cover in point 36). In R by default you get {r}, put for python you just change this to {python}!!! COOL. You've also got to have all the python software installed and the R `reticulate()` package too.. have [a look here](https://rstudio.github.io/reticulate/articles/r_markdown.html#overview) for more information.
 
-Now, earlier on in this exercise, I got you to open a new R Notebook or R Markdown file. They are both R Markdown documents, the notebook originally let you run code chunks that could be exectued independently, however you can also now do this if you select a markdown file. To my knowledge the only difference is that a R Notebook adds ```output: html_notebook``` in the output option in the header of the file that adds a Preview button in the tool bar. If you don't have this then the preview option will be replaced with Knit. But you can mix the output options in your header for the file to get the Preview button back if you wish to. Basically, there isn't much difference and you can manually change it with one line of code. Have a look [here](https://stackoverflow.com/questions/43820483/difference-between-r-markdown-and-r-notebook) for more infomation.
+Now, earlier on in this exercise, I got you to open a new R Script. You now need to open a new R Markdown document, you could also select an R Notebook...They are both RMarkdown documents, the notebook originally let you run code chunks that could be exectued independently, however you can also now do this if you select a markdown file. To my knowledge the only difference is that a R Notebook adds ```output: html_notebook``` in the output option in the header of the file that adds a Preview button in the tool bar. If you don't have this then the preview option will be replaced with Knit. But you can mix the output options in your header for the file to get the Preview button back if you wish to. Basically, there isn't much difference and you can manually change it with one line of code. Have a look [here](https://stackoverflow.com/questions/43820483/difference-between-r-markdown-and-r-notebook) for more infomation. For ease i'd just stick with R Markdown files
 
-35. Go back to the notebook you created earlier in step 11. We are now going to insert some code from the practical last week that i've tweaked a bit and run it.
+When you create a new R Markdown document it's populated with some example data, click Knit to see what it does...the file should load in the viewer pane, if you click the arrow and browser button it will open in an internet browser..
 
-36. In RStudio, you can either select Code > Insert Chunk or you can Click the ‘Insert’ button and insert an R Chunk
+```{r echo=FALSE, out.width = "600pt", fig.align='center', cache=TRUE}
+knitr::include_graphics('prac4_images/Rmakrdowneg.png')
+```
 
-```{r echo=FALSE, out.width = "400pt", fig.align='center', cache=TRUE}
+### HTML
+
+35. We are now going to insert some code from the practical last week into the new R Markdown document that i've tweaked a bit and run it...clear all of the code except the stuff between the ---
+
+36. In RStudio, you can either select Code > Insert Chunk or you can Click the ‘Insert’ button and insert an R chunk
+
+```{r echo=FALSE, out.width = "600pt", fig.align='center', cache=TRUE}
 knitr::include_graphics('prac4_images/code_chunk.png')
 ```
 
@@ -342,11 +350,89 @@ ihist
 knitr::include_graphics('prac4_images/code_chunk_options.png')
 ```
 
+### Flexdashboard
+
+We can also change what we knit to...how about a dashboard --- this could be something like a group of related data plots or visualisations with some code and or descriptions. First you need to install the ```flexdashboard``` package and load it
+
+```{r, warning=FALSE, cache=TRUE, eval=FALSE}
+install.packages("flexdashboard")
+library(flexdashboard)
+```
+
+To do so you change the YAML to...
+
+```{r warning=FALSE, cache=TRUE, eval=FALSE}
+---
+title: "Untitled"
+output:
+  flexdashboard::flex_dashboard:
+  runtime: flexdashboard
+---
+```
+Then to add coloumns for the different visualisations add the following **not** in a code chunk. Here we are going to have a coloumn on the left with our histogram then a coloumn on the right with 2 data plot areas which will be empty for this demonstration...
+
+```{r, warning=FALSE, cache=TRUE, eval=FALSE}
+
+This is an example of an interactive dashboard...
+
+    
+Column {data-width=600}
+-------------------------------------
+### Chart 1
+
+```
+
+Then should be your code chunk from above with the histogram stuff in...
+
+Underneath the code chunk add (again not in a code chunk)
+
+```{r, warning=FALSE, cache=TRUE, eval=FALSE}
+   
+Column {data-width=400}
+-------------------------------------
+
+### Chart 2
+  
+
+```
+
+The add any code you wish (in a chunk), then to place another area beneath (still in the right hand coloumn) just add ### Chart 3 beneath the code...with all code removed it should look like this...
+
+```{r echo=FALSE, out.width = "600pt", fig.align='center', cache=TRUE}
+knitr::include_graphics('prac4_images/flexdash.png')
+```
+
+Note that by default flexdashboard doesn't show code...to show it you need to add echo=TRUE into the R code chunk headers or set 'global' code chunk options (within the first code chunk) through:
+
+```{r, warning=FALSE, cache=TRUE, eval=FALSE}
+knitr::opts_chunk$set(echo=TRUE)
+
+```
+
+### Word document
+
+How about a word document? Just change the YAML to 
+
+```{r, warning=FALSE, cache=TRUE, eval=FALSE}
+---
+title: "Untitled"
+output: word_document
+---
+```
+
+I've also removed all the coloumn stuff from the flexdashboard...should look something like this...
+
+```{r echo=FALSE, out.width = "600pt", fig.align='center', cache=TRUE}
+knitr::include_graphics('prac4_images/knitword.png')
+```
+
+### Knit options
+
 39. Various other options and tips can be found in the full R Markdown guide on RStudio here: 
 
 * https://rmarkdown.rstudio.com/lesson-1.html 
 * https://rmarkdown.rstudio.com/lesson-3.html (for code chunk options)
-* and in this the cheatsheets linked to above
+
 
 ## Adding references
 
@@ -366,7 +452,7 @@ This method will auto sync your references to the BibTex file, which you can the
 
 ### Add refereces into R
 
-43. In your document add the following to the YAML header (this is what we call the top of any RMarkdown header, enclosed by ---) 
+43. In your document add the following to the YAML header (this is what we call the top of any RMarkdown header, enclosed by ---). I beleive it stands for Yet Another Markup Language.
 
 I've added a few extra bits...these are pretty self-explanatory (e.g table of contents, numbered sections) but have a play around.
 
@@ -412,6 +498,7 @@ knitr::include_graphics('prac4_images/citr.png')
 ```
 
 ### Knitting your output
+
 
 Once you have incorporated some text and code into a test .Rmd document, you should now be able to knit it into a format of your choice.
 

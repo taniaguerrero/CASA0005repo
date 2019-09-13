@@ -24,7 +24,7 @@
 <meta name="author" content="Andy MacLachlan and Adam Dennett" />
 
 
-<meta name="date" content="2019-09-10" />
+<meta name="date" content="2019-09-13" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -250,7 +250,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.10" data-path="git-github-and-rmarkdown.html"><a href="git-github-and-rmarkdown.html#branches"><i class="fa fa-check"></i><b>4.10</b> Branches</a><ul>
 <li class="chapter" data-level="4.10.1" data-path="git-github-and-rmarkdown.html"><a href="git-github-and-rmarkdown.html#health-warning-1"><i class="fa fa-check"></i><b>4.10.1</b> Health warning</a></li>
 </ul></li>
-<li class="chapter" data-level="4.11" data-path="git-github-and-rmarkdown.html"><a href="git-github-and-rmarkdown.html#rmarkdown"><i class="fa fa-check"></i><b>4.11</b> RMarkdown</a></li>
+<li class="chapter" data-level="4.11" data-path="git-github-and-rmarkdown.html"><a href="git-github-and-rmarkdown.html#rmarkdown"><i class="fa fa-check"></i><b>4.11</b> RMarkdown</a><ul>
+<li class="chapter" data-level="4.11.1" data-path="git-github-and-rmarkdown.html"><a href="git-github-and-rmarkdown.html#html"><i class="fa fa-check"></i><b>4.11.1</b> HTML</a></li>
+<li class="chapter" data-level="4.11.2" data-path="git-github-and-rmarkdown.html"><a href="git-github-and-rmarkdown.html#flexdashboard"><i class="fa fa-check"></i><b>4.11.2</b> Flexdashboard</a></li>
+<li class="chapter" data-level="4.11.3" data-path="git-github-and-rmarkdown.html"><a href="git-github-and-rmarkdown.html#word-document"><i class="fa fa-check"></i><b>4.11.3</b> Word document</a></li>
+<li class="chapter" data-level="4.11.4" data-path="git-github-and-rmarkdown.html"><a href="git-github-and-rmarkdown.html#knit-options"><i class="fa fa-check"></i><b>4.11.4</b> Knit options</a></li>
+</ul></li>
 <li class="chapter" data-level="4.12" data-path="git-github-and-rmarkdown.html"><a href="git-github-and-rmarkdown.html#adding-references"><i class="fa fa-check"></i><b>4.12</b> Adding references</a><ul>
 <li class="chapter" data-level="4.12.1" data-path="git-github-and-rmarkdown.html"><a href="git-github-and-rmarkdown.html#set-up-mendeley"><i class="fa fa-check"></i><b>4.12.1</b> Set up Mendeley</a></li>
 <li class="chapter" data-level="4.12.2" data-path="git-github-and-rmarkdown.html"><a href="git-github-and-rmarkdown.html#add-refereces-into-r"><i class="fa fa-check"></i><b>4.12.2</b> Add refereces into R</a></li>
@@ -837,7 +842,8 @@ ArcGIS (Version 10.6 is the latest at time of writing, but may have already been
 </div>
 <div id="setup-2" class="section level4">
 <h4><span class="header-section-number">1.3.7.3</span> Setup 2</h4>
-<p>If you RStudio insn’t installed on your practical room PC…fear not…the good people over at RStudio have created a <a href="https://rstudio.cloud/">cloud version</a>…you have to sign up but can use it the same as the desktop version. It even works with Git and GitHub which we will cover later on in the course. The only real limitation is the upload file size — if you have any kind of ‘big data’ then you will reach the allowed limit. That won’t be a problem for the majority of this course except <a href="advanced-raster-analysis.html#advanced-raster-analysis">Advanced raster analysis</a>…that said you can now link R to googledrive and access any data stored on it with the <code>googledrive()</code> <a href="https://googledrive.tidyverse.org/">function</a> that is part of the <code>tidyverse</code> package. You could possible do this one OneDrive too, but it’s not as intuitive, have a look <a href="https://stackoverflow.com/questions/29579782/reading-onedrive-files-to-r">here</a>.</p>
+<p>If you RStudio insn’t installed on your practical room PC…fear not…the good people over at RStudio have created a <a href="https://rstudio.cloud/">cloud version</a>…you have to sign up but can use it the same as the desktop version. It even works with Git and GitHub which we will cover later on in the course. The only real limitation is the upload file size — if you have any kind of ‘big data’ then you will reach the allowed limit. That won’t be a problem for the majority of this course except <a href="advanced-raster-analysis.html#advanced-raster-analysis">Advanced raster analysis</a>…that said you can now link R to googledrive and access any data stored on it with the <code>googledrive()</code> <a href="https://googledrive.tidyverse.org/">function</a> that is part of the <code>tidyverse</code> package. You could possibly do this one OneDrive too, but it’s not as intuitive, have a look <a href="https://stackoverflow.com/questions/29579782/reading-onedrive-files-to-r">here</a>.</p>
+<p>RStudio cloud is really useful for sharing code and working collaboratively as you can add different users to the project.</p>
 <p>I’d recommend using RStudio locally (following <a href="geographic-information.html#setup-1">Setup 1</a>) to start with. If you are using RStudio cloud you’ll need to make a new workspace and upload the files we are using here with the upload button….</p>
 <p><img src="prac1_images/upload.png" width="400pt" style="display: block; margin: auto;" /></p>
 <p>If you upload a shapefile you will need to incldue all the relevant files and upload them to RStudio cloud as a <code>.zip</code></p>
@@ -906,8 +912,16 @@ ArcGIS (Version 10.6 is the latest at time of writing, but may have already been
 <p><img src="CASA0005_files/figure-html/unnamed-chunk-33-1.png" width="672" /></p>
 <p>From what we did in QGIS and ArcMap this should look familiar.</p>
 <p>We now need to load our <code>.csv</code> file:</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1"><span class="kw">library</span>(tidyverse)</a>
-<a class="sourceLine" id="cb9-2" title="2">mycsv &lt;-<span class="st">  </span><span class="kw">read_csv</span>(<span class="st">&quot;Prac1_data/fly_tipping_borough_edit.csv&quot;</span>)  </a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
+<pre><code>## -- Attaching packages -------- tidyverse 1.2.1 --</code></pre>
+<pre><code>## v ggplot2 3.2.1     v purrr   0.3.2
+## v tibble  2.1.3     v dplyr   0.8.3
+## v tidyr   0.8.3     v stringr 1.4.0
+## v readr   1.3.1     v forcats 0.4.0</code></pre>
+<pre><code>## -- Conflicts ----------- tidyverse_conflicts() --
+## x dplyr::filter() masks stats::filter()
+## x dplyr::lag()    masks stats::lag()</code></pre>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1">mycsv &lt;-<span class="st">  </span><span class="kw">read_csv</span>(<span class="st">&quot;Prac1_data/fly_tipping_borough_edit.csv&quot;</span>)  </a></code></pre></div>
 <pre><code>## Parsed with column specification:
 ## cols(
 ##   `Row Labels` = col_character(),
@@ -921,7 +935,7 @@ ArcGIS (Version 10.6 is the latest at time of writing, but may have already been
 ##   Grand_Total = col_double()
 ## )</code></pre>
 <p>To view the data just input:</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1">mycsv </a></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" title="1">mycsv </a></code></pre></div>
 <pre><code>## # A tibble: 34 x 9
 ##    `Row Labels` `2011_12` `2012_13` `2013_14` `2014_15` `2015_16` `2016_17`
 ##    &lt;chr&gt;            &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;
@@ -942,13 +956,13 @@ ArcGIS (Version 10.6 is the latest at time of writing, but may have already been
 <h4><span class="header-section-number">1.3.7.5</span> Join data</h4>
 <p>In R we’ve given our London boroughs shapefile the name shape and our flytipping <code>.csv</code> the name mycsv. If you look in the Environment quadrant you should see them both listed.</p>
 <p>Join the <code>.csv</code> to the shapefile. Here, replace Row Labels with whatever your GSS_CODE is called in the <code>.csv</code>:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1"><span class="kw">library</span>(sf)</a>
-<a class="sourceLine" id="cb13-2" title="2"><span class="kw">library</span>(tmaptools)</a>
-<a class="sourceLine" id="cb13-3" title="3"></a>
-<a class="sourceLine" id="cb13-4" title="4">shape&lt;-<span class="kw">merge</span>(shape, mycsv, <span class="dt">by.x=</span><span class="st">&quot;GSS_CODE&quot;</span>, <span class="dt">by.y=</span><span class="st">&quot;Row Labels&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb17-1" title="1"><span class="kw">library</span>(sf)</a>
+<a class="sourceLine" id="cb17-2" title="2"><span class="kw">library</span>(tmaptools)</a>
+<a class="sourceLine" id="cb17-3" title="3"></a>
+<a class="sourceLine" id="cb17-4" title="4">shape&lt;-<span class="kw">merge</span>(shape, mycsv, <span class="dt">by.x=</span><span class="st">&quot;GSS_CODE&quot;</span>, <span class="dt">by.y=</span><span class="st">&quot;Row Labels&quot;</span>)</a></code></pre></div>
 <p>Let’s break this down a bit. We just created a tibble of mycsv (this is a new form of a dataframe) where each column has a variable and each row contains a set of values — so basically a normal table. The match simply found the GSS_CODE values in the <code>.csv</code> and joined the data to our shapefile.</p>
 <p>Check the merge was successful, this is just going to show the top 10 rows:</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" title="1"><span class="kw">head</span>(shape, <span class="dt">n=</span><span class="dv">10</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" title="1"><span class="kw">head</span>(shape, <span class="dt">n=</span><span class="dv">10</span>)</a></code></pre></div>
 <pre><code>## Simple feature collection with 10 features and 15 fields
 ## geometry type:  MULTIPOLYGON
 ## dimension:      XY
@@ -989,18 +1003,18 @@ ArcGIS (Version 10.6 is the latest at time of writing, but may have already been
 ## 9        48696 MULTIPOLYGON (((510253.5 18...
 ## 10       41104 MULTIPOLYGON (((531023.5 20...</code></pre>
 <p>Now, let’s make a quick thematic map (or a qtm) using the package <code>tmap</code>. I’ve made mine for flytipping between 2011 and 2012 (column 2011_12):</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1"><span class="kw">library</span>(tmap)</a>
-<a class="sourceLine" id="cb16-2" title="2"><span class="kw">library</span>(tmaptools)</a>
-<a class="sourceLine" id="cb16-3" title="3"><span class="kw">tmap_mode</span>(<span class="st">&quot;plot&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" title="1"><span class="kw">library</span>(tmap)</a>
+<a class="sourceLine" id="cb20-2" title="2"><span class="kw">library</span>(tmaptools)</a>
+<a class="sourceLine" id="cb20-3" title="3"><span class="kw">tmap_mode</span>(<span class="st">&quot;plot&quot;</span>)</a></code></pre></div>
 <pre><code>## tmap mode set to plotting</code></pre>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" title="1"><span class="kw">qtm</span>(shape, <span class="dt">fill =</span> <span class="st">&quot;2011_12&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" title="1"><span class="kw">qtm</span>(shape, <span class="dt">fill =</span> <span class="st">&quot;2011_12&quot;</span>)</a></code></pre></div>
 <p><img src="CASA0005_files/figure-html/unnamed-chunk-38-1.png" width="672" /></p>
 </div>
 </div>
 <div id="export-data-2" class="section level3">
 <h3><span class="header-section-number">1.3.8</span> Export data</h3>
 <p>Finally write shape to a new GeoPackage (<code>.gpkg</code>) giving it the layer name of your choice:</p>
-<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb19-1" title="1"><span class="kw">st_write</span>(shape, <span class="st">&quot;Prac1_data/Rwk1.gpkg&quot;</span>, <span class="st">&quot;london_boroughs_fly_tipping&quot;</span>, <span class="dt">delete_layer=</span><span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb23-1" title="1"><span class="kw">st_write</span>(shape, <span class="st">&quot;Prac1_data/Rwk1.gpkg&quot;</span>, <span class="st">&quot;london_boroughs_fly_tipping&quot;</span>, <span class="dt">delete_layer=</span><span class="ot">TRUE</span>)</a></code></pre></div>
 <pre><code>## Deleting layer `london_boroughs_fly_tipping&#39; using driver `GPKG&#39;
 ## Updating layer `london_boroughs_fly_tipping&#39; to data source `Prac1_data/Rwk1.gpkg&#39; using driver `GPKG&#39;
 ## features:       33
@@ -1008,11 +1022,11 @@ ArcGIS (Version 10.6 is the latest at time of writing, but may have already been
 ## geometry type:  Multi Polygon</code></pre>
 <p>So here, we are saying the shape is the object we want to save, then to the GeoPackage file path, with the layer name of <code>london_boroughs_fly_tipping</code>. I’ve set <code>delete_layer</code> to true so I could overwrite mine when I developed this practical. Changing it to false would generate an error message if you ever tried to re-run the code.</p>
 <p>Let’s also add the <code>.csv</code> as we did in QGIS. This is a bit more complicated as we have to use the SQLite database package. Firstly, connect to the <code>.gpkg</code> we just made:</p>
-<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb21-1" title="1"><span class="kw">library</span>(readr)</a>
-<a class="sourceLine" id="cb21-2" title="2"><span class="kw">library</span>(RSQLite)</a>
-<a class="sourceLine" id="cb21-3" title="3">con &lt;-<span class="st"> </span><span class="kw">dbConnect</span>(RSQLite<span class="op">::</span><span class="kw">SQLite</span>(),<span class="dt">dbname=</span><span class="st">&quot;Prac1_data/Rwk1.gpkg&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" title="1"><span class="kw">library</span>(readr)</a>
+<a class="sourceLine" id="cb25-2" title="2"><span class="kw">library</span>(RSQLite)</a>
+<a class="sourceLine" id="cb25-3" title="3">con &lt;-<span class="st"> </span><span class="kw">dbConnect</span>(RSQLite<span class="op">::</span><span class="kw">SQLite</span>(),<span class="dt">dbname=</span><span class="st">&quot;Prac1_data/Rwk1.gpkg&quot;</span>)</a></code></pre></div>
 <p>Now examine what is in the <code>.gpkg</code>…you can see that i’ve already got my <code>original_csv</code> stored within the <code>.gpkg</code> as when i developed this practical i made sure it was working!</p>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" title="1"><span class="kw">dbListTables</span>(con)</a></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" title="1"><span class="kw">dbListTables</span>(con)</a></code></pre></div>
 <pre><code>##  [1] &quot;gpkg_contents&quot;                                
 ##  [2] &quot;gpkg_extensions&quot;                              
 ##  [3] &quot;gpkg_geometry_columns&quot;                        
@@ -1030,37 +1044,37 @@ ArcGIS (Version 10.6 is the latest at time of writing, but may have already been
 ## [15] &quot;rtree_london_boroughs_fly_tipping_geom_rowid&quot; 
 ## [16] &quot;sqlite_sequence&quot;</code></pre>
 <p>Add your <code>.csv</code> and disconnect from the <code>.gpkg</code>:</p>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" title="1"><span class="kw">dbWriteTable</span>(con,<span class="st">&quot;original_csv&quot;</span>, mycsv, <span class="dt">overwrite=</span><span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb24-2" title="2"><span class="kw">dbDisconnect</span>(con)</a></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" title="1"><span class="kw">dbWriteTable</span>(con,<span class="st">&quot;original_csv&quot;</span>, mycsv, <span class="dt">overwrite=</span><span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb28-2" title="2"><span class="kw">dbDisconnect</span>(con)</a></code></pre></div>
 <p>Here overwrite let’s you well..overwrite the exisiting file…if this wasn’t specified as true you would get an error saying the file already existed if you tried to run this code again.</p>
 <div id="making-a-script" class="section level4">
 <h4><span class="header-section-number">1.3.8.1</span> Making a script</h4>
 <p>To convert this bit of analysis into a script that we could save and run again in future, I would write the following in the script quadrant:</p>
-<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb25-1" title="1"><span class="kw">library</span>(sf, tmap, tmaptools, RSQLite, tidyverse)</a>
-<a class="sourceLine" id="cb25-2" title="2"><span class="co">#read in the shapefile</span></a>
-<a class="sourceLine" id="cb25-3" title="3">shape &lt;-<span class="st"> </span><span class="kw">st_read</span>(</a>
-<a class="sourceLine" id="cb25-4" title="4">  <span class="st">&quot;Prac1_data/statistical-gis-boundaries-london/ESRI/London_Borough_Excluding_MHW.shp&quot;</span>)</a>
-<a class="sourceLine" id="cb25-5" title="5"><span class="co"># read in the csv</span></a>
-<a class="sourceLine" id="cb25-6" title="6">mycsv &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;Prac1_data/fly_tipping_borough_edit.csv&quot;</span>)  </a>
-<a class="sourceLine" id="cb25-7" title="7"><span class="co"># merge csv and shapefile</span></a>
-<a class="sourceLine" id="cb25-8" title="8">shape &lt;-<span class="st"> </span><span class="kw">merge</span>(shape, </a>
-<a class="sourceLine" id="cb25-9" title="9">               mycsv, </a>
-<a class="sourceLine" id="cb25-10" title="10">               <span class="dt">by.x=</span><span class="st">&quot;GSS_CODE&quot;</span>, </a>
-<a class="sourceLine" id="cb25-11" title="11">               <span class="dt">by.y=</span><span class="st">&quot;Row Labels&quot;</span>)</a>
-<a class="sourceLine" id="cb25-12" title="12"><span class="co"># set tmap to plot</span></a>
-<a class="sourceLine" id="cb25-13" title="13"><span class="kw">tmap_mode</span>(<span class="st">&quot;plot&quot;</span>)</a>
-<a class="sourceLine" id="cb25-14" title="14"><span class="co"># have a look at the map</span></a>
-<a class="sourceLine" id="cb25-15" title="15"><span class="kw">qtm</span>(shape, <span class="dt">fill =</span> <span class="st">&quot;2011_12&quot;</span>)</a>
-<a class="sourceLine" id="cb25-16" title="16"><span class="co"># write to a .gpkg</span></a>
-<a class="sourceLine" id="cb25-17" title="17"><span class="kw">st_write</span>(shape, <span class="st">&quot;Prac1_data/Rwk1.gpkg&quot;</span>, <span class="st">&quot;london_boroughs_fly_tipping&quot;</span>, <span class="dt">delete_layer=</span><span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb25-18" title="18"><span class="co"># connect to the .gpkg</span></a>
-<a class="sourceLine" id="cb25-19" title="19">con &lt;-<span class="st"> </span><span class="kw">dbConnect</span>(<span class="kw">SQLite</span>(),<span class="dt">dbname=</span><span class="st">&quot;Prac1_data/Rwk1.gpkg&quot;</span>)</a>
-<a class="sourceLine" id="cb25-20" title="20"><span class="co"># list what is in it</span></a>
-<a class="sourceLine" id="cb25-21" title="21"><span class="kw">dbListTables</span>(con)</a>
-<a class="sourceLine" id="cb25-22" title="22"><span class="co"># add the original .csv</span></a>
-<a class="sourceLine" id="cb25-23" title="23"><span class="kw">dbWriteTable</span>(con,<span class="st">&quot;original_csv&quot;</span>, mycsv, <span class="dt">overwrite=</span><span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb25-24" title="24"><span class="co"># disconnect from it</span></a>
-<a class="sourceLine" id="cb25-25" title="25"><span class="kw">dbDisconnect</span>(con)</a></code></pre></div>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" title="1"><span class="kw">library</span>(sf, tmap, tmaptools, RSQLite, tidyverse)</a>
+<a class="sourceLine" id="cb29-2" title="2"><span class="co">#read in the shapefile</span></a>
+<a class="sourceLine" id="cb29-3" title="3">shape &lt;-<span class="st"> </span><span class="kw">st_read</span>(</a>
+<a class="sourceLine" id="cb29-4" title="4">  <span class="st">&quot;Prac1_data/statistical-gis-boundaries-london/ESRI/London_Borough_Excluding_MHW.shp&quot;</span>)</a>
+<a class="sourceLine" id="cb29-5" title="5"><span class="co"># read in the csv</span></a>
+<a class="sourceLine" id="cb29-6" title="6">mycsv &lt;-<span class="st"> </span><span class="kw">read_csv</span>(<span class="st">&quot;Prac1_data/fly_tipping_borough_edit.csv&quot;</span>)  </a>
+<a class="sourceLine" id="cb29-7" title="7"><span class="co"># merge csv and shapefile</span></a>
+<a class="sourceLine" id="cb29-8" title="8">shape &lt;-<span class="st"> </span><span class="kw">merge</span>(shape, </a>
+<a class="sourceLine" id="cb29-9" title="9">               mycsv, </a>
+<a class="sourceLine" id="cb29-10" title="10">               <span class="dt">by.x=</span><span class="st">&quot;GSS_CODE&quot;</span>, </a>
+<a class="sourceLine" id="cb29-11" title="11">               <span class="dt">by.y=</span><span class="st">&quot;Row Labels&quot;</span>)</a>
+<a class="sourceLine" id="cb29-12" title="12"><span class="co"># set tmap to plot</span></a>
+<a class="sourceLine" id="cb29-13" title="13"><span class="kw">tmap_mode</span>(<span class="st">&quot;plot&quot;</span>)</a>
+<a class="sourceLine" id="cb29-14" title="14"><span class="co"># have a look at the map</span></a>
+<a class="sourceLine" id="cb29-15" title="15"><span class="kw">qtm</span>(shape, <span class="dt">fill =</span> <span class="st">&quot;2011_12&quot;</span>)</a>
+<a class="sourceLine" id="cb29-16" title="16"><span class="co"># write to a .gpkg</span></a>
+<a class="sourceLine" id="cb29-17" title="17"><span class="kw">st_write</span>(shape, <span class="st">&quot;Prac1_data/Rwk1.gpkg&quot;</span>, <span class="st">&quot;london_boroughs_fly_tipping&quot;</span>, <span class="dt">delete_layer=</span><span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb29-18" title="18"><span class="co"># connect to the .gpkg</span></a>
+<a class="sourceLine" id="cb29-19" title="19">con &lt;-<span class="st"> </span><span class="kw">dbConnect</span>(<span class="kw">SQLite</span>(),<span class="dt">dbname=</span><span class="st">&quot;Prac1_data/Rwk1.gpkg&quot;</span>)</a>
+<a class="sourceLine" id="cb29-20" title="20"><span class="co"># list what is in it</span></a>
+<a class="sourceLine" id="cb29-21" title="21"><span class="kw">dbListTables</span>(con)</a>
+<a class="sourceLine" id="cb29-22" title="22"><span class="co"># add the original .csv</span></a>
+<a class="sourceLine" id="cb29-23" title="23"><span class="kw">dbWriteTable</span>(con,<span class="st">&quot;original_csv&quot;</span>, mycsv, <span class="dt">overwrite=</span><span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb29-24" title="24"><span class="co"># disconnect from it</span></a>
+<a class="sourceLine" id="cb29-25" title="25"><span class="kw">dbDisconnect</span>(con)</a></code></pre></div>
 <p>You can then save your script through File &gt; Save As.</p>
 </div>
 </div>

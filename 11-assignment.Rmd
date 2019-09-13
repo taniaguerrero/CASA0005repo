@@ -89,6 +89,7 @@ This is by no means an extensive data list, but summarises data used within some
 * NASA SocioEconomic Data and Applications Center (SEDAC): https://sedac.ciesin.columbia.edu/
 * UN environmental data explorer: http://geodata.grid.unep.ch/
 * World pop: https://www.worldpop.org/
+* World pop github: https://github.com/wpgp
 * DIVA-GIS: https://www.diva-gis.org/
 * DEFRA: https://environment.data.gov.uk/
 * US Cesus data: https://www.census.gov/data.html
@@ -159,7 +160,7 @@ The literature review should evaluate exisiting research, deomstrate contrasting
 
 Methodology is what you did (analysis, data processing etc), a reader should be able to replicate your analysis but you don't need excessive detail --- you do not need to list every tool you used. For example, data was loaded uisng `read_csv()` and then reprojected using `st_transform()` is too much information for the assignment (you could include this type of information in the comments of your code / RMarkdown document). 
 
-Results is what you found --- be selective about figures your include a narrative guding the reader through your findings, don't just present result after result after result. 
+Results is what you found --- be selective about figures you include a narrative guding the reader through your findings, don't just present result after result after result. 
 
 Discussion should have lots of critical reflection...by that i mean... how do your results fit in with and then advance the ideas presented by others either in academic or policy literature. Really say why this is important with appropraite referencing. 
 
