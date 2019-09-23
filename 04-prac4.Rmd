@@ -527,7 +527,7 @@ This practical book is build using RStudio, but as i update the packages and con
 
 * [R binder blog post](https://kbroman.org/blog/2019/02/18/omg_binder/)
 
-* [YoutTube walkthrough](https://www.youtube.com/watch?v=wSkheV-Uqq4)
+* [YouTube walkthrough](https://www.youtube.com/watch?v=wSkheV-Uqq4)
 
 * [R Studio conference talk on reproducible research](https://resources.rstudio.com/rstudio-conf-2019/a-guide-to-modern-reproducible-data-science-with-r)
 

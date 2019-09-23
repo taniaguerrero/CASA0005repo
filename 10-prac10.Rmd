@@ -1,4 +1,4 @@
-# MAUP and more regression
+# Advanced R, MAUP and more regression
 
 ## Learning outcomes
 
@@ -243,7 +243,13 @@ qtm(hold[[2]], fill = "freq")
 
 When should i use a loop?
 
-Well that's a hard question...generally loops are considered inefficient in R, but i'm yet to come across a method that will let you increment one varibale whilst keeping another consistent ...by this i mean like what we did in our loop. We changed what spatial data was joined with the Airbnb data --- the Airbnb data remained the same. There are a few other functions like `mapply()`, `sapply()` and `tapply()` that work in the same format as `lapply()` but to my knowledge they still will increment all of the variables at the same time.
+Well that's a hard question...generally loops used to be considered inefficient in R, but i'm yet to come across a method that will let you increment one varibale whilst keeping another consistent ...by this i mean like what we did in our loop. We changed what spatial data was joined with the Airbnb data --- the Airbnb data remained the same. There are a few other functions like `mapply()`, `sapply()` and `tapply()` that work in the same format as `lapply()` but to my knowledge they still will increment all of the variables at the same time. 
+
+In terms of code clarity i'm going to refer to [section 21.5 on iteration](https://r4ds.had.co.nz/iteration.html) in Wickham $ Grolemund (2017)... 
+
+"Some people will tell you to avoid for loops because they are slow. They’re wrong! (Well at least they’re rather out of date, as for loops haven’t been slow for many years). The chief benefits of using 'other functions' is not speed, but clarity: they make your code easier to write and to read". 
+
+That said, within this course you are not marked on how 'good' or 'efficient' your code is. Sure, i want you to write great code, but if you are writing code for your assigment or any future project really, my advice is the same. Get something that work and addresses the mark scheme (read the mark scheme!) and then if you have time, improve it later on. There is also a section later on about writing advanced code in the assignment. 
 
 ### Advanced mapping (again)
 
@@ -951,6 +957,8 @@ predict(linearmodel, newdata, interval="confidence", level=0.95)
 ### Should i write advanced code
 
 It would be great if you could write your analysis in as least possible lines of code as possible...**BUT** you are not marked on how concise or efficient your code is in this course. My advice would be to get something that works and addresses all of the marking criteria. 
+
+
 
 ## More resources
 
