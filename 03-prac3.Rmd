@@ -307,8 +307,9 @@ twomonths<-subset(squishdata, variable=="Jan" | variable=="Jun")
 
 26. Get the mean for each month we selected
 
-```{r, cache=TRUE}
+```{r, cache=TRUE, messages=FALSE, warnings=FALSE}
 library(plyr)
+library(dplyr)
 meantwomonths <- ddply(twomonths, 
                        "variable", 
                        summarise, 

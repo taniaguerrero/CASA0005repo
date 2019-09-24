@@ -273,7 +273,7 @@ Now, earlier on in this exercise, I got you to open a new R Script. You now need
 
 When you create a new R Markdown document it's populated with some example data, click Knit to see what it does...the file should load in the viewer pane, if you click the arrow and browser button it will open in an internet browser..
 
-```{r echo=FALSE, out.width = "600pt", fig.align='center', cache=TRUE}
+```{r echo=FALSE, out.width = "800pt", fig.align='center', cache=TRUE}
 knitr::include_graphics('prac4_images/Rmakrdowneg.png')
 ```
 
@@ -346,7 +346,7 @@ ihist
 
 38. When including code chunks in your work, there are various options that allow you to do things like include the code, but not run it: display the output but not the code, hide warnings etc. Most of these can be input automatically by clicking the cog icon in the top-right of the chunk, or you can specify them in the code header of the chunk...if you toggle the buttons you'll see the code change in the chunk 'header'. There are also two useful icons to the right of the settings cog, the first will run all code above the current chunck (play symbol facing downwards) and the second will run the current code chunk (regular play symbol)
 
-```{r echo=FALSE, out.width = "600pt", fig.align='center', cache=TRUE}
+```{r echo=FALSE, out.width = "800pt", fig.align='center', cache=TRUE}
 knitr::include_graphics('prac4_images/code_chunk_options.png')
 ```
 
@@ -497,10 +497,7 @@ library(citr)
 knitr::include_graphics('prac4_images/citr.png')
 ```
 
-### Knitting your output
-
-
-Once you have incorporated some text and code into a test .Rmd document, you should now be able to knit it into a format of your choice.
+### YAML options
 
 Information to help format your knitted file is contained in the YAML header at the top. In here, you can add things like tables of contents, apply specific themes, etc.
 
@@ -508,11 +505,8 @@ For a selection of nice themes, see go [here](http://www.datadreaming.org/post/r
 
 For things like adding Tables of Contents, tabbed sections (in HTML), figure and table parameters look [here](https://bookdown.org/yihui/rmarkdown/html-document.html)
 
-If you have selected an R Markdown Notebook, in the menu bar at the top of the page, you should see a ‘Preview’ button. If you click this, your ```.Rmd``` file will be knitted automatically into an interactive html document --- try it!
-
-If you click the small arrow next to the preview button, a menu will appear giving you the option to knit into a selection of other formats, including PDF and Word. Try those too...
-
 ### Packrat
+
 Packrat is useful as it let's you store all of your loaded packages in a folder within your project, if you were then to move or share your project someone else could load the packages you have used (and the appopraite version) permitting them to run your code with no isses and no inflence their main R package library. You can access Packrat through the icon under the Packages tab...or Tools > Project Options..
 
 ```{r echo=FALSE, out.width = "400pt", fig.align='center', cache=TRUE}
@@ -523,7 +517,7 @@ This practical book is build using RStudio, but as i update the packages and con
 
 ## Binder
 
-[Binder](https://mybinder.org/) is a free platform that makes it possible to share code very easily. I've only just come across it, so i haven't personally tried it yet. But basically you can take your RProject (that is stored on GitHub) and add a bit of extra code to it that will provide a link button (called a bage), if clicked it will then take you to an RStudio cloud workspace with all your code and data loaded, meaning they could run your analysis with one click anywhere on any device. Fore more information have a look at:
+[Binder](https://mybinder.org/) is a free platform that makes it possible to share code very easily. I've only just come across it, so i haven't personally tried it yet. But basically you can take your RProject (that is stored on GitHub) and add a bit of extra code to it that will provide a link button (called a bage), if clicked it will then take you to an RStudio cloud workspace with all your code and data loaded, meaning someone could run your analysis with one click anywhere on any device. Fore more information have a look at:
 
 * [R binder blog post](https://kbroman.org/blog/2019/02/18/omg_binder/)
 

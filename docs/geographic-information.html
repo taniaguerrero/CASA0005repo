@@ -24,7 +24,7 @@
 <meta name="author" content="Andy MacLachlan and Adam Dennett" />
 
 
-<meta name="date" content="2019-09-23" />
+<meta name="date" content="2019-09-24" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -183,6 +183,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="1.5" data-path="geographic-information.html"><a href="geographic-information.html#summary"><i class="fa fa-check"></i><b>1.5</b> Summary</a></li>
 <li class="chapter" data-level="1.6" data-path="geographic-information.html"><a href="geographic-information.html#feedback"><i class="fa fa-check"></i><b>1.6</b> Feedback</a></li>
+<li class="chapter" data-level="1.7" data-path="geographic-information.html"><a href="geographic-information.html#mac-r-issues"><i class="fa fa-check"></i><b>1.7</b> Mac R issues</a></li>
 </ul></li>
 <li class="chapter" data-level="2" data-path="introduction-to-r.html"><a href="introduction-to-r.html"><i class="fa fa-check"></i><b>2</b> Introduction to R</a><ul>
 <li class="chapter" data-level="2.1" data-path="introduction-to-r.html"><a href="introduction-to-r.html#learning-outcomes-1"><i class="fa fa-check"></i><b>2.1</b> Learning outcomes</a></li>
@@ -260,7 +261,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="4.12.1" data-path="git-github-and-rmarkdown.html"><a href="git-github-and-rmarkdown.html#set-up-mendeley"><i class="fa fa-check"></i><b>4.12.1</b> Set up Mendeley</a></li>
 <li class="chapter" data-level="4.12.2" data-path="git-github-and-rmarkdown.html"><a href="git-github-and-rmarkdown.html#add-refereces-into-r"><i class="fa fa-check"></i><b>4.12.2</b> Add refereces into R</a></li>
 <li class="chapter" data-level="4.12.3" data-path="git-github-and-rmarkdown.html"><a href="git-github-and-rmarkdown.html#references-using-citr"><i class="fa fa-check"></i><b>4.12.3</b> References using <code>citr</code></a></li>
-<li class="chapter" data-level="4.12.4" data-path="git-github-and-rmarkdown.html"><a href="git-github-and-rmarkdown.html#knitting-your-output"><i class="fa fa-check"></i><b>4.12.4</b> Knitting your output</a></li>
+<li class="chapter" data-level="4.12.4" data-path="git-github-and-rmarkdown.html"><a href="git-github-and-rmarkdown.html#yaml-options"><i class="fa fa-check"></i><b>4.12.4</b> YAML options</a></li>
 <li class="chapter" data-level="4.12.5" data-path="git-github-and-rmarkdown.html"><a href="git-github-and-rmarkdown.html#packrat"><i class="fa fa-check"></i><b>4.12.5</b> Packrat</a></li>
 </ul></li>
 <li class="chapter" data-level="4.13" data-path="git-github-and-rmarkdown.html"><a href="git-github-and-rmarkdown.html#binder"><i class="fa fa-check"></i><b>4.13</b> Binder</a></li>
@@ -839,6 +840,7 @@ ArcGIS (Version 10.6 is the latest at time of writing, but may have already been
 <p>You can install R Studio on your own machine from: <a href="https://www.rstudio.com/products/rstudio/download/#download" class="uri">https://www.rstudio.com/products/rstudio/download/#download</a></p>
 <p>R studio requires R which you can download from: <a href="https://cran.rstudio.com/" class="uri">https://cran.rstudio.com/</a></p>
 <p>RStudio is a free and open-source integrated development environment for R — it makes R much easier to use.</p>
+<p>If you are using a Mac and run into issues check out the <a href="geographic-information.html#mac-r-issues">Mac R issues</a> section</p>
 </div>
 <div id="setup-2" class="section level4">
 <h4><span class="header-section-number">1.3.7.3</span> Setup 2</h4>
@@ -1132,6 +1134,36 @@ ArcGIS (Version 10.6 is the latest at time of writing, but may have already been
 <div id="feedback" class="section level2">
 <h2><span class="header-section-number">1.6</span> Feedback</h2>
 <p>Was anything that we explained unclear this week or was something really clear…let us know <a href="https://forms.gle/w2GUDYc7tSavGy7r6">here</a>. It’s anonymous and we’ll use the responses to clear any issues up in the future / adapt the material.</p>
+</div>
+<div id="mac-r-issues" class="section level2">
+<h2><span class="header-section-number">1.7</span> Mac R issues</h2>
+<p>If you have a Mac and run into issues using R, try this…</p>
+<p>It seems that a lot of the packages are dependent on rgdal, which might not properly install…</p>
+<p><strong>Order of operations</strong></p>
+<ol style="list-style-type: decimal">
+<li>Install java JDK (to respond to error Unable to find any JVMs matching version “(null)”, which occurred when we tried to load <code>OpenStreetMap</code> package in RStudio)</li>
+</ol>
+<p>2.Download and install the appropriate <code>.dmg</code> from <a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">Java SE Development Kit 11.0.1</a></p>
+<ol start="3" style="list-style-type: decimal">
+<li><p>Run sudo R CMD javareconf in Terminal as described <a href="http://conjugateprior.org/2014/12/r-java8-osx/">here</a>(though don’t follow this tutorial exactly, just up to that terminal command).</p></li>
+<li><p>(Maybe) restart your computer (not really sure when this is necessary).</p></li>
+</ol>
+<p><strong>Install GDAL</strong></p>
+<p>GDAL, the Geospatial Data Abstraction Library, appears to be a massively important package / library / whatever that a lot of the spatial tools we use depends on. This is where things might be sticky — we already installed GDAL for QGIS, but obviously RStudio can’t find that install … dunno how to update the pointers, but we found that installing GDAL (again?) solved it. We HOPE that this didn’t ruin or break any other software we’ve installed, only time will tell :grimacing:</p>
+<ol start="6" style="list-style-type: decimal">
+<li>To install GDAL on a mac, first (if you haven’t) install <a href="https://brew.sh/">homebrew</a>, the mac package manager</li>
+</ol>
+<p>This can be done by executing <code>/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"</code> in Terminal, inputting password etc.</p>
+<ol start="7" style="list-style-type: decimal">
+<li>Now we’re ready to brew install gdal (also in Terminal), which will run through and install a massive list of dependencies etc.</li>
+</ol>
+<p><strong>Set up RStudio</strong></p>
+<ol start="8" style="list-style-type: decimal">
+<li><p>Restart RStudio (if the following doesn’t work on first go…)</p></li>
+<li><p>Run through all the <code>install.packages()</code> commands one by one in RStudio and check to make sure that they install.</p></li>
+<li><p>Check if <code>rgdal</code> package is working.</p></li>
+<li><p>Check the other packages <code>OpenStreetMap</code>, <code>tmap</code>, etc.</p></li>
+</ol>
 
 </div>
 </div>

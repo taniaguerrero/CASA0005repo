@@ -141,6 +141,7 @@ knitr::include_url("https://www.youtube.com/embed/1NGMoW51jmA")
 * PowerPoint (from UCL software site)
 * Draw.io: https://www.draw.io/ 
 * Lucidchart: https://www.lucidchart.com/pages/examples/flowchart-maker
+* R Package `DiagrammeR`: https://rich-iannone.github.io/DiagrammeR/
 
 Free at the time of writing
 
