@@ -734,7 +734,7 @@ What makes a bad map then... and what should you avoid:
 * Presented data is too small or too big --- be critical about what you produce, it should be easy to read and understand
 * A map or figure without enough detail --- **A reader should be able to understand a map or figure using the graphic in the figure/map and the caption alone!** A long caption is **fine** assuming it's all relevant information.
 
-For more cartography ideas/advice have a look at this [blog post](https://www.katiejolly.io/blog/2019-08-28/nyt-urban-heat) and consult [axis map catography guide](https://www.axismaps.com/guide/).
+For more cartography ideas/advice have a look at this [blog post](https://www.katiejolly.io/blog/2019-08-28/nyt-urban-heat), consult [axis map catography guide](https://www.axismaps.com/guide/) and check out the [data is beautiful reddit](https://www.reddit.com/r/dataisbeautiful/).
 
 ## Feedback
 

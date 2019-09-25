@@ -88,6 +88,8 @@ If you are struggling to use R don't worry...here is some advice from an [interv
 
 You can also go through other free resources including: 
 
+* [Free RStudio Education resources](https://education.rstudio.com)
+
 * [Codeacademy](https://www.codecademy.com/learn/learn-r)
 
 * [YaRrr! The Pirate's Guide to R](https://bookdown.org/ndphillips/YaRrr/)

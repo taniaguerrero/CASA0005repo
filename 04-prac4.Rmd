@@ -261,6 +261,8 @@ OK, so now you have set everything up so that you can become a reproducable rese
 
 For the definitive guide on R Markdown, please read [R Markdown: The Definitive Guide](https://bookdown.org/yihui/rmarkdown/) --- obviously! It will tell you everything you need to know, far beyond what I am telling you here.
 
+The [RMarkdown for scientists](https://rmd4sci.njtierney.com) workshop by Nicholas Tierney is a really quick guide for how to use it for reproducible science.
+
 There is also an excellent guide on the R Studio [website](https://rmarkdown.rstudio.com/lesson-1.html)
 
 And a quick cheatsheet [here](https://github.com/rstudio/cheatsheets/raw/master/rmarkdown-2.0.pdf)

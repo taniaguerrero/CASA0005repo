@@ -12,7 +12,7 @@ There is a suggested timeline of work for your assignment provided in the assess
 
 ## Markscheme
 
-The markscheme can be found on Moodle with a break down of how much percent is given to each criteron.  
+The markscheme can be found on Moodle with a break down of how much percent is given to each criteron. Read it closely **and often** when writing your assignment.
 
 ## Examples of previous work
 
@@ -27,11 +27,15 @@ New packages and functions that i've recently come across that are worth explori
 * Bivariate maps: https://timogrossenbacher.ch/2019/04/bivariate-maps-with-ggplot2-and-sf/
 * Rayshader: https://www.rayshader.com/
 * Cartography package: http://riatelab.github.io/cartography/docs/
+* Data is beautiful reddit: https://www.reddit.com/r/dataisbeautiful/
 
 ## Books/reading resources
 
 There are a lot of free online books for geospatial analysis, especially using R, check out:
 
+* https://edav.info/index.html
+* https://whattheyforgot.org/
+* https://rmd4sci.njtierney.com/
 * https://www.rstudio.com/resources/training/books/
 * https://r-graphics.org/
 * http://hadley.nz/
@@ -43,6 +47,8 @@ There are a lot of free online books for geospatial analysis, especially using R
 * https://thinkr-open.github.io/building-shiny-apps-workflow/
 
 If you want to produce more efficent R code then have a look at the [Efficient R programming](https://csgillespie.github.io/efficientR/index.html) book.
+
+...that's a lot of books, should we read all of them? No, be selective, a lot of the same material will be covered in each book. Follow your interests and read widely !
 
 ## New developments
 
@@ -59,7 +65,7 @@ Other useful tutorials can be found here:
 
 ### Twitter
 
-R package authors regular tweet with updates and new developments. If twitter is your thing go and follow these people to start with:
+R package authors regular tweet with updates and new developments. If twitter is your thing go and follow these people to start with...and anyone else you come across...
 
 * [Hadley Wickham](https://twitter.com/hadleywickham)
 * [Alison Hill](https://twitter.com/apreshill)
@@ -67,8 +73,9 @@ R package authors regular tweet with updates and new developments. If twitter is
 * [Yihui Xie](https://twitter.com/xieyihui)
 * [Hannah Frick](https://twitter.com/hfcfrick)
 * [Jakub Nowosad](https://twitter.com/jakub_nowosad)
+* [Nick Tierney](https://twitter.com/nj_tierney)
 
-and anyone else you come across...
+I often learn about a lot of new R pacakges / code / isuues from Twitter!
 
 ## Data
 
@@ -147,22 +154,36 @@ Free at the time of writing
 
 ## Basics
 
-* Don't cut and paste maps / figures, export them propperly 
+Here are some tips based on common marker comments of how to write a decent assingment...
+
+* Don't cut and paste maps / figures / formulas/ tables, export them properly or remake them nicely and credit a source somewhere such as the figure caption (e.g. source Smith et al. 2009 or adapted from Smith et al. 2009). 
 * Make maps and figures the right way --- don't just leave layer names (e.g. osm_points_road) in a legend, rename them.
-* If you use a formula write it properly --- don't cut and paste
+* If you use a formula write it properly --- don't cut and paste, fully explain all the symbols / variables too.
 * Make sure you write a sufficient caption for figures / maps / flow diagrams / tables. The reader should be able to understand them without any other information. In other words, if you gave someone a figure with just the caption they should be able to tell you what it shows
 * Don't bullet point methods, summarise with sentances and use a flow diagram if appropraite
 
 Here is a quick guide to writing a report...
 
-Make sure you say why your mini investiation is important near the start--- why should we care! The introduction should set the scene and introduce the reader to issue, its importance and lead onto outlining the research question of the study.
+### Introduction
 
-The literature review should evaluate exisiting research, deomstrate contrasting and/or similar views whilst highlight research gaps (that hopefully your research will contribute to / address). This could also include policy documents or documents from reputable soruces (e.g. UN / EU / authoritative bodies).
+Make sure you say why your mini investiation is important near the start--- why should we care! Try to answer the so what question. The introduction should set the scene and introduce the reader to issue (what is the background to it), its importance (so what?) and lead onto outlining the research question of the study.
 
-Methodology is what you did (analysis, data processing etc), a reader should be able to replicate your analysis but you don't need excessive detail --- you do not need to list every tool you used. For example, data was loaded uisng `read_csv()` and then reprojected using `st_transform()` is too much information for the assignment (you could include this type of information in the comments of your code / RMarkdown document). 
+### Literature review
 
-Results is what you found --- be selective about figures you include a narrative guding the reader through your findings, don't just present result after result after result. 
+The literature review should evaluate exisiting research, deomstrate contrasting and/or similar views whilst highlight research gaps (that hopefully your research will contribute to / address). This could also include policy documents or documents from reputable soruces (e.g. UN / EU / authoritative bodies). Wikepedia is not a valid academic source and please don't just list what authors have done in the past (e.g. Smith 2009 did x but Jones 2008 did y then Frank 2010 did x). Synthesise previous work / policy documents and provide a narrative through it whilst trying to show where the research gap is / where you question fits in. Try to end the literature review with a concluding paragraph that concisely summarises everything within it and states what your work is going to contribute or address. Think of this section as providing a story to what everyone else (whislt also showing issues / reseach gaps) has done then at then end BAM... this is what you are going to do.
+
+### Methodology
+
+Methodology is what you did (analysis, data processing, data cleaning, etc), a reader should be able to replicate your analysis but you don't need excessive detail --- you do not need to list every tool you used. For example, data was loaded uisng `read_csv()` and then reprojected using `st_transform()` is too much information for the assignment (you could include this type of information in the comments of your code / RMarkdown document). 
+
+### Results
+
+Results is what you found --- be selective about figures you include and provide. To do so ask yourself what does this contribute to my research / aim / objective to see if you need it. Please provide narrative that guides the reader through your findings, don't just present result after result after result after result.
+
+### Discussion
 
 Discussion should have lots of critical reflection...by that i mean... how do your results fit in with and then advance the ideas presented by others either in academic or policy literature. Really say why this is important with appropraite referencing. 
 
-Your conclusion should restate what you set out to investigate, summarise how you acheived it, what your results showed, why it is important and in this case specifying recommendations (e.g. what should be changed or altered to fix the issue you explored). 
+### Conclusion
+
+Your conclusion should restate what you set out to investigate, summarise how you acheived it, what your results showed, why it is important and in this case specify recommendations (e.g. what should be changed or altered to fix the issue you explored). 
