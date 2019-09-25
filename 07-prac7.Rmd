@@ -8,6 +8,12 @@ By the end of this practical you should be able to:
 2. Replicate published methodologies using raster data
 3. Design new R code to undertake further analysis 
 
+## Recommended listening
+
+Some of these practicals are long, take regular breaks and have a listen to some of our fav tunes each week.
+
+[Andy](https://www.youtube.com/watch?v=P00HMxdsVZI)
+
 ## Introduction
 
 Within this practical we are going to be using data from the Landsat satellite series provided for free by the United States Geological Survey (USGS) to replicate published methods. Landsat imagery is the longest free temporal image repository of consistent medium resolution data. It collects data at each point on Earth each every 16 days (temporal resolution) in a raster grid composed of 30 by 30 m cells (spatial resolution). Geographical analysis and concepts are becoming ever more entwined with remote sensing and Earth observation. Back when I was an undergraduate there was specific software for undertaking certain analysis, now you can basically use any GIS. I see remote sensing as the science behind collecting the data with spatial data analysis then taking that data and providing meaning. So whilst i'll give a background to Landsat data and remote sensing, this practical will focus on more advanced methods for analysing and extracting meaning from raster data.

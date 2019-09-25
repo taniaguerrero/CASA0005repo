@@ -10,6 +10,13 @@ By the end of this practical you should be able to:
 4. Produce interactive maps
 5. Evaluate the benefits of different data manipulation and mapping techniques
 
+## Recommended listening
+
+Some of these practicals are long, take regular breaks and have a listen to some of our fav tunes each week.
+
+[Andy](https://www.youtube.com/watch?v=A48hOToMuRE)
+
+
 ## Introduction 
 
 This practical is **LONG** but it will take you from not knowing much about R to making freaking cool interactive maps in one practical. As you can imagine, this will be a steep learning curve.

@@ -9,6 +9,12 @@ By the end of this practical you should be able to:
 3. Exceute interpolation of points to a raster layer
 4. Construct a methodology for comparing raster datasets
 
+## Recommended listening
+
+Some of these practicals are long, take regular breaks and have a listen to some of our fav tunes each week.
+
+[Andy](https://www.youtube.com/watch?v=nH7bjV0Q_44)
+
 ## Introduction 
 
 This practical is composed of three parts. To start with we're going to load some global raster data into R. In the second part we extract data points (cities and towns) from this data and generate some descriptive statistics and histograms. In the final section we explore interpolation using point data. 

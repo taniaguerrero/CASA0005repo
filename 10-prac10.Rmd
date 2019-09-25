@@ -7,6 +7,12 @@
 3. Execute linear, Ridge and LASSO regression to predict values (e.g. future or missing)
 4. Critically evaluate different regression approaches 
 
+## Recommended listening
+
+Some of these practicals are long, take regular breaks and have a listen to some of our fav tunes each week.
+
+[Andy](https://www.youtube.com/watch?v=YNXybY2DtwM)
+
 ## Introduction
 
 The Modifiable Areal Unit Problem (MAUP) represents the related effects of scale and aggregation on all geographic data and analysis. It was first deomstrated by the geographer Stan Openshaw in 1984 who showed that as you aggregated results to diffrent spatial units the reults could be manipulated to show different outcomes. Throughout this practical book we've considered London boroughs, but would any of the results change if we considered the data at ward level? Are we hiding any trends because we have just used the borough data that summed all of the wards within the borough? It's important to consider what is the most appropraite spatial unit for your analysis and provide appropraite reasoning. Even this is pretty straightforward (e.g. the data was only provided at the borough level) you must contextualise this and describe any potential limitations of it. In this practical i will firstly demonstrate the MAUP in action using some more advanced R code. Then we will have a look at some technqieus to model and validate data.

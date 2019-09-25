@@ -9,6 +9,12 @@ By the end of this practical you should be able to:
 3. Create near publishable static and interactive mapped outputs
 4. Evaluate and critique mapping approaches between QGIS, ArcMap and R
 
+## Recommended listening
+
+Some of these practicals are long, take regular breaks and have a listen to some of our fav tunes each week.
+
+[Andy](https://www.youtube.com/watch?v=rId6PKlDXeU)
+
 ## Introduction 
 
 In this practical we're going to focus on creating mapped outputs using QGIS, ArcMap and R. For fun we're going to use data from OpenStreetMap (OSM) and Airbnb. 

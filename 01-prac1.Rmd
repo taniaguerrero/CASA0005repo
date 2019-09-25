@@ -9,6 +9,12 @@ By the end of this practical you should be able to:
 3. Load and undertaken some basic manipulation of spatial data in: ArcMap, QGIS and R 
 4. Evaluate the (dis)advantages of each GIS you have used
 
+## Recommended listening
+
+Some of these practicals are long, take regular breaks and have a listen to some of our fav tunes each week.
+
+[Andy](https://www.youtube.com/watch?v=1egwdCGi_dA&list=OLAK5uy_lGype0gR4vyIE0J2hvNYtpifSbNynJTNk&index=1)
+
 ## The Basics of Geographic Information
 
 Geographic data, geospatial data or geographic information is data that identifies the location of features on Earth. There are two main types of data which are used in GIS applications to represent the real world. **Vectors** that are composed of points, lines and polygons and **rasters** that are grids of cells with individual values...

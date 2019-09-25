@@ -9,6 +9,12 @@ By the end of this practical you should be able to:
 3. Determine the locations of spatial clusters using point pattern analysis methods
 4. Investigate the degree to which values at spatial points are similar (or different) to each other
 
+## Recommended listening
+
+Some of these practicals are long, take regular breaks and have a listen to some of our fav tunes each week.
+
+[Andy](https://www.youtube.com/watch?v=hlVBg7_08n0)
+
 ## Introduction
 
 In this practical you will learn how to begin to analyse patterns in spatial data. Using data you are already familiar with, in the first part of the practical, you will explore some techniques for analysing patterns of point data in R. Then, in the second part of the practial, you will explore spatial autocorrelation using R or ArcGIS...or both if you wish.

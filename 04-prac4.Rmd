@@ -8,6 +8,12 @@ By the end of this practical you should be able to:
 2. Create reproduciable and open R code
 3. Produce RMarkdown documents that explain code and analysis
 
+## Recommended listening
+
+Some of these practicals are long, take regular breaks and have a listen to some of our fav tunes each week.
+
+[Andy](https://www.youtube.com/watch?v=AahUu7am5No)
+
 ## Introduction  
 
 In this practical you will learn how to produce work that is open, reproducible, shareable and portable using RStudio, RMarkdown, Git and GitHub. As more and more researchers and organisations publish assocaited code with their manusripts or documents it's very imporant to become adept at using these tools.

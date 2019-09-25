@@ -8,6 +8,12 @@ By the end of this practical you should be able to:
 2. Create interative maps using RPubs, RMarkdown site generator and Shiny
 3. Critically appraise the appropriateness of mapping technqiues based on the dataset and purpose of the output map
 
+## Recommended listening
+
+Some of these practicals are long, take regular breaks and have a listen to some of our fav tunes each week.
+
+[Andy](https://www.youtube.com/watch?v=6Bh6IL1mNfc)
+
 ## Introduction 
 
 In this practical we are going to preliminary stages of a mini-investigation. Since 2015 the law has capped short-term lets in London at 90 nights per year.  However, this is very hard to enforce due to a lack of data and extensive evidence required to prove that the limit has been exceeded. Whilst Air bnb have implemented a system the removes listings once they have been rented for 90 days per year unless an appropraite permit is in place we want to interactively visualise the the number of air bnb lettings (and hotels for comparison) per borough as a starting point. This could then be used to undertake further investigation into boroughs with high short term lets, for example exploring other websites to see if the properties are listed and jointly exceed 90 days or optimising localised monitoring. As these rules only apply to entire homes we will only extract only these, and for monitoring purposes (e.g. random annual inspections) those are availbale for 365 days of the year.
