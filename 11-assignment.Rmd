@@ -74,6 +74,7 @@ R package authors regular tweet with updates and new developments. If twitter is
 * [Hannah Frick](https://twitter.com/hfcfrick)
 * [Jakub Nowosad](https://twitter.com/jakub_nowosad)
 * [Nick Tierney](https://twitter.com/nj_tierney)
+* [#rstats](https://twitter.com/search?q=%23rstats&src=typed_query)
 
 I often learn about a lot of new R pacakges / code / isuues from Twitter!
 

@@ -50,7 +50,7 @@ The lectures and practicals of this course only form a part of the learning proc
 
 The best way to view this practical book is through the website. However if you are unable to access the internet you can either download the ```.epub``` book or save specific webpages for offline viewing --- note that any interactive plots won't work in the ```.epub``` book. As this is a live document if you select to download the ```.epub``` make sure you redownload it regularly to keep up to date with any changes to the material. 
 
-If you find a practical particularly then please move on to the next one. Practicals that look at analytical relationships also have extension activities for you to try.
+If you find a practical particularly easy or straightforward then please move on to the next one. Practicals that look at analytical relationships also have extension activities for you to try.
 
 ```{r include=FALSE}
 # automatically create a bib database for R packages
@@ -78,7 +78,7 @@ If you need specific assistance with this course please:
 
 * Ask a question at the end of a lecture (time permitting)
 
-* Ask a question on [slack](https://join.slack.com/t/casa0005-gis-19-20/shared_invite/enQtNzI5NjU5NzAxNDU3LTJkNGI2OWJkZTg4MzVjZjczMDRjYjU5ODhkZmM5MmRkYmU5YzIyMjRmM2ExYTRhNmFiMmI2NDdmYmI3N2JlMjU)
+* Ask a question on slack under the GIS channel--- you should have recevied an invite email from Steve Gray otherwise use [this link](https://join.slack.com/t/casastudents2019-2020/signup). The teaching team will monitor this.
 
 Due to the size of the class we will **only reply** to messages **on slack** so all students can see the discussion. If you have a personal matter in relation to completing the course then please speak to or email Andy or Adam.
 
