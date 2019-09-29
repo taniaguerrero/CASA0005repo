@@ -8,7 +8,7 @@ Listed below are some helpful website, books, datasets and tools you might find 
 
 ## Timeline
 
-There is a suggested timeline of work for your assignment provided in the assessment requirements document on Moodle. 
+There is a suggested timeline of work for your assignment provided in the GIS coursework requirements PDF on Moodle. 
 
 ## Markscheme
 
@@ -17,6 +17,14 @@ The markscheme can be found on Moodle with a break down of how much percent is g
 ## Examples of previous work
 
 Closer to the assignment deadline we will release examples of good student projects from previous years as a tab on Moodle. **Note** that the requirements / markscheme have been altered this year.
+
+## Events / meet other spatial data professionals
+
+The [UK ESRI conference](https://www.esriuk.com/en-gb/about/events/ac/overview) is normally free to go to and whilst (in my opinion) it's mostly just ESRI marketing their latest products it is good to go along and see how industry are using spatial software. It might also be useful for dissertation ideas / networking. Next year it's scheduled for the 19/5/2020.
+
+[Missing maps](http://www.missingmaps.org/events/)
+
+[LondonR group](https://www.londonr.org/#content)
 
 ## Cool stuff to explore
 
@@ -68,6 +76,7 @@ Other useful tutorials can be found here:
 R package authors regular tweet with updates and new developments. If twitter is your thing go and follow these people to start with...and anyone else you come across...
 
 * [Hadley Wickham](https://twitter.com/hadleywickham)
+* [Carl Howe](https://twitter.com/cdhowe)
 * [Alison Hill](https://twitter.com/apreshill)
 * [Robin Lovelace](https://twitter.com/robinlovelace)
 * [Yihui Xie](https://twitter.com/xieyihui)
@@ -75,6 +84,8 @@ R package authors regular tweet with updates and new developments. If twitter is
 * [Jakub Nowosad](https://twitter.com/jakub_nowosad)
 * [Nick Tierney](https://twitter.com/nj_tierney)
 * [#rstats](https://twitter.com/search?q=%23rstats&src=typed_query)
+* [Andy](https://twitter.com/ac_maclachlan)
+* [Adam](https://twitter.com/adam_dennett)
 
 I often learn about a lot of new R pacakges / code / isuues from Twitter!
 
@@ -157,11 +168,11 @@ Free at the time of writing
 
 Here are some tips based on common marker comments of how to write a decent assingment...
 
-* Don't cut and paste maps / figures / formulas/ tables, export them properly or remake them nicely and credit a source somewhere such as the figure caption (e.g. source Smith et al. 2009 or adapted from Smith et al. 2009). 
-* Make maps and figures the right way --- don't just leave layer names (e.g. osm_points_road) in a legend, rename them.
+* Don't cut and paste maps / figures / formulas / tables, export them properly or remake them nicely and credit a source somewhere such as the figure caption (e.g. source Smith et al. 2009 or adapted from Smith et al. 2009).
+* Make maps and figures the right way --- don't just leave layer names (e.g. osm_points_road) in a legend, rename them to something with meaning!
 * If you use a formula write it properly --- don't cut and paste, fully explain all the symbols / variables too.
-* Make sure you write a sufficient caption for figures / maps / flow diagrams / tables. The reader should be able to understand them without any other information. In other words, if you gave someone a figure with just the caption they should be able to tell you what it shows
-* Don't bullet point methods, summarise with sentances and use a flow diagram if appropraite
+* Make sure you write a sufficient caption for figures / maps / flow diagrams / tables. The reader should be able to understand them without any other information. In other words, if you gave someone a figure with just the caption they should be able to tell you what it shows.
+* Don't bullet point methods, summarise with sentances and use a flow diagram if appropraite.
 
 Here is a quick guide to writing a report...
 
@@ -171,7 +182,7 @@ Make sure you say why your mini investiation is important near the start--- why 
 
 ### Literature review
 
-The literature review should evaluate exisiting research, deomstrate contrasting and/or similar views whilst highlight research gaps (that hopefully your research will contribute to / address). This could also include policy documents or documents from reputable soruces (e.g. UN / EU / authoritative bodies). Wikepedia is not a valid academic source and please don't just list what authors have done in the past (e.g. Smith 2009 did x but Jones 2008 did y then Frank 2010 did x). Synthesise previous work / policy documents and provide a narrative through it whilst trying to show where the research gap is / where you question fits in. Try to end the literature review with a concluding paragraph that concisely summarises everything within it and states what your work is going to contribute or address. Think of this section as providing a story to what everyone else (whislt also showing issues / reseach gaps) has done then at then end BAM... this is what you are going to do.
+The literature review should evaluate exisiting research, deomstrate contrasting and/or similar views whilst highlight research gaps (that hopefully your research will contribute to / address). This could also include policy documents or documents from reputable soruces (e.g. UN / EU / authoritative bodies). Wikepedia is not a valid academic source and please don't just list what authors have done in the past (e.g. Smith 2009 did x but Jones 2008 did y then Frank 2010 did x). Synthesise previous work / policy documents and provide a narrative through it whilst trying to show where the research gap is / where you question fits in. Try to end the literature review with a concluding paragraph that concisely summarises everything within it and states what your work is going to contribute or address. Think of this section as providing a story to what everyone else has done (whilst also showing issues / reseach gaps) then at then end BAMMM... this is what you are going to do.
 
 ### Methodology
 
@@ -179,7 +190,7 @@ Methodology is what you did (analysis, data processing, data cleaning, etc), a r
 
 ### Results
 
-Results is what you found --- be selective about figures you include and provide. To do so ask yourself what does this contribute to my research / aim / objective to see if you need it. Please provide narrative that guides the reader through your findings, don't just present result after result after result after result.
+Results is what you found --- be selective about figures you include and provide. To do so ask yourself what does this contribute to my research / aim / objective to see if you need it. Please provide a narrative that guides the reader through your findings, don't just present result after result after result after result.
 
 ### Discussion
 
@@ -187,4 +198,4 @@ Discussion should have lots of critical reflection...by that i mean... how do yo
 
 ### Conclusion
 
-Your conclusion should restate what you set out to investigate, summarise how you acheived it, what your results showed, why it is important and in this case specify recommendations (e.g. what should be changed or altered to fix the issue you explored). 
+Your conclusion should restate what you set out to investigate, summarise how you acheived it, what your results showed, why it is important and in this case specify recommendations (e.g. what should be changed or altered to fix the issue / question you explored). 

@@ -327,7 +327,7 @@ knitr::include_graphics('prac8_images/Markdownsite.png')
 
 For more information on hosting your code from RStudio on GitHub check out the book [Happy Git and GitHub for the useR](https://happygitwithr.com/usage-intro.html)
 
-My RMarkdown site can be found here, but note that i've added a Shiny tab...we'll cover Shint next...
+My RMarkdown site can be found [here](https://andrewmaclachlan.github.io/PUBLISHEXAMPLE/), but note that i've added a Shiny tab...we'll cover Shiny next...
 
 ## Shiny
 

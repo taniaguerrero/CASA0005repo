@@ -38,6 +38,7 @@ Want to see what you can do with spatial analysis...check out this 'What's Next'
 knitr::include_url("https://www.youtube.com/embed/K0qZffiKwak")
 ```
 
+
 ## Getting started {-}
 
 One of the issues with GIS is that many of the files we will be working with are quite large. Fortunately in recent years UCL has seriously beefed up the storage available for students. You now get 100GB of free storage, which should be plenty for the work you will be doing this year! The Bartlett faculty has several gigabytes of storage space available on their central servers, so before we get started, we will connect to our N drive to carry out all of our practical work over the coming weeks. 
