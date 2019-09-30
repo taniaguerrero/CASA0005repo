@@ -41,6 +41,7 @@ New packages and functions that i've recently come across that are worth explori
 
 There are a lot of free online books for geospatial analysis, especially using R, check out:
 
+* https://bookdown.org/rdpeng/rprogdatascience/
 * https://edav.info/index.html
 * https://whattheyforgot.org/
 * https://rmd4sci.njtierney.com/
@@ -53,6 +54,8 @@ There are a lot of free online books for geospatial analysis, especially using R
 * https://plotly-r.com/index.html
 * https://bookdown.org/ndphillips/YaRrr/
 * https://thinkr-open.github.io/building-shiny-apps-workflow/
+
+Complied list of R books: https://bookdown.org/
 
 If you want to produce more efficent R code then have a look at the [Efficient R programming](https://csgillespie.github.io/efficientR/index.html) book.
 

@@ -47,10 +47,6 @@ One of the issues with GIS is that many of the files we will be working with are
 
 The lectures and practicals of this course only form a part of the learning process. You are expected to undertake wider reading and explore new methods and approaches. We have provided guidance on useful resources throughout the course to use as a starting point but you are encouraged to go beyond our recommedations and fully engage with applied GIS research, methods and visualisation techniques.
 
-## Offline viewing {-}
-
-The best way to view this practical book is through the website. However if you are unable to access the internet you can either download the ```.epub``` book or save specific webpages for offline viewing --- note that any interactive plots won't work in the ```.epub``` book. As this is a live document if you select to download the ```.epub``` make sure you redownload it regularly to keep up to date with any changes to the material. 
-
 If you find a practical particularly easy or straightforward then please move on to the next one. Practicals that look at analytical relationships also have extension activities for you to try.
 
 ```{r include=FALSE}
