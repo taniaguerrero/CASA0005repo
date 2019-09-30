@@ -14,6 +14,7 @@ By the end of this practical you should be able to:
 Some of these practicals are long, take regular breaks and have a listen to some of our fav tunes each week.
 
 [Andy](https://www.youtube.com/watch?v=1egwdCGi_dA&list=OLAK5uy_lGype0gR4vyIE0J2hvNYtpifSbNynJTNk&index=1)
+
 [Adam](https://open.spotify.com/album/0XXI8pxXeS9cvpBX9bB3hh)... This week, wrap your ears around this piece of liquid gold from Japan’s finest, Makoto.
 
 ## The Basics of Geographic Information
@@ -284,7 +285,7 @@ knitr::include_graphics('prac1_images/arcmap.png')
 
 5. Using the **Plus** icon (add data layer) navigate to the extracted folder you saved earlier. 
 
-6. Open London_Borough_Excluding_MHW.shp, but feel free to explore the other data layers. In the left hand Table Of Contents you can unselect layers to turn them off or drag layers above or below to change the display order. In the example below the wards layer is showing above the borough layer.
+6. Open `London_Borough_Excluding_MHW.shp`, but feel free to explore the other data layers. In the left hand Table Of Contents you can unselect layers to turn them off or drag layers above or below to change the display order. In the example below the wards layer is showing above the borough layer.
 
 ```{r echo=FALSE, out.width = "800pt", fig.align='center', cache=TRUE}
 knitr::include_graphics('prac1_images/display_order.png')
@@ -368,12 +369,12 @@ QGIS is very similar to ArcMap except that as it is open-source and free there a
 
 To get QGIS on your personal machine go to: https://qgis.org/en/site/forusers/download.html
 
-I install the OSGeo4W version. The nature of open-source means that several programs will rely on each other for features. OSGeo4W tracks all the shared requirements and does not intall any duplicates. 
+I install the OSGeo4W version. The nature of open-source means that several programs will rely on each other for features. OSGeo4W tracks all the shared requirements and does not install any duplicates. 
 
 #### Load data
 
 1. Search for and open QGIS 
-2. Click on the open data source manager. Just above the word *browser* in the top left of the screen
+2. Click on the open data source manager. Just above the word **browser** in the top left of the screen
 
 ```{r echo=FALSE, out.width = "700pt", fig.align='center', cache=TRUE}
 knitr::include_graphics('prac1_images/qgis_datamanager.png') 
@@ -420,7 +421,7 @@ knitr::include_graphics('prac1_images/make_geopkg.png')
 
 We've now made a GeoPackage that we can connect our map project to.
 
-15. Under *Browser*, Right click on GeoPackage > New Connection > Navigate to your GeoPackage
+15. Under **Browser**, Right click on GeoPackage > New Connection > Navigate to your GeoPackage
 16. Click the down arrow left to GeoPackage and you should see the one you just navigated to. Click the down arrow on the database and you can see your layer.
 17. Now we are going to import our  ```.csv ``` into our GeoPackage. To do so go: Database > DB Manager
 18. Select your GeoPackage in the left hand pane
@@ -471,7 +472,7 @@ If you are using a Mac and run into issues check out the [Mac R issues] section
 
 #### Setup 2
 
-If you RStudio insn't installed on your practical room PC...fear not...the good people over at RStudio have created a [cloud version](https://rstudio.cloud/)...you have to sign up but can use it the same as the desktop version. It even works with Git and GitHub which we will cover later on in the course. The only real limitation is the upload file size --- if you have any kind of 'big data' then you will reach the allowed limit. That won't be a problem for the majority of this course except [Advanced raster analysis]...that said you can now link R to googledrive and access any data stored on it with the ```googledrive()``` [function](https://googledrive.tidyverse.org/) that is part of the ```tidyverse``` package. You could possibly do this one OneDrive too, but it's not as intuitive, have a look [here](https://stackoverflow.com/questions/29579782/reading-onedrive-files-to-r).
+If you RStudio insn't installed on your practical room PC...fear not...the good people over at RStudio have created a [cloud version](https://rstudio.cloud/)...you have to sign up but can use it the same as the desktop version. It even works with Git and GitHub which we will cover later on in the course. The only real limitation is the upload file size --- if you have any kind of 'big data' then you will reach the allowed limit. That won't be a problem for the majority of this course except [Advanced raster analysis]...that said you can now link R to googledrive and access any data stored on it with the ```googledrive()``` [function](https://googledrive.tidyverse.org/) that is part of the ```tidyverse``` package. You could possibly do this one OneDrive too, but it's not as intuitive, have a look [here](https://stackoverflow.com/questions/29579782/reading-onedrive-files-to-r). But for now, don't worry about this, just note it for future reference. 
 
 RStudio cloud is really useful for sharing code and working collaboratively as you can add different users to the project.
 
@@ -495,7 +496,7 @@ knitr::include_graphics('prac1_images/RStudio.png')
 
 Below are bits of code, to start we will work using the **console**. So just copy the bits of code into the console window, changing the file names to where your data is stored. Then at the end of this section I'll show you how to make a script.
 
-R works on packages that are collections of functions and data. For this practical we will need the ones listed in the code chunk below. Whilst we've installed them, we haven't yet loaded them. It's best practice to do all this at the start of your code, however, for demonstration purposes I'll load each one as we need it. 
+R works on packages that are collections of functions and data. For this practical we will need the ones listed in the code chunk below. Whilst we've installed them (with the code below), we haven't yet loaded them. It's best practice to do all this at the start of your code, however, for demonstration purposes I'll load each one as we need it. 
 
 ```{r, message=FALSE, warning=FALSE, eval=FALSE, cache=TRUE}
 install.packages("sf", "tmap", "tmaptools", "RSQLite", "tidyverse", repos = "https://www.stats.bris.ac.uk/R/")
@@ -508,7 +509,7 @@ Packages we've installed:
 * ```tmaptools```: set of tools for reading and processing spatial data
 * ```RSQLite```: embeds the SQLite database engine in R
 
-Here, repos stands for repository where we will download the packages from. Once you have set it, you shouldn't need to specify it again. Whilst we've installed the packages we haven't loaded them...this is done through using ```library()``` function.
+Here, `repos` stands for repository where we will download the packages from. Once you have set it, you shouldn't need to specify it again. Whilst we've installed the packages we haven't loaded them...this is done through using ```library()``` function.
 
 #### Load data
 
@@ -551,14 +552,16 @@ From what we did in QGIS and ArcMap this should look familiar.
 
 We now need to load our ```.csv``` file:
 
-```{r, cache=TRUE}
+```{r, cache=TRUE, warnings=FALSE, messages=FALSE}
 library(tidyverse)
 mycsv <-  read_csv("Prac1_data/fly_tipping_borough_edit.csv")  
 ```
 
+When you load `tidyverse` you might get a list of conflicts, this basically means that several packages have functions named the same thing. For example there is a function named `filter()` in the packages `dplyr` and `stats`. If you wanted to use the `dplyr` version you would use `dplyr::filter()` or for the `stats` version it would be `stats::filter()`...
+
 To view the data just input:
 
-```{r cache=TRUE}
+```{r cache=TRUE, warnings=FALSE, messages=FALSE}
 mycsv 
 ```
 
