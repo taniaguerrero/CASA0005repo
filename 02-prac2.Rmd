@@ -291,7 +291,7 @@ This again is useful if you have a lot of columns and you wish to efficiently ex
 
 ## Reading data into R
 
-One of the most tedious things a spatial analyst / data scientist has to do is clean their data so it doesn’t cause problems for the software later. In the past, we would have needed to do this by hand - these days, we can use software to do much of this for us.
+One of the most tedious things a spatial analyst / data scientist has to do is clean their data so it doesn’t cause problems for the software later. In the past, we would have needed to do this by hand --- these days, we can use software to do much of this for us.
 
 I will now give you two options to arrive at a nice cleaned dataset. If you have issues with software packages etc, you might still need to via the old skool route, however, the new skool route will be much more satisfying if it works!
 
@@ -333,7 +333,7 @@ This would specify that the first row of the file contains header information; a
 
 ### New skool cleaning 
 
-To clean our data as we read it in, we are going to use a package (more about packages later --- for now, just think about it as a lovely gift from the R gods) called ```readr``` which comes bundled as part of the ```tidyverse``` package. If you want to find out more about the Tidyverse (and you really should) then you should start [here](https://www.tidyverse.org/) --- the Tidyverse package contains almost everything you need to become a kick-ass data scientist. ‘Tidy’ as a concept in data science is well worth reading about and you should start here with Hadley Wickham’s [paper](http://vita.had.co.nz/papers/tidy-data.pdf)
+To clean our data as we read it in, we are going to use a package (more about packages later --- for now, just think about it as a lovely gift from the R gods) called ```readr``` which comes bundled as part of the ```tidyverse``` package. If you want to find out more about the `tidyverse` (and you really should) then you should start [here](https://www.tidyverse.org/) --- the `tidyverse` package contains almost everything you need to become a kick-ass data scientist. ‘Tidy’ as a concept in data science is well worth reading about and you should start here with Hadley Wickham’s [paper](http://vita.had.co.nz/papers/tidy-data.pdf)
 
 Anyway, first install the package:
 
@@ -554,7 +554,7 @@ EW <- geojson_read("https://opendata.arcgis.com/datasets/8edafbe3276d4b56aec6099
 
 Or you can do a manual download from [here](http://geoportal.statistics.gov.uk/datasets/8edafbe3276d4b56aec60991cbddda50_2) --- see point 7.
 
-Pull out london using grep and the regex wildcard for'start of the string' (^) to to look for the bit of the district code that relates to London (E09) from the 'lad15cd' column in the data slot of our spatial polygons dataframe
+Pull out London using grep and the regex wildcard for 'start of the string' (^) to to look for the bit of the district code that relates to London (E09) from the 'lad15cd' column in the data slot of our spatial polygons dataframe
 
 ```{r, cache=TRUE}
 LondonMap <- EW[grep("^E09",EW@data$lad15cd),]
@@ -603,7 +603,7 @@ BoroughMapSP <- as(BoroughMapSF, "Spatial")
 
 OK, enough messing around, show us the maps!!
 
-9. Hold your horses, before be can create a map, we need to join some attribute data to some boundaries. Doing this an ```SP``` object can be a bit of a pain, but I’ll show you here:
+9. Hold your horses, before be can create a map, we need to join some attribute data to some boundaries. Doing this on a ```SP``` object can be a bit of a pain, but I’ll show you here:
 
 ```{r, cache=TRUE, results="hide"}
 #join the data to the @data slot in the SP data frame
@@ -687,7 +687,7 @@ tm_shape(BoroughDataMap) +
         title=c("Average Public Transport Accessibility", "Violence Against the Person Rate"))
 ```
 
-You will notice that to choose the colour of the maps, I entered some codes. These are the names of colour ramps from the RColourBrewer package which comes bundled with ```tmap```. ```RColorBrewer``` uses colour palettes available from the colorbrewer2 [website](http://colorbrewer2.org/) which is in turn based on the [work of Cynthia Brewer and colleagues at Penn State University](http://www.personal.psu.edu/cab38/ColorBrewer/ColorBrewer_updates.html). Cynthia brewer has carried out large amount of academic research into determining the best colour palettes for GIS applications and so we will defer to her expertise here.
+You will notice that to choose the colour of the maps, I entered some codes. These are the names of colour ramps from the `RColourBrewer` package which comes bundled with ```tmap```. ```RColorBrewer``` uses colour palettes available from the colorbrewer2 [website](http://colorbrewer2.org/) which is in turn based on the [work of Cynthia Brewer and colleagues at Penn State University](http://www.personal.psu.edu/cab38/ColorBrewer/ColorBrewer_updates.html). Cynthia brewer has carried out large amount of academic research into determining the best colour palettes for GIS applications and so we will defer to her expertise here.
 
 If you want to look at the range of colour palettes available, as we; as going to the ColorBrewer website, you can use the a little shiny app which comes bundled with ```tmaptools```
 
@@ -767,7 +767,7 @@ tm_style("gray")
 
 So as you have seen, it is possible to make very nice thematic maps with ```tmap```. However, there are other options. The  ```ggplot2``` package is a very powerful graphics package that allows us to a huge range of sophisticated plots, including maps.
 
-The latest development version of ```ggplot2``` has support for simple features objects with the new geom_sf class (http://ggplot2.tidyverse.org/reference/ggsf.html), which, quite frankly, is bloody brilliant!
+The latest development version of ```ggplot2``` has support for simple features objects with the new `geom_sf` class (http://ggplot2.tidyverse.org/reference/ggsf.html), which, quite frankly, is bloody brilliant!
 
 14. If you have not already done so, install and library the ```ggplot2``` and ```rgeos``` packages (they should be installed automatically as part of ```tidyverse``` and ```tmap``` packages, but occasionally they need to be installed separately).
 

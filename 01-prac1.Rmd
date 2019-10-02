@@ -125,7 +125,7 @@ At the end of this document I'll also run through some common sources of data th
 
 ### File paths
 
-In your N drive: create a new folder called GIS and within this a sub folder called wk1. It is up to you how you organise your files. Make sure you change the file paths within where appropriate to your own.
+In your N drive: create a new folder called GIS and within this a sub folder called wk1. It is up to you how you organise your files. Make sure you change the file paths where appropriate to your own.
 
 ### Data download
 
@@ -249,7 +249,7 @@ ArcCatalog and ArcMap are in bold as these are the only programmes we will be us
 
 * Find and run the ArcCatalog piece of software
 
-* Once ArcCatalog Opens, go to File > Connect To Folder… and navigate to the N:\GIS folder, right click in the contents area and create a new File Geodatabase.
+* Once ArcCatalog Opens, go to File > Connect To Folder… and navigate to the N:\GIS folder, right click in the contents area and create a new File Geodatabase - i've called mine prac1.
 
 ```{r echo=FALSE, out.width = "500pt", fig.align='center', cache=TRUE}
 knitr::include_graphics('prac1_images/file_geo.png')
@@ -266,14 +266,14 @@ Close ArcCatalog and **never** have both ArcCatalog and another ArcGIS product o
 ArcMap is the core of the ArcGIS suite and where you would normally produce maps, carry out spatial analysis functions and automate processes. 
 
 1. Search for and open ArcMap 
-2. Upon opening select the database you just created in the dialogue box
+2. Upon opening select the database you just created in the default geodatabased fpor this map dialogue box
 3. Click ok
 
 ```{r echo=FALSE, out.width = "800pt", fig.align='center', cache=TRUE}
 knitr::include_graphics('prac1_images/default_database.png')
 ```
 
-When the map document opens you should see something similar to the image below, highlighting some of the key buttons:
+When the map document opens you should see something similar to the image below, highlighting some of the key buttons (without the data):
 
 ```{r echo=FALSE, out.width = "500pt", fig.align='center', cache=TRUE}
 knitr::include_graphics('prac1_images/arcmap.png')
@@ -295,7 +295,7 @@ knitr::include_graphics('prac1_images/display_order.png')
 
 **Useful tips**
   
-  * To the right of the document you will see the Catalog and Search tabs.The Catalog tab is a more compact version of ArcCatalog and will let you see what data is stored in the current Geodatabase. The search tab will let you find any analysis tool within ArcGIS. Try searching for Clip.
+  * To the right of the document you will see the Catalog and Search tabs.The Catalog tab is a more compact version of ArcCatalog and will let you see what data is stored in the current Geodatabase --- you can use this at the same time as ArcMap. The search tab will let you find any analysis tool within ArcGIS. Try searching for Clip.
   
   * If you right click on the boroughs layer (in the Table of Contents, left hand pane) you will see various options. Zoom to layer is very useful if you ever get lost in your ArcMap document. 
 
@@ -345,7 +345,7 @@ knitr::include_graphics('prac1_images/thematicmap.png')
 
 **We haven't talked about the Coordiante Reference System (CRS) (or Spatial Reference System (SRS)) of our map document**
 
-A coordinate reference system is a series of parameters that define the coordinate system. Within GIS we use geographic or projected coordinate systems. The former uses a three-dimensional spherical surface to define locations of Earth, whereas the latter is defined on a flat, two-dimensional surface giving it constant lengths, angles and areas. 
+A coordinate reference system is a series of parameters that define the coordinate system. Within GIS we use geographic or projected coordinate systems. The former uses a three-dimensional spherical surface to define locations of Earth, whereas the latter is defined on a flat, two-dimensional surface giving it constant lengths, angles and areas. We cover this in more detail later on.
 
 In ArcMap we can specify what CRS we want to use by: 
 
@@ -519,13 +519,13 @@ Load the ```sf``` package so we can read our shapefile in --- remember to change
 
 ```{r, message=FALSE, warning=FALSE, cache=TRUE}
 library(sf)
+# change this to your file path!!!
 shape <- st_read("Prac1_data/statistical-gis-boundaries-london/ESRI/London_Borough_Excluding_MHW.shp")
 ```
 
 > **Note** If you are working on RStudio cloud and have a shapefile (along with all the other relevant files required) you will just need to use...
 
 ```{r, message=FALSE, warning=FALSE, cache=TRUE, eval=FALSE}
-library(sf)
 shape <- st_read("London_Borough_Excluding_MHW.shp")
 ```
 
@@ -572,7 +572,6 @@ In R we've given our London boroughs shapefile the name shape and our flytipping
 Join the ```.csv``` to the shapefile. Here, replace Row Labels with whatever your GSS_CODE is called in the ```.csv```:
 
 ```{r, cache=TRUE}
-library(sf)
 library(tmaptools)
 
 shape<-merge(shape, mycsv, by.x="GSS_CODE", by.y="Row Labels")
@@ -590,7 +589,6 @@ Now, let's make a quick thematic map (or a qtm) using the package  ```tmap ```. 
 
 ```{r cache=TRUE}
 library(tmap)
-library(tmaptools)
 tmap_mode("plot")
 qtm(shape, fill = "2011_12")
 ```
@@ -732,7 +730,7 @@ It seems that a lot of the packages are dependent on rgdal, which might not prop
 
 1. Install java JDK (to respond to error Unable to find any JVMs matching version "(null)", which occurred when we tried to load `OpenStreetMap` package in RStudio)
 
-2.Download and install the appropriate `.dmg` from [Java SE Development Kit 11.0.1](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+2. Download and install the appropriate `.dmg` from [Java SE Development Kit 11.0.1](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 
 3. Run sudo R CMD javareconf in Terminal as described [here](http://conjugateprior.org/2014/12/r-java8-osx/)(though don't follow this tutorial exactly, just up to that terminal command).
 

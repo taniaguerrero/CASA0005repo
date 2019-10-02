@@ -24,7 +24,7 @@
 <meta name="author" content="Andy MacLachlan and Adam Dennett" />
 
 
-<meta name="date" content="2019-09-30" />
+<meta name="date" content="2019-10-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -584,7 +584,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>At the end of this document I’ll also run through some common sources of data that will stand you in good stead (be advantageous) for the rest of the course.</p>
 <div id="file-paths" class="section level3">
 <h3><span class="header-section-number">1.4.1</span> File paths</h3>
-<p>In your N drive: create a new folder called GIS and within this a sub folder called wk1. It is up to you how you organise your files. Make sure you change the file paths within where appropriate to your own.</p>
+<p>In your N drive: create a new folder called GIS and within this a sub folder called wk1. It is up to you how you organise your files. Make sure you change the file paths where appropriate to your own.</p>
 </div>
 <div id="data-download" class="section level3">
 <h3><span class="header-section-number">1.4.2</span> Data download</h3>
@@ -683,7 +683,7 @@ ArcGIS (Version 10.6 is the latest at time of writing, but may have already been
 <h4><span class="header-section-number">1.4.5.2</span> ArcCatalog</h4>
 <ul>
 <li><p>Find and run the ArcCatalog piece of software</p></li>
-<li><p>Once ArcCatalog Opens, go to File &gt; Connect To Folder… and navigate to the N:folder, right click in the contents area and create a new File Geodatabase.</p></li>
+<li><p>Once ArcCatalog Opens, go to File &gt; Connect To Folder… and navigate to the N:folder, right click in the contents area and create a new File Geodatabase - i’ve called mine prac1.</p></li>
 </ul>
 <p><img src="prac1_images/file_geo.png" width="500pt" style="display: block; margin: auto;" /></p>
 <p>You can import data layers into a Geodatabase within ArcCatalog, however we will do this in ArcMap.</p>
@@ -696,11 +696,11 @@ ArcGIS (Version 10.6 is the latest at time of writing, but may have already been
 <p>ArcMap is the core of the ArcGIS suite and where you would normally produce maps, carry out spatial analysis functions and automate processes.</p>
 <ol style="list-style-type: decimal">
 <li>Search for and open ArcMap</li>
-<li>Upon opening select the database you just created in the dialogue box</li>
+<li>Upon opening select the database you just created in the default geodatabased fpor this map dialogue box</li>
 <li>Click ok</li>
 </ol>
 <p><img src="prac1_images/default_database.png" width="800pt" style="display: block; margin: auto;" /></p>
-<p>When the map document opens you should see something similar to the image below, highlighting some of the key buttons:</p>
+<p>When the map document opens you should see something similar to the image below, highlighting some of the key buttons (without the data):</p>
 <p><img src="prac1_images/arcmap.png" width="500pt" style="display: block; margin: auto;" /></p>
 <ol start="4" style="list-style-type: decimal">
 <li>It’s important to now set the map document up properly. Go File &gt; Map Document Properties, enter the details you wish. You can see the connection to the Geodatabase we just made. Click store relative pathnames, this means as long as the data stays in the same position relative to the path then ArcMap can load all the layers. For example if you moved your work from the C: drive to an external drive, H:.</li>
@@ -718,7 +718,7 @@ ArcGIS (Version 10.6 is the latest at time of writing, but may have already been
 </blockquote>
 <p><strong>Useful tips</strong></p>
 <ul>
-<li><p>To the right of the document you will see the Catalog and Search tabs.The Catalog tab is a more compact version of ArcCatalog and will let you see what data is stored in the current Geodatabase. The search tab will let you find any analysis tool within ArcGIS. Try searching for Clip.</p></li>
+<li><p>To the right of the document you will see the Catalog and Search tabs.The Catalog tab is a more compact version of ArcCatalog and will let you see what data is stored in the current Geodatabase — you can use this at the same time as ArcMap. The search tab will let you find any analysis tool within ArcGIS. Try searching for Clip.</p></li>
 <li><p>If you right click on the boroughs layer (in the Table of Contents, left hand pane) you will see various options. Zoom to layer is very useful if you ever get lost in your ArcMap document.</p></li>
 </ul>
 <ol start="7" style="list-style-type: decimal">
@@ -762,7 +762,7 @@ ArcGIS (Version 10.6 is the latest at time of writing, but may have already been
 <p>You should have something that looks like this:</p>
 <p><img src="prac1_images/thematicmap.png" width="800pt" style="display: block; margin: auto;" /></p>
 <p><strong>We haven’t talked about the Coordiante Reference System (CRS) (or Spatial Reference System (SRS)) of our map document</strong></p>
-<p>A coordinate reference system is a series of parameters that define the coordinate system. Within GIS we use geographic or projected coordinate systems. The former uses a three-dimensional spherical surface to define locations of Earth, whereas the latter is defined on a flat, two-dimensional surface giving it constant lengths, angles and areas.</p>
+<p>A coordinate reference system is a series of parameters that define the coordinate system. Within GIS we use geographic or projected coordinate systems. The former uses a three-dimensional spherical surface to define locations of Earth, whereas the latter is defined on a flat, two-dimensional surface giving it constant lengths, angles and areas. We cover this in more detail later on.</p>
 <p>In ArcMap we can specify what CRS we want to use by:</p>
 <ol start="20" style="list-style-type: decimal">
 <li>Right clicking on the map document &gt; Data Frame Properties</li>
@@ -897,7 +897,8 @@ ArcGIS (Version 10.6 is the latest at time of writing, but may have already been
 <p><strong>Note</strong> by default in R, the file path should be defined with <code>/</code> but on a windows file system it is defined with <code>\</code>. Using <code>\\</code> instead allows R to read the path correctly – alternatively, just use <code>/</code></p>
 </blockquote>
 <div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1"><span class="kw">library</span>(sf)</a>
-<a class="sourceLine" id="cb2-2" title="2">shape &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="st">&quot;Prac1_data/statistical-gis-boundaries-london/ESRI/London_Borough_Excluding_MHW.shp&quot;</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb2-2" title="2"><span class="co"># change this to your file path!!!</span></a>
+<a class="sourceLine" id="cb2-3" title="3">shape &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="st">&quot;Prac1_data/statistical-gis-boundaries-london/ESRI/London_Borough_Excluding_MHW.shp&quot;</span>)</a></code></pre></div>
 <pre><code>## Reading layer `London_Borough_Excluding_MHW&#39; from data source `C:\Users\ucfnmac\OneDrive - University College London\Teaching\CASA0005repo\Prac1_data\statistical-gis-boundaries-london\ESRI\London_Borough_Excluding_MHW.shp&#39; using driver `ESRI Shapefile&#39;
 ## Simple feature collection with 33 features and 7 fields
 ## geometry type:  MULTIPOLYGON
@@ -908,8 +909,7 @@ ArcGIS (Version 10.6 is the latest at time of writing, but may have already been
 <blockquote>
 <p><strong>Note</strong> If you are working on RStudio cloud and have a shapefile (along with all the other relevant files required) you will just need to use…</p>
 </blockquote>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1"><span class="kw">library</span>(sf)</a>
-<a class="sourceLine" id="cb4-2" title="2">shape &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="st">&quot;London_Borough_Excluding_MHW.shp&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" title="1">shape &lt;-<span class="st"> </span><span class="kw">st_read</span>(<span class="st">&quot;London_Borough_Excluding_MHW.shp&quot;</span>)</a></code></pre></div>
 <p>As RStudio cloud knows you have setup a project and to look for files within it…we cover this very soon for RStudio desktop.</p>
 <p>To get a summary of the data held within the shapefile data (attribute table) enter the following:</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1"><span class="kw">summary</span>(shape)</a></code></pre></div>
@@ -974,10 +974,9 @@ ArcGIS (Version 10.6 is the latest at time of writing, but may have already been
 <h4><span class="header-section-number">1.4.7.5</span> Join data</h4>
 <p>In R we’ve given our London boroughs shapefile the name shape and our flytipping <code>.csv</code> the name mycsv. If you look in the Environment quadrant you should see them both listed.</p>
 <p>Join the <code>.csv</code> to the shapefile. Here, replace Row Labels with whatever your GSS_CODE is called in the <code>.csv</code>:</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1"><span class="kw">library</span>(sf)</a>
-<a class="sourceLine" id="cb13-2" title="2"><span class="kw">library</span>(tmaptools)</a>
-<a class="sourceLine" id="cb13-3" title="3"></a>
-<a class="sourceLine" id="cb13-4" title="4">shape&lt;-<span class="kw">merge</span>(shape, mycsv, <span class="dt">by.x=</span><span class="st">&quot;GSS_CODE&quot;</span>, <span class="dt">by.y=</span><span class="st">&quot;Row Labels&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1"><span class="kw">library</span>(tmaptools)</a>
+<a class="sourceLine" id="cb13-2" title="2"></a>
+<a class="sourceLine" id="cb13-3" title="3">shape&lt;-<span class="kw">merge</span>(shape, mycsv, <span class="dt">by.x=</span><span class="st">&quot;GSS_CODE&quot;</span>, <span class="dt">by.y=</span><span class="st">&quot;Row Labels&quot;</span>)</a></code></pre></div>
 <p>Let’s break this down a bit. We just created a tibble of mycsv (this is a new form of a dataframe) where each column has a variable and each row contains a set of values — so basically a normal table. The match simply found the GSS_CODE values in the <code>.csv</code> and joined the data to our shapefile.</p>
 <p>Check the merge was successful, this is just going to show the top 10 rows:</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" title="1"><span class="kw">head</span>(shape, <span class="dt">n=</span><span class="dv">10</span>)</a></code></pre></div>
@@ -1022,8 +1021,7 @@ ArcGIS (Version 10.6 is the latest at time of writing, but may have already been
 ## 10       41104 MULTIPOLYGON (((531023.5 20...</code></pre>
 <p>Now, let’s make a quick thematic map (or a qtm) using the package <code>tmap</code>. I’ve made mine for flytipping between 2011 and 2012 (column 2011_12):</p>
 <div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1"><span class="kw">library</span>(tmap)</a>
-<a class="sourceLine" id="cb16-2" title="2"><span class="kw">library</span>(tmaptools)</a>
-<a class="sourceLine" id="cb16-3" title="3"><span class="kw">tmap_mode</span>(<span class="st">&quot;plot&quot;</span>)</a></code></pre></div>
+<a class="sourceLine" id="cb16-2" title="2"><span class="kw">tmap_mode</span>(<span class="st">&quot;plot&quot;</span>)</a></code></pre></div>
 <pre><code>## tmap mode set to plotting</code></pre>
 <div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" title="1"><span class="kw">qtm</span>(shape, <span class="dt">fill =</span> <span class="st">&quot;2011_12&quot;</span>)</a></code></pre></div>
 <p><img src="CASA0005_files/figure-html/unnamed-chunk-38-1.png" width="672" /></p>
@@ -1157,10 +1155,8 @@ ArcGIS (Version 10.6 is the latest at time of writing, but may have already been
 <p>It seems that a lot of the packages are dependent on rgdal, which might not properly install…</p>
 <p><strong>Order of operations</strong></p>
 <ol style="list-style-type: decimal">
-<li>Install java JDK (to respond to error Unable to find any JVMs matching version “(null)”, which occurred when we tried to load <code>OpenStreetMap</code> package in RStudio)</li>
-</ol>
-<p>2.Download and install the appropriate <code>.dmg</code> from <a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">Java SE Development Kit 11.0.1</a></p>
-<ol start="3" style="list-style-type: decimal">
+<li><p>Install java JDK (to respond to error Unable to find any JVMs matching version “(null)”, which occurred when we tried to load <code>OpenStreetMap</code> package in RStudio)</p></li>
+<li><p>Download and install the appropriate <code>.dmg</code> from <a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html">Java SE Development Kit 11.0.1</a></p></li>
 <li><p>Run sudo R CMD javareconf in Terminal as described <a href="http://conjugateprior.org/2014/12/r-java8-osx/">here</a>(though don’t follow this tutorial exactly, just up to that terminal command).</p></li>
 <li><p>(Maybe) restart your computer (not really sure when this is necessary).</p></li>
 </ol>
