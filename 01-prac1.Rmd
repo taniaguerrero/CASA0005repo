@@ -499,7 +499,7 @@ Below are bits of code, to start we will work using the **console**. So just cop
 R works on packages that are collections of functions and data. For this practical we will need the ones listed in the code chunk below. Whilst we've installed them (with the code below), we haven't yet loaded them. It's best practice to do all this at the start of your code, however, for demonstration purposes I'll load each one as we need it. 
 
 ```{r, message=FALSE, warning=FALSE, eval=FALSE, cache=TRUE}
-install.packages("sf", "tmap", "tmaptools", "RSQLite", "tidyverse", repos = "https://www.stats.bris.ac.uk/R/")
+install.packages(c("sf", "tmap", "tmaptools", "RSQLite", "tidyverse", repos = "https://www.stats.bris.ac.uk/R/"))
 ```
 
 Packages we've installed:
