@@ -499,7 +499,7 @@ Below are bits of code, to start we will work using the **console**. So just cop
 R works on packages that are collections of functions and data. For this practical we will need the ones listed in the code chunk below. Whilst we've installed them (with the code below), we haven't yet loaded them. It's best practice to do all this at the start of your code, however, for demonstration purposes I'll load each one as we need it. 
 
 ```{r, message=FALSE, warning=FALSE, eval=FALSE, cache=TRUE}
-install.packages(c("sf", "tmap", "tmaptools", "RSQLite", "tidyverse", repos = "https://www.stats.bris.ac.uk/R/"))
+install.packages(c("sf", "tmap", "tmaptools", "RSQLite", "tidyverse"), repos = "https://www.stats.bris.ac.uk/R/")
 ```
 
 Packages we've installed:
@@ -585,11 +585,16 @@ Check the merge was successful, this is just going to show the top 10 rows:
 head(shape, n=10)
 ```
 
-Now, let's make a quick thematic map (or a qtm) using the package  ```tmap ```. I've made mine for flytipping between 2011 and 2012 (column 2011_12): 
+Now, let's make a quick thematic map (or a qtm) using the package  ```tmap ```. I've made mine for flytipping between 2011 and 2012 (column 2011_12). But check what your coloumn name is from the adove code `head(shape, n=10)` it might be slightly different like 2011-2012 or x2011_2012....
+
+```{r echo=FALSE, out.width = "600pt", fig.align='center', cache=TRUE}
+knitr::include_graphics('prac1_images/colname.png') 
+```
 
 ```{r cache=TRUE}
 library(tmap)
 tmap_mode("plot")
+# change the fill to your column name if different
 qtm(shape, fill = "2011_12")
 ```
 
