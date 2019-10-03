@@ -183,7 +183,7 @@ knitr::include_graphics('prac1_images/pivot_example.png')
 ```
 Note how I've altered the total_action_taken to the sum of... as the original was displaying incorrectly, to do so:
 
-1. Click on drop down button for total_action_taken > Value Field Settings > select Count  
+1. Click on drop down button for total_action_taken > Value Field Settings > select Sum  
 
 It's important to think about what data we actually need in the next step and it's good practice to avoid data redundancy where possible.
 
@@ -635,7 +635,11 @@ Here overwrite let's you well..overwrite the exisiting file...if this wasn't spe
 To convert this bit of analysis into a script that we could save and run again in future, I would write the following in the script quadrant: 
 
 ```{r, eval=FALSE, cache=TRUE}
-library(sf, tmap, tmaptools, RSQLite, tidyverse)
+library(sf)
+library(tmap) 
+library(tmaptools)
+library(RSQLite)
+library(tidyverse)
 #read in the shapefile
 shape <- st_read(
   "Prac1_data/statistical-gis-boundaries-london/ESRI/London_Borough_Excluding_MHW.shp")
