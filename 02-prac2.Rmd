@@ -723,7 +723,7 @@ tm_shape(BoroughDataMap) +
 
 ```{r, cache=TRUE, eval=FALSE}
 ####You can even save your map as an html file 
-save_tmap(filename = "truffle.html")
+tmap_save(filename = "truffle.html")
 ```
 
 #### Have a play around…
@@ -775,7 +775,7 @@ The latest development version of ```ggplot2``` has support for simple features 
 
 15. Now there are two main ways in which you can construct a plot in  ```ggplot2 ```:  ```qplot() ``` and  ```ggplot() ```.  ```qplot ``` is short for ‘Quick plot’ and can be good for producing quick charts and maps, but is perhaps less good for constructing complex layered plots.  ```ggplot() ``` is better for building up a plot layer by layer, e.g.  ```ggplot()+layer1+layer2 ```, and so this is what we will use here.
 
-16. The important elements of any ```ggplot  ``` layer are the aesthetic mappings –-- aes(x,y, …) –-- which tell ggplot where to place the plot objects. We can imagine a map just like a graph with all features mapping to an x and y axis. All geometry (  ```geom_  ```) types in ggplot feature some kind of aesthetic mapping and these can either be declared at the plot level, e.g.
+16. The important elements of any ```ggplot  ``` layer are the aesthetic mappings –-- aes(x,y, …) –-- which tell ggplot where to place the plot objects. We can imagine a map just like a graph with all features mapping to an x and y axis. All geometry (  ```geom_  ```) types in ggplot feature some kind of aesthetic mapping and these can either be declared at the plot level, e.g. (don't run this)
 
 ```{r, eval=FALSE, cache=TRUE}
 ggplot(data.frame, 
@@ -792,6 +792,7 @@ geom_polygon(aes(x=x, y=y),
 17. To begin our plot, we will start with the map layer – we will generate this using the ```geom_sf()``` function in ```ggplot2```:
 
 ```{r, cache=TRUE}
+library(ggplot2)
 ggplot()+geom_sf(mapping = aes(geometry=geometry),
                  data = BoroughDataMap)+
   theme_minimal()
@@ -800,7 +801,8 @@ ggplot()+geom_sf(mapping = aes(geometry=geometry),
 18. To colour your map, then just pass the name of the variable you want to map to the fill parameter in the aesthetics:
 
 ```{r, cache=TRUE}
-ggplot()+geom_sf(mapping = aes(geometry=geometry, fill=Median.House.Price...U.00A3.....2014),
+ggplot()+geom_sf(mapping = aes(geometry=geometry, 
+                               fill=BoroughDataMap$Median.House.Price.......2014),
                  data = BoroughDataMap)+
   theme_minimal()
 ```
@@ -826,7 +828,7 @@ labels<-labs(title="Average House Price 2014",
 ```{r, cache=TRUE}
 ggplot()+
   geom_sf(mapping = aes(geometry=geometry, 
-                        fill=Median.House.Price...U.00A3.....2014),
+                        fill=BoroughDataMap$Median.House.Price.......2014),
           data = BoroughDataMap)+
   theme_minimal()+
   palette1+
