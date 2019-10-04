@@ -468,7 +468,7 @@ R studio requires R which you can download from: https://cran.rstudio.com/
 
 RStudio is a free and open-source integrated development environment for R --- it makes R much easier to use.
 
-If you are using a Mac and run into issues check out the [Mac R issues] section
+If you are using a Mac and run into issues, firstly follow the instructions below then check out the [Mac R issues] section if the problem persists. 
 
 #### Setup 2
 
@@ -511,9 +511,23 @@ Packages we've installed:
 
 Here, `repos` stands for repository where we will download the packages from. Once you have set it, you shouldn't need to specify it again. Whilst we've installed the packages we haven't loaded them...this is done through using ```library()``` function.
 
+If you are **using a Mac** you might also need `rgdal`... this is because a lot of packages are dependent on it and it might not properly install...
+
+```{r, message=FALSE, warning=FALSE, eval=FALSE, cache=TRUE}
+install.packages("rgdal")
+```
+
+Then load `rgdal`...
+
+```{r, message=FALSE, warning=FALSE, eval=FALSE, cache=TRUE}
+library(rgdal)
+```
+
+If you still have issues the check out the [Mac R issues] section
+
 #### Load data
 
-Load the ```sf``` package so we can read our shapefile in --- remember to change to filepath to your shapefile. For this first practical we'll just leave the datea where it is, next week we'll show you how to use projects to make calling data much easier.
+Load the ```sf``` package so we can read our shapefile in --- remember to change to filepath to your shapefile. For this first practical we'll just leave the data where it is, next week we'll show you how to use projects to make calling data much easier.
 
 > **Note** by default in R, the file path should be defined with ```/``` but on a windows file system it is defined with ```\```. Using ```\\``` instead allows R to read the path correctly – alternatively, just use ```/```
 
@@ -666,6 +680,12 @@ dbWriteTable(con,"original_csv", mycsv, overwrite=TRUE)
 dbDisconnect(con)
 ```
 You can then save your script through File > Save As.
+
+If you are on a Mac you might also need to load `rgdal`...just add the following at the top of the script. 
+
+```{r, message=FALSE, warning=FALSE, eval=FALSE, cache=TRUE}
+library(rgdal)
+```
 
 ### What will I use
 

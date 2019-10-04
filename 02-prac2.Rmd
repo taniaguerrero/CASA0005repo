@@ -347,7 +347,8 @@ Now we can use the ```readr``` package which comes bundled as part of the ```tid
 library(tidyverse)
 #wang the data in straight from the web using read_csv, 
 #skipping over the 'n/a' entries as you go...
-LondonData <- read_csv("https://files.datapress.com/london/dataset/ward-profiles-and-atlas/2015-09-24T14:21:24/ward-profiles-excel-version.csv", 
+LondonData <- read_csv("https://files.datapress.com/london/dataset/ward-profiles-and-atlas/2015-09-24T14:21:24/ward-profiles-excel-version.csv",
+                       locale = locale(encoding = "latin1"),
                        na = "n/a")
 ```
 
@@ -375,7 +376,8 @@ datatypelist <- data.frame(cbind(lapply(LondonData,class)))
 You should see that all columns that should be numbers are read in as numeric. Try reading in LondonData again, but this time without excluding the ‘n/a’ values in the file, e.g.
 
 ```{r, message=FALSE, cache=TRUE}
-LondonData <- read_csv("https://files.datapress.com/london/dataset/ward-profiles-and-atlas/2015-09-24T14:21:24/ward-profiles-excel-version.csv")
+LondonData <- read_csv("https://files.datapress.com/london/dataset/ward-profiles-and-atlas/2015-09-24T14:21:24/ward-profiles-excel-version.csv", 
+                       locale = locale(encoding = "latin1"))
 ```
 
 Now run the datatypelist function again --- you should see that some of the columns (those the n/a values in) have been read in as something other than numeric. This is why we need to exclude them. Isn’t ```readr``` great for helping us avoid reading in our numeric data as text!
