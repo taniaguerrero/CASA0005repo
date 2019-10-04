@@ -789,7 +789,7 @@ geom_polygon(aes(x=x, y=y),
              data.frame)
 ```
 
-17. To begin our plot, we will start with the map layer – we will generate this using the ```geom_sf()``` function in ```ggplot2```:
+17. To begin our plot, we will start with the map layer --– we will generate this using the ```geom_sf()``` function in ```ggplot2```:
 
 ```{r, cache=TRUE}
 library(ggplot2)
@@ -802,7 +802,7 @@ ggplot()+geom_sf(mapping = aes(geometry=geometry),
 
 ```{r, cache=TRUE}
 ggplot()+geom_sf(mapping = aes(geometry=geometry, 
-                               fill=BoroughDataMap$Median.House.Price.......2014),
+                               fill=Median.Household.income.estimate..2012.13.),
                  data = BoroughDataMap)+
   theme_minimal()
 ```
@@ -812,24 +812,24 @@ ggplot()+geom_sf(mapping = aes(geometry=geometry,
 ```{r, cache=TRUE}
 palette1<-scale_fill_continuous(low="white", 
                                 high="orange", 
-                                "Price(£)")
+                                "Value (£)")
 ```
 
 20. And some appropriate labels:
 
 ```{r, cache=TRUE}
-labels<-labs(title="Average House Price 2014",
+labels<-labs(title="Median household income estimate 2012 to 2013",
              x="Longitude", 
              y="Latitude")
 ```
 
 21. Before plotting the all of them together:
 
-```{r, cache=TRUE}
+```{r, cache=TRUE, eval=TRUE}
 ggplot()+
-  geom_sf(mapping = aes(geometry=geometry, 
-                        fill=BoroughDataMap$Median.House.Price.......2014),
-          data = BoroughDataMap)+
+  geom_sf(mapping = aes(geometry=geometry,
+                        fill = Median.Household.income.estimate..2012.13.)
+          ,data = BoroughDataMap)+
   theme_minimal()+
   palette1+
   labels
