@@ -16,6 +16,7 @@ Some of these practicals are long, take regular breaks and have a listen to some
 
 [Andy](https://www.youtube.com/watch?v=A48hOToMuRE)
 
+[Adam](https://open.spotify.com/album/0m9oaRdpRS9n0mq2bECgNQ?si=Dxu8_-kmSy6jq_oFN5gJ4A. Recommended listening this week comes courtesy of “Pound for pound the best rock band on the planet at the minute. In my, not so humble opinion.” – Jake Burns, Stiff Little Fingers. Yes, it’s the Wildhearts and I can confirm that they are the greatest rock band on the planet! Wrap your ears around this: 
 
 ## Introduction 
 
@@ -1164,6 +1165,100 @@ map<-ggmap::ggmap(b) + geom_sf(data = BoroughDataMapWGS84,aes(geometry=geometry,
 
 plot(map)
 ```
+
+## Tidying data
+
+In this practical we just showed how you to load, extract and reshape data using `melt`, however there is a better way to tidy data. As per the [R for Data Science book](https://r4ds.had.co.nz/tidy-data.html), tidy data is defined using the following three rules:
+
+1. Each variable must have its own column.
+
+2. Each observation must have its own row.
+
+3. Each value must have its own cell.
+
+But, as per the book, these three are interrelated as you can't only adhere to two without adhering to all three. So this gives us:
+
+1. Put each dataset in a tibble
+
+2. Put each variable in a column
+
+Earlier we read in the data using:
+
+```{r, cache=TRUE, warning=FALSE, message=FALSE, eval=FALSE}
+flytipping <- read_csv("https://data.london.gov.uk/download/fly-tipping-incidents/536278ff-a391-4f20-bc79-9e705c9b3ec0/fly-tipping-borough.csv")
+```
+
+But we can also do something like this to force the coloumns to the appopraite data types (e.g. text, numberic)
+
+```{r, cache=TRUE, warning=FALSE, message=FALSE, eval=FALSE}
+flytipping1 <- read_csv("https://data.london.gov.uk/download/fly-tipping-incidents/536278ff-a391-4f20-bc79-9e705c9b3ec0/fly-tipping-borough.csv", 
+                       col_types = cols(
+                         code = col_character(),
+                         area = col_character(),
+                         year = col_character(),
+                         total_incidents = col_number(),
+                         total_action_taken = col_number(),
+                         warning_letters = col_number(),
+                         fixed_penalty_notices = col_number(),
+                         statutory_notices = col_number(),
+                         formal_cautions = col_number(),
+                         injunctions = col_number(),
+                         prosecutions = col_number()
+                       ))
+
+view(flytipping1)
+```
+
+So we have a tibble with columns of each varaible (e.g. warning letters, total actions taken) where every row is a London borough. We want make sure that each observation has its own row...it doesn't as in the first row here we have observations for total incidents and total actions taken etc...to do this we will use `pivot_longer()`. Make sure you have the most recent version of `tidyverse` if you get an error.
+
+```{r, cache=TRUE, warning=FALSE, message=FALSE, eval=FALSE}
+#convert the tibble into a tidy tibble
+library(tidyverse)
+flytipping_long <- flytipping1 %>% pivot_longer(
+  cols = 4:11,
+  names_to = "tipping_type",
+  values_to = "count"
+)
+
+view(flytipping_long)
+```
+
+Do you see the difference...this is classed as tidy data as every variable has a column, every observation has a row and every value has a cell.
+
+You could also use this to do the same thing...
+
+```{r, cache=TRUE, warning=FALSE, message=FALSE, eval=FALSE}
+#an alternative which just pulls everything out into a single table
+flytipping2 <- flytipping1[,1:4]
+```
+
+But my advice would be to learn how to use the tidy tools!
+
+Now let's make it a bit more suitable for mapping with `pivot_wider()` by making coloumns for each year of each variable....in the original `.csv` we had a year coloumn that had values of 2011-2012 to 2017-2018, so if we wanted to map a specifc year we'd have to filter out the year then map. Here we can just alter the data from `pivot_longer()` using the year and tipping type...
+
+```{r, cache=TRUE, warning=FALSE, message=FALSE, eval=FALSE}
+#pivot the tidy tibble into one that is suitable for mapping
+flytipping_wide <- flytipping_long %>% pivot_wider(
+  id_cols = 1:2,
+  names_from = c(year,tipping_type),
+  names_sep = "_",
+  values_from = count
+)
+
+view(flytipping_wide)
+```
+
+But what if you were just interested in a specific varaible and wanted the coloums to be each year of the data...again using `pivot_wider()`
+
+```{r, cache=TRUE, warning=FALSE, message=FALSE, eval=FALSE}
+widefly <- flytipping2 %>% pivot_wider(
+  names_from = year, 
+  values_from = total_incidents)
+```
+
+You could now join this to the London borough `.shp` and produce a map...
+
+What's the take home from this? Basically always try to put your data into a certain format before doing further analysis on it as it will be easier for you to determine the right tools to select.
 
 ## Feedback
 
