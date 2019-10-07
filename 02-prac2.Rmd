@@ -16,7 +16,7 @@ Some of these practicals are long, take regular breaks and have a listen to some
 
 [Andy](https://www.youtube.com/watch?v=A48hOToMuRE)
 
-[Adam](https://open.spotify.com/album/0m9oaRdpRS9n0mq2bECgNQ?si=Dxu8_-kmSy6jq_oFN5gJ4A. Recommended listening this week comes courtesy of “Pound for pound the best rock band on the planet at the minute. In my, not so humble opinion.” – Jake Burns, Stiff Little Fingers. Yes, it’s the Wildhearts and I can confirm that they are the greatest rock band on the planet! Wrap your ears around this: 
+[Adam](https://open.spotify.com/album/0m9oaRdpRS9n0mq2bECgNQ?si=Dxu8_-kmSy6jq_oFN5gJ4A). Recommended listening this week comes courtesy of “Pound for pound the best rock band on the planet at the minute. In my, not so humble opinion.” – Jake Burns, Stiff Little Fingers. Yes, it’s the Wildhearts and I can confirm that they are the greatest rock band on the planet! Wrap your ears around this: 
 
 ## Introduction 
 
@@ -1188,7 +1188,7 @@ Earlier we read in the data using:
 flytipping <- read_csv("https://data.london.gov.uk/download/fly-tipping-incidents/536278ff-a391-4f20-bc79-9e705c9b3ec0/fly-tipping-borough.csv")
 ```
 
-But we can also do something like this to force the coloumns to the appopraite data types (e.g. text, numberic)
+But we can also do something like this to force the columns to the appopraite data types (e.g. text, numberic)
 
 ```{r, cache=TRUE, warning=FALSE, message=FALSE, eval=FALSE}
 flytipping1 <- read_csv("https://data.london.gov.uk/download/fly-tipping-incidents/536278ff-a391-4f20-bc79-9e705c9b3ec0/fly-tipping-borough.csv", 
@@ -1205,7 +1205,7 @@ flytipping1 <- read_csv("https://data.london.gov.uk/download/fly-tipping-inciden
                          injunctions = col_number(),
                          prosecutions = col_number()
                        ))
-
+# view the data
 view(flytipping1)
 ```
 
@@ -1220,6 +1220,7 @@ flytipping_long <- flytipping1 %>% pivot_longer(
   values_to = "count"
 )
 
+# view the data
 view(flytipping_long)
 ```
 
@@ -1235,6 +1236,8 @@ flytipping2 <- flytipping1[,1:4]
 But my advice would be to learn how to use the tidy tools!
 
 Now let's make it a bit more suitable for mapping with `pivot_wider()` by making coloumns for each year of each variable....in the original `.csv` we had a year coloumn that had values of 2011-2012 to 2017-2018, so if we wanted to map a specifc year we'd have to filter out the year then map. Here we can just alter the data from `pivot_longer()` using the year and tipping type...
+
+> Note, just because the data is considered tidy doesn't mean it is directly appropriate for mapping. It might need to be tidy for analysis, such as where we used `melt()` earlier on (you could replace `melt()` with what we've shown you here) but for mapping you probably want something a bit different. 
 
 ```{r, cache=TRUE, warning=FALSE, message=FALSE, eval=FALSE}
 #pivot the tidy tibble into one that is suitable for mapping

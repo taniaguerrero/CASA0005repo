@@ -219,7 +219,7 @@ c)	Install some kind of virtualisation software such as [Parallels](http://www.p
 If you can, it is preferable to run Arc on Bootcamp as virtualisation software can be slow, but the Desktop@UCL facility should suffice for this course.
 ArcGIS (Version 10.6 is the latest at time of writing, but may have already been superseded) can be downloaded from the [UCL Software Database](https://swdb.ucl.ac.uk/) for free
 
-**Make sure** you read the instructions provided by the UCL Software Database fully if installing onto your own machine as you have to set the license correctly 
+**Make sure** you read the instructions provided by the [UCL Software Database on how to activate ArcGIS](https://www.ucl.ac.uk/isd/how-to/how-to-activate-arcgis) fully if installing onto your own machine as you have to set the license correctly. 
 
 ##### Getting Help
 
