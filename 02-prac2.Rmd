@@ -298,35 +298,35 @@ I will now give you two options to arrive at a nice cleaned dataset. If you have
 
 For this example we are going to use the London Datastore Catalogue.
 
-Go to: https://data.london.gov.uk/dataset/london-datastore-catalogue and download the excel document.
+Go to: https://data.london.gov.uk/dataset/f33fb38c-cb37-48e3-8298-84c0d3cc5a6c and download the excel document for ward profiles.
 
 ### Old skool cleaning
 
-22. Open the ```LondonData.xls``` file in Excel, and save as ```LondonData.csv``` into your wk2/RProject folder.
+22. Open the ```ward-profiles-excel-version.xls``` file in Excel, and save as ```LondonData.csv``` into your wk2/RProject folder.
 
 23. Open your new ```.csv``` file in Excel. There might be some non-numeric values inside numeric columns which will cause problems in your analysis. These need to be removed before proceeding any further. To remove these, you can use the replace function in Excel. In the home tab under ‘Editing’ open up the find and replace dialogue box and enter the following into the find box:
 
-```#VALUE!``` ```#n/a```
+```#VALUE!``` ```n/a```
 
 Leave the replace box empty each time and click Replace All to remove these from your file, before saving the file again.
 
 24. Once you have cleaned out all of the trixy characters from the file, to read it into R, we will use the ```read.csv()``` function:
 
 ```{r, cache=TRUE}
-LondonDataOSK<- read.csv("prac2_data/london_catalogue.csv")
+LondonDataOSK<- read.csv("prac2_data/ward-profiles-excel-version.csv")
 ```
 
 > **Note**, I've made an R project for all these practicals, which is why my file path starts with ```prac2_data/```. If you save the ```.csv``` in the same folder as the ```.Rproj``` then you can just use:
 
 ```{r eval=FALSE, cache=TRUE}
-LondonDataOSK<- read.csv("LondonData.csv")
+LondonDataOSK<- read.csv("ward-profiles-excel-version.csv")
 ```
 
 If you look at the ```read.csv()``` help file - ```?read.csv``` - you will see that we can actually include many more parameters when reading in a .csv file. For example, we could read in the same file as follows:
 
 ```{r, cache=TRUE}
 # by default in R, the file path should be defined with / but on a #windows file system it is defined with \. Using \\ instead allows R #to read the path correctly – alternatively, just use /
-LondonDataOSK<- read.csv("prac2_data/london_catalogue.csv", 
+LondonDataOSK<- read.csv("prac2_data/ward-profiles-excel-version.csv", 
                          header = TRUE, sep = ",")
 ```
 

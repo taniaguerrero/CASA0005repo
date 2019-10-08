@@ -71,15 +71,17 @@ Every year there is a useR conference that provides a load to tutorials on the l
 
 Other useful tutorials can be found here:
 
+* https://rweekly.org/
 * http://rpubs.com/chrisbrunsdon/
 * http://rpubs.com/alexsingleton/
 * https://mgimond.github.io/megug2017/#cropping-a-raster-interactively
 
 ### Twitter
 
-R package authors regular tweet with updates and new developments. If twitter is your thing go and follow these people to start with...and anyone else you come across...
+R package authors regularly tweet with updates and new developments. If twitter is your thing go and follow these people to start with...and anyone else you come across...
 
 * [Hadley Wickham](https://twitter.com/hadleywickham)
+* [Mara Averick](https://twitter.com/dataandme)
 * [Carl Howe](https://twitter.com/cdhowe)
 * [Alison Hill](https://twitter.com/apreshill)
 * [Robin Lovelace](https://twitter.com/robinlovelace)
@@ -202,4 +204,5 @@ Discussion should have lots of critical reflection...by that i mean... how do yo
 
 ### Conclusion
 
-Your conclusion should restate what you set out to investigate, summarise how you acheived it, what your results showed, why it is important and in this case specify recommendations (e.g. what should be changed or altered to fix the issue / question you explored). 
+Your conclusion should restate what you set out to investigate, summarise how you acheived it, what your results showed, why it is important and in this case specify recommendations (e.g. what should be changed or altered to fix the issue / question you explored). Do not add any new material in this section (e.g. talk about new ideas or add new references). Whilst it seems like i've listed a lot of things to inlcude it short be relatively short --- a concise summary. 
+
