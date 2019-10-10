@@ -47,7 +47,7 @@ Now, assuming that you've got a copy of your London Boroughs shapefile (from wee
 ```{r, cache=TRUE}
 ##First, get the London Borough Boundaries
 EW <- geojson_read(
-  "https://opendata.arcgis.com/datasets/8edafbe3276d4b56aec60991cbddda50_2.geojson",
+  "https://opendata.arcgis.com/datasets/8edafbe3276d4b56aec60991cbddda50_4.geojson",
   what = "sp")
 ```
 

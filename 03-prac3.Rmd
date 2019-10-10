@@ -95,6 +95,8 @@ plot(pr1)
 5. A better and more efficient way is to firstly list all the files stored within our directory
 
 ```{r, cache=TRUE}
+# look in our folder, find the files that end with .tif and 
+# provide their full filenames
 listfiles <- list.files("prac3_data/", ".tif", full.names = TRUE)
 
 #have a look at the file names 
@@ -305,6 +307,8 @@ library(reshape2)
 squishdata <- melt(alldf, measure.vars=names(alldf))
 ```
 
+We could also use the functions we learnt about in [Tidying data]
+
 25. Then subset the data, selecting two months
 
 ```{r, cache=TRUE}
@@ -480,7 +484,7 @@ Ausoutline<-st_transform(Ausoutline, 3112)
 Ausoutline2<-as(Ausoutline, 'Spatial')
 ```
 
-I've been a bit lazy here, if you recall from the previous practical session there are different ways to reproject data based if you have an SP or SF object. SP objects require you to specify the entire CRS string, so i just convered it to SF, used the ESPG code and converted it back to SP. The main reason for doing this is that i  made a grid to store my interpolation and having a remote sensing background i wanted to specify the pixel size. The equivalent function if SF won't let you specify pixel size or there is no easy and straightforward way to do it (at least to my knowledge).
+I've been a bit lazy here, if you recall from the previous practical session there are different ways to reproject data based if you have an SP or SF object. SP objects require you to specify the entire CRS string, so i just convered it to SF, used the ESPG code and converted it back to SP. The main reason for doing this is that i made a grid to store my interpolation and having a remote sensing background i wanted to specify the pixel size. The equivalent function if SF won't let you specify pixel size or there is no easy and straightforward way to do it (at least to my knowledge).
 
 37. Next, create an empty grid where cellsize is the spatial resolution, cellsize will overwrite the number of pixels we specified (n). Here as we've used a projected CRS i've put a high cellsize (in metres) so 200km by 200km cells. You can use a smaller number if you wish but it will take much longer to process.
 

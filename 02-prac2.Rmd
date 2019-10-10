@@ -172,7 +172,7 @@ will remove the object A from the workspace (do ```ls()``` again to check this o
 
 ### Functions
 
-12. Both ```rm()``` and ```ls()``` are known as functions. Functions are the other fundamental aspect to the R language. Functions can be thought of as single or multiple calculations that you apply to objects. They generally take the form of:
+12. Both ```rm()``` and ```ls()``` are known as functions. Functions are the other fundamental aspect to the R language. Functions can be thought of as single or multiple calculations that you apply to objects. They generally take the form of...(don't run these)
 
 ```{r, eval=FALSE, cache=TRUE}
 function(object, argument1, argument2, argument3)
@@ -355,6 +355,8 @@ LondonData <- read_csv("https://files.datapress.com/london/dataset/ward-profiles
 
 > **Note** the use of read_csv here as opposed to read.csv. They are very similar, but read_csv is just a bit better. Read [this](http://yetanothermathprogrammingconsultant.blogspot.com/2016/12/reading-csv-files-in-r-readcsv-vs.html) for more information. Also, for those python fans out there ---IT’S NOT THE SAME FUNCTION AS READ_CSV IN PYTHON
 
+What is `locale = locale(encoding = "latin1")`...good question...it is basically the encoding of the data (how it is stored). There are a few different formats such as UTF-8 and latin1. In latin1 each character is 1 byte long, in UTF-8 a character can consist of more than 1 byte. To my knowledge the default in R is encoded as latin1, but `readr` (the package we are using to read in the `.csv` is UTF-8 so we have to specify it.
+
 ### Examining your new data
 
 25. Your new data has been read in as a data frame / tibble (a tibble is just a data frame with a few extra bells and whistles). If you ever need to check what data type your new data set is, we can use the ```class()``` function:
@@ -382,6 +384,15 @@ LondonData <- read_csv("https://files.datapress.com/london/dataset/ward-profiles
 ```
 
 Now run the datatypelist function again --- you should see that some of the columns (those the n/a values in) have been read in as something other than numeric. This is why we need to exclude them. Isn’t ```readr``` great for helping us avoid reading in our numeric data as text!
+
+To show this print the values in the column % children in reception year who are obese - 2011/12 to 2013/14 the column Mean Age - 2013
+
+```{r, message=FALSE, cache=TRUE}
+# col has n/a and is not numeric
+LondonData$`% children in reception year who are obese - 2011/12 to 2013/14`
+# no n/a values in this column
+LondonData$`Mean Age - 2013`
+```
 
 ```{r, eval=FALSE, cache=TRUE}
 LondonData <- edit(LondonData)
@@ -552,7 +563,7 @@ As with all plots in R, there are multiple ways we can do this. The basic ```plo
 6. So one mega cool thing about R is you can read spatial data in straight from the internetz! Try this below for downloading a GeoJson file...it might take a few minutes...
 
 ```{r, cache=TRUE}
-EW <- geojson_read("https://opendata.arcgis.com/datasets/8edafbe3276d4b56aec60991cbddda50_2.geojson", what = "sp")
+EW <- geojsonio::geojson_read("https://opendata.arcgis.com/datasets/8edafbe3276d4b56aec60991cbddda50_4.geojson", what = "sp")
 ```
 
 Or you can do a manual download from [here](http://geoportal.statistics.gov.uk/datasets/8edafbe3276d4b56aec60991cbddda50_2) --- see point 7.
@@ -1010,7 +1021,7 @@ One of the nice features of ```ggplot2``` is its faceting function which allows 
 
 See if you can create a faceted grid of London maps like the one shown below. To do this, you will need to go through several stages:
 
-1. You will need to subset your ```Borough_geom``` data frame so that it only contains data on the same scale (you have a number of columns that show percentages, for example) – you can show facets on different scales, but we will leave this for the time being.
+1. You will might need to subset your data frame so that it only contains data on the same scale (you have a number of columns that counts and area, for example) --– you can show facets on different scales, but we will leave this for the time being (this code is not shown here).
 
 2. You will also need to make sure your subset includes a few columns of key ID information data at the beginning –-- e.g. ID and geometry.
 
