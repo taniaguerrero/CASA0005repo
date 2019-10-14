@@ -235,9 +235,28 @@ st_layers("prac3_data/gadm36_AUS.gpkg")
 
 ```{r, cache=TRUE}
 Ausoutline <- st_read("prac3_data/gadm36_AUS.gpkg", layer='gadm36_AUS_0')
-# check the layer by plotting the geometry
+```
+
+Check the layer by plotting the geometry...we could do this through...
+
+```{r, cache=TRUE}
 plot(Ausoutline$geom)
 ```
+
+But as the `.shp` is quite complex (i.e. lots of points) we can simplify it first with the `rmapshaper` package --- install that now..
+
+```{r, cache=TRUE}
+#load the rmapshaper package
+library(rmapshaper)
+#simplify the shapefile
+#keep specifies the % of points
+#to keep
+ms_simplify(Ausoutline, keep=0.05)
+#plot the shape
+plot(Ausoutline$geom)
+```
+
+Check out [this vignette](https://cran.r-project.org/web/packages/rmapshaper/vignettes/rmapshaper.html) for more information about `rmapshaper`
 
 20. Next, set our map extent to the outline of Australia then crop our WorldClim dataset to it
 
