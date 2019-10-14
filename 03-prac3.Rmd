@@ -15,6 +15,8 @@ Some of these practicals are long, take regular breaks and have a listen to some
 
 [Andy](https://www.youtube.com/watch?v=nH7bjV0Q_44)
 
+[Adam](https://open.spotify.com/album/23jTvoFSWLKhfS8BWIm12x?si=IsB-d7njTC-FAzLTZYzSwA) --- this week, from me, it’s a history lesson. 30 Years ago, two DJs started playing tunes in the other room in Heaven, just under Charing Cross Station. The night was called Rage and the DJs were called Fabio and Grooverider. Their mix of house and sped-up breakbeats was an entirely new sound that began to be called ‘Jungle’. The 30 Years of Rage album recalls some of the early tunes that helped shape an entire genre of music. Enjoy! 
+
 ## Introduction 
 
 This practical is composed of three parts. To start with we're going to load some global raster data into R. In the second part we extract data points (cities and towns) from this data and generate some descriptive statistics and histograms. In the final section we explore interpolation using point data. 
@@ -239,13 +241,13 @@ Ausoutline <- st_read("prac3_data/gadm36_AUS.gpkg", layer='gadm36_AUS_0')
 
 Check the layer by plotting the geometry...we could do this through...
 
-```{r, cache=TRUE}
+```{r, cache=TRUE, warning=FALSE, message=FALSE}
 plot(Ausoutline$geom)
 ```
 
 But as the `.shp` is quite complex (i.e. lots of points) we can simplify it first with the `rmapshaper` package --- install that now..
 
-```{r, cache=TRUE}
+```{r, cache=TRUE, warning=FALSE, message=FALSE}
 #load the rmapshaper package
 library(rmapshaper)
 #simplify the shapefile
