@@ -67,6 +67,12 @@ knitr::include_graphics('prac5_images/arcmap.png')
 
 10. Accept the defaults and click OK
 
+>ArcMap 'pro' tip. When you do any processing within ArcMap it will try and let you contiune using the software. In practice this is pretty rubbish and nearly always crashes. You can turn this off and force the software to only work on the processing by click Geoprocessing (in the top tool bar) > Geoprocessing Options then unselecting Background processing
+
+```{r echo=FALSE, out.width = "400pt", fig.align='center', cache=TRUE}
+knitr::include_graphics('prac5_images/geoprocessing.png') 
+```
+
 11. On the right hand side of the ArcMap document there should be two tabs: Catalog and Search. If they aren't visible click Windows > Catalog, next to the little x for Catalog there will be a pin symbol that will pin it to the right hand side of the screen. Do the same for Search. Search will let you find any tool in ArcMap without knowing exactly what Toolbox it is stored in.   
 
 ```{r echo=FALSE, out.width = "400pt", fig.align='center', cache=TRUE}
@@ -224,6 +230,8 @@ knitr::include_graphics('prac5_images/field_calc.png')
 ```
 
 As expected the values are pretty small, but not to worry we can scale our map accordingly, but it's also imporant to consider what is the best method to display data (e.g. counts, percentages)
+
+> ArcMap 'pro' tip. If you want to see almost all the analysis that has been done within a map document open the results window through: Geoprocessing (top tool bar) > Results.
 
 Ok enough playing with the data and attributes, let's make some maps
 
