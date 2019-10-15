@@ -258,6 +258,8 @@ ms_simplify(Ausoutline, keep=0.05)
 plot(Ausoutline$geom)
 ```
 
+This should load quicker, but for 'publication' or 'best' analysis (i.e. not just demonstrating or testing) i'd recommend using the real file to ensure you don't simply a potentially important variable. 
+
 Check out [this vignette](https://cran.r-project.org/web/packages/rmapshaper/vignettes/rmapshaper.html) for more information about `rmapshaper`
 
 20. Next, set our map extent to the outline of Australia then crop our WorldClim dataset to it

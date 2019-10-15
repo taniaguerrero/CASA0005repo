@@ -296,7 +296,9 @@ plot(ndvi, col = rev(terrain.colors(10)), main = "Landsat-NDVI")
 hist(ndvi, breaks = 40, main = "NDVI Histogram", xlim = c(-.3,.8))
 ```
 
-19. We can reclassify to the raster to show use what is most likely going to vegetation based on the histogram using the 3rd quartile --- anything above the 3rd quartile we assume is vegetation. 
+19. We can reclassify to the raster to show use what is most likely going to vegetation based on the histogram using the 3rd quartile --- anything above the 3rd quartile we assume is vegetation.
+
+> Note, this is an assumption for demonstration purposes, if you were to do something similar in your assignment be sure to provide reasoning with linkage to literature (e.g. policy or academic)
 
 ```{r, cache=TRUE}
 veg <- reclassify(ndvi, cbind(-Inf, 0.3, NA))

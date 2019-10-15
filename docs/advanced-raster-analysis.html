@@ -24,7 +24,7 @@
 <meta name="author" content="Andy MacLachlan and Adam Dennett" />
 
 
-<meta name="date" content="2019-10-14" />
+<meta name="date" content="2019-10-15" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -754,6 +754,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ol start="19" style="list-style-type: decimal">
 <li>We can reclassify to the raster to show use what is most likely going to vegetation based on the histogram using the 3rd quartile — anything above the 3rd quartile we assume is vegetation.</li>
 </ol>
+<blockquote>
+<p>Note, this is an assumption for demonstration purposes, if you were to do something similar in your assignment be sure to provide reasoning with linkage to literature (e.g. policy or academic)</p>
+</blockquote>
 <div class="sourceCode" id="cb382"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb382-1" title="1">veg &lt;-<span class="st"> </span><span class="kw">reclassify</span>(ndvi, <span class="kw">cbind</span>(<span class="op">-</span><span class="ot">Inf</span>, <span class="fl">0.3</span>, <span class="ot">NA</span>))</a>
 <a class="sourceLine" id="cb382-2" title="2"><span class="kw">plot</span>(veg, <span class="dt">main =</span> <span class="st">&#39;Possible Veg cover&#39;</span>)</a></code></pre></div>
 <p><img src="CASA0005_files/figure-html/unnamed-chunk-360-1.png" width="672" /></p>
