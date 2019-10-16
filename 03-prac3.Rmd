@@ -476,14 +476,14 @@ spatialpt <- SpatialPoints(samplestemp[,c('lon','lat')], proj4string = crs(world
 spatialpt <- SpatialPointsDataFrame(spatialpt, samplestemp)
 ```
 
-33. You'll notice that here i've just nicked the CRS from our worldclimtemp. In generally it's good practice to avoid using *static* or *hard coding* references, by that i mean if we added another coloumn to our samplestemp data (or manipulated somehow) then using this...
+33. You'll notice that here i've just nicked the CRS from our worldclimtemp. In generally it's good practice to avoid using *static* or *hard coding* references, by that i mean if we added another coloumn to our samplestemp data (or manipulated somehow) then using this...don't run this....
 
 ```{r, eval=FALSE, cache=TRUE}
 spatialpt <- SpatialPoints(samplestemp[13:14],
                            proj4string=CRS("+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0 "))
 ```
 
-Would give us a headache as coloumns 13 and 14 might no longer be longitude and latitude.
+This would give us a headache as coloumns 13 and 14 might no longer be longitude and latitude.
 
 34. Right...plot the Australian geometry outline then add our spatial data points ontop...
 
