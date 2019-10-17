@@ -496,8 +496,8 @@ knitr::include_graphics('prac5_data/QGIS_hotel.png')
 ```
 
 > **Note** there are a few problems with my map that could be improved:
-(a) If you look closely at the vector layer for London you will see that one of the boroughs is missing from map (b) --- this is most likely because it has no data but could easily be fixed
-(b) Whilst this time i've displayed all the city names the colour scheme needs work...for ideas on this check out colour
+(1) If you look closely at the vector layer for London you will see that one of the boroughs is missing from map (b) --- this is most likely because it has no data but could easily be fixed
+(2) Whilst this time i've displayed all the city names the colour scheme needs work...for ideas on this check out colour brewer.
 
 ### Graphical modeler
 

@@ -245,7 +245,7 @@ Check the layer by plotting the geometry...we could do this through...
 plot(Ausoutline$geom)
 ```
 
-But as the `.shp` is quite complex (i.e. lots of points) we can simplify it first with the `rmapshaper` package --- install that now..
+But as the `.shp` is quite complex (i.e. lots of points) we can simplify it first with the `rmapshaper` package --- install that now..if it doesn't load (or crashes your PC) this isn't an issue. It's just good practice that when you load data into R you check to see what it looks like...
 
 ```{r, cache=TRUE, warning=FALSE, message=FALSE}
 #load the rmapshaper package
@@ -353,7 +353,7 @@ colnames(meantwomonths)[colnames(meantwomonths)=="variable"] <- "Month"
 head(meantwomonths)
 ```
 
-27. Select the colour (here color in the code --- US english) and fill based on the variable (which is our month). The intercept is the mean we just calculated, with the lines also based on the coloumn variable.
+27. Select the colour and fill based on the variable (which is our month). The intercept is the mean we just calculated, with the lines also based on the coloumn variable.
 
 ```{r message=FALSE, warning=FALSE, cache=TRUE}
 

@@ -432,7 +432,7 @@ Again, remember that the ```.csv ``` in the Layers tab (bottom left) is the orig
 Now let's make a quick thematic map like we did in ArcMap.
 
 20. Right click on your London boroughs layer > Properties > Symbology
-21. Select categorised and choose a data column and color ramp
+21. Select categorised and choose a data column and color ramp > click Classify 
 
 You could also select graduated, however our joined data fields are in the wrong data type. If you wish to change them follow [this guide](https://wiki.tuflow.com/index.php?title=QGIS_Change_Attribute_Type)
 
