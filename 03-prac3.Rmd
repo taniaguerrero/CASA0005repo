@@ -45,9 +45,11 @@ knitr::include_graphics(c("prac3_images/vector_lonlat.png","prac3_images/vector_
 
 If you are still a bit confused by coordiate reference systems then **stop** and take some time to have a look at the resources listed here. It is very important to understand projection systems.
 
-This is the best resource i've come across explaining coordiate reference systems:
+This is the best resources i've come across explaining coordiate reference systems are:
 
 * https://geocompr.github.io/post/2019/crs-projections-transformations/
+
+* https://mercator.tass.com/mercator-heritage --- this is the story of Mercator!
 
 Others include:
 
