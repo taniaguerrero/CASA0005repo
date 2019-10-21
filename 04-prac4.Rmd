@@ -271,11 +271,11 @@ knitr::include_graphics('prac4_images/easyway.png')
 
 Now you will be able to use Git and GitHub as per the previous instructions
 
-### Back in time
+## Back in time
 
 You can go back in time with Git and revert to previous versions of files that you committed. This is a bit more invovled, so have a look [at this website](https://ohi-science.org/news/github-going-back-in-time) for more information.
 
-### Health warning 
+## Health warning 
 
 To avoid merge conflicts be careful with your commits, pushes and pulls. Think about what you are doing each time. GitHub help pages are quite comprehensive... https://help.github.com/en/articles/resolving-a-merge-conflict-on-github
 
