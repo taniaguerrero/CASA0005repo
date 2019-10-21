@@ -255,7 +255,7 @@ knitr::include_graphics('prac4_images/branchcompare.png')
 
 We will show you how to publish RMarkdown documents online in a later practical.
 
-### The other 'easy' way
+## The other 'easy' way
 
 There is an easier way to set up Git and GitHub with your project, but this assumes you are starting fresh (with no code in an R project)!
 
