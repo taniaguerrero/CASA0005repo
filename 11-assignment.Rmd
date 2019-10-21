@@ -127,6 +127,9 @@ This is by no means an extensive data list, but summarises data used within some
 * Kings data on air pollution: https://www.londonair.org.uk/LondonAir/Default.aspx
 * Uber travel time data: https://movement.uber.com/?lang=en-GB
 * Eurostat: https://ec.europa.eu/eurostat
+* Animal tracking: https://www.movebank.org/
+
+* Correct statistical tests: https://stats.idre.ucla.edu/other/mult-pkg/whatstat/
 
 ## Data lists
 
