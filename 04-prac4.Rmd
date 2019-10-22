@@ -130,7 +130,7 @@ You should see the files also appear under the Git tab
 knitr::include_graphics('prac4_images/makeafile.png') 
 ```
 
-Now you will be able to use Git and GitHub as per the following instructions
+Now you will be able to use Git and GitHub as per the following instructions...you can also refer to practical 8 [GitHub last] to avoid using the shell (as i did in the lecture) and just use RStudio GUI.
 
 ## Committing to Git
 
