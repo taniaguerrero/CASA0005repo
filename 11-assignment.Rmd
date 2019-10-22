@@ -67,6 +67,7 @@ Every year there is a useR conference that provides a load to tutorials on the l
 
 * LOOK AT THIS WEBSITE for data viz and code: https://www.data-to-viz.com/caveat/boxplot.html
 * ALSO this website for data viz: https://moderndata.plot.ly/visualizing-geo-spatial-data-with-sf-and-plotly/
+* Make graphics like the BBC: https://github.com/bbc/bbplot/blob/master/chart_examples/bbplot_example_plots.png
 * http://www.user2019.fr/tutorials/
 * https://github.com/sowla/useR2019-materials
 
