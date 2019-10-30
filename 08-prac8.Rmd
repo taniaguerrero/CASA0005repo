@@ -331,7 +331,7 @@ My RMarkdown site can be found [here](https://andrewmaclachlan.github.io/PUBLISH
 
 ## Shiny
 
-Shiny is an R package that lets you build interative web apps, host them online and embed them within RMarkdown documents... have a [look at some examples](https://shiny.rstudio.com/gallery/)
+Shiny is an R package that lets you build interactive web apps, host them online and embed them within RMarkdown documents... have a [look at some examples](https://shiny.rstudio.com/gallery/)
 
 To build a shiny you require three main *'items'* or blocks of code:
 
