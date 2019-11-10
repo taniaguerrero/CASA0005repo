@@ -608,7 +608,7 @@ newbb <- c(xmin=-296000, ymin=5408, xmax=655696, ymax=1000000)
 UK_outlinecrop=st_crop(UK_outline$geometry, newbb)
 
 # now try to arrange the plots with tmap
-# not that OSM is a live dataset
+# note that OSM is a live dataset
 # so you might have more than 286 hotels in yours!
 # adjust accordingly 
 breaks = c(0, 5, 12, 26, 57, 286) 
